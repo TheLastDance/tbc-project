@@ -1,0 +1,7 @@
+.products_list p {
+  flex-grow: 1;
+}
+
+.products_list button {
+  width: 50%;
+}

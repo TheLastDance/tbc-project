@@ -1,0 +1,26 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed var(--blackColor);
+}
+
+.header_nav_list {
+  display: flex;
+}
+
+.header_nav_list li {
+  margin: 0 0.5rem;
+}
+
+.header_nav_list li:last-child {
+  margin-right: 0;
+}
+
+.header_logo a {
+  font-size: 2rem;
+}
+
+.header_nav_list a {
+  font-size: 1.5rem;
+}
