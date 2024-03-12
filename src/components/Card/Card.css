@@ -1,0 +1,39 @@
+.card {
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  border-left: 2px dashed #000;
+  border-top: 2px dashed #000;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  border-right: 2px dashed #000;
+  border-bottom: 2px dashed #000;
+}
+
+.card>* {
+  margin: 1rem 0;
+}
+
+.card button,
+.card a {
+  z-index: 1;
+}

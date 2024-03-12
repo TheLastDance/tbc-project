@@ -1,0 +1,47 @@
+.blog .card {
+  margin: 2rem 0;
+}
+
+.blog_text {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post_info ul {
+  display: flex;
+}
+
+.blog_tag {
+  margin: 0 1rem;
+  filter: drop-shadow(0px 5px 5px var(--blackColor));
+}
+
+.blog_tag:first-child {
+  margin-left: 0;
+}
+
+.post_info_like_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+
+.post_info_like_button img {
+  width: 1.5rem;
+  margin-right: 0.25rem;
+}
+
+.post_info_like_button span {
+  font-size: 1.15rem;
+}

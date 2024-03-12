@@ -1,0 +1,12 @@
+.products_list p {
+  flex-grow: 1;
+}
+
+.products_list button {
+  width: 50%;
+}
+
+.products_list .card {
+  width: 350px;
+  margin: 0.5rem 2rem;
+}
