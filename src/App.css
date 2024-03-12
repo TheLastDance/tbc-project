@@ -44,7 +44,7 @@ button:hover {
   filter: invert(1);
 }
 
-body {
+#root {
   background: linear-gradient(to bottom right,
       #ffffff,
       #cac7ce,

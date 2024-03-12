@@ -1,6 +1,4 @@
 .card {
-  width: 350px;
-  margin: 0.5rem 2rem;
   padding: 1rem;
   position: relative;
   display: flex;
@@ -33,4 +31,9 @@
 
 .card>* {
   margin: 1rem 0;
+}
+
+.card button,
+.card a {
+  z-index: 1;
 }
