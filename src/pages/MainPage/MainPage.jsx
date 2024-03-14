@@ -4,7 +4,7 @@ import { BlogList } from "../../components/BlogList/BlogList";
 
 export function MainPage() {
   return (
-    <>
+    <div className="mainPage">
       <section id='about'>
         <h2>About us:</h2>
         <p>
@@ -17,6 +17,6 @@ export function MainPage() {
       </section>
       <ProductsList />
       <BlogList />
-    </>
+    </div>
   )
 }
