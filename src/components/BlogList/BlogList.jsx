@@ -6,7 +6,7 @@ export function BlogList() {
   const { posts } = blogPosts;
 
   return (
-    <section className="blog">
+    <section id="blog">
       <h2>Blog:</h2>
       <ul>
         {posts.map((item) =>

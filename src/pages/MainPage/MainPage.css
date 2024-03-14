@@ -13,3 +13,9 @@
 .mainPage>* {
   margin: 4rem 0;
 }
+
+@media(max-height:650px) {
+  .mainPage {
+    max-height: calc(100svh - 150px);
+  }
+}
