@@ -14,7 +14,7 @@ export function MainPage() {
           id="mainPage_search_input"
           required
         />
-        <button type='submit'>Submit</button>
+        <button type='submit'>Search</button>
       </form>
       <ProductsList />
       <BlogList />
