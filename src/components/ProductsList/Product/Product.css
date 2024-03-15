@@ -6,7 +6,7 @@
   width: 50%;
 }
 
-.products_list .card {
-  width: 350px;
-  margin: 0.5rem 2rem;
+.products_list .card img {
+  height: 10rem;
+  margin: 0 auto;
 }

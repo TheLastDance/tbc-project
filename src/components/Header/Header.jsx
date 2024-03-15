@@ -1,4 +1,5 @@
 import "./Header.css";
+import { Navigation } from "../Navigation/Navigation";
 
 export function Header() {
   return (
@@ -6,13 +7,7 @@ export function Header() {
       <div className="header_logo">
         <a href="/">LOGO</a>
       </div>
-      <nav>
-        <ul className='header_nav_list'>
-          <li><a href="#about">About</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#footer">Rules</a></li>
-        </ul>
-      </nav>
+      <Navigation />
     </header>
   )
 }

@@ -2,19 +2,24 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 2px dashed var(--blackColor);
 }
 
-footer form {
+#footer .nav_list {
+  flex-direction: column;
+}
+
+#footer .nav_list a {
+  font-size: 1rem;
+}
+
+footer form,
+footer form .input_container {
   display: flex;
   flex-direction: column;
 }
 
-footer form>* {
+footer form .input_container>*,
+footer form button {
   margin: 0.25rem 0;
-}
-
-footer form input {
-  padding: 0.25rem 0;
-  border-radius: 5px;
-  border: 1px solid var(--blackColor);
 }

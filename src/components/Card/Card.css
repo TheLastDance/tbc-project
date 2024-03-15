@@ -31,9 +31,5 @@
 
 .card>* {
   margin: 1rem 0;
-}
-
-.card button,
-.card a {
   z-index: 1;
 }
