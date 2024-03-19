@@ -7,17 +7,30 @@ export function Input({
   name,
   placeholder,
   required,
+  textArea,
+  ...props
 }) {
   return (
     <div className="input_container">
       <label htmlFor={id}>{label}</label>
-      <input
-        type={type}
-        name={name}
-        id={id}
-        placeholder={placeholder}
-        required={required}
-      />
+      {textArea ? (
+        <textarea
+          id={id}
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          {...props}
+        />
+      ) : (
+        <input
+          type={type}
+          id={id}
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          {...props}
+        />
+      )}
     </div>
   )
 }

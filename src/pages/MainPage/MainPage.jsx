@@ -1,7 +1,7 @@
 import "./MainPage.css";
 import { ProductsList } from "../../components/ProductsList/ProductsList"
 import { BlogList } from "../../components/BlogList/BlogList";
-import { SearchForm } from "../../components/SearchForm/SearchForm";
+import { SearchForm } from "../../components/Forms/SearchForm/SearchForm";
 
 export function MainPage() {
   return (
