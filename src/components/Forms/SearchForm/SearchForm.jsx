@@ -1,5 +1,5 @@
 import "./SearchForm.css"
-import { Input } from "../Input/Input"
+import { Input } from "../../Input/Input"
 
 export function SearchForm({ inputID }) {
   return (

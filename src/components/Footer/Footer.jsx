@@ -1,20 +1,21 @@
 import "./Footer.css"
 import { Navigation } from "../Navigation/Navigation"
 import { Input } from "../Input/Input"
+import { Link } from "react-router-dom"
 
 export function Footer() {
   return (
-    <footer id='footer'>
+    <footer className='footer'>
 
       <div className="footer_links">
         <Navigation />
 
         <ul>
           <li>
-            <a href="/">Terms and conditions</a>
+            <Link to="/">Terms and conditions</Link>
           </li>
           <li>
-            <a href="/">Privacy politics</a>
+            <Link to="/">Privacy politics</Link>
           </li>
         </ul>
       </div>
