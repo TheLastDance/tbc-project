@@ -5,11 +5,11 @@ footer {
   border-top: 2px dashed var(--blackColor);
 }
 
-#footer .nav_list {
+.footer .nav_list {
   flex-direction: column;
 }
 
-#footer .nav_list a {
+.footer .nav_list a {
   font-size: 1rem;
 }
 
