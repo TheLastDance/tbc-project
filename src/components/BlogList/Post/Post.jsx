@@ -3,12 +3,16 @@ import { Card } from "../../Card/Card"
 import like_icon from "../../../assets/icons/like-icon.svg";
 
 export function Post({ item }) {
-  const { title, body, tags, reactions } = item;
+  const { title, body, tags, reactions, date, photo } = item;
 
   return (
     <Card>
-      <h3>{title}</h3>
+      <div className="titleAndPhoto_container">
+        <h3>{title}</h3>
+        <img src={photo} alt="profile avatar" />
+      </div>
       <p className="blog_text">{body}</p>
+      <p>{date}</p>
       <div className="post_info">
         <ul>
           {tags.map((item, index) =>
