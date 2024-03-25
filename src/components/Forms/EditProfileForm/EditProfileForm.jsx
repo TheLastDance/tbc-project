@@ -1,11 +1,12 @@
-import "./ProfileForm.css"
+import "./EditProfileForm.css"
 import { FormContainer } from "../FormContainer/FormContainer"
 import { Input } from "../../Input/Input"
 
-export function ProfileForm() {
+export function EditProfileForm() {
   return (
     <FormContainer>
-      <form className="profileForm" onSubmit={(e) => e.preventDefault()}>
+      <form className="editProfileForm" onSubmit={(e) => e.preventDefault()}>
+        <h3>Edit profile:</h3>
         <Input
           type="text"
           id="profile_firstName"
@@ -30,22 +31,6 @@ export function ProfileForm() {
           id="profile_email"
           defaultValue="MichaelBrown@gmail.com"
           label="Email:"
-          required
-        />
-
-        <Input
-          type="password"
-          id="profile_password"
-          name="password"
-          label="New Password: "
-          required
-        />
-
-        <Input
-          type="password"
-          id="profile_confirmPassword"
-          name="confirmPassword"
-          label="Confirm Password: "
           required
         />
 

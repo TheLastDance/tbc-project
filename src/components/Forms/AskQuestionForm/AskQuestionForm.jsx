@@ -1,3 +1,4 @@
+import "./AskQuestionForm.css";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "../../Input/Input";
 
@@ -5,6 +6,7 @@ export function AskQuestionForm() {
   return (
     <FormContainer>
       <form className="askQuestionForm" onSubmit={(e) => e.preventDefault()}>
+        <h3>Ask question here:</h3>
         <Input
           type="text"
           name="firstName"

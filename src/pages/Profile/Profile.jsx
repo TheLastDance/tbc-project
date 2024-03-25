@@ -1,9 +1,19 @@
-import { ProfileForm } from "../../components/Forms/ProfileForm/ProfileForm"
+import { ProfileMainInfo } from "../../components/ProfileMainInfo/ProfileMainInfo"
+import { EditProfileForm } from "../../components/Forms/EditProfileForm/EditProfileForm"
+import { ChangePasswordForm } from "../../components/Forms/ChangePasswordForm/ChangePasswordForm"
 
 export function Profile() {
   return (
-    <section>
-      <ProfileForm />
-    </section>
+    <>
+      <section>
+        <ProfileMainInfo />
+      </section>
+      <section>
+        <EditProfileForm />
+      </section>
+      <section>
+        <ChangePasswordForm />
+      </section>
+    </>
   )
 }
