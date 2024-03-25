@@ -7,9 +7,7 @@ export function Contact() {
   return (
     <div className="contact">
       <section className="askQuestionSection">
-        <h3>
-          Ask question here:
-        </h3>
+        <h3>Ask question here:</h3>
         <AskQuestionForm />
       </section>
       <section className="callUs">
