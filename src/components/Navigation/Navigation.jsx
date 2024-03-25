@@ -5,8 +5,8 @@ export function Navigation() {
   return (
     <nav>
       <ul className='nav_list'>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#blog">Blog</a></li>
+        <li><NavLink to="/profile">Profile</NavLink></li>
+        <li><NavLink to="/blog">Blog</NavLink></li>
         <li><NavLink to="/contact">Contact</NavLink></li>
       </ul>
     </nav>

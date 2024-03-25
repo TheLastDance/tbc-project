@@ -1,18 +1,4 @@
-.askQuestionForm>* {
-  margin: 0.75rem 0;
-}
-
 .askQuestionForm {
-  display: flex;
-  flex-direction: column;
-}
-
-.askQuestionForm .input_container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.askQuestionForm .input_container textarea {
-  resize: none;
+  max-width: 350px;
+  margin: 0 auto;
 }
