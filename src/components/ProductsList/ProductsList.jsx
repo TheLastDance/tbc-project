@@ -1,8 +1,7 @@
 import "./ProductList.css"
-import { products } from "../../data/products";
 import { Product } from "./Product/Product";
 
-export function ProductsList() {
+export function ProductsList({ products }) {
   return (
     <section id="products">
       <h2>Products:</h2>
