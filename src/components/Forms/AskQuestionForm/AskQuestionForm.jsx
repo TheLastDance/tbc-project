@@ -1,8 +1,22 @@
 import "./AskQuestionForm.css";
+import { useState } from "react";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "../../Input/Input";
+import { handleChangeInputObj } from "../../../utils";
 
 export function AskQuestionForm() {
+  const [formStates, setFormStates] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    tel: "",
+    question: "",
+  })
+
+  const handleOnChange = (e, key) => {
+    handleChangeInputObj(setFormStates, e, key);
+  }
+
   return (
     <FormContainer>
       <form className="askQuestionForm" onSubmit={(e) => e.preventDefault()}>
@@ -12,6 +26,8 @@ export function AskQuestionForm() {
           name="firstName"
           id="askQuestionForm_firstName"
           label="First Name:"
+          value={formStates.firstName}
+          onChange={(e) => handleOnChange(e, "firstName")}
           required
         />
 
@@ -20,6 +36,8 @@ export function AskQuestionForm() {
           name="lastName"
           id="askQuestionForm_lastName"
           label="Last Name:"
+          value={formStates.lastName}
+          onChange={(e) => handleOnChange(e, "lastName")}
           required
         />
 
@@ -28,6 +46,8 @@ export function AskQuestionForm() {
           name="email"
           id="askQuestionForm_email"
           label="Email:"
+          value={formStates.email}
+          onChange={(e) => handleOnChange(e, "email")}
           required
         />
 
@@ -38,6 +58,8 @@ export function AskQuestionForm() {
           label="Phone number:"
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           placeholder="USA Format: xxx-xxx-xxxx"
+          value={formStates.tel}
+          onChange={(e) => handleOnChange(e, "tel")}
           required
         />
 
@@ -45,9 +67,11 @@ export function AskQuestionForm() {
           name="question"
           id="askQuestionForm_question"
           label="Your question:"
-          required
           textArea
           rows="5"
+          value={formStates.question}
+          onChange={(e) => handleOnChange(e, "question")}
+          required
         />
 
         <button type="submit">Send</button>

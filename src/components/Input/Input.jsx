@@ -8,6 +8,7 @@ export function Input({
   placeholder,
   required,
   textArea,
+  onChange,
   ...props
 }) {
   return (
@@ -19,6 +20,7 @@ export function Input({
           name={name}
           placeholder={placeholder}
           required={required}
+          onChange={onChange}
           {...props}
         />
       ) : (
@@ -28,6 +30,7 @@ export function Input({
           name={name}
           placeholder={placeholder}
           required={required}
+          onChange={onChange}
           {...props}
         />
       )}
