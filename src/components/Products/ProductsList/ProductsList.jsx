@@ -1,5 +1,5 @@
 import "./ProductsList.css"
-import { Product } from "../Product/Product"
+import { Product } from "./Product/Product"
 
 export function ProductsList({ products }) {
   return (

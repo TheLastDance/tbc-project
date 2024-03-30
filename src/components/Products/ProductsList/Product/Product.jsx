@@ -1,5 +1,5 @@
 import "./Product.css"
-import { Card } from "../../Card/Card"
+import { Card } from "../../../Card/Card"
 
 export function Product({ item }) {
   const { name, description, image } = item;
