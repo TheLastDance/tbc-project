@@ -1,8 +1,19 @@
 import "./ChangePasswordForm.css"
+import { useState } from "react"
 import { FormContainer } from "../FormContainer/FormContainer"
 import { Input } from "../../Input/Input"
+import { handleChangeInputObj } from "../../../utils"
 
 export function ChangePasswordForm() {
+  const [formStates, setFormStates] = useState({
+    password: "",
+    confirmPassword: "",
+  })
+
+  const handleOnChange = (e, key) => {
+    handleChangeInputObj(setFormStates, e, key);
+  }
+
   return (
     <FormContainer>
       <form className="changePasswordForm" onSubmit={(e) => e.preventDefault()}>
@@ -12,6 +23,8 @@ export function ChangePasswordForm() {
           id="profile_password"
           name="password"
           label="New Password: "
+          value={formStates.password}
+          onChange={(e) => handleOnChange(e, "password")}
           required
         />
 
@@ -20,6 +33,8 @@ export function ChangePasswordForm() {
           id="profile_confirmPassword"
           name="confirmPassword"
           label="Confirm Password: "
+          value={formStates.confirmPassword}
+          onChange={(e) => handleOnChange(e, "confirmPassword")}
           required
         />
 

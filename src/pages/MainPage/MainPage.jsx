@@ -1,12 +1,11 @@
 import "./MainPage.css";
-import { ProductsList } from "../../components/ProductsList/ProductsList"
-import { SearchForm } from "../../components/Forms/SearchForm/SearchForm";
+import { Products } from "../../components/Products/Products"
 
 export function MainPage() {
+
   return (
     <div className="mainPage">
-      <SearchForm inputID="mainPage_search_input" />
-      <ProductsList />
+      <Products />
     </div>
   )
 }
