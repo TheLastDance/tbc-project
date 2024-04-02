@@ -1,0 +1,10 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed var(--blackColor);
+}
+
+.header_logo a {
+  font-size: 2rem;
+}
