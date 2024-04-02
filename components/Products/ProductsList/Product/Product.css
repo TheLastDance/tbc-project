@@ -1,0 +1,13 @@
+.products_list p {
+  flex-grow: 1;
+}
+
+.products_list button {
+  width: 50%;
+}
+
+.products_list .card img {
+  width: auto;
+  height: 10rem;
+  margin: 0 auto;
+}
