@@ -11,7 +11,9 @@ export function Product({ item, index }) {
       <Image
         src={image}
         alt={name}
-        // approximately only 6 images will be above the fold, so I need priority only for them
+        width={400}
+        height={650}
+        // approximately only 6 images will be above the fold in future, so I need priority only for them
         priority={index < 6}
       />
       <p>{description}</p>

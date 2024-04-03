@@ -12,9 +12,12 @@
 
 .nav_list a {
   font-size: 1.5rem;
+}
+
+.nav_list .navLink {
   border-bottom: 1px solid transparent;
 }
 
-.nav_list a.active {
+.nav_list .navLink_active {
   border-bottom: 1px solid var(--blackColor);
 }
