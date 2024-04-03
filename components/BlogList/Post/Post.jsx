@@ -11,7 +11,12 @@ export function Post({ item }) {
     <Card>
       <div className="titleAndPhoto_container">
         <h3>{title}</h3>
-        <Image src={photo} alt="profile avatar" />
+        <Image
+          src={photo}
+          alt="profile avatar"
+          width={150}
+          height={150}
+        />
       </div>
       <p className="blog_text">{body}</p>
       <p>{date}</p>

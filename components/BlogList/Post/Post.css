@@ -13,6 +13,7 @@
   border: 3px solid var(--whiteColor);
   width: 4rem;
   height: 4rem;
+  object-fit: cover;
 }
 
 .blog_text {

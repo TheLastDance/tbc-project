@@ -9,6 +9,8 @@ export function ProfileMainInfo() {
       <Image
         src={profile_img}
         alt="profile avatar"
+        width={300}
+        height={380}
         priority
       />
     </div>
