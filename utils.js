@@ -5,10 +5,12 @@ export const handleChangeInputObj = (setState, e, key) => {
   }))
 }
 
-export const handleFetch = async (url) => {
+export const handleFetch = async (url, signal) => {
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("No response")
+    const res = await fetch(url, { signal });
+
+    if (!res.ok) throw new Error("No response");
+
     const json = await res.json();
     return json;
   } catch (error) {

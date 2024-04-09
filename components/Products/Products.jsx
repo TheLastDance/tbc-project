@@ -4,20 +4,27 @@ import "./Products.css"
 import { useState, useEffect } from "react";
 import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
+import { Loader } from "../Loader/Loader";
 import { handleFetch } from "@/utils";
 
 export function Products() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [isAscending, setIsAscending] = useState(true);
   const [debouncedValue, setDebouncedValue] = useState("");
 
   useEffect(() => {
+    const controller = new AbortController();
     const handleProductsFetch = async () => {
-      const data = await handleFetch("https://dummyjson.com/products");
-      setProducts(data.products);
+      const data = await handleFetch("https://dummyjson.com/products", controller.signal);
+      if (data) setProducts(data.products);
+      setLoading(false);
     }
+
     handleProductsFetch();
+
+    return () => controller.abort();
   }, [])
 
   // debouncing
@@ -36,6 +43,8 @@ export function Products() {
   const sortedData = isAscending
     ? [...filteredProducts].sort((a, b) => a.title === b.title ? 0 : a.title < b.title ? -1 : 1)
     : [...filteredProducts].sort((a, b) => a.title === b.title ? 0 : a.title < b.title ? 1 : -1)
+
+  if (loading) return <Loader />
 
   return (
     <>
