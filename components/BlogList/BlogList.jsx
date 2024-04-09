@@ -1,9 +1,20 @@
+"use client"
+
 import "./BlogList.css";
-import { blogPosts } from "@/data/blogPosts";
+import { useEffect, useState } from "react";
 import { Post } from "./Post/Post";
+import { handleFetch } from "@/utils";
 
 export function BlogList() {
-  const { posts } = blogPosts;
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const handlePostsFetch = async () => {
+      const data = await handleFetch("https://dummyjson.com/posts");
+      setPosts(data.posts);
+    }
+    handlePostsFetch();
+  }, [])
 
   return (
     <section id="blog">

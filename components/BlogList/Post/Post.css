@@ -58,5 +58,18 @@
 }
 
 .post_info_like_button span {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
+}
+
+.post_viewFullButton {
+  padding: 0.15rem;
+  border: 2px solid var(--blackColor);
+  border-radius: 5px;
+  background-color: var(--whiteColor);
+  font-weight: 700;
+  text-align: center;
+}
+
+.post_viewFullButton:hover {
+  filter: invert(1);
 }
