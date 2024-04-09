@@ -16,8 +16,9 @@ export function Products() {
 
   useEffect(() => {
     const controller = new AbortController();
+    const signal = controller.signal;
     const handleProductsFetch = async () => {
-      const data = await handleFetch("https://dummyjson.com/products", controller.signal);
+      const data = await handleFetch("https://dummyjson.com/products?limit=0", { signal });
       if (data) setProducts(data.products);
       setLoading(false);
     }

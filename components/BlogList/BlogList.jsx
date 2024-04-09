@@ -12,8 +12,9 @@ export function BlogList() {
 
   useEffect(() => {
     const controller = new AbortController();
+    const signal = controller.signal;
     const handlePostsFetch = async () => {
-      const data = await handleFetch("https://dummyjson.com/posts", controller.signal);
+      const data = await handleFetch("https://dummyjson.com/posts", { signal });
       if (data) setPosts(data.posts);
       setLoading(false);
     }

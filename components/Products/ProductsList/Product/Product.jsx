@@ -14,8 +14,8 @@ export function Product({ item, index }) {
         alt={title}
         width={400}
         height={650}
-        // approximately only 3 images will be above the fold in future, so I need priority only for them
-        priority={index < 3}
+        // approximately only 6 images will be above the fold in future, so I need priority only for them
+        priority={index < 6}
       />
       <p>{description}</p>
       <button type='button'>Add to Cart</button>

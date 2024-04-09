@@ -4,6 +4,10 @@
 }
 
 .products_list .card p {
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   flex-grow: 1;
 }
 
