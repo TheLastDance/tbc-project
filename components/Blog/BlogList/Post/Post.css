@@ -31,15 +31,12 @@
 
 .post_info ul {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .blog_tag {
-  margin: 0 1rem;
+  margin-right: 1rem;
   filter: drop-shadow(0px 5px 5px var(--blackColor));
-}
-
-.blog_tag:first-child {
-  margin-left: 0;
 }
 
 .post_info_like_button {

@@ -3,7 +3,7 @@
 import "./BlogList.css";
 import { useEffect, useState } from "react";
 import { Post } from "./Post/Post";
-import { Loader } from "../Loader/Loader";
+import { Loader } from "@/components/Loader/Loader";
 import { handleFetch } from "@/utils";
 
 export function BlogList() {

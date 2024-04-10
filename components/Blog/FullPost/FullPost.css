@@ -1,0 +1,65 @@
+.fullPost>* {
+  margin: 0.75rem 0;
+}
+
+.fullPost_titleAndPhoto_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fullPost_titleAndPhoto_container h1 {
+  width: calc(100vw - 10rem);
+  font-size: 2.5rem;
+  overflow-wrap: break-word;
+}
+
+.fullPost_titleAndPhoto_container img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 7px solid var(--whiteColor);
+}
+
+.fullPost_text {
+  margin: 3rem 0;
+  font-size: 1.25rem;
+}
+
+.fullPost ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fullPost_tag {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  filter: drop-shadow(0px 5px 5px var(--blackColor));
+}
+
+.fullPost_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.fullPost_like_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+
+.fullPost_like_button img {
+  height: auto;
+  width: 1.5rem;
+  margin-right: 0.25rem;
+}
+
+.fullPost_like_button span {
+  font-size: 1.25rem;
+}

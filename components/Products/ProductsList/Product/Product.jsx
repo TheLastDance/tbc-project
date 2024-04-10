@@ -8,7 +8,7 @@ export function Product({ item, index }) {
 
   return (
     <Card>
-      <Link href={`/products/${id}`}>{title}</Link>
+      <Link href={`/products/${id}`} scroll={true}>{title}</Link>
       <Image
         src={image}
         alt={title}
