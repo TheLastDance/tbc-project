@@ -37,6 +37,8 @@ a:hover {
 }
 
 button {
+  font-family: inherit;
+  font-size: 1rem;
   cursor: pointer;
   padding: 0.25rem;
   border: 2px solid var(--blackColor);
