@@ -1,5 +1,5 @@
 import "./FullPost.css";
-import NotFoundPost from "@/app/blog/[id]/not-found";
+import NotFoundPost from "@/app/(isAuth)/blog/[id]/not-found";
 import ArrowNavigation from "@/components/ArrowNavigation/ArrowNavigation";
 import Link from "next/link";
 import Image from "next/image"
