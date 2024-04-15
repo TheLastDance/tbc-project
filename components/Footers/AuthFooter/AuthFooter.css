@@ -1,14 +1,14 @@
-footer {
+.authFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-top: 2px dashed var(--blackColor);
 }
 
-.footer .nav_list {
+.authFooter .nav_list {
   flex-direction: column;
 }
 
-.footer .nav_list a {
+.authFooter .nav_list a {
   font-size: 1rem;
 }

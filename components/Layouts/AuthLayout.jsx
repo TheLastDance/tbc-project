@@ -1,14 +1,14 @@
-import { Header } from "../Header/Header"
-import { Footer } from "../Footer/Footer"
+import { AuthHeader } from "../Headers/AuthHeader/AuthHeader"
+import { AuthFooter } from "../Footers/AuthFooter/AuthFooter"
 
 export function AuthLayout({ children }) {
   return (
     <>
-      <Header />
+      <AuthHeader />
       <main>
         {children}
       </main>
-      <Footer />
+      <AuthFooter />
     </>
   )
 }

@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import GlobalLayout from "@/components/Layouts/GlobalLayout";
+import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
