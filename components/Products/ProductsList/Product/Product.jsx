@@ -8,7 +8,7 @@ export function Product({ item, index }) {
 
   return (
     <Card>
-      <Link href={`/products/${id}`} scroll={true}>{title}</Link>
+      <Link href={`/products/${id}`}>{title}</Link>
       <Image
         src={image}
         alt={title}
@@ -17,7 +17,9 @@ export function Product({ item, index }) {
         // approximately only 6 images will be above the fold in future, so I need priority only for them
         priority={index < 6}
       />
-      <p>{description}</p>
+      <div className="productDescription_container">
+        <p>{description}</p>
+      </div>
       <button type='button'>Add to Cart</button>
     </Card>
   )

@@ -1,0 +1,26 @@
+.login_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.loginForm {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.loginForm h3 {
+  text-align: center;
+}
+
+.loginForm .input_container input {
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: 2px solid var(--blackColor);
+}
+
+.loginForm button {
+  font-size: 1.2rem;
+  border-radius: 8px;
+}
