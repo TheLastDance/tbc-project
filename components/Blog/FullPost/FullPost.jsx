@@ -1,16 +1,15 @@
 import "./FullPost.css";
-import NotFoundPost from "@/app/(isAuth)/blog/[id]/not-found";
-import ArrowNavigation from "@/components/ArrowNavigation/ArrowNavigation";
+import NotFound from "@/app/not-found";
 import Link from "next/link";
 import Image from "next/image"
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import like_icon from "@/public/icons/like-icon.svg";
-import photo from "@/public/img/blog/dogProfile.jpeg"
+import photo from "@/public/img/blog/dogProfile.jpeg";
 
 export async function FullPost({ id }) {
   const data = await getAnyData(`https://dummyjson.com/posts/${id}`);
 
-  if (!data.title) return <NotFoundPost id={id} />;
+  if (!data.title) return <NotFound />;
 
   const { title, body, tags, reactions } = data;
 
@@ -41,10 +40,6 @@ export async function FullPost({ id }) {
           <span>{reactions}</span>
         </button>
       </div>
-      <ArrowNavigation
-        hrefPrev={`/blog/${+id - 1}`}
-        hrefNext={`/blog/${+id + 1}`}
-      />
     </article>
   )
 }
