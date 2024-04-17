@@ -3,12 +3,15 @@
   font-weight: 700;
 }
 
-.products_list .card p {
+.productDescription_container {
+  flex-grow: 1;
+}
+
+.productDescription_container p {
   -webkit-line-clamp: 3;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  flex-grow: 1;
 }
 
 .products_list .card img {

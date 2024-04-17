@@ -1,0 +1,19 @@
+.logout_button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  border-radius: none;
+  background-color: unset;
+  transition: ease .6s;
+}
+
+.logout_button:hover {
+  filter: none;
+  transform: translateX(2px);
+}
+
+.logout_button img {
+  width: 1.75rem;
+  height: 1.75rem;
+}

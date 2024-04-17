@@ -1,14 +1,13 @@
-
-
 import "./FullProduct.css"
-import { handleFetch } from "@/utils";
+import { getAnyData } from "@/services/data-fetch/getAnyData";
 import notFound from "@/app/not-found";
 import Image from "next/image";
 
 export async function FullProduct({ id }) {
-  const data = await handleFetch(`https://dummyjson.com/products/${id}`);
+  //await new Promise((res) => setTimeout(res, 2000)); //for loader check
+  const data = await getAnyData(`https://dummyjson.com/products/${id}`);
 
-  if (!data) return notFound();
+  if (!data.title) return notFound();
 
   const { title, description, brand, category, rating, price, thumbnail } = data;
 

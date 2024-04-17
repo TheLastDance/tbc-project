@@ -4,7 +4,7 @@ import "./NewsletterForm.css"
 import { useState } from "react"
 import { Input } from "@/components/Input/Input"
 
-export default function NewsletterForm() {
+export function NewsletterForm() {
   const [email, setEmail] = useState("")
 
   return (

@@ -1,0 +1,25 @@
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.errorPage>* {
+  margin: 0.5rem 0;
+}
+
+.errorPage h1 {
+  font-size: 2rem;
+}
+
+.errorPage p {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.errorPage img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}

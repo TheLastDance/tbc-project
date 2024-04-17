@@ -1,30 +1,10 @@
-"use client"
-
 import "./BlogList.css";
-import { useEffect, useState } from "react";
 import { Post } from "./Post/Post";
-import { Loader } from "@/components/Loader/Loader";
-import { handleFetch } from "@/utils";
+import { getAnyData } from "@/services/data-fetch/getAnyData";
 
-export function BlogList() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState([]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    const handlePostsFetch = async () => {
-      const data = await handleFetch("https://dummyjson.com/posts", { signal });
-      if (data) setPosts(data.posts);
-      setLoading(false);
-    }
-
-    handlePostsFetch();
-
-    return () => controller.abort();
-  }, [])
-
-  if (loading) return <Loader />
+export async function BlogList() {
+  const data = await getAnyData(`https://dummyjson.com/posts`);
+  const { posts } = data;
 
   return (
     <section id="blog">

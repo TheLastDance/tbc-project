@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Layout } from "@/components/Layout/Layout";
+import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Layout>
+        <GlobalLayout>
           {children}
-        </Layout>
+        </GlobalLayout>
       </body>
     </html>
   );
