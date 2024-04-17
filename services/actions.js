@@ -16,7 +16,7 @@ export async function login(_, data) {
   if (!response.ok) return user.message;
 
   const cookieStore = cookies();
-  cookieStore.set("token", user.token);
+  cookieStore.set("token", user.token, { httpOnly: true }); // will use typescript enums in future, thats why I have no constant for token string
   redirect("/");
 
 }

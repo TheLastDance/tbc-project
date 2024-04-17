@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export default function RootLayout({ children }) {
   const cookieStore = cookies();
 
-  const token = cookieStore.get("token")
+  const token = cookieStore.get("token")?.value;
 
   if (!token) redirect("/login");
 

@@ -1,9 +1,9 @@
-import { handleFetch } from "@/utils"
+import { getAnyData } from "@/services/data-fetch/getAnyData";
 
 export async function generateMetadata({ params: { id } }) {
-  const data = await handleFetch(`https://dummyjson.com/posts/${id}`);
+  const data = await getAnyData(`https://dummyjson.com/posts/${id}`);
 
-  if (!data) return { title: 'Post not found!' };
+  if (!data.title) return { title: 'Post not found!' };
 
   const { title } = data;
 
@@ -15,7 +15,7 @@ export async function generateMetadata({ params: { id } }) {
 
 export async function generateStaticParams() {
   // only 30 posts will be statically pregenerated, if want all then use searchParam limit=0 as in products.
-  const data = await handleFetch(`https://dummyjson.com/posts`);
+  const data = await getAnyData(`https://dummyjson.com/posts`);
   const { posts } = data;
 
   return posts.map((item) => ({ id: String(item.id) }));

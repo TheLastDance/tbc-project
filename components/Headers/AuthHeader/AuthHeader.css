@@ -4,3 +4,11 @@
   align-items: center;
   border-bottom: 2px dashed var(--blackColor);
 }
+
+.authHeader div {
+  display: flex;
+}
+
+.authHeader div .logout_button {
+  margin-left: 0.5rem;
+}

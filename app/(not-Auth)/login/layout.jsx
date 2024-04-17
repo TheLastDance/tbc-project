@@ -9,7 +9,8 @@ export const metadata = {
 
 export default function layout({ children }) {
   const cookieStore = cookies();
-  const token = cookieStore.get("token");
+
+  const token = cookieStore.get("token")?.value;
 
   if (token) redirect("/");
 

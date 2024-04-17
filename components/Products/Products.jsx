@@ -4,29 +4,12 @@ import "./Products.css"
 import { useState, useEffect } from "react";
 import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
-import { Loader } from "../Loader/Loader";
-import { handleFetch } from "@/utils";
 
-export function Products() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+export function Products({ data }) {
   const [searchText, setSearchText] = useState("");
   const [isAscending, setIsAscending] = useState(true);
   const [debouncedValue, setDebouncedValue] = useState("");
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    const handleProductsFetch = async () => {
-      const data = await handleFetch("https://dummyjson.com/products?limit=0", { signal });
-      if (data) setProducts(data.products);
-      setLoading(false);
-    }
-
-    handleProductsFetch();
-
-    return () => controller.abort();
-  }, [])
+  const { products } = data;
 
   // debouncing
   useEffect(() => {
@@ -45,24 +28,20 @@ export function Products() {
     ? [...filteredProducts].sort((a, b) => a.title === b.title ? 0 : a.title < b.title ? -1 : 1)
     : [...filteredProducts].sort((a, b) => a.title === b.title ? 0 : a.title < b.title ? 1 : -1)
 
-  if (loading) return <Loader />
-
   return (
     <>
-      {products.length ? (
-        <section className="products">
-          <Search
-            inputID="mainPage_search_input"
-            inputValue={searchText}
-            handleInputChange={(e) => setSearchText(e.target.value)}
-            handleButtonClick={() => setIsAscending(prev => !prev)}
-            buttonContent={`Sort ${isAscending ? "Z-A" : "A-Z"}`}
-          />
-          <h2>Products:</h2>
-          <ProductsList products={sortedData} />
-          {!sortedData.length ? <p>No products found!</p> : null}
-        </section>
-      ) : null}
+      <section className="products">
+        <Search
+          inputID="mainPage_search_input"
+          inputValue={searchText}
+          handleInputChange={(e) => setSearchText(e.target.value)}
+          handleButtonClick={() => setIsAscending(prev => !prev)}
+          buttonContent={`Sort ${isAscending ? "Z-A" : "A-Z"}`}
+        />
+        <h2>Products:</h2>
+        <ProductsList products={sortedData} />
+        {!sortedData.length ? <p>No products found!</p> : null}
+      </section>
     </>
   )
 }

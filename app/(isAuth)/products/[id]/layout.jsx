@@ -1,9 +1,9 @@
-import { handleFetch } from "@/utils"
+import { getAnyData } from "@/services/data-fetch/getAnyData";
 
 export async function generateMetadata({ params: { id } }) {
-  const data = await handleFetch(`https://dummyjson.com/products/${id}`);
+  const data = await getAnyData(`https://dummyjson.com/products/${id}`);
 
-  if (!data) return { title: 'Product not found!' };
+  if (!data.title) return { title: 'Product not found!' };
 
   const { title, description } = data;
 
@@ -14,7 +14,7 @@ export async function generateMetadata({ params: { id } }) {
 }
 
 export async function generateStaticParams() {
-  const data = await handleFetch(`https://dummyjson.com/products?limit=0`);
+  const data = await getAnyData(`https://dummyjson.com/products?limit=0`);
   const { products } = data;
 
   return products.map((item) => ({ id: String(item.id) }))

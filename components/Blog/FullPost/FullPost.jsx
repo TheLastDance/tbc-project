@@ -3,14 +3,14 @@ import NotFoundPost from "@/app/(isAuth)/blog/[id]/not-found";
 import ArrowNavigation from "@/components/ArrowNavigation/ArrowNavigation";
 import Link from "next/link";
 import Image from "next/image"
-import { handleFetch } from "@/utils";
+import { getAnyData } from "@/services/data-fetch/getAnyData";
 import like_icon from "@/public/icons/like-icon.svg";
 import photo from "@/public/img/blog/dogProfile.jpeg"
 
 export async function FullPost({ id }) {
-  const data = await handleFetch(`https://dummyjson.com/posts/${id}`);
+  const data = await getAnyData(`https://dummyjson.com/posts/${id}`);
 
-  if (!data) return <NotFoundPost id={id} />;
+  if (!data.title) return <NotFoundPost id={id} />;
 
   const { title, body, tags, reactions } = data;
 

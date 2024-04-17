@@ -4,7 +4,7 @@ import "./AskQuestionForm.css";
 import { useState } from "react";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
-import { handleChangeInputObj } from "@/utils";
+import { handleChangeInputObj } from "@/services/utils";
 
 export function AskQuestionForm() {
   const [formStates, setFormStates] = useState({
