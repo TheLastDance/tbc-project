@@ -11,12 +11,20 @@ export async function login(_, data) {
     body: JSON.stringify({ username, password })
   });
 
-  if (!response.ok) return "Invalid data";
-
   const user = await response.json();
-  const cookieStore = cookies();
-  cookieStore.set("token", user.token, { httpOnly: true });
-  redirect("/")
 
-  //return res;
+  if (!response.ok) return user.message;
+
+  const cookieStore = cookies();
+  cookieStore.set("token", user.token);
+  redirect("/");
+
+}
+
+export async function logout() {
+  const cookieStore = cookies();
+
+  cookieStore.delete("token");
+
+  redirect("/login");
 }
