@@ -4,6 +4,7 @@ import notFound from "@/app/not-found";
 import Image from "next/image";
 
 export async function FullProduct({ id }) {
+  //await new Promise((res) => setTimeout(res, 2000)); //for loader check
   const data = await getAnyData(`https://dummyjson.com/products/${id}`);
 
   if (!data.title) return notFound();

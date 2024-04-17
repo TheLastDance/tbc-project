@@ -7,6 +7,7 @@ import like_icon from "@/public/icons/like-icon.svg";
 import photo from "@/public/img/blog/dogProfile.jpeg";
 
 export async function FullPost({ id }) {
+  //await new Promise((res) => setTimeout(res, 2000)); // for loader check
   const data = await getAnyData(`https://dummyjson.com/posts/${id}`);
 
   if (!data.title) return <NotFound />;

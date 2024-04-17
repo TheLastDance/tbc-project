@@ -5,3 +5,7 @@
   font-weight: 700;
   flex-grow: 1;
 }
+
+.arrow_navigation a {
+  height: fit-content;
+}

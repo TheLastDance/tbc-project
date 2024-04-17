@@ -1,12 +1,13 @@
 import { FullPost } from "@/components/Blog/FullPost/FullPost";
 import { Suspense } from "react";
-import { Loader } from "@/components/Loader/Loader";
+import { FullPostLoader } from "@/components/Loaders/FullPostLoader/FullPostLoader";
 import { ArrowNavigation } from "@/components/ArrowNavigation/ArrowNavigation";
 
-export default function FullPostPage({ params: { id } }) {
+export default async function FullPostPage({ params: { id } }) {
+
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<FullPostLoader />}>
         <FullPost id={id} />
       </Suspense>
       <ArrowNavigation
