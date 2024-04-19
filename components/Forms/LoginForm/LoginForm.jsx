@@ -3,29 +3,45 @@
 import "./LoginForm.css";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
-import { login } from "@/services/actions";
-import { useFormState } from "react-dom";
-import { useOptimistic } from "react";
+import { useState } from "react";
 import { Loader } from "@/components/Loaders/Loader/Loader";
-import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton";
+import { getAnyData } from "@/services/data-fetch/getAnyData";
+import { useRouter } from "next/navigation";
 
 export function LoginForm() {
-  const [error, formAction] = useFormState(login, "");
-  const [optimisticState, addOptimistic] = useOptimistic(
-    error,
-    () => <Loader />
-  );
+  const router = useRouter();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleForm = async (data) => {
-    addOptimistic();
-    await formAction(data);
+  const handleForm = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.target);
+    const credentials = Object.fromEntries(formData);
+
+    const user = await getAnyData("/api/login", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    });
+
+    if (user.token) {
+      router.push("/");
+      return router.refresh();
+    }
+
+    setError(user);
+    setLoading(false);
   }
 
   return (
     <section className="login_container">
       <FormContainer>
         <form
-          action={handleForm}
+          onSubmit={handleForm}
           className="loginForm"
         >
           <h3>Please login into your account ⬇ </h3>
@@ -43,10 +59,11 @@ export function LoginForm() {
             label="Password:"
             required
           />
-          {optimisticState && <div>{optimisticState}</div>}
-          <PendingButton type="submit">
+          {error && !loading && <div>{error}</div>}
+          {loading && <Loader />}
+          <button type="submit" disabled={loading}>
             Login
-          </PendingButton>
+          </button>
         </form>
       </FormContainer>
     </section>
