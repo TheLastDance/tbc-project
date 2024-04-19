@@ -7,6 +7,7 @@ import { login } from "@/services/actions";
 import { useFormState } from "react-dom";
 import { useOptimistic } from "react";
 import { Loader } from "@/components/Loaders/Loader/Loader";
+import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton";
 
 export function LoginForm() {
   const [error, formAction] = useFormState(login, "");
@@ -43,7 +44,9 @@ export function LoginForm() {
             required
           />
           {optimisticState && <div>{optimisticState}</div>}
-          <button type="submit">Login</button>
+          <PendingButton type="submit">
+            Login
+          </PendingButton>
         </form>
       </FormContainer>
     </section>

@@ -1,7 +1,7 @@
 import "./AuthHeader.css";
 import { Navigation } from "../../Navigation/Navigation";
 import { Logo } from "../../Logo/Logo";
-import { LogOutButton } from "@/components/LogOutButton/LogOutButton";
+import { LogOutButton } from "@/components/Buttons/LogOutButton/LogOutButton";
 
 export function AuthHeader() {
 
