@@ -2,8 +2,8 @@ import "./Post.css"
 import { Card } from "@/components/Card/Card";
 import Link from "next/link";
 import Image from "next/image";
-import like_icon from "@/public/icons/like-icon.svg";
-import photo from "@/public/img/blog/dogProfile.jpeg"
+import photo from "@/public/img/blog/dogProfile.jpeg";
+import { LikeIcon } from "@/components/Icons/Like";
 
 export function Post({ item }) {
   const { title, body, tags, reactions, id } = item;
@@ -30,7 +30,7 @@ export function Post({ item }) {
           )}
         </ul>
         <button type="button" className="post_info_like_button">
-          <Image src={like_icon} alt="like" />
+          <LikeIcon />
           <span>{reactions}</span>
         </button>
       </div>

@@ -1,10 +1,9 @@
 "use client"
 
 import "./LogOutButton.css";
-import Image from "next/image";
-import logout_icon from "@/public/icons/logout-icon.svg";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import { useRouter } from "next/navigation";
+import { LogOutIcon } from "@/components/Icons/LogOut";
 
 export function LogOutButton() {
   const router = useRouter();
@@ -18,15 +17,11 @@ export function LogOutButton() {
   return (
     <button
       type="button"
-      className="logout_button"
+      className="logout_button resetButtonStyles"
       onClick={handleLogOut}
+      title="logout"
     >
-      <Image
-        src={logout_icon}
-        alt="logout"
-        width={30}
-        height={30}
-      />
+      <LogOutIcon />
     </button>
   )
 }

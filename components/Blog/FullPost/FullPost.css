@@ -54,7 +54,7 @@
   height: 3rem;
 }
 
-.fullPost_like_button img {
+.fullPost_like_button svg {
   height: auto;
   width: 1.5rem;
   margin-right: 0.25rem;

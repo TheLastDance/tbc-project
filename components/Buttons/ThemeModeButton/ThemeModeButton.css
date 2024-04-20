@@ -1,0 +1,16 @@
+.mode_placeholder {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.themeButton {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.themeButton svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}

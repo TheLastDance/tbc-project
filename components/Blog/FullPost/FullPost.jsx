@@ -3,8 +3,8 @@ import NotFound from "@/app/not-found";
 import Link from "next/link";
 import Image from "next/image"
 import { getAnyData } from "@/services/data-fetch/getAnyData";
-import like_icon from "@/public/icons/like-icon.svg";
 import photo from "@/public/img/blog/dogProfile.jpeg";
+import { LikeIcon } from "@/components/Icons/Like";
 
 export async function FullPost({ id }) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
@@ -37,7 +37,7 @@ export async function FullPost({ id }) {
       <div className="fullPost_info">
         <p><span>Published: </span> 2024-02-11</p>
         <button type="button" className="fullPost_like_button">
-          <Image src={like_icon} alt="like" />
+          <LikeIcon />
           <span>{reactions}</span>
         </button>
       </div>
