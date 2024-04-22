@@ -22,7 +22,7 @@
   display: flex;
 }
 
-.callUs img {
+.callUs svg {
   height: auto;
   width: 2rem;
 }

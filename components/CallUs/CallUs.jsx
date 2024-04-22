@@ -1,17 +1,19 @@
 import "./CallUs.css"
-import whatsApp_icon from "@/public/icons/whatsApp.svg"
-import viber_icon from "@/public/icons/viber.svg"
-import Image from "next/image"
 import Link from "next/link"
+import { ViberIcon } from "../Icons/Viber"
+import { WhatsAppIcon } from "../Icons/WhatsApp"
+import { TranslateText } from "../TranslateText/TranslateText"
 
 export default function CallUs() {
   return (
     <div className="callUs">
-      <p>Call us Directly:</p>
+      <p>
+        <TranslateText translationKey="callUs.callUsDirectly" />
+      </p>
       <Link href="tel:+995123456789">+995123456789</Link>
       <div className="callIcons">
-        <Image src={whatsApp_icon} alt="whatsApp icon" />
-        <Image src={viber_icon} alt="viber icon" />
+        <WhatsAppIcon />
+        <ViberIcon />
       </div>
     </div>
   )

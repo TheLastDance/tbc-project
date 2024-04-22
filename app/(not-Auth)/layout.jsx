@@ -1,6 +1,6 @@
 import { NotAuthLayout } from "@/components/Layouts/NotAuthLayout";
 
-export default function RootLayout({ children }) {
+export default function Layout({ children }) {
   return (
     <NotAuthLayout>
       {children}

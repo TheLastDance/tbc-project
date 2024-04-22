@@ -1,8 +1,10 @@
+import { cookies } from "next/headers";
+import { generateDynamicMetaData } from "@/services/utils";
 
-export const metadata = {
-  title: "Products",
-  description: "Explore our wide range of products. Find the latest gadgets, apparel, and more.",
-};
+export async function generateMetadata() {
+  const locale = cookies().get("locale")?.value;
+  return generateDynamicMetaData("products", locale);
+}
 
 export default function layout({ children }) {
   return (

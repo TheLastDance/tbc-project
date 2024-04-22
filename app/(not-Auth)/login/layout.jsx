@@ -1,18 +1,12 @@
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { generateDynamicMetaData } from "@/services/utils";
 
-
-export const metadata = {
-  title: "Login Page",
-  description: "Login to continue.",
-};
+export async function generateMetadata() {
+  const locale = cookies().get("locale")?.value;
+  return generateDynamicMetaData("login", locale);
+}
 
 export default function layout({ children }) {
-  const cookieStore = cookies();
-
-  const token = cookieStore.get("token")?.value;
-
-  if (token) redirect("/");
 
   return (
     <>{children}</>

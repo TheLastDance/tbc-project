@@ -2,6 +2,7 @@ import "./Product.css"
 import { Card } from "@/components/Card/Card";
 import Link from "next/link";
 import Image from "next/image";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function Product({ item, index }) {
   const { title, description, id, images: [image] } = item;
@@ -20,7 +21,9 @@ export function Product({ item, index }) {
       <div className="productDescription_container">
         <p>{description}</p>
       </div>
-      <button type='button'>Add to Cart</button>
+      <button type='button'>
+        <TranslateText translationKey="button.addToCart" />
+      </button>
     </Card>
   )
 }

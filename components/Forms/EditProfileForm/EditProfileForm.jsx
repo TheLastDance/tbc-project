@@ -5,6 +5,7 @@ import { useState } from "react"
 import { FormContainer } from "../FormContainer/FormContainer"
 import { Input } from "@/components/Input/Input"
 import { handleChangeInputObj } from "@/services/utils";
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 
 export function EditProfileForm() {
   const [formStates, setFormStates] = useState({
@@ -20,12 +21,14 @@ export function EditProfileForm() {
   return (
     <FormContainer>
       <form className="editProfileForm" onSubmit={(e) => e.preventDefault()}>
-        <h3>Edit profile:</h3>
+        <h3>
+          <TranslateText translationKey="form.editProfile" />
+        </h3>
         <Input
           type="text"
           id="profile_firstName"
           name="firstName"
-          label="First Name:"
+          label={<TranslateText translationKey="form.label.firstName" />}
           value={formStates.firstName}
           onChange={(e) => handleOnChange(e, "firstName")}
           required
@@ -35,7 +38,7 @@ export function EditProfileForm() {
           type="text"
           id="profile_lastName"
           name="lastName"
-          label="Last Name:"
+          label={<TranslateText translationKey="form.label.lastName" />}
           value={formStates.lastName}
           onChange={(e) => handleOnChange(e, "lastName")}
           required
@@ -45,13 +48,15 @@ export function EditProfileForm() {
           type="email"
           name="email"
           id="profile_email"
-          label="Email:"
+          label={<TranslateText translationKey="form.label.email" />}
           value={formStates.email}
           onChange={(e) => handleOnChange(e, "email")}
           required
         />
 
-        <button type="submit">Save</button>
+        <button type="submit">
+          <TranslateText translationKey="button.save" />
+        </button>
       </form>
     </FormContainer>
   )

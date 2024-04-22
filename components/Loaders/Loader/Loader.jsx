@@ -1,8 +1,8 @@
 import "./Loader.css";
 
-export function Loader() {
+export function Loader({ size }) {
   return (
-    <div className="loader-overlay">
+    <div className="loader-overlay" style={{ fontSize: size }}>
       <span className="loader" />
     </div>
   )

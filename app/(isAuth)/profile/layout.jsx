@@ -1,9 +1,10 @@
+import { cookies } from "next/headers";
+import { generateDynamicMetaData } from "@/services/utils";
 
-export const metadata = {
-  title: "Profile",
-  description: "Access your personal profile to view and update your settings, preferences, and account details.",
-};
-
+export async function generateMetadata() {
+  const locale = cookies().get("locale")?.value;
+  return generateDynamicMetaData("profile", locale);
+}
 
 export default function layout({ children }) {
   return (

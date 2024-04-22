@@ -2,11 +2,12 @@
   display: flex;
   justify-content: center;
   margin: auto;
+  font-size: 48px;
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
+  width: 1em;
+  height: 1em;
   border-radius: 50%;
   border: 3px solid;
   border-color: var(--blackColor) var(--blackColor) transparent transparent;
@@ -24,8 +25,8 @@
   margin: auto;
   border: 3px solid;
   border-color: var(--whiteColor) var(--whiteColor) transparent transparent;
-  width: 40px;
-  height: 40px;
+  width: 0.83em;
+  height: 0.83em;
   border-radius: 50%;
   box-sizing: border-box;
   animation: rotationBack 0.5s linear infinite;
@@ -33,8 +34,8 @@
 }
 
 .loader::before {
-  width: 32px;
-  height: 32px;
+  width: 0.66em;
+  height: 0.66em;
   border-color: transparent transparent var(--grayColor) var(--grayColor);
   animation: rotation 1.5s linear infinite;
 }
