@@ -19,3 +19,12 @@ export const generateDynamicMetaData = (key, locale) => {
 
   return { ...metadata }
 }
+
+export const getCookieExpirationDate = (hoursToExpire) => {
+  const date = new Date();
+  date.setHours(date.getHours() + hoursToExpire);
+
+  return date;
+}
+
+export const cookieExpirationOneYear = getCookieExpirationDate(365 * 24); // will expire in one year after it was set.

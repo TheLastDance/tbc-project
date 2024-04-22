@@ -1,6 +1,7 @@
 "use server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { cookieExpirationOneYear } from "./utils";
 
 export async function login(_, data) {
   const { username, password } = Object.fromEntries(data);
@@ -16,7 +17,7 @@ export async function login(_, data) {
   if (!response.ok) return user.message;
 
   const cookieStore = cookies();
-  cookieStore.set("token", user.token, { httpOnly: true }); // will use typescript enums in future, thats why I have no constant for token string
+  cookieStore.set("token", user.token, { httpOnly: true, expires: cookieExpirationOneYear }); // will use typescript enums in future, thats why I have no constant for token string
   redirect("/");
 
 }
@@ -32,7 +33,7 @@ export async function logout() {
 export async function setTranslateCookie(locale, path) {
   const cookieStore = cookies();
 
-  cookieStore.set("locale", locale);
+  cookieStore.set("locale", locale, { expires: cookieExpirationOneYear });
 
   redirect(path);
 }

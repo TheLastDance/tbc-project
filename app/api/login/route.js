@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { cookieExpirationOneYear } from "@/services/utils";
 
 export async function POST(req) {
   const { username, password } = await req.json();
@@ -14,7 +15,7 @@ export async function POST(req) {
   if (!response.ok) return Response.json(user.message);
 
   const cookieStore = cookies();
-  cookieStore.set("token", user.token, { httpOnly: true });
+  cookieStore.set("token", user.token, { httpOnly: true, expires: cookieExpirationOneYear });
 
   return Response.json(user);
 }
