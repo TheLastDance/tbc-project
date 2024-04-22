@@ -8,4 +8,5 @@
 
 .arrow_navigation a {
   height: fit-content;
+  text-transform: uppercase;
 }

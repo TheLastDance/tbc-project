@@ -6,7 +6,7 @@ export function FullProductLoader() {
     <div className="fullProductLoader">
       <ContentLoader
         rtl
-        speed={0.9}
+        speed={0.7}
         width="100%"
         height={300}
         viewBox="0 0 1200 300"

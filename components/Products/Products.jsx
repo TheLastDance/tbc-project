@@ -4,6 +4,7 @@ import "./Products.css"
 import { useState, useEffect } from "react";
 import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
+import { TranslateText } from "../TranslateText/TranslateText";
 
 export function Products({ data }) {
   const [searchText, setSearchText] = useState("");
@@ -36,9 +37,13 @@ export function Products({ data }) {
           inputValue={searchText}
           handleInputChange={(e) => setSearchText(e.target.value)}
           handleButtonClick={() => setIsAscending(prev => !prev)}
-          buttonContent={`Sort ${isAscending ? "Z-A" : "A-Z"}`}
+          buttonContent={
+            isAscending ?
+              <TranslateText translationKey="products.sort-Z-A" /> :
+              <TranslateText translationKey="products.sort-A-Z" />
+          }
         />
-        <h2>Products:</h2>
+        <h2><TranslateText translationKey="products" /></h2>
         <ProductsList products={sortedData} />
         {!sortedData.length ? <p>No products found!</p> : null}
       </section>

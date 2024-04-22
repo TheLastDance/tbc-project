@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
 import { handleChangeInputObj } from "@/services/utils";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function AskQuestionForm() {
   const [formStates, setFormStates] = useState({
@@ -22,12 +23,14 @@ export function AskQuestionForm() {
   return (
     <FormContainer>
       <form className="askQuestionForm" onSubmit={(e) => e.preventDefault()}>
-        <h3>Ask question here:</h3>
+        <h3>
+          <TranslateText translationKey="form.askQuestionForm" />
+        </h3>
         <Input
           type="text"
           name="firstName"
           id="askQuestionForm_firstName"
-          label="First Name:"
+          label={<TranslateText translationKey="form.label.firstName" />}
           value={formStates.firstName}
           onChange={(e) => handleOnChange(e, "firstName")}
           required
@@ -37,7 +40,7 @@ export function AskQuestionForm() {
           type="text"
           name="lastName"
           id="askQuestionForm_lastName"
-          label="Last Name:"
+          label={<TranslateText translationKey="form.label.lastName" />}
           value={formStates.lastName}
           onChange={(e) => handleOnChange(e, "lastName")}
           required
@@ -47,7 +50,7 @@ export function AskQuestionForm() {
           type="email"
           name="email"
           id="askQuestionForm_email"
-          label="Email:"
+          label={<TranslateText translationKey="form.label.email" />}
           value={formStates.email}
           onChange={(e) => handleOnChange(e, "email")}
           required
@@ -57,9 +60,9 @@ export function AskQuestionForm() {
           type="tel"
           name="tel"
           id="askQuestionForm_tel"
-          label="Phone number:"
+          label={<TranslateText translationKey="form.label.phoneNumber" />}
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          placeholder="USA Format: xxx-xxx-xxxx"
+          placeholder="xxx-xxx-xxxx"
           value={formStates.tel}
           onChange={(e) => handleOnChange(e, "tel")}
           required
@@ -68,7 +71,7 @@ export function AskQuestionForm() {
         <Input
           name="question"
           id="askQuestionForm_question"
-          label="Your question:"
+          label={<TranslateText translationKey="form.label.yourQuestion" />}
           textArea
           rows="5"
           value={formStates.question}
@@ -76,7 +79,9 @@ export function AskQuestionForm() {
           required
         />
 
-        <button type="submit">Send</button>
+        <button type="submit">
+          <TranslateText translationKey="button.send" />
+        </button>
 
       </form>
     </FormContainer>

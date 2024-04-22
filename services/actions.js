@@ -28,3 +28,11 @@ export async function logout() {
 
   redirect("/login");
 }
+
+export async function setTranslateCookie(locale, path) {
+  const cookieStore = cookies();
+
+  cookieStore.set("locale", locale);
+
+  redirect(path);
+}

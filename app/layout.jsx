@@ -1,27 +1,32 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
 import { ThemeProviders } from "@/services/providers/ThemeProvider";
+import { LanguageProvider } from "@/services/providers/LanguageProvider";
+import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
+import { generateDynamicMetaData } from "@/services/utils";
+import { cookies } from "next/headers";
+import "./globals.css";
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "TBC Project 🚀",
-  description: "This project was developed as part of the TBC Academy React Acceleration programm.",
-  icons: {
-    icon: "/icons/like-icon.svg"
-  }
-};
+
+export async function generateMetadata() {
+  const locale = cookies().get("locale")?.value;
+  return generateDynamicMetaData("home", locale);
+}
 
 export default function RootLayout({ children }) {
+  const locale = cookies().get("locale")?.value || "en";
+
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning lang={locale}>
       <body>
         <ThemeProviders>
-          <GlobalLayout>
-            {children}
-          </GlobalLayout>
+          <LanguageProvider>
+            <GlobalLayout>
+              {children}
+            </GlobalLayout>
+          </LanguageProvider>
         </ThemeProviders>
       </body>
     </html>

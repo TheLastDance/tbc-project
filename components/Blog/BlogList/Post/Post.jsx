@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function Post({ item }) {
   const { title, body, tags, reactions, id } = item;
@@ -39,7 +40,7 @@ export function Post({ item }) {
         className="post_viewFullButton"
         role="button"
       >
-        View full
+        <TranslateText translationKey="button.viewFull" />
       </Link>
     </Card>
   )

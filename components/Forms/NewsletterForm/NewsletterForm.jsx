@@ -3,6 +3,7 @@
 import "./NewsletterForm.css"
 import { useState } from "react"
 import { Input } from "@/components/Input/Input"
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("")
@@ -13,13 +14,15 @@ export function NewsletterForm() {
         type="email"
         name="email"
         id="footer_email_input"
-        label="Subscribe to our newsletter:"
+        label={<TranslateText translationKey="form.newsletterForm.label" />}
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <button type='submit'>Submit</button>
+      <button type='submit'>
+        <TranslateText translationKey="form.newsletterForm.button.submit" />
+      </button>
     </form>
   )
 }

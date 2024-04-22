@@ -1,8 +1,10 @@
+import { cookies } from "next/headers";
+import { generateDynamicMetaData } from "@/services/utils";
 
-export const metadata = {
-  title: "Contact Us 📞",
-  description: "Get in touch with our team for assistance, questions, or feedback. We're here to help and listen to your needs.",
-};
+export async function generateMetadata() {
+  const locale = cookies().get("locale")?.value;
+  return generateDynamicMetaData("contact", locale);
+}
 
 export default function layout({ children }) {
   return (

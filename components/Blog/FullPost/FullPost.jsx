@@ -5,6 +5,7 @@ import Image from "next/image"
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export async function FullPost({ id }) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
@@ -35,7 +36,13 @@ export async function FullPost({ id }) {
         )}
       </ul>
       <div className="fullPost_info">
-        <p><span>Published: </span> 2024-02-11</p>
+        <p>
+          <span>
+            <TranslateText translationKey="fullPost.published" />
+            {" "}
+          </span>
+          2024-02-11
+        </p>
         <button type="button" className="fullPost_like_button">
           <LikeIcon />
           <span>{reactions}</span>
