@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useContext } from "react";
 import { languageContext } from "@/services/providers/LanguageProvider";
@@ -9,7 +9,6 @@ export function TranslateText({ translationKey }) {
   const { locale } = useContext(languageContext);
 
   if (!locale) return <Loader size="18px" />;
-
-  return translations[locale][translationKey]
+  console.log(typeof translations[locale][translationKey]);
+  return translations[locale][translationKey];
 }
-

@@ -2,7 +2,7 @@ import "./ArrowNavigation.css";
 import Link from "next/link";
 import { TranslateText } from "../TranslateText/TranslateText";
 
-export function ArrowNavigation({ hrefPrev, hrefNext }) {
+export function ArrowNavigation({ hrefPrev, hrefNext }: ArrowNavigationProps) {
   return (
     <nav className="arrow_navigation">
       <Link href={hrefPrev}>
@@ -10,9 +10,8 @@ export function ArrowNavigation({ hrefPrev, hrefNext }) {
         <TranslateText translationKey="previous" />
       </Link>
       <Link href={hrefNext}>
-        <TranslateText translationKey="next" />
-        ➡
+        <TranslateText translationKey="next" />➡
       </Link>
     </nav>
-  )
+  );
 }
