@@ -3,11 +3,9 @@ import { generateDynamicMetaData } from "@/services/utils";
 
 export async function generateMetadata() {
   const locale = cookies().get("locale")?.value;
-  return generateDynamicMetaData("contact", locale);
+  return generateDynamicMetaData("profile", locale);
 }
 
-export default function layout({ children }) {
-  return (
-    <>{children}</>
-  )
+export default function layout({ children }: ChildrenProp) {
+  return <>{children}</>;
 }

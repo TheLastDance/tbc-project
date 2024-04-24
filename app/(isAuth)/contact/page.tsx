@@ -1,5 +1,5 @@
-import { AskQuestionForm } from "@/components/Forms/AskQuestionForm/AskQuestionForm"
-import CallUs from "@/components/CallUs/CallUs"
+import { AskQuestionForm } from "@/components/Forms/AskQuestionForm/AskQuestionForm";
+import CallUs from "@/components/CallUs/CallUs";
 
 export default function Contact() {
   return (
@@ -11,5 +11,5 @@ export default function Contact() {
         <CallUs />
       </section>
     </>
-  )
+  );
 }
