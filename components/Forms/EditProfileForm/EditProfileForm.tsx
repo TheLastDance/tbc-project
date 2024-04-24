@@ -1,35 +1,36 @@
-"use client"
+"use client";
 
-import "./AskQuestionForm.css";
+import "./EditProfileForm.css";
 import { useState } from "react";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
 import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
-export function AskQuestionForm() {
+export function EditProfileForm() {
   const [formStates, setFormStates] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    tel: "",
-    question: "",
-  })
+    firstName: "Michael",
+    lastName: "Brown",
+    email: "MichaelBrown@gmail.com",
+  });
 
-  const handleOnChange = (e, key) => {
+  const handleOnChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    key: string
+  ) => {
     handleChangeInputObj(setFormStates, e, key);
-  }
+  };
 
   return (
     <FormContainer>
-      <form className="askQuestionForm" onSubmit={(e) => e.preventDefault()}>
+      <form className="editProfileForm" onSubmit={(e) => e.preventDefault()}>
         <h3>
-          <TranslateText translationKey="form.askQuestionForm" />
+          <TranslateText translationKey="form.editProfile" />
         </h3>
         <Input
           type="text"
+          id="profile_firstName"
           name="firstName"
-          id="askQuestionForm_firstName"
           label={<TranslateText translationKey="form.label.firstName" />}
           value={formStates.firstName}
           onChange={(e) => handleOnChange(e, "firstName")}
@@ -38,8 +39,8 @@ export function AskQuestionForm() {
 
         <Input
           type="text"
+          id="profile_lastName"
           name="lastName"
-          id="askQuestionForm_lastName"
           label={<TranslateText translationKey="form.label.lastName" />}
           value={formStates.lastName}
           onChange={(e) => handleOnChange(e, "lastName")}
@@ -49,41 +50,17 @@ export function AskQuestionForm() {
         <Input
           type="email"
           name="email"
-          id="askQuestionForm_email"
+          id="profile_email"
           label={<TranslateText translationKey="form.label.email" />}
           value={formStates.email}
           onChange={(e) => handleOnChange(e, "email")}
           required
         />
 
-        <Input
-          type="tel"
-          name="tel"
-          id="askQuestionForm_tel"
-          label={<TranslateText translationKey="form.label.phoneNumber" />}
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          placeholder="xxx-xxx-xxxx"
-          value={formStates.tel}
-          onChange={(e) => handleOnChange(e, "tel")}
-          required
-        />
-
-        <Input
-          name="question"
-          id="askQuestionForm_question"
-          label={<TranslateText translationKey="form.label.yourQuestion" />}
-          textArea
-          rows="5"
-          value={formStates.question}
-          onChange={(e) => handleOnChange(e, "question")}
-          required
-        />
-
         <button type="submit">
-          <TranslateText translationKey="button.send" />
+          <TranslateText translationKey="button.save" />
         </button>
-
       </form>
     </FormContainer>
-  )
+  );
 }

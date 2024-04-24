@@ -1,21 +1,24 @@
-"use client"
+"use client";
 
-import "./ChangePasswordForm.css"
-import { useState } from "react"
-import { FormContainer } from "../FormContainer/FormContainer"
-import { Input } from "@/components/Input/Input"
+import "./ChangePasswordForm.css";
+import { useState } from "react";
+import { FormContainer } from "../FormContainer/FormContainer";
+import { Input } from "@/components/Input/Input";
 import { handleChangeInputObj } from "@/services/utils";
-import { TranslateText } from "@/components/TranslateText/TranslateText"
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function ChangePasswordForm() {
   const [formStates, setFormStates] = useState({
     password: "",
     confirmPassword: "",
-  })
+  });
 
-  const handleOnChange = (e, key) => {
+  const handleOnChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    key: string
+  ) => {
     handleChangeInputObj(setFormStates, e, key);
-  }
+  };
 
   return (
     <FormContainer>
@@ -48,5 +51,5 @@ export function ChangePasswordForm() {
         </button>
       </form>
     </FormContainer>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 import "./LoginForm.css";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Loader } from "@/components/Loaders/Loader/Loader";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import { useRouter } from "next/navigation";
@@ -14,19 +14,19 @@ export function LoginForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleForm = async (e) => {
+  const handleForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const credentials = Object.fromEntries(formData);
 
     const user = await getAnyData("/api/login", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     });
 
     if (user.token) {
@@ -36,19 +36,14 @@ export function LoginForm() {
 
     setError(user);
     setLoading(false);
-  }
+  };
 
   return (
     <section className="login_container">
       <FormContainer>
-        <form
-          onSubmit={handleForm}
-          className="loginForm"
-        >
+        <form onSubmit={handleForm} className="loginForm">
           <h3>
-            <TranslateText translationKey="form.login" />
-            {" "}
-            ⬇
+            <TranslateText translationKey="form.login" /> ⬇
           </h3>
           <Input
             type="username"
@@ -72,5 +67,5 @@ export function LoginForm() {
         </form>
       </FormContainer>
     </section>
-  )
+  );
 }
