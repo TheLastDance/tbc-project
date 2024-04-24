@@ -1,8 +1,11 @@
 import { metaDataTranslations } from "@/translations/metaDataTranslations";
 
 // will add types next
-export const handleChangeInputObj = (setState: any, e: any, key: any) => {
-  setState((prev: any) => ({
+export const handleChangeInputObj = <T>(
+  setState: React.Dispatch<React.SetStateAction<T>>,
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  key: string) => {
+  setState((prev: T) => ({
     ...prev,
     [key]: e.target.value
   }))

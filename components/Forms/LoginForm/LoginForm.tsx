@@ -11,7 +11,7 @@ import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function LoginForm() {
   const router = useRouter();
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleForm = async (e: FormEvent<HTMLFormElement>) => {

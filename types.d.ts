@@ -142,3 +142,14 @@ interface ILocaleParam {
     locale: "en" | "ka"
   }
 }
+
+interface IChangePasswordForm {
+  password: string,
+  confirmPassword: string,
+}
+
+interface IEditProfileForm {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
