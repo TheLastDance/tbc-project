@@ -1,7 +1,8 @@
 import { metaDataTranslations } from "@/translations/metaDataTranslations";
 
-export const handleChangeInputObj = (setState, e, key) => {
-  setState(prev => ({
+// will add types next
+export const handleChangeInputObj = (setState: any, e: any, key: any) => {
+  setState((prev: any) => ({
     ...prev,
     [key]: e.target.value
   }))
@@ -19,7 +20,7 @@ export const generateDynamicMetaData = (key: string, locale: string | undefined)
   return { ...metadata }
 }
 
-export const getCookieExpirationDate = (hoursToExpire) => {
+export const getCookieExpirationDate = (hoursToExpire: number) => {
   const date = new Date();
   date.setHours(date.getHours() + hoursToExpire);
 

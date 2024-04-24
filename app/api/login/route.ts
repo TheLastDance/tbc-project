@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
   const user: UserInfoType = await response.json();
 
-  if (!response.ok) return Response.json(user.message);
+  if (!response.ok) return Response.json(user);
 
   const cookieStore = cookies();
   cookieStore.set("token", user.token, { httpOnly: true, expires: cookieExpirationOneYear });

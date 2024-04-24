@@ -5,7 +5,11 @@ import { languageContext } from "@/services/providers/LanguageProvider";
 import { translations } from "@/translations/translations";
 import { Loader } from "../Loaders/Loader/Loader";
 
-export function TranslateText({ translationKey }) {
+interface ITranslateTextProps {
+  translationKey: string;
+}
+
+export function TranslateText({ translationKey }: ITranslateTextProps) {
   const { locale } = useContext(languageContext);
 
   if (!locale) return <Loader size="18px" />;

@@ -10,7 +10,7 @@ interface Props {
 
 export async function FullProduct({ id }: Props) {
   //await new Promise((res) => setTimeout(res, 2000)); //for loader check
-  const data: SingleShopItem = await getAnyData(`https://dummyjson.com/products/${id}`);
+  const data = await getAnyData<SingleShopItem>(`https://dummyjson.com/products/${id}`);
 
   if (!data.title) return notFound();
 

@@ -11,7 +11,7 @@ import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function LoginForm() {
   const router = useRouter();
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
   const handleForm = async (e: FormEvent<HTMLFormElement>) => {
@@ -21,7 +21,7 @@ export function LoginForm() {
     const formData = new FormData(e.currentTarget);
     const credentials = Object.fromEntries(formData);
 
-    const user = await getAnyData("/api/login", {
+    const user = await getAnyData<IUserToken>("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export function LoginForm() {
       return router.refresh();
     }
 
-    setError(user);
+    if (user.message) setError(user.message);
     setLoading(false);
   };
 

@@ -9,11 +9,11 @@ import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export async function FullPost({ id }: postId) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
-  const data = await getAnyData(`https://dummyjson.com/posts/${id}`);
+  const data = await getAnyData<PostItem>(`https://dummyjson.com/posts/${id}`);
 
   if (!data.title) return <NotFound />;
 
-  const { title, body, tags, reactions } = data as PostItem;
+  const { title, body, tags, reactions } = data;
 
   return (
     <article className="fullPost">

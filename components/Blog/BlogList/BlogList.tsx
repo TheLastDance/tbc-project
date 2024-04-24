@@ -4,8 +4,8 @@ import { getAnyData } from "@/services/data-fetch/getAnyData";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export async function BlogList() {
-  const data = await getAnyData(`https://dummyjson.com/posts`);
-  const { posts } = data as { posts: PostItem[] };
+  const data = await getAnyData<{ posts: PostItem[] }>(`https://dummyjson.com/posts`);
+  const { posts } = data;
 
   return (
     <section id="blog">

@@ -1,7 +1,7 @@
-export const getAnyData = async (
+export const getAnyData = async<T>(
   url: string,
   options?: RequestOptions
-): Promise<ResponseData | PostItem> => {
+): Promise<T> => {
   const res = await fetch(url, options);
 
   const json = await res.json();

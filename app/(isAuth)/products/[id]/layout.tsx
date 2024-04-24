@@ -7,7 +7,7 @@ interface IGenerateMetaData {
 }
 
 export async function generateMetadata({ params: { id } }: IGenerateMetaData) {
-  const data = await getAnyData(`https://dummyjson.com/products/${id}`);
+  const data = await getAnyData<SingleShopItem>(`https://dummyjson.com/products/${id}`);
 
   if (!data.title) return { title: "Product not found!" };
 
@@ -20,8 +20,8 @@ export async function generateMetadata({ params: { id } }: IGenerateMetaData) {
 }
 
 export async function generateStaticParams() {
-  const data = await getAnyData(`https://dummyjson.com/products?limit=0`);
-  const { products }: { products: Array<Record<string, number>> } = data;
+  const data = await getAnyData<{ products: SingleShopItem[] }>(`https://dummyjson.com/products?limit=0`);
+  const { products } = data;
 
   return products.map((item) => ({ id: String(item.id) }));
 }

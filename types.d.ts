@@ -90,7 +90,7 @@ interface IMiddlewareConfig {
 
 interface IError {
   // ერორის კომპონენტი სტანდარტულია და იღებს გარკვეულ პროპებს რომელიც გამოყენების მიხედვით optional ტაიპად დაემატება
-  reset?: () => void;
+  reset: () => void;
 }
 
 type ChildrenProp = { children: React.ReactNode }
@@ -109,7 +109,6 @@ type IPostArr = { posts: Array<IPost> }
 interface NavLinkInterface {
   href: string,
   children: React.ReactNode,
-  [key: string]: any
 }
 
 interface SingleShopItem {
@@ -122,4 +121,17 @@ interface SingleShopItem {
   price: number;
   thumbnail: string;
   images: string[];
+}
+
+interface IUserToken {
+  token?: string;
+  message?: string;
+}
+
+interface ISearch {
+  inputID: string;
+  buttonContent: string | React.ReactNode;
+  inputValue: string;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleButtonClick: () => void;
 }
