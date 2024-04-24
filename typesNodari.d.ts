@@ -1,4 +1,4 @@
-export interface NavLinkInterface {
+interface NavLinkInterface {
     href: string,
     children: React.ReactNode,
     [key: string]: any
