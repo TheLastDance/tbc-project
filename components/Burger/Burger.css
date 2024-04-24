@@ -1,0 +1,42 @@
+.burgerOverlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--background);
+  transition: 0.7s ease-in;
+  z-index: 2;
+}
+
+.burgerButtonOpen,
+.burgerButtonClose {
+  display: flex;
+  align-items: center;
+}
+
+.burgerButtonClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.burgerOverlay .languageSwitcher {
+  margin-left: 0;
+}
+
+.burgerOverlay a {
+  font-size: 1.5rem;
+}
+
+.burgerOverlay_close {
+  left: 100%;
+}
+
+.burger_container .navLink_active {
+  border-bottom: 1px solid var(--blackColor);
+}

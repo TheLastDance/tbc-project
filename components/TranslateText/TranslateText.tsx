@@ -1,18 +1,16 @@
 "use client";
 
-import { useContext } from "react";
-import { languageContext } from "@/services/providers/LanguageProvider";
 import { translations } from "@/translations/translations";
-import { Loader } from "../Loaders/Loader/Loader";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPath } from "@/services/utils";
 
 interface ITranslateTextProps {
   translationKey: string;
 }
 
 export function TranslateText({ translationKey }: ITranslateTextProps) {
-  const { locale } = useContext(languageContext);
-
-  if (!locale) return <Loader size="18px" />;
+  const pathName = usePathname();
+  const locale = getLocaleFromPath(pathName) as "en" | "ka"; // I am sure in this type because middleware handles it for me
 
   return translations[locale][translationKey];
 }

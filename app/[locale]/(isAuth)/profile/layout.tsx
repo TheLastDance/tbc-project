@@ -1,8 +1,6 @@
-import { cookies } from "next/headers";
 import { generateDynamicMetaData } from "@/services/utils";
 
-export async function generateMetadata() {
-  const locale = cookies().get("locale")?.value;
+export async function generateMetadata({ params: { locale } }: ILocaleParam) {
   return generateDynamicMetaData("profile", locale);
 }
 

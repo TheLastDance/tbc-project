@@ -109,6 +109,7 @@ type IPostArr = { posts: Array<IPost> }
 interface NavLinkInterface {
   href: string,
   children: React.ReactNode,
+  onClick?: () => void;
 }
 
 interface SingleShopItem {
@@ -134,4 +135,10 @@ interface ISearch {
   inputValue: string;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleButtonClick: () => void;
+}
+
+interface ILocaleParam {
+  params: {
+    locale: "en" | "ka"
+  }
 }

@@ -2,19 +2,18 @@
 
 import "./LanguageSwitcher.css"
 import { usePathname } from "next/navigation"
-import { useContext } from "react"
 import { setTranslateCookie } from "@/services/actions"
-import { languageContext } from "@/services/providers/LanguageProvider"
+import { getLocaleFromPath } from "@/services/utils"
 
 export function LanguageSwitcher() {
   const pathName = usePathname();
-  const { locale, setLocale } = useContext(languageContext);
+  const locale = getLocaleFromPath(pathName);
 
-  const handleClick = (locale: string, pathName: string) => {
-    setLocale(locale);
-    localStorage.setItem("locale", locale);
-    setTranslateCookie(locale, pathName);
-  }
+  const handleClick = async (locale: string, pathName: string) => {
+    const path = pathName.split("/");
+    path[1] = locale;
+    setTranslateCookie(locale, path.join("/"));
+  } // pathName never will be / because middleware handles this
 
   return (
     <>
