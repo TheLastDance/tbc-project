@@ -1,4 +1,4 @@
-import "./Input.css"
+import "./Input.css";
 
 export function Input({
   label,
@@ -10,7 +10,7 @@ export function Input({
   textArea,
   onChange,
   ...props
-}) {
+}: InputProps): JSX.Element {
   return (
     <div className="input_container">
       <label htmlFor={id}>{label}</label>
@@ -21,7 +21,7 @@ export function Input({
           placeholder={placeholder}
           required={required}
           onChange={onChange}
-          {...props}
+          {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
         />
       ) : (
         <input
@@ -31,9 +31,9 @@ export function Input({
           placeholder={placeholder}
           required={required}
           onChange={onChange}
-          {...props}
+          {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
         />
       )}
     </div>
-  )
+  );
 }

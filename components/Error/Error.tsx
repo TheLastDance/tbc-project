@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import error_image from "@/public/img/error/error-img.png";
 
-export function Error({ error, reset, message, href }) {
+export function Error({ error, reset, message, href } : ErrorProps) {
   return (
     <section className="errorPage">
       <h1>Something went wrong!</h1>
