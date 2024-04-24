@@ -1,3 +1,12 @@
+interface TranslationKeys {
+  [key: string]: string;
+}
+
+interface Translations {
+  en: TranslationKeys;
+  ka: TranslationKeys;
+}
+
 export const translations = {
   en: {
     "navigation.profile": "Profile",
@@ -11,7 +20,7 @@ export const translations = {
     "button.addToCart": "Add to Cart",
     "button.send": "Send",
     "button.login": "Login",
-    "products": "Products:",
+    products: "Products:",
     "products.sort-A-Z": "Sort A-Z",
     "products.sort-Z-A": "Sort Z-A",
     "form.newsletterForm.label": "Subscribe to our newsletter:",
@@ -29,10 +38,10 @@ export const translations = {
     "form.label.confirmPassword": "Confirm Password:",
     "form.askQuestionForm": "Ask question:",
     "form.login": "Please login into your account",
-    "blog": "Blog:",
+    blog: "Blog:",
     "fullPost.published": "Published:",
-    "previous": "Previous",
-    "next": "Next",
+    previous: "Previous",
+    next: "Next",
     "callUs.callUsDirectly": "Call us Directly:",
     "fullProduct.brand": "Brand:",
     "fullProduct.category": "Category:",
@@ -51,7 +60,7 @@ export const translations = {
     "button.send": "გაგზავნა",
     "button.login": "შესვლა",
     "button.addToCart": "კალათში დამატება",
-    "products": "პროდუქტები:",
+    products: "პროდუქტები:",
     "products.sort-A-Z": "დახარისხება A-Z",
     "products.sort-Z-A": "დახარისხება Z-A",
     "form.newsletterForm.label": "სიახლეებზე გამოწერა:",
@@ -69,14 +78,14 @@ export const translations = {
     "form.label.confirmPassword": "დაადასტურე პაროლი:",
     "form.askQuestionForm": "დასვი კითხვა:",
     "form.login": "გთხოვთ შედით სისტემაში",
-    "blog": "ბლოგი:",
+    blog: "ბლოგი:",
     "fullPost.published": "გამოქვეყნდა:",
-    "previous": "წინა",
-    "next": "შემდეგი",
+    previous: "წინა",
+    next: "შემდეგი",
     "callUs.callUsDirectly": "დაგვიკავშირდი:",
     "fullProduct.brand": "ბრენდი:",
     "fullProduct.category": "კატეგორია:",
     "fullProduct.description": "აღწერა:",
     "fullProduct.rating": "რეიტინგი:",
-  }
-}
+  },
+};

@@ -9,5 +9,6 @@ export function TranslateText({ translationKey }) {
   const { locale } = useContext(languageContext);
 
   if (!locale) return <Loader size="18px" />;
+
   return translations[locale][translationKey];
 }
