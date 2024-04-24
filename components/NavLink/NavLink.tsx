@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { NavLinkInterface } from "@/typesNodari";
+
 
 export function NavLink({
   href,
   children,
   ...props
-}) {
+}: NavLinkInterface) {
 
   const pathname = usePathname()
 

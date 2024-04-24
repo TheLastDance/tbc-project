@@ -12,7 +12,6 @@
     },
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
@@ -21,6 +20,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+
+    //CUSTOM CONFIGURATION
+    //***
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    //***
+
     "plugins": [
       {
         "name": "next"
@@ -32,7 +43,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "services/providers/LanguageProvider.jsx", "services/providers/LanguageProvider.jsx"  ],
   "exclude": [
     "node_modules"
   ]
