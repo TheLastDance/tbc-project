@@ -7,7 +7,7 @@ export const handleChangeInputObj = (setState, e, key) => {
   }))
 }
 
-export const generateDynamicMetaData = (key: string, locale: string | undefined): Record<string, string> => {
+export const generateDynamicMetaData = (key: string, locale: string | undefined): MetadataType => {
   if (locale) {
     const { ...metadata } = metaDataTranslations[locale][key];
 

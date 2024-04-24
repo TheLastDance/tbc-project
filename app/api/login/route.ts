@@ -1,10 +1,9 @@
 import { cookies } from "next/headers";
 import { cookieExpirationOneYear } from "@/services/utils";
 import { NextRequest } from "next/server";
-import { UserInfoType } from "@/typesLuka";
 
 export async function POST(req: NextRequest) {
-  const { username, password }: UserInfoType = await req.json();
+  const { username, password }: UserLoginType = await req.json();
 
   const response = await fetch("https://dummyjson.com/auth/login", {
     method: 'POST',

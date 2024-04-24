@@ -1,14 +1,21 @@
-import { ReactNode } from "react"
-
-export interface IMiddlewareConfig {
+interface IMiddlewareConfig {
     matcher: string[]
 }
 
-export interface IError {
+interface IError {
     // ერორის კომპონენტი სტანდარტულია და იღებს გარკვეულ პროპებს რომელიც გამოყენების მიხედვით optional ტაიპად დაემატება
     reset?: () => void;
 }
 
-export type MetaDataTranslationsType = Record<string, Record<string, Record<string, string>>>
-export type ChildrenProp = { children: ReactNode }
-export type UserInfoType = Record<string, string>
+type ChildrenProp = { children: React.ReactNode }
+type UserLoginType = { username: string, password: string }
+type UserInfoType = { token: string, message: string }
+type MetadataType = { title: string, description: string }
+type MetaDataTranslationsType = Record<string, Record<string, MetadataType>>
+type IPost = {
+    id: number, title: string,
+    body: string,
+    tags: Array<string>,
+    reactions: number
+}
+type IPostArr = { posts: Array<IPost> }

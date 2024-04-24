@@ -1,5 +1,4 @@
 import { getAnyData } from "@/services/data-fetch/getAnyData";
-import { ChildrenProp } from "@/typesLuka";
 
 interface IGenerateMetaData {
   params: {

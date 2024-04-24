@@ -1,5 +1,4 @@
 import { getAnyData } from "@/services/data-fetch/getAnyData";
-import { ChildrenProp } from "@/typesLuka";
 
 interface IGenerateMetaData {
   params: {
@@ -23,7 +22,7 @@ export async function generateMetadata({ params: { id } }: IGenerateMetaData) {
 export async function generateStaticParams() {
   // only 30 posts will be statically pregenerated, if want all then use searchParam limit=0 as in products.
   const data = await getAnyData(`https://dummyjson.com/posts`);
-  const { posts }: { posts: Array<Record<string, number>> } = data;
+  const { posts }: IPostArr = data;
 
   return posts.map((item) => ({ id: String(item.id) }));
 }

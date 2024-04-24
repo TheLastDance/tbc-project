@@ -5,7 +5,6 @@ import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
 import { generateDynamicMetaData } from "@/services/utils";
 import { cookies } from "next/headers";
 import "./globals.css";
-import { ChildrenProp } from "@/typesLuka";
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });

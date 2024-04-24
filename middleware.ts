@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { IMiddlewareConfig } from "./typesLuka";
 
 const loginPath = "/login";
 
