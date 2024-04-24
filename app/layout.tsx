@@ -1,32 +1,24 @@
 import { Inter } from "next/font/google";
 import { ThemeProviders } from "@/services/providers/ThemeProvider";
-import { LanguageProvider } from "@/services/providers/LanguageProvider";
 import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
-import { generateDynamicMetaData } from "@/services/utils";
 import { cookies } from "next/headers";
+import { locales } from "@/i18n.config";
 import "./globals.css";
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
 
-
-export async function generateMetadata() {
-  const locale = cookies().get("locale")?.value;
-  return generateDynamicMetaData("home", locale);
-}
-
-export default function RootLayout({ children }) {
-  const locale = cookies().get("locale")?.value || "en";
+export default function RootLayout({ children }: ChildrenProp) {
+  const cookieStore = cookies()
+  const locale = cookieStore.get("locale")?.value;
 
   return (
-    <html suppressHydrationWarning lang={locale}>
-      <body>
+    <html suppressHydrationWarning lang={locale ? locale : locales[0]}>
+      <body className={inter.className}>
         <ThemeProviders>
-          <LanguageProvider>
-            <GlobalLayout>
-              {children}
-            </GlobalLayout>
-          </LanguageProvider>
+          <GlobalLayout>
+            {children}
+          </GlobalLayout>
         </ThemeProviders>
       </body>
     </html>

@@ -12,3 +12,17 @@
 .authHeader div .logout_button {
   margin-left: 0.5rem;
 }
+
+.authHeader .burger_container {
+  display: none;
+}
+
+@media(max-width:960px) {
+  .authHeader .burger_container {
+    display: block;
+  }
+
+  .authHeader .mainNavigation_container {
+    display: none;
+  }
+}
