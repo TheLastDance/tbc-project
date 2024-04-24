@@ -1,19 +1,19 @@
 import "./FullPost.css";
 import NotFound from "@/app/not-found";
 import Link from "next/link";
-import Image from "next/image"
+import Image from "next/image";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
-export async function FullPost({ id }) {
+export async function FullPost({ id }: postId) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
   const data = await getAnyData(`https://dummyjson.com/posts/${id}`);
 
   if (!data.title) return <NotFound />;
 
-  const { title, body, tags, reactions } = data;
+  const { title, body, tags, reactions } = data as PostItem;
 
   return (
     <article className="fullPost">
@@ -29,17 +29,16 @@ export async function FullPost({ id }) {
       </div>
       <p className="fullPost_text">{body}</p>
       <ul>
-        {tags.map((item, index) =>
+        {tags.map((item, index) => (
           <li className="fullPost_tag" key={index}>
             <Link href="/">{`#${item}`}</Link>
           </li>
-        )}
+        ))}
       </ul>
       <div className="fullPost_info">
         <p>
           <span>
-            <TranslateText translationKey="fullPost.published" />
-            {" "}
+            <TranslateText translationKey="fullPost.published" />{" "}
           </span>
           2024-02-11
         </p>
@@ -49,5 +48,5 @@ export async function FullPost({ id }) {
         </button>
       </div>
     </article>
-  )
+  );
 }

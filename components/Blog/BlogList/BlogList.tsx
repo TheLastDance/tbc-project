@@ -5,7 +5,7 @@ import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export async function BlogList() {
   const data = await getAnyData(`https://dummyjson.com/posts`);
-  const { posts } = data;
+  const { posts } = data as { posts: PostItem[] };
 
   return (
     <section id="blog">
@@ -13,13 +13,10 @@ export async function BlogList() {
         <TranslateText translationKey="blog" />
       </h2>
       <ul>
-        {posts.map((item) =>
-          <Post
-            key={item.id}
-            item={item}
-          />
-        )}
+        {posts.map((item: PostItem) => (
+          <Post key={item.id} item={item} />
+        ))}
       </ul>
     </section>
-  )
+  );
 }
