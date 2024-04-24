@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react";
 import "./AskQuestionForm.css";
 import { FormContainer } from "../FormContainer/FormContainer";
