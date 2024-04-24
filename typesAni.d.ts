@@ -49,4 +49,4 @@ type ButtonProp = {
 };
 
 // children type
-type childrenType = { children: JSX.Element };
+type CardProps = { children: React.ReactNode };
