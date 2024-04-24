@@ -10,7 +10,7 @@ export function LanguageSwitcher() {
   const pathName = usePathname();
   const { locale, setLocale } = useContext(languageContext);
 
-  const handleClick = (locale, pathName) => {
+  const handleClick = (locale: string, pathName: string) => {
     setLocale(locale);
     localStorage.setItem("locale", locale);
     setTranslateCookie(locale, pathName);
