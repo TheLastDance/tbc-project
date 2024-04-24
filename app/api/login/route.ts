@@ -1,8 +1,10 @@
 import { cookies } from "next/headers";
 import { cookieExpirationOneYear } from "@/services/utils";
+import { NextRequest } from "next/server";
+import { UserInfoType } from "@/typesLuka";
 
-export async function POST(req) {
-  const { username, password } = await req.json();
+export async function POST(req: NextRequest) {
+  const { username, password }: UserInfoType = await req.json();
 
   const response = await fetch("https://dummyjson.com/auth/login", {
     method: 'POST',
@@ -10,7 +12,7 @@ export async function POST(req) {
     body: JSON.stringify({ username, password })
   });
 
-  const user = await response.json();
+  const user: UserInfoType = await response.json();
 
   if (!response.ok) return Response.json(user.message);
 

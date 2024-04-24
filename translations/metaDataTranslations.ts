@@ -1,4 +1,6 @@
-export const metaDataTranslations = {
+import { MetaDataTranslationsType } from "@/typesLuka";
+
+export const metaDataTranslations: MetaDataTranslationsType = {
   en: {
     "home": {
       "title": "TBC Project 🚀",
