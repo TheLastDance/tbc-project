@@ -1,19 +1,12 @@
-import "./Search.css"
-import { Input } from "../Input/Input"
+import "./Search.css";
+import { Input } from "../Input/Input";
 import { TranslateText } from "../TranslateText/TranslateText";
 
-export function Search({
-  inputID,
-  buttonContent,
-  inputValue,
-  handleInputChange,
-  handleButtonClick
-}) {
+export function Search({ inputID, buttonContent, inputValue, handleInputChange, handleButtonClick }) {
   const placeholderText = TranslateText({ translationKey: "button.search" });
 
   return (
     <div className="searchForm">
-
       <Input
         placeholder={placeholderText}
         type="search"
@@ -22,8 +15,9 @@ export function Search({
         value={inputValue}
         onChange={handleInputChange}
       />
-      <button type='button' onClick={handleButtonClick}>{buttonContent}</button>
-
+      <button type="button" onClick={handleButtonClick}>
+        {buttonContent}
+      </button>
     </div>
-  )
+  );
 }

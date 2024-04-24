@@ -1,4 +1,4 @@
-import "./Error.css"
+import "./Error.css";
 import Image from "next/image";
 import Link from "next/link";
 import error_image from "@/public/img/error/error-img.png";
@@ -16,8 +16,12 @@ export function Error({ error, reset, message, href } : ErrorProps) {
         height={700}
         priority
       />
-      <Link href={href} className="button">Home Page</Link>
-      <button type="button" onClick={reset}>Try again</button>
+      <Link href={href} className="button">
+        Home Page
+      </Link>
+      <button type="button" onClick={reset}>
+        Try again
+      </button>
     </section>
-  )
+  );
 }
