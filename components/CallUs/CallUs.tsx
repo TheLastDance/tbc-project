@@ -1,8 +1,8 @@
-import "./CallUs.css"
-import Link from "next/link"
-import { ViberIcon } from "../Icons/Viber"
-import { WhatsAppIcon } from "../Icons/WhatsApp"
-import { TranslateText } from "../TranslateText/TranslateText"
+import "./CallUs.css";
+import Link from "next/link";
+import { ViberIcon } from "../Icons/Viber";
+import { WhatsAppIcon } from "../Icons/WhatsApp";
+import { TranslateText } from "../TranslateText/TranslateText";
 
 export default function CallUs() {
   return (
@@ -16,5 +16,5 @@ export default function CallUs() {
         <ViberIcon />
       </div>
     </div>
-  )
+  );
 }
