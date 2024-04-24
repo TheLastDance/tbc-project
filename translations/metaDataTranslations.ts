@@ -1,4 +1,4 @@
-export const metaDataTranslations = {
+export const metaDataTranslations: MetaDataTranslationsType = {
   en: {
     "home": {
       "title": "TBC Project 🚀",

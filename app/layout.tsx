@@ -9,23 +9,20 @@ import "./globals.css";
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
 
-
 export async function generateMetadata() {
   const locale = cookies().get("locale")?.value;
   return generateDynamicMetaData("home", locale);
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: ChildrenProp) {
   const locale = cookies().get("locale")?.value || "en";
 
   return (
     <html suppressHydrationWarning lang={locale}>
-      <body>
+      <body className={inter.className}>
         <ThemeProviders>
           <LanguageProvider>
-            <GlobalLayout>
-              {children}
-            </GlobalLayout>
+            <GlobalLayout>{children}</GlobalLayout>
           </LanguageProvider>
         </ThemeProviders>
       </body>
