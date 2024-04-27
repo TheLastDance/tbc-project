@@ -8,7 +8,7 @@ import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function AskQuestionForm() {
-  const [formStates, setFormStates] = useState<FormStatesType>({
+  const [formStates, setFormStates] = useState<IAskQuestionState>({
     firstName: "",
     lastName: "",
     email: "",

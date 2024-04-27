@@ -4,13 +4,10 @@ import notFound from "@/app/not-found";
 import Image from "next/image";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
-interface Props {
-  id: number;
-}
 
-export async function FullProduct({ id }: Props) {
+export async function FullProduct({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); //for loader check
-  const data = await getAnyData<SingleShopItem>(`https://dummyjson.com/products/${id}`);
+  const data = await getAnyData<IProductItem>(`https://dummyjson.com/products/${id}`);
 
   if (!data.title) return notFound();
 

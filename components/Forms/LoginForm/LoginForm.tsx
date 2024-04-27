@@ -21,7 +21,7 @@ export function LoginForm() {
     const formData = new FormData(e.currentTarget);
     const credentials = Object.fromEntries(formData);
 
-    const user = await getAnyData<IUserToken>("/api/login", {
+    const user = await getAnyData<UserToken>("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export function LoginForm() {
       return router.refresh();
     }
 
-    if (user.message) setError(user.message);
+    setError(user.message);
     setLoading(false);
   };
 

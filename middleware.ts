@@ -5,7 +5,7 @@ import { getPathWithLocales } from "./services/utils";
 const loginPathsWithLocales = getPathWithLocales(locales, "/login");
 
 const getLocale = (req: NextRequest) => {
-  const locale = req.cookies.get("locale")?.value;
+  const locale = req.cookies.get("locale")?.value as Locale | undefined;
 
   if (locale) return locale;
 
@@ -33,6 +33,6 @@ export function middleware(req: NextRequest): Response {
   return NextResponse.next();
 }
 
-export const config: IMiddlewareConfig = {
+export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
 }

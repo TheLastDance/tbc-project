@@ -4,9 +4,7 @@ import { FullPostLoader } from "@/components/Loaders/FullPostLoader/FullPostLoad
 import { ArrowNavigation } from "@/components/ArrowNavigation/ArrowNavigation";
 
 interface IProps {
-  params: {
-    id: number;
-  };
+  params: idParam
 }
 
 export default async function FullPostPage({ params: { id } }: IProps) {

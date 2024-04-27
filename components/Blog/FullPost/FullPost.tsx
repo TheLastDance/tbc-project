@@ -7,9 +7,9 @@ import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
-export async function FullPost({ id }: postId) {
+export async function FullPost({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
-  const data = await getAnyData<PostItem>(`https://dummyjson.com/posts/${id}`);
+  const data = await getAnyData<IPostItem>(`https://dummyjson.com/posts/${id}`);
 
   if (!data.title) return <NotFound />;
 

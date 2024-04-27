@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   return locales.map((item) => ({ locale: String(item) }));
 }
 
-export default function layout({ children }: ChildrenProp) {
+export default function layout({ children }: ChildrenProps) {
   return <>{children}</>
 }
 

@@ -8,7 +8,7 @@ import "./globals.css";
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({ children }: ChildrenProp) {
+export default function RootLayout({ children }: ChildrenProps) {
   const cookieStore = cookies()
   const locale = cookieStore.get("locale")?.value;
 

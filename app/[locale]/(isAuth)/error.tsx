@@ -1,10 +1,10 @@
 "use client";
 import { Error } from "@/components/Error/Error";
 
-export default function error({ reset }: IError) {
+export default function error({ reset }: IErrorPage) {
   return (
     <>
-      <Error reset={reset} href="/" />
+      <Error reset={reset} />
     </>
   );
 }

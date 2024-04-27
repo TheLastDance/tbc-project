@@ -1,6 +1,13 @@
 import { useFormStatus } from "react-dom";
 
-export function PendingButton({ type, children }: ButtonProp): JSX.Element {
+interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+};
+
+export function PendingButton({
+  type,
+  children
+}: IProps) {
   const { pending } = useFormStatus();
 
   return (

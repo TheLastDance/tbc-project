@@ -30,7 +30,7 @@ import { cookieExpirationOneYear } from "./utils";
 //   redirect("/login");
 // }
 
-export async function setTranslateCookie(locale: string, path: string) {
+export async function setTranslateCookie(locale: Locale, path: string) {
   const cookieStore = cookies();
 
   cookieStore.set("locale", locale, { expires: cookieExpirationOneYear });

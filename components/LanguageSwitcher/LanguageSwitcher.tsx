@@ -9,7 +9,7 @@ export function LanguageSwitcher() {
   const pathName = usePathname();
   const locale = getLocaleFromPath(pathName);
 
-  const handleClick = async (locale: string, pathName: string) => {
+  const handleClick = async (locale: Locale, pathName: string) => {
     const path = pathName.split("/");
     path[1] = locale;
     setTranslateCookie(locale, path.join("/"));

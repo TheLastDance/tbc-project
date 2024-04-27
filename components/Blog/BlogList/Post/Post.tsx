@@ -6,7 +6,11 @@ import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
-export function Post({ item }: PostProps) {
+interface IProps {
+  item: IPostItem
+}
+
+export function Post({ item }: IProps) {
   const { title, body, tags, reactions, id } = item;
 
   return (

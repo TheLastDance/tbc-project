@@ -1,14 +1,6 @@
-type Translations = {
-  en: {
-    [key: string]: string;
-  };
-  ka: {
-    [key: string]: string;
-  };
-};
+export type TranslationKey = keyof typeof translations.en;
 
-
-export const translations: Translations = {
+export const translations = {
   en: {
     "navigation.profile": "Profile",
     "navigation.blog": "Blog",

@@ -3,7 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import error_image from "@/public/img/error/error-img.png";
 
-export function Error({ error, reset, message, href } : ErrorProps) {
+interface IProps {
+  error?: string;
+  reset: () => void;
+  message?: string;
+};
+
+export function Error({ error, reset, message }: IProps) {
   return (
     <section className="errorPage">
       <h1>Something went wrong!</h1>
@@ -16,7 +22,7 @@ export function Error({ error, reset, message, href } : ErrorProps) {
         height={700}
         priority
       />
-      <Link href={href} className="button">
+      <Link href="/" className="button">
         Home Page
       </Link>
       <button type="button" onClick={reset}>

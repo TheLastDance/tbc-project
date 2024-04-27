@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
-interface Props {
-  item: SingleShopItem;
+interface IProps {
+  item: IProductItem;
   index: number;
 }
 
-export function Product({ item, index }: Props) {
+export function Product({ item, index }: IProps) {
   const {
     title,
     description,

@@ -1,4 +1,6 @@
-export const metaDataTranslations: MetaDataTranslationsType = {
+export type metaDataTranslationKey = keyof typeof metaDataTranslations.en;
+
+export const metaDataTranslations = {
   en: {
     "home": {
       "title": "TBC Project 🚀",
