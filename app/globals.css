@@ -2,8 +2,6 @@
   --rootContainerSize: 1250px;
   --primaryColor: #fff;
   --secondaryColor: #000;
-  --blackColor: #000;
-  --whiteColor: #fff;
   --grayColor: #555;
   --background: linear-gradient(to bottom right,
       #ffffff,
@@ -14,8 +12,6 @@
 .dark {
   --primaryColor: #000;
   --secondaryColor: #fff;
-  --blackColor: #ffffff;
-  --whiteColor: #0a0a0a;
   --grayColor: #555;
   --background: linear-gradient(to bottom right,
       #918f8f,
@@ -48,7 +44,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: var(--blackColor);
+  color: var(--secondaryColor);
 }
 
 a:hover {
@@ -62,11 +58,11 @@ button,
   font-size: 1rem;
   cursor: pointer;
   padding: 0.25rem;
-  border: 2px solid var(--blackColor);
+  border: 2px solid var(--secondaryColor);
   border-radius: 5px;
-  background-color: var(--whiteColor);
+  background-color: var(--primaryColor);
   font-weight: 700;
-  color: var(--blackColor);
+  color: var(--secondaryColor);
 }
 
 button:hover,

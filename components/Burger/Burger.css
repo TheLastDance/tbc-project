@@ -38,5 +38,5 @@
 }
 
 .burger_container .navLink_active {
-  border-bottom: 1px solid var(--blackColor);
+  border-bottom: 1px solid var(--secondaryColor);
 }

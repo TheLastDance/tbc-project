@@ -2,6 +2,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cookieExpirationOneYear } from "./utils";
+import { locales } from "@/i18n.config";
 
 // export async function login(_, data) {
 //   const { username, password } = Object.fromEntries(data);
@@ -22,13 +23,13 @@ import { cookieExpirationOneYear } from "./utils";
 
 // }
 
-// export async function logout() {
-//   const cookieStore = cookies();
+export async function logout() {
+  const cookieStore = cookies();
+  const locale = getLocale();
+  cookieStore.delete("token");
 
-//   cookieStore.delete("token");
-
-//   redirect("/login");
-// }
+  redirect(`${locale}/login`);
+}
 
 export async function setTranslateCookie(locale: Locale, path: string) {
   const cookieStore = cookies();
@@ -37,3 +38,9 @@ export async function setTranslateCookie(locale: Locale, path: string) {
 
   redirect(path);
 }
+
+export const getLocale = () => {
+  const locale = cookies().get("locale")?.value as Locale | undefined;
+
+  return !locale ? locales[0] : locale;
+} // returns preferable localization for user based on cookie.

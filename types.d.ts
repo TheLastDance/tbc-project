@@ -111,10 +111,3 @@ interface IErrorPage {
   error?: Error & { digest?: string }
   reset: () => void;
 }
-
-
-// image types (maybe will delete)
-declare module "*.jpeg" {
-  const src: string;
-  export = src;
-}

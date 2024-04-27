@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 2px dashed var(--blackColor);
+  border-top: 2px dashed var(--secondaryColor);
 }
 
 .authFooter .nav_list {
