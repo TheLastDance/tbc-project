@@ -1,5 +1,5 @@
 import "./FullPost.css";
-import NotFound from "@/app/[...404]/not-found";
+import NotFound from "@/app/[locale]/not-found";
 import { LocaleLink } from "@/components/Links/LocaleLink";
 import Image from "next/image";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
