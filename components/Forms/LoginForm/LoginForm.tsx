@@ -5,12 +5,12 @@ import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
 import { FormEvent, useState } from "react";
 import { Loader } from "@/components/Loaders/Loader/Loader";
-import { getAnyData } from "@/services/data-fetch/getAnyData";
-import { useRouter } from "next/navigation";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { usePathname } from "next/navigation";
+import { login } from "@/services/actions";
 
 export function LoginForm() {
-  const router = useRouter();
+  const pathName = usePathname();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -19,22 +19,9 @@ export function LoginForm() {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    const credentials = Object.fromEntries(formData);
+    const user = await login(formData, pathName);
 
-    const user = await getAnyData<UserToken>("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    });
-
-    if (user.token) {
-      router.push("/");
-      return router.refresh();
-    }
-
-    setError(user.message);
+    if (user?.message) setError(user.message);
     setLoading(false);
   };
 

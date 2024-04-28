@@ -1,6 +1,6 @@
 import "./FullPost.css";
 import NotFound from "@/app/not-found";
-import Link from "next/link";
+import { LocaleLink } from "@/components/Links/LocaleLink";
 import Image from "next/image";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import photo from "@/public/img/blog/dogProfile.jpeg";
@@ -31,7 +31,7 @@ export async function FullPost({ id }: idParam) {
       <ul>
         {tags.map((item, index) => (
           <li className="fullPost_tag" key={index}>
-            <Link href="/">{`#${item}`}</Link>
+            <LocaleLink href="/">{`#${item}`}</LocaleLink>
           </li>
         ))}
       </ul>

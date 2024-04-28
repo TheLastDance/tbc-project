@@ -1,6 +1,6 @@
 import "./Post.css";
 import { Card } from "@/components/Card/Card";
-import Link from "next/link";
+import { LocaleLink } from "@/components/Links/LocaleLink";
 import Image from "next/image";
 import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
@@ -25,7 +25,7 @@ export function Post({ item }: IProps) {
         <ul>
           {tags.map((item, index) => (
             <li className="blog_tag" key={index}>
-              <Link href="/">{`#${item}`}</Link>
+              <LocaleLink href="/">{`#${item}`}</LocaleLink>
             </li>
           ))}
         </ul>
@@ -34,9 +34,9 @@ export function Post({ item }: IProps) {
           <span>{reactions}</span>
         </button>
       </div>
-      <Link href={`/blog/${id}`} className="post_viewFullButton" role="button">
+      <LocaleLink href={`/blog/${id}`} className="post_viewFullButton" role="button">
         <TranslateText translationKey="button.viewFull" />
-      </Link>
+      </LocaleLink>
     </Card>
   );
 }

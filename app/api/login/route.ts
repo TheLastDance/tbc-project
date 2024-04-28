@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { cookieExpirationOneYear } from "@/services/utils";
 import { NextRequest } from "next/server";
 
+// maybe also will delete soon
 export async function POST(req: NextRequest) {
   const { username, password }: IUserLogin = await req.json();
 
