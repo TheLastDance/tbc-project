@@ -1,6 +1,6 @@
 import "./FullProduct.css";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
-import notFound from "@/app/not-found";
+import notFound from "@/app/[...404]/not-found";
 import Image from "next/image";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 

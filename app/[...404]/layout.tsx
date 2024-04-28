@@ -1,23 +1,26 @@
 import { Inter } from "next/font/google";
 import { ThemeProviders } from "@/services/providers/ThemeProvider";
 import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
-import { cookies } from "next/headers";
-import { locales } from "@/i18n.config";
-import "./globals.css";
+import { NotAuthLayout } from "@/components/Layouts/NotAuthLayout";
+import "../[locale]/globals.css"
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
 
+export const metadata = {
+  title: "Page Not Found!"
+}
+
 export default function RootLayout({ children }: ChildrenProps) {
-  const cookieStore = cookies()
-  const locale = cookieStore.get("locale")?.value;
 
   return (
-    <html suppressHydrationWarning lang={locale ? locale : locales[0]}>
+    <html suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProviders>
           <GlobalLayout>
-            {children}
+            <NotAuthLayout>
+              {children}
+            </NotAuthLayout>
           </GlobalLayout>
         </ThemeProviders>
       </body>
