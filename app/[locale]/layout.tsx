@@ -1,9 +1,9 @@
+import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProviders } from "@/services/providers/ThemeProvider";
 import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
 import { locales } from "@/i18n.config";
 import { generateDynamicMetaData } from "@/services/utils";
-import "./globals.css";
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });

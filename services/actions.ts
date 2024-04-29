@@ -33,12 +33,10 @@ export async function logout(path: string) {
   redirect(`/${locale}/login`);
 }
 
-export async function setTranslateCookie(locale: Locale, path: string) {
+export async function setTranslateCookie(locale: Locale) {
   const cookieStore = cookies();
 
   cookieStore.set("locale", locale, { expires: cookieExpirationOneYear });
-
-  redirect(path);
 }
 
 export const getLocale = () => {
