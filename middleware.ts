@@ -1,16 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { locales } from "./i18n.config";
 import { getPathWithLocales } from "./services/utils";
+import { getLocale } from "./services/actions";
 
 const loginPathsWithLocales = getPathWithLocales(locales, "/login");
-
-const getLocale = (req: NextRequest) => {
-  const locale = req.cookies.get("locale")?.value;
-
-  if (locale) return locale;
-
-  return locales[0];
-} // returns preferable localization for user based on cookie.
 
 export function middleware(req: NextRequest): Response {
   const pathName = req.nextUrl.pathname;
@@ -25,7 +18,7 @@ export function middleware(req: NextRequest): Response {
   )
 
   if (pathnameIsMissingLocale) {
-    const locale = getLocale(req);
+    const locale = getLocale();
     const newPath = `/${locale}${pathName.startsWith('/') ? '' : '/'}${pathName}`;
     return NextResponse.redirect(new URL(newPath, req.url));
   }
@@ -33,6 +26,6 @@ export function middleware(req: NextRequest): Response {
   return NextResponse.next();
 }
 
-export const config: IMiddlewareConfig = {
+export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
 }

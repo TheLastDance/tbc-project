@@ -1,6 +1,6 @@
 import "./Layout.css"
 
-export function GlobalLayout({ children }: {children: React.ReactNode}) {
+export function GlobalLayout({ children }: ChildrenProps) {
   return (
     <div className="layout">
       {children}

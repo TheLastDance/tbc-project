@@ -1,17 +1,15 @@
 "use client"
 
 import "./LogOutButton.css";
-import { getAnyData } from "@/services/data-fetch/getAnyData";
-import { useRouter } from "next/navigation";
+import { logout } from "@/services/actions";
 import { LogOutIcon } from "@/components/Icons/LogOut";
+import { usePathname } from "next/navigation";
 
 export function LogOutButton() {
-  const router = useRouter();
+  const pathName = usePathname();
 
   const handleLogOut = async () => {
-    await getAnyData("/api/logout");
-    router.push("/login");
-    router.refresh();
+    await logout(pathName);
   }
 
   return (

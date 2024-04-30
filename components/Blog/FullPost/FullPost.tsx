@@ -1,15 +1,15 @@
 import "./FullPost.css";
-import NotFound from "@/app/not-found";
-import Link from "next/link";
+import NotFound from "@/app/[locale]/not-found";
+import { LocaleLink } from "@/components/Links/LocaleLink";
 import Image from "next/image";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
-export async function FullPost({ id }: postId) {
+export async function FullPost({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
-  const data = await getAnyData<PostItem>(`https://dummyjson.com/posts/${id}`);
+  const data = await getAnyData<IPostItem>(`https://dummyjson.com/posts/${id}`);
 
   if (!data.title) return <NotFound />;
 
@@ -31,7 +31,7 @@ export async function FullPost({ id }: postId) {
       <ul>
         {tags.map((item, index) => (
           <li className="fullPost_tag" key={index}>
-            <Link href="/">{`#${item}`}</Link>
+            <LocaleLink href="/">{`#${item}`}</LocaleLink>
           </li>
         ))}
       </ul>

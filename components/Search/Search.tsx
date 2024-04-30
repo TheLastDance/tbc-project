@@ -2,7 +2,13 @@ import "./Search.css";
 import { Input } from "../Input/Input";
 import { TranslateText } from "../TranslateText/TranslateText";
 
-export function Search({ inputID, buttonContent, inputValue, handleInputChange, handleButtonClick }: ISearch) {
+export function Search({
+  inputID,
+  buttonContent,
+  inputValue,
+  handleInputChange,
+  handleButtonClick
+}: ISearchProps) {
   const placeholderText = TranslateText({ translationKey: "button.search" });
 
   return (

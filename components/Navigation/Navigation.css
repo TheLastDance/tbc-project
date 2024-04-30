@@ -19,5 +19,5 @@
 }
 
 .nav_list .navLink_active {
-  border-bottom: 1px solid var(--blackColor);
+  border-bottom: 1px solid var(--secondaryColor);
 }

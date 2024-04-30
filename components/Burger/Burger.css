@@ -26,6 +26,7 @@
 }
 
 .burgerOverlay .languageSwitcher {
+  font-size: 1rem;
   margin-left: 0;
 }
 
@@ -38,5 +39,5 @@
 }
 
 .burger_container .navLink_active {
-  border-bottom: 1px solid var(--blackColor);
+  border-bottom: 1px solid var(--secondaryColor);
 }

@@ -10,7 +10,7 @@ export function Input({
   textArea,
   onChange,
   ...props
-}: InputProps): JSX.Element {
+}: IInputProps) {
   return (
     <div className="input_container">
       <label htmlFor={id}>{label}</label>

@@ -1,7 +1,7 @@
 import { NotAuthHeader } from "../Headers/NotAuthHeader/NotAuthHeader"
 import { NotAuthFooter } from "../Footers/NotAuthFooter/NotAuthFooter"
 
-export function NotAuthLayout({ children } : {children: React.ReactNode}) {
+export function NotAuthLayout({ children }: ChildrenProps) {
   return (
     <>
       <NotAuthHeader />

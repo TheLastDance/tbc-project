@@ -4,7 +4,7 @@ import { getAnyData } from "@/services/data-fetch/getAnyData";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export async function BlogList() {
-  const data = await getAnyData<{ posts: PostItem[] }>(`https://dummyjson.com/posts`);
+  const data = await getAnyData<{ posts: IPostItem[] }>(`https://dummyjson.com/posts`);
   const { posts } = data;
 
   return (
@@ -13,7 +13,7 @@ export async function BlogList() {
         <TranslateText translationKey="blog" />
       </h2>
       <ul>
-        {posts.map((item: PostItem) => (
+        {posts.map((item: IPostItem) => (
           <Post key={item.id} item={item} />
         ))}
       </ul>

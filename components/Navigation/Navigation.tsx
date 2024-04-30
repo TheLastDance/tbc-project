@@ -1,5 +1,5 @@
 import "./Navigation.css"
-import { NavLink } from "../NavLink/NavLink";
+import { NavLink } from "../Links/NavLink";
 import { TranslateText } from "../TranslateText/TranslateText";
 
 export function Navigation() {

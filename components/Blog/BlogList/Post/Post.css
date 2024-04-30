@@ -10,7 +10,7 @@
 
 .titleAndPhoto_container img {
   border-radius: 50%;
-  border: 3px solid var(--whiteColor);
+  border: 3px solid var(--primaryColor);
   width: 4rem;
   height: 4rem;
   object-fit: cover;
@@ -36,7 +36,7 @@
 
 .blog_tag {
   margin-right: 1rem;
-  filter: drop-shadow(0px 5px 5px var(--blackColor));
+  filter: drop-shadow(0px 5px 5px var(--secondaryColor));
 }
 
 .post_info_like_button {
@@ -60,9 +60,9 @@
 
 .post_viewFullButton {
   padding: 0.15rem;
-  border: 2px solid var(--blackColor);
+  border: 2px solid var(--secondaryColor);
   border-radius: 5px;
-  background-color: var(--whiteColor);
+  background-color: var(--primaryColor);
   font-weight: 700;
   text-align: center;
 }

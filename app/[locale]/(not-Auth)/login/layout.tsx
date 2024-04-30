@@ -4,6 +4,6 @@ export async function generateMetadata({ params: { locale } }: ILocaleParam) {
   return generateDynamicMetaData("login", locale);
 }
 
-export default function layout({ children }: ChildrenProp) {
+export default function layout({ children }: ChildrenProps) {
   return <>{children}</>;
 }

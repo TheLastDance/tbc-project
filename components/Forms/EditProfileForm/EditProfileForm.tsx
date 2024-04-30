@@ -8,7 +8,7 @@ import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function EditProfileForm() {
-  const [formStates, setFormStates] = useState<IEditProfileForm>({
+  const [formStates, setFormStates] = useState<IEditProfileState>({
     firstName: "Michael",
     lastName: "Brown",
     email: "MichaelBrown@gmail.com",

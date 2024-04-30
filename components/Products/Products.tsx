@@ -6,13 +6,13 @@ import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
 import { TranslateText } from "../TranslateText/TranslateText";
 
-interface Props {
+interface IProps {
   data: {
-    products: SingleShopItem[];
+    products: IProductItem[];
   };
 }
 
-export function Products({ data }: Props) {
+export function Products({ data }: IProps) {
   const [searchText, setSearchText] = useState("");
   const [isAscending, setIsAscending] = useState(true);
   const [debouncedValue, setDebouncedValue] = useState("");
@@ -41,7 +41,7 @@ export function Products({ data }: Props) {
         <Search
           inputID="mainPage_search_input"
           inputValue={searchText}
-          handleInputChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchText(e.target.value)}
+          handleInputChange={(e) => setSearchText(e.target.value)}
           handleButtonClick={() => setIsAscending((prev) => !prev)}
           buttonContent={
             isAscending ? (

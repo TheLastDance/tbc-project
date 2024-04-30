@@ -1,7 +1,7 @@
 import { AuthHeader } from "../Headers/AuthHeader/AuthHeader"
 import { AuthFooter } from "../Footers/AuthFooter/AuthFooter"
 
-export function AuthLayout({ children }: {children: React.ReactNode}) {
+export function AuthLayout({ children }: ChildrenProps) {
   return (
     <>
       <AuthHeader />

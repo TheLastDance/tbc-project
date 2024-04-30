@@ -1,6 +1,10 @@
 import "./Loader.css";
 
-export function Loader({ size }: LoaderProps) {
+interface IProps {
+  size?: string;
+}
+
+export function Loader({ size }: IProps) {
   return (
     <div className="loader-overlay" style={{ fontSize: size }}>
       <span className="loader" />

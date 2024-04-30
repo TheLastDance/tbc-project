@@ -8,7 +8,7 @@ import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function ChangePasswordForm() {
-  const [formStates, setFormStates] = useState<IChangePasswordForm>({
+  const [formStates, setFormStates] = useState<IChangePasswordState>({
     password: "",
     confirmPassword: "",
   });

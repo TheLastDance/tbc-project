@@ -1,9 +1,15 @@
 import "./Error.css";
 import Image from "next/image";
-import Link from "next/link";
+import { LocaleLink } from "../Links/LocaleLink";
 import error_image from "@/public/img/error/error-img.png";
 
-export function Error({ error, reset, message, href } : ErrorProps) {
+interface IProps {
+  error?: string;
+  reset: () => void;
+  message?: string;
+};
+
+export function Error({ error, reset, message }: IProps) {
   return (
     <section className="errorPage">
       <h1>Something went wrong!</h1>
@@ -16,9 +22,9 @@ export function Error({ error, reset, message, href } : ErrorProps) {
         height={700}
         priority
       />
-      <Link href={href} className="button">
+      <LocaleLink href="/" className="button">
         Home Page
-      </Link>
+      </LocaleLink>
       <button type="button" onClick={reset}>
         Try again
       </button>

@@ -1,25 +1,31 @@
 "use client"
 
 import Link from "next/link";
-import { getLocaleFromPath } from "@/services/utils";
 import { usePathname } from "next/navigation";
+import { getLocaleFromPath } from "@/services/utils";
 
+interface IProps {
+  href: string;
+  className?: string;
+  role?: string;
+  children: React.ReactNode;
+}
 
-export function NavLink({
+export function LocaleLink({
   href,
   children,
-  ...props
-}: NavLinkInterface) {
-
+  className,
+  role
+}: IProps) {
   const pathName = usePathname();
   const locale = getLocaleFromPath(pathName);
   const path = `/${locale}${href}`;
 
   return (
     <Link
-      href={href}
-      className={pathName == path ? "navLink_active" : "navLink"}
-      {...props}
+      href={path}
+      className={className}
+      role={role}
     >
       {children}
     </Link>

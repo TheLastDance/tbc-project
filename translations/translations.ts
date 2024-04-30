@@ -1,14 +1,6 @@
-type Translations = {
-  en: {
-    [key: string]: string;
-  };
-  ka: {
-    [key: string]: string;
-  };
-};
+export type TranslationKey = keyof typeof translations.en;
 
-
-export const translations: Translations = {
+export const translations = {
   en: {
     "navigation.profile": "Profile",
     "navigation.blog": "Blog",
@@ -27,13 +19,13 @@ export const translations: Translations = {
     "form.newsletterForm.label": "Subscribe to our newsletter:",
     "form.newsletterForm.button.submit": "Submit",
     "form.editProfile": "Edit profile:",
+    "form.changePassword": "Change Password:",
     "form.label.firstName": "First Name:",
     "form.label.lastName": "Last Name:",
     "form.label.email": "Email:",
     "form.label.phoneNumber": "Phone number:",
     "form.label.yourQuestion": "Your question:",
     "form.label.userName": "Username:",
-    "form.label.changePassword": "Change Password:",
     "form.label.newPassword": "New Password:",
     "form.label.password": "Password:",
     "form.label.confirmPassword": "Confirm Password:",
@@ -67,13 +59,13 @@ export const translations: Translations = {
     "form.newsletterForm.label": "სიახლეებზე გამოწერა:",
     "form.newsletterForm.button.submit": "გამოწერა",
     "form.editProfile": "პროფილის რედაქტირება:",
+    "form.changePassword": "შეცვალე პაროლი:",
     "form.label.firstName": "სახელი:",
     "form.label.lastName": "გვარი:",
     "form.label.email": "ელ.ფოსტა:",
     "form.label.phoneNumber": "ტელ. ნომერი:",
     "form.label.yourQuestion": "შენი კითხვა:",
     "form.label.userName": "იუზერის სახელი:",
-    "form.label.changePassword": "შეცვალე პაროლი:",
     "form.label.newPassword": "ახალი პაროლი:",
     "form.label.password": "პაროლი:",
     "form.label.confirmPassword": "დაადასტურე პაროლი:",

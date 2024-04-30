@@ -10,7 +10,7 @@
   height: 1em;
   border-radius: 50%;
   border: 3px solid;
-  border-color: var(--blackColor) var(--blackColor) transparent transparent;
+  border-color: var(--secondaryColor) var(--secondaryColor) transparent transparent;
   animation: rotation 1s linear infinite;
 }
 
@@ -24,7 +24,7 @@
   bottom: 0;
   margin: auto;
   border: 3px solid;
-  border-color: var(--whiteColor) var(--whiteColor) transparent transparent;
+  border-color: var(--primaryColor) var(--primaryColor) transparent transparent;
   width: 0.83em;
   height: 0.83em;
   border-radius: 50%;

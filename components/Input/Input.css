@@ -2,5 +2,5 @@
 .input_container textarea {
   padding: 0.25rem 0;
   border-radius: 5px;
-  border: 1px solid var(--blackColor);
+  border: 1px solid var(--secondaryColor);
 }

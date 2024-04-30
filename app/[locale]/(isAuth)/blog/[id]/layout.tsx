@@ -1,13 +1,8 @@
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 
-interface IGenerateMetaData {
-  params: {
-    id: number;
-  };
-}
 
-export async function generateMetadata({ params: { id } }: IGenerateMetaData) {
-  const data = await getAnyData<PostItem>(`https://dummyjson.com/posts/${id}`);
+export async function generateMetadata({ params: { id } }: IIdParamProps) {
+  const data = await getAnyData<IPostItem>(`https://dummyjson.com/posts/${id}`);
 
   if (!data.title) return { title: "Post not found!" };
 
@@ -21,12 +16,12 @@ export async function generateMetadata({ params: { id } }: IGenerateMetaData) {
 
 export async function generateStaticParams() {
   // only 30 posts will be statically pregenerated, if want all then use searchParam limit=0 as in products.
-  const data = await getAnyData<{ posts: PostItem[] }>(`https://dummyjson.com/posts`);
+  const data = await getAnyData<{ posts: IPostItem[] }>(`https://dummyjson.com/posts`);
   const { posts } = data;
 
   return posts.map((item) => ({ id: String(item.id) }));
 }
 
-export default function layout({ children }: ChildrenProp) {
+export default function layout({ children }: ChildrenProps) {
   return <>{children}</>;
 }

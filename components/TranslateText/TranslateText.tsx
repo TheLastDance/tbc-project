@@ -3,14 +3,15 @@
 import { translations } from "@/translations/translations";
 import { usePathname } from "next/navigation";
 import { getLocaleFromPath } from "@/services/utils";
+import { TranslationKey } from "@/translations/translations";
 
-interface ITranslateTextProps {
-  translationKey: string;
+interface IProps {
+  translationKey: TranslationKey;
 }
 
-export function TranslateText({ translationKey }: ITranslateTextProps) {
+export function TranslateText({ translationKey }: IProps) {
   const pathName = usePathname();
-  const locale = getLocaleFromPath(pathName) as "en" | "ka"; // I am sure in this type because middleware handles it for me
+  const locale = getLocaleFromPath(pathName);
 
   return translations[locale][translationKey];
 }

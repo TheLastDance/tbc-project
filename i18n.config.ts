@@ -1,1 +1,1 @@
-export const locales = ["en", "ka"];
+export const locales: LocaleTuple = ["en", "ka"];

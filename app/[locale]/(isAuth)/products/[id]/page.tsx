@@ -1,12 +1,7 @@
 import { FullProduct } from "@/components/Products/FullProduct/FullProduct";
 
-interface Props {
-  params: {
-    id: number;
-  };
-}
 
-export default function FullProductPage({ params: { id } }: Props) {
+export default function FullProductPage({ params: { id } }: IIdParamProps) {
   return (
     <>
       <FullProduct id={id} />

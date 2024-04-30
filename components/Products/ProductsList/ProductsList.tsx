@@ -1,11 +1,11 @@
 import "./ProductsList.css";
 import { Product } from "./Product/Product";
 
-interface Props {
-  products: SingleShopItem[];
+interface IProps {
+  products: IProductItem[];
 }
 
-export function ProductsList({ products }: Props) {
+export function ProductsList({ products }: IProps) {
   return (
     <ul className="products_list">
       {products.map((item, index) => (

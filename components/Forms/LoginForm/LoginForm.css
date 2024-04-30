@@ -17,7 +17,7 @@
 .loginForm .input_container input {
   font-size: 1.2rem;
   border-radius: 8px;
-  border: 2px solid var(--blackColor);
+  border: 2px solid var(--secondaryColor);
 }
 
 .loginForm button {
@@ -29,6 +29,7 @@
   /* display: none; */
   opacity: 0.3;
   background-color: var(--grayColor);
+  cursor: auto;
 }
 
 .loginForm button:disabled:hover {

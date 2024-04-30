@@ -1,6 +1,5 @@
-import { metaDataTranslations } from "@/translations/metaDataTranslations";
+import { metaDataTranslations, metaDataTranslationKey } from "@/translations/metaDataTranslations";
 
-// will add types next
 export const handleChangeInputObj = <T>(
   setState: React.Dispatch<React.SetStateAction<T>>,
   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -11,7 +10,7 @@ export const handleChangeInputObj = <T>(
   }))
 }
 
-export const generateDynamicMetaData = (key: string, locale: string): MetadataType => {
+export const generateDynamicMetaData = (key: metaDataTranslationKey, locale: Locale): MetadataType => {
   const { ...metadata } = metaDataTranslations[locale][key];
   return { ...metadata }
 }
@@ -25,16 +24,14 @@ export const getCookieExpirationDate = (hoursToExpire: number) => {
 
 export const cookieExpirationOneYear = getCookieExpirationDate(365 * 24); // will expire in one year after it was set.
 
-export const getLocaleFromPath = (path: string) => {
+export const getLocaleFromPath = (path: string): Locale => {
   const regex = /^\/([a-zA-Z0-9_-]+)\/?.*/;
-  const paths = path.match(regex);
-  if (!paths) {
-    throw new Error('No match found');
-  }
-  return paths[1];
+  const paths = path.match(regex)!;
+
+  return paths[1] as Locale; // I am sure that this function will return locale, cause middleware handles redirects.
 }
 
-export const getPathWithLocales = (locales: string[], path: string) => {
+export const getPathWithLocales = (locales: LocaleTuple, path: string) => {
   const pathName = `${path.startsWith('/') ? '' : '/'}${path}`;
   const urls = locales.map(item => `/${item}${pathName}`);
 
