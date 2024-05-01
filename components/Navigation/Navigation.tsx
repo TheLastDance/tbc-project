@@ -3,7 +3,6 @@ import { NavLink } from "../Links/NavLink";
 import { TranslateText } from "../TranslateText/TranslateText";
 
 export function Navigation() {
-  //const locale = cookies().get("locale").value;
 
   return (
     <nav>

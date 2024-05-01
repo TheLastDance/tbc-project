@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link";
-import { getLocaleFromPath } from "@/services/utils";
 import { usePathname } from "next/navigation";
 
 interface IProps {
@@ -15,15 +14,12 @@ export function NavLink({
   children,
   ...props
 }: IProps) {
-
   const pathName = usePathname();
-  const locale = getLocaleFromPath(pathName);
-  const path = `/${locale}${href}`;
 
   return (
     <Link
-      href={path}
-      className={pathName == path ? "navLink_active" : "navLink"}
+      href={href}
+      className={pathName === href ? "navLink_active" : "navLink"}
       {...props}
     >
       {children}

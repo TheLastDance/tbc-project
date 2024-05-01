@@ -1,11 +1,11 @@
 import "./FullPost.css";
 import NotFound from "@/app/[locale]/not-found";
-import { LocaleLink } from "@/components/Links/LocaleLink";
+import Link from "next/link";
 import Image from "next/image";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
-import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
 
 export async function FullPost({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
@@ -31,14 +31,14 @@ export async function FullPost({ id }: idParam) {
       <ul>
         {tags.map((item, index) => (
           <li className="fullPost_tag" key={index}>
-            <LocaleLink href="/">{`#${item}`}</LocaleLink>
+            <Link href="/">{`#${item}`}</Link>
           </li>
         ))}
       </ul>
       <div className="fullPost_info">
         <p>
           <span>
-            <TranslateText translationKey="fullPost.published" />{" "}
+            <TranslateTextServer translationKey="fullPost.published" />{" "}
           </span>
           2024-02-11
         </p>

@@ -1,10 +1,10 @@
 import "./Logo.css"
-import { LocaleLink } from "../Links/LocaleLink"
+import Link from "next/link";
 
 export function Logo() {
   return (
     <div className="header_logo">
-      <LocaleLink href="/">LOGO</LocaleLink>
+      <Link href="/">LOGO</Link>
     </div>
   )
 }

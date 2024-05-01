@@ -1,7 +1,7 @@
 "use client";
 
 import "./Products.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
 import { TranslateText } from "../TranslateText/TranslateText";
@@ -27,13 +27,13 @@ export function Products({ data }: IProps) {
     return () => clearTimeout(debounce);
   }, [searchText]);
 
-  const filteredProducts = products.filter(({ title }) => title.toLowerCase().includes(debouncedValue.toLowerCase()));
+  const filteredProducts = useMemo(() => products.filter(({ title }) => title.toLowerCase().includes(debouncedValue.toLowerCase())), [debouncedValue]);
 
-  // will use useMemo in future, after lecture about optimization
   // Products will be sorted by default, and if additional details are provided in the technical requirements, the functionality may be modified accordingly.
-  const sortedData = isAscending
+  const sortedData = useMemo(() => isAscending
     ? [...filteredProducts].sort((a, b) => (a.title === b.title ? 0 : a.title < b.title ? -1 : 1))
-    : [...filteredProducts].sort((a, b) => (a.title === b.title ? 0 : a.title < b.title ? 1 : -1));
+    : [...filteredProducts].sort((a, b) => (a.title === b.title ? 0 : a.title < b.title ? 1 : -1))
+    , [isAscending, filteredProducts])
 
   return (
     <>
