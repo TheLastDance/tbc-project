@@ -12,7 +12,8 @@ interface IProps {
 }
 
 export default async function FullPostPage({ params: { id, locale } }: IProps) {
-  setStaticParamsLocale(locale)
+  setStaticParamsLocale(locale);
+
   return (
     <>
       <Suspense fallback={<FullPostLoader />}>

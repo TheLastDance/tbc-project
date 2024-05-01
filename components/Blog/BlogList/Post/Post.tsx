@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import photo from "@/public/img/blog/dogProfile.jpeg";
 import { LikeIcon } from "@/components/Icons/Like";
-import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
 
 interface IProps {
   item: IPostItem
@@ -35,7 +35,7 @@ export function Post({ item }: IProps) {
         </button>
       </div>
       <Link href={`/blog/${id}`} className="post_viewFullButton" role="button">
-        <TranslateText translationKey="button.viewFull" />
+        <TranslateTextServer translationKey="button.viewFull" />
       </Link>
     </Card>
   );

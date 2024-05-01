@@ -2,7 +2,7 @@ import "./FullProduct.css";
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import notFound from "@/app/[locale]/not-found";
 import Image from "next/image";
-import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
 
 
 export async function FullProduct({ id }: idParam) {
@@ -19,25 +19,25 @@ export async function FullProduct({ id }: idParam) {
         <h1>{title}</h1>
         <p>
           <span>
-            <TranslateText translationKey="fullProduct.brand" />{" "}
+            <TranslateTextServer translationKey="fullProduct.brand" />{" "}
           </span>
           {brand}
         </p>
         <p>
           <span>
-            <TranslateText translationKey="fullProduct.category" />{" "}
+            <TranslateTextServer translationKey="fullProduct.category" />{" "}
           </span>{" "}
           {category}
         </p>
         <p>
           <span>
-            <TranslateText translationKey="fullProduct.description" />{" "}
+            <TranslateTextServer translationKey="fullProduct.description" />{" "}
           </span>{" "}
           {description}
         </p>
         <p>
           <span>
-            <TranslateText translationKey="fullProduct.rating" /> ⭐
+            <TranslateTextServer translationKey="fullProduct.rating" /> ⭐
           </span>{" "}
           {rating}
         </p>
@@ -46,7 +46,7 @@ export async function FullProduct({ id }: idParam) {
           <span> $</span>{" "}
         </p>
         <button type="button">
-          <TranslateText translationKey="button.addToCart" />
+          <TranslateTextServer translationKey="button.addToCart" />
         </button>
       </div>
       <div className="fullProduct_imageContainer">
