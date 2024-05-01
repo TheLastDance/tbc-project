@@ -6,11 +6,9 @@ import { Input } from "@/components/Input/Input";
 import { FormEvent, useState } from "react";
 import { Loader } from "@/components/Loaders/Loader/Loader";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
-import { usePathname } from "next/navigation";
 import { login } from "@/services/actions";
 
 export function LoginForm() {
-  const pathName = usePathname();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +17,7 @@ export function LoginForm() {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    const user = await login(formData, pathName);
+    const user = await login(formData);
 
     if (user?.message) setError(user.message);
     setLoading(false);

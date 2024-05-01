@@ -1,6 +1,6 @@
 import "./ArrowNavigation.css";
-import { TranslateText } from "../TranslateText/TranslateText";
-import { LocaleLink } from "../Links/LocaleLink";
+import { TranslateTextServer } from "../TranslateText/TranslateTextServer";
+import Link from "next/link";
 
 interface IProps {
   hrefPrev: string;
@@ -13,13 +13,13 @@ export function ArrowNavigation({
 }: IProps) {
   return (
     <nav className="arrow_navigation">
-      <LocaleLink href={hrefPrev}>
+      <Link href={hrefPrev}>
         ⬅
-        <TranslateText translationKey="previous" />
-      </LocaleLink>
-      <LocaleLink href={hrefNext}>
-        <TranslateText translationKey="next" />➡
-      </LocaleLink>
+        <TranslateTextServer translationKey="previous" />
+      </Link>
+      <Link href={hrefNext}>
+        <TranslateTextServer translationKey="next" />➡
+      </Link>
     </nav>
   );
 }

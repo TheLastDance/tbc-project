@@ -1,18 +1,18 @@
-import { LocaleLink } from "../Links/LocaleLink";
+import Link from "next/link";
 import { TranslateText } from "../TranslateText/TranslateText";
 
 export function TermsLinksList() {
   return (
     <ul>
       <li>
-        <LocaleLink href="/">
+        <Link href="/">
           <TranslateText translationKey="footer.terms" />
-        </LocaleLink>
+        </Link>
       </li>
       <li>
-        <LocaleLink href="/">
+        <Link href="/">
           <TranslateText translationKey="footer.privacy" />
-        </LocaleLink>
+        </Link>
       </li>
     </ul>
   );

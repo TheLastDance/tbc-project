@@ -1,25 +1,23 @@
 "use client"
 
 import "./LanguageSwitcher.css"
-import { usePathname } from "next/navigation"
 import { setTranslateCookie } from "@/services/actions"
-import { getLocaleFromPath } from "@/services/utils"
-import Link from "next/link"
+import { useChangeLocale, useCurrentLocale } from '@/locales/client'
 
 export function LanguageSwitcher() {
-  const pathName = usePathname();
-  const locale = getLocaleFromPath(pathName);
-  const path = pathName.split("/").slice(2).join("/");
+  const changeLocale = useChangeLocale();
+  const locale = useCurrentLocale();
 
   const handleClick = async (locale: Locale) => {
+    changeLocale(locale);
     setTranslateCookie(locale);
-  } // pathName never will be / because middleware handles this
+  }
 
   return (
     <>
       {locale === "en" ?
-        <Link href={`/ka/${path}`} className="languageSwitcher button" onClick={() => handleClick("ka")}>GE</Link> :
-        <Link href={`/en/${path}`} className="languageSwitcher button" onClick={() => handleClick("en")}>EN</Link>
+        <button className="languageSwitcher button" onClick={() => handleClick("ka")}>GE</button> :
+        <button className="languageSwitcher button" onClick={() => handleClick("en")}>EN</button>
       }
     </>
   )

@@ -1,6 +1,6 @@
 import "./Error.css";
 import Image from "next/image";
-import { LocaleLink } from "../Links/LocaleLink";
+import Link from "next/link";
 import error_image from "@/public/img/error/error-img.png";
 
 interface IProps {
@@ -22,9 +22,9 @@ export function Error({ error, reset, message }: IProps) {
         height={700}
         priority
       />
-      <LocaleLink href="/" className="button">
+      <Link href="/" className="button">
         Home Page
-      </LocaleLink>
+      </Link>
       <button type="button" onClick={reset}>
         Try again
       </button>

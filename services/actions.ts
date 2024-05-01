@@ -2,10 +2,8 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cookieExpirationOneYear } from "./utils";
-import { locales } from "@/i18n.config";
-import { getLocaleFromPath } from "./utils";
 
-export async function login(data: FormData, path: string) {
+export async function login(data: FormData) {
   const { username, password } = Object.fromEntries(data);
 
   const response = await fetch("https://dummyjson.com/auth/login", {
@@ -21,26 +19,18 @@ export async function login(data: FormData, path: string) {
   const cookieStore = cookies();
   cookieStore.set("token", user.token, { httpOnly: true, expires: cookieExpirationOneYear }); // will use typescript enums in future, thats why I have no constant for token string
 
-  const locale = getLocaleFromPath(path);
-  redirect(`/${locale}`);
+  redirect("/");
 }
 
-export async function logout(path: string) {
+export async function logout() {
   const cookieStore = cookies();
-  const locale = getLocaleFromPath(path);
   cookieStore.delete("token");
 
-  redirect(`/${locale}/login`);
+  redirect("/login");
 }
 
 export async function setTranslateCookie(locale: Locale) {
   const cookieStore = cookies();
 
-  cookieStore.set("locale", locale, { expires: cookieExpirationOneYear });
+  cookieStore.set("Next-Locale", locale, { expires: cookieExpirationOneYear });
 }
-
-export const getLocale = () => {
-  const locale = cookies().get("locale")?.value as Locale | undefined;
-
-  return !locale ? locales[0] : locale;
-} // returns preferable localization for user based on cookie.

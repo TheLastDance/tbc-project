@@ -1,6 +1,6 @@
 import "./Product.css";
 import { Card } from "@/components/Card/Card";
-import { LocaleLink } from "@/components/Links/LocaleLink";
+import Link from "next/link";
 import Image from "next/image";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 
@@ -19,7 +19,7 @@ export function Product({ item, index }: IProps) {
 
   return (
     <Card>
-      <LocaleLink href={`/products/${id}`}>{title}</LocaleLink>
+      <Link href={`/products/${id}`}>{title}</Link>
       <Image
         src={image}
         alt={title}

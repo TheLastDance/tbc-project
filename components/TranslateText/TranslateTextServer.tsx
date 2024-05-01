@@ -1,14 +1,12 @@
-"use client";
-
 import { TranslationKey } from "@/translations/translations";
-import { useI18n } from '../../locales/client'
+import { getI18n } from "@/locales/server";
 
 interface IProps {
   translationKey: TranslationKey;
 }
 
-export function TranslateText({ translationKey }: IProps) {
-  const t = useI18n()
+export async function TranslateTextServer({ translationKey }: IProps) {
+  const t = await getI18n()
 
   return t(translationKey);
 }
