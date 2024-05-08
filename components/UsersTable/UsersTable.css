@@ -1,0 +1,30 @@
+.userTable_section {
+  width: 100%;
+}
+
+.usersTable {
+  width: 100%;
+  max-height: 600px;
+  margin: 25px auto;
+  border-radius: 10px;
+  color: var(--secondaryColor);
+  overflow: auto;
+  position: relative;
+}
+
+.usersTable table {
+  width: 100%;
+  background: var(--primaryColor);
+  border-collapse: collapse;
+}
+
+.usersTable thead {
+  position: sticky;
+  top: 0;
+  background: var(--background);
+  height: 50px;
+}
+
+.usersTable th {
+  height: 100%;
+}

@@ -3,13 +3,12 @@ import { NextResponse } from 'next/server';
 
 interface IProps {
   params: {
-    id: number;
+    id: string;
   }
 }
 
 export async function PUT(request: Request, { params: { id } }: IProps) {
   const { name, email, birthDate }: IUser = await request.json();
-  var id = id;
 
   try {
     if (!name || !email || !birthDate || !id) throw new Error('name, email, birthDate and ID names required');

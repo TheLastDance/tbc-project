@@ -53,7 +53,9 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
         required
       />
 
-      <button type="submit" disabled={loading}>Add user</button>
+      <button type="submit" disabled={loading}>
+        {user ? "Edit user" : "Add user"}
+      </button>
     </form>
   </FormContainer>
 }

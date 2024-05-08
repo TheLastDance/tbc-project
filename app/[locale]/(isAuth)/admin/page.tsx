@@ -1,4 +1,4 @@
-import { UserList } from "@/components/UserList/UserList";
+import { UsersTable } from "@/components/UsersTable/UserTable";
 import { AddUserButton } from "@/components/Buttons/AddUserButton/AddUserButton";
 import { Suspense } from "react";
 import { Loader } from "@/components/Loaders/Loader/Loader";
@@ -9,7 +9,7 @@ export default async function Test() {
     <>
       <AddUserButton />
       <Suspense fallback={<Loader />}>
-        <UserList />
+        <UsersTable />
       </Suspense>
     </>
   )

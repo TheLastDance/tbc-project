@@ -3,12 +3,11 @@ import { NextResponse } from 'next/server';
 
 interface IProps {
   params: {
-    id: number;
+    id: string;
   }
 }
 
 export async function DELETE(_: Request, { params: { id } }: IProps) {
-  var id = id;
 
   try {
     if (!id) throw new Error('ID is required');
