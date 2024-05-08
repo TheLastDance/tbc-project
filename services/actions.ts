@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cookieExpirationOneYear } from "./utils";
 import { getAnyData } from "./data-fetch/getAnyData";
+import { BASE_URL } from "./constants";
 
 export async function login(data: FormData) {
   const { username, password } = Object.fromEntries(data);
@@ -39,7 +40,7 @@ export async function setTranslateCookie(locale: Locale) {
 
 export async function createUser(data: FormData) {
   const { name, email, birthDate } = Object.fromEntries(data);
-  await getAnyData<IUserDatabase>("http://localhost:3000/api/create-user", {
+  await getAnyData<IUserDatabase>(`${BASE_URL}/api/create-user`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, birthDate })
@@ -49,7 +50,7 @@ export async function createUser(data: FormData) {
 }
 
 export async function deleteUser(id: number) {
-  await getAnyData<IUserDatabase>(`http://localhost:3000/api/delete-user/${id}`, {
+  await getAnyData<IUserDatabase>(`${BASE_URL}/api/delete-user/${id}`, {
     method: 'DELETE',
   });
 
@@ -58,7 +59,7 @@ export async function deleteUser(id: number) {
 
 export async function editUser(data: FormData, id: number) {
   const { name, email, birthDate } = Object.fromEntries(data);
-  await getAnyData<IUserDatabase>(`http://localhost:3000/api/edit-user/${id}`, {
+  await getAnyData<IUserDatabase>(`${BASE_URL}/api/edit-user/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, birthDate })
