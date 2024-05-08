@@ -33,6 +33,7 @@ export default function RootLayout({ children, params: { locale } }: IProps) {
             <GlobalLayout>
               {children}
             </GlobalLayout>
+            <div id="modal_container"></div>
           </ThemeProviders>
         </I18nProviderClient>
       </body>

@@ -80,6 +80,19 @@ type UserToken = {
   token: string;
 } & ErrorMessage;
 
+interface IUser {
+  id: number;
+  name: string;
+  email: string;
+  birthDate: string;
+}
+
+interface IUserDatabase {
+  users: {
+    rows: IUser[]
+  }
+}
+
 
 // component props
 type ChildrenProps = { children: React.ReactNode };
@@ -96,6 +109,7 @@ interface IInputProps {
   pattern?: string | RegExp;
   rows?: number;
   maxLength?: number,
+  defaultValue?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 

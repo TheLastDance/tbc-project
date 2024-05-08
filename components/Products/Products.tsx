@@ -27,7 +27,7 @@ export function Products({ data }: IProps) {
     return () => clearTimeout(debounce);
   }, [searchText]);
 
-  const filteredProducts = useMemo(() => products.filter(({ title }) => title.toLowerCase().includes(debouncedValue.toLowerCase())), [debouncedValue]);
+  const filteredProducts = useMemo(() => products.filter(({ title }) => title.toLowerCase().includes(debouncedValue.toLowerCase())), [debouncedValue, products]);
 
   // Products will be sorted by default, and if additional details are provided in the technical requirements, the functionality may be modified accordingly.
   const sortedData = useMemo(() => isAscending

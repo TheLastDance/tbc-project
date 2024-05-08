@@ -71,6 +71,12 @@ button:hover,
   transition: ease .5s;
 }
 
+button:disabled {
+  opacity: 0.3;
+  background-color: var(--grayColor);
+  cursor: auto;
+}
+
 .resetButtonStyles {
   background-color: unset;
   border: unset;

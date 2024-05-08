@@ -1,7 +1,10 @@
 "use server";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cookieExpirationOneYear } from "./utils";
+import { getAnyData } from "./data-fetch/getAnyData";
+import { BASE_URL } from "./constants";
 
 export async function login(data: FormData) {
   const { username, password } = Object.fromEntries(data);
@@ -33,4 +36,34 @@ export async function setTranslateCookie(locale: Locale) {
   const cookieStore = cookies();
 
   cookieStore.set("Next-Locale", locale, { expires: cookieExpirationOneYear });
+}
+
+export async function createUser(data: FormData) {
+  const { name, email, birthDate } = Object.fromEntries(data);
+  await getAnyData<IUserDatabase>(`${BASE_URL}/api/create-user`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, birthDate })
+  });
+
+  revalidatePath("/admin")
+}
+
+export async function deleteUser(id: number) {
+  await getAnyData<IUserDatabase>(`${BASE_URL}/api/delete-user/${id}`, {
+    method: 'DELETE',
+  });
+
+  revalidatePath("/admin")
+}
+
+export async function editUser(data: FormData, id: number) {
+  const { name, email, birthDate } = Object.fromEntries(data);
+  await getAnyData<IUserDatabase>(`${BASE_URL}/api/edit-user/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, birthDate })
+  });
+
+  revalidatePath("/admin")
 }
