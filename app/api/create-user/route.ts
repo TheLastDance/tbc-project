@@ -2,11 +2,11 @@ import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
-  const { name, email } = await request.json();
+  const { name, email, birthDate } = await request.json();
 
   try {
-    if (!name || !email) throw new Error('name and email names required');
-    await sql`INSERT INTO users (name, email) VALUES (${name}, ${email});`;
+    if (!name || !email || !birthDate) throw new Error('name, email and birthDate names required');
+    await sql`INSERT INTO users (name, email, "birthDate") VALUES (${name}, ${email}, ${birthDate});`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

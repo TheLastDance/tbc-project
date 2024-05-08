@@ -38,20 +38,20 @@ export async function setTranslateCookie(locale: Locale) {
 }
 
 export async function createUser(data: FormData) {
-  const { name, email } = Object.fromEntries(data);
-  await getAnyData<any>("http://localhost:3000/api/create-user", {
+  const { name, email, birthDate } = Object.fromEntries(data);
+  await getAnyData<IUserDatabase>("http://localhost:3000/api/create-user", {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email })
+    body: JSON.stringify({ name, email, birthDate })
   });
 
-  revalidatePath("/test")
+  revalidatePath("/admin")
 }
 
 export async function deleteUser(id: number) {
-  await getAnyData<any>(`http://localhost:3000/api/delete-user/${id}`, {
+  await getAnyData<IUserDatabase>(`http://localhost:3000/api/delete-user/${id}`, {
     method: 'DELETE',
   });
 
-  revalidatePath("/test")
+  revalidatePath("/admin")
 }

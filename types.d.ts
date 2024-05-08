@@ -80,6 +80,19 @@ type UserToken = {
   token: string;
 } & ErrorMessage;
 
+interface IUser {
+  id: number;
+  name: string;
+  email: string;
+  birthDate: string;
+}
+
+interface IUserDatabase {
+  users: {
+    rows: IUser[]
+  }
+}
+
 
 // component props
 type ChildrenProps = { children: React.ReactNode };
