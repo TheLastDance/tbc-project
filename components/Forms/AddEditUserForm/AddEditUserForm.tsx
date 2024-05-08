@@ -3,6 +3,7 @@ import { useState, FormEvent } from "react";
 import { FormContainer } from "../FormContainer/FormContainer"
 import { Input } from "@/components/Input/Input"
 import { createUser, editUser } from "@/services/actions";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 interface IProps {
   setToggleFalse: () => void;
@@ -27,7 +28,7 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
   return <FormContainer>
     <form className="AddEditUserForm" onSubmit={(e) => handleCreateUser(e)}>
       <Input
-        label="Name:"
+        label={<TranslateText translationKey="form.label.name" />}
         name="name"
         id="admin_form_name"
         type="text"
@@ -36,7 +37,7 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
       />
 
       <Input
-        label="Email:"
+        label={<TranslateText translationKey="form.label.email" />}
         name="email"
         id="admin_form_email"
         type="email"
@@ -45,7 +46,7 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
       />
 
       <Input
-        label="Date of birth:"
+        label={<TranslateText translationKey="birthDate" />}
         name="birthDate"
         id="admin_form_birthDate"
         type="date"
@@ -54,7 +55,10 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
       />
 
       <button type="submit" disabled={loading}>
-        {user ? "Edit user" : "Add user"}
+        {user ?
+          <TranslateText translationKey="edit" /> :
+          <TranslateText translationKey="addUser" />
+        }
       </button>
     </form>
   </FormContainer>

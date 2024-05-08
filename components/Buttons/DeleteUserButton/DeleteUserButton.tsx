@@ -1,5 +1,6 @@
 import { deleteUser } from "@/services/actions";
 import { PendingButton } from "../PendingButton/PendingButton";
+import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
 
 export function DeleteUserButton({ id }: { id: number }) {
 
@@ -11,7 +12,7 @@ export function DeleteUserButton({ id }: { id: number }) {
   return (
     <form action={handleDeleteUser}>
       <PendingButton type="submit">
-        Delete user
+        ✖ <TranslateTextServer translationKey="delete" />
       </PendingButton>
     </form>
   )

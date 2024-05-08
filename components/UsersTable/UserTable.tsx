@@ -2,6 +2,7 @@ import "./UsersTable.css";
 
 import { getAnyData } from "@/services/data-fetch/getAnyData";
 import { UserRow } from "./UserRow/UserRow";
+import { TranslateTextServer } from "../TranslateText/TranslateTextServer";
 
 // export const revalidate = 0;
 export async function UsersTable() {
@@ -13,11 +14,11 @@ export async function UsersTable() {
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Birth date</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th><TranslateTextServer translationKey="name" /></th>
+              <th><TranslateTextServer translationKey="email" /></th>
+              <th><TranslateTextServer translationKey="birthDate" /></th>
+              <th><TranslateTextServer translationKey="edit" /></th>
+              <th><TranslateTextServer translationKey="delete" /></th>
             </tr>
           </thead>
           <tbody>

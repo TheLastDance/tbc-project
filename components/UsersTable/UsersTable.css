@@ -23,6 +23,7 @@
   top: 0;
   background: var(--background);
   height: 50px;
+  text-transform: capitalize;
 }
 
 .usersTable th {

@@ -1,6 +1,7 @@
 import "./AddEditUserModal.css";
 import { ModalPortal } from "../ModalPortal/ModalPortal";
 import { AddEditUserForm } from "@/components/Forms/AddEditUserForm/AddEditUserForm";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 interface IProps {
   setToggleFalse: () => void;
@@ -14,14 +15,14 @@ export function AddEditUserModal({ setToggleFalse, edit, user }: IProps) {
       <section className="AddEditUserModal">
         {!edit && (
           <>
-            <h3>Create new user:</h3>
+            <h3><TranslateText translationKey="createNewUser" />:</h3>
             <AddEditUserForm setToggleFalse={setToggleFalse} />
           </>
         )
         }
         {edit && (
           <>
-            <h3>Edit user:</h3>
+            <h3><TranslateText translationKey="editUser" />:</h3>
             <AddEditUserForm user={user} setToggleFalse={setToggleFalse} />
           </>
         )}

@@ -2,13 +2,14 @@
 
 import { useToggle } from "@/services/hooks/useToggle";
 import { AddEditUserModal } from "@/components/Modals/AddEditUserModal/AddEditUserModal";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function EditUserButton({ user }: { user: IUser }) {
   const { toggle, setToggleFalse, setToggleTrue } = useToggle();
 
   return <>
     <button type="button" onClick={setToggleTrue}>
-      Edit User
+      📝 <TranslateText translationKey="edit" />
     </button>
     {toggle && <AddEditUserModal edit setToggleFalse={setToggleFalse} user={user} />}
   </>
