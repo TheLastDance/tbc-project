@@ -55,3 +55,14 @@ export async function deleteUser(id: number) {
 
   revalidatePath("/admin")
 }
+
+export async function editUser(data: FormData, id: number) {
+  const { name, email, birthDate } = Object.fromEntries(data);
+  await getAnyData<IUserDatabase>(`http://localhost:3000/api/edit-user/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, birthDate })
+  });
+
+  revalidatePath("/admin")
+}

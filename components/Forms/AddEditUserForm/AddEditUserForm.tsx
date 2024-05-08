@@ -2,13 +2,14 @@
 import { useState, FormEvent } from "react";
 import { FormContainer } from "../FormContainer/FormContainer"
 import { Input } from "@/components/Input/Input"
-import { createUser } from "@/services/actions";
+import { createUser, editUser } from "@/services/actions";
 
 interface IProps {
   setToggleFalse: () => void;
+  user?: IUser;
 }
 
-export function AddEditUserForm({ setToggleFalse }: IProps) {
+export function AddEditUserForm({ setToggleFalse, user }: IProps) {
   const [loading, setLoading] = useState(false);
 
   const handleCreateUser = async (e: FormEvent<HTMLFormElement>) => {
@@ -16,7 +17,8 @@ export function AddEditUserForm({ setToggleFalse }: IProps) {
     setLoading(true);
 
     const data = new FormData(e.currentTarget);
-    await createUser(data);
+    if (!user) await createUser(data);
+    if (user) await editUser(data, user.id);
 
     setLoading(false);
     setToggleFalse();
@@ -29,6 +31,7 @@ export function AddEditUserForm({ setToggleFalse }: IProps) {
         name="name"
         id="admin_form_name"
         type="text"
+        defaultValue={user ? user.name : ""}
         required
       />
 
@@ -37,6 +40,7 @@ export function AddEditUserForm({ setToggleFalse }: IProps) {
         name="email"
         id="admin_form_email"
         type="email"
+        defaultValue={user ? user.email : ""}
         required
       />
 
@@ -45,6 +49,7 @@ export function AddEditUserForm({ setToggleFalse }: IProps) {
         name="birthDate"
         id="admin_form_birthDate"
         type="date"
+        defaultValue={user ? user.birthDate : ""}
         required
       />
 

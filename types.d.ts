@@ -109,6 +109,7 @@ interface IInputProps {
   pattern?: string | RegExp;
   rows?: number;
   maxLength?: number,
+  defaultValue?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 

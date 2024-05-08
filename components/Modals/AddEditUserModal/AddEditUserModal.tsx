@@ -4,14 +4,27 @@ import { AddEditUserForm } from "@/components/Forms/AddEditUserForm/AddEditUserF
 
 interface IProps {
   setToggleFalse: () => void;
+  edit?: boolean;
+  user?: IUser;
 }
 
-export function AddEditUserModal({ setToggleFalse }: IProps) {
+export function AddEditUserModal({ setToggleFalse, edit, user }: IProps) {
   return (
     <ModalPortal onClose={setToggleFalse}>
       <section className="AddEditUserModal">
-        <h3>Create new user:</h3>
-        <AddEditUserForm setToggleFalse={setToggleFalse} />
+        {!edit && (
+          <>
+            <h3>Create new user:</h3>
+            <AddEditUserForm setToggleFalse={setToggleFalse} />
+          </>
+        )
+        }
+        {edit && (
+          <>
+            <h3>Edit user:</h3>
+            <AddEditUserForm user={user} setToggleFalse={setToggleFalse} />
+          </>
+        )}
       </section>
     </ModalPortal>
   )

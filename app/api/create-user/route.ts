@@ -2,7 +2,7 @@ import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
-  const { name, email, birthDate } = await request.json();
+  const { name, email, birthDate }: IUser = await request.json();
 
   try {
     if (!name || !email || !birthDate) throw new Error('name, email and birthDate names required');
