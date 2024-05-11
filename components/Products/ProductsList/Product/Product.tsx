@@ -1,8 +1,12 @@
+"use client"
+
 import "./Product.css";
 import { Card } from "@/components/Card/Card";
 import Link from "next/link";
 import Image from "next/image";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { useContext } from "react";
+import { cartContext } from "@/services/providers/CartProvider"
 
 interface IProps {
   item: IProductItem;
@@ -10,12 +14,18 @@ interface IProps {
 }
 
 export function Product({ item, index }: IProps) {
+  const { setCart } = useContext(cartContext);
+
   const {
     title,
     description,
     id,
     images: [image],
   } = item;
+
+  const handleAddToCart = () => {
+    setCart((prev) => prev + 1);
+  }
 
   return (
     <Card>
@@ -31,7 +41,7 @@ export function Product({ item, index }: IProps) {
       <div className="productDescription_container">
         <p>{description}</p>
       </div>
-      <button type="button">
+      <button type="button" onClick={handleAddToCart}>
         <TranslateText translationKey="button.addToCart" />
       </button>
     </Card>

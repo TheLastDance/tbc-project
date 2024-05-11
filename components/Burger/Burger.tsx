@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ThemeModeButton } from "../Buttons/ThemeModeButton/ThemeModeButton";
 import { LogOutButton } from "../Buttons/LogOutButton/LogOutButton";
 import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
-import { NavLink } from "../Links/NavLink";
+import { NavLink } from "../Links/NavLink/NavLink";
 import { TranslateText } from "../TranslateText/TranslateText";
 
 export function Burger() {
