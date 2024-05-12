@@ -70,6 +70,7 @@ interface IProductItemCart extends IProductItem {
 
 interface IStorageCart {
   count: number;
+  price: number;
   products: IProductItemCart[]
 }
 

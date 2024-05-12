@@ -3,6 +3,7 @@
 }
 
 .cartLink {
+  position: relative;
   display: flex;
   align-items: center;
   margin-left: 0.5rem;
@@ -11,6 +12,23 @@
 .cartLink svg {
   width: 1.75rem;
   height: 1.75rem;
+}
+
+.cartLink>span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-left: 1px;
 }
 
 /* .cartIcon_path {

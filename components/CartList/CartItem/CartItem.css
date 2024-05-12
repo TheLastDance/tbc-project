@@ -1,0 +1,66 @@
+.cartItem {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--secondaryColor);
+  padding: 1rem 0;
+}
+
+.cartItem_info_container {
+  display: flex;
+}
+
+.cartItem_image {
+  position: relative;
+  width: 8rem;
+  height: 10rem;
+}
+
+.cartItem_image img {
+  object-fit: contain;
+}
+
+.cartItem_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 1rem;
+}
+
+.cartItems_buttons {
+  display: flex;
+  width: 25px;
+  margin-right: 3rem;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cartItems_buttons button {
+  width: 100%;
+}
+
+.cartItem_deleteButton {
+  position: absolute;
+  display: flex;
+  top: 1rem;
+  right: 0;
+}
+
+.cartItem_deleteButton svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.cartItem_deleteButton svg:hover {
+  stroke: var(--primaryColor);
+  stroke-dasharray: 95;
+  stroke-dashoffset: 95;
+  animation: pathAnimation 0.4s linear forwards;
+}
+
+@keyframes pathAnimation {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

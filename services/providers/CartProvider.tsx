@@ -5,6 +5,7 @@ import { initialState, cartReducer } from "../reducers/cartReducer";
 
 type CartContextType = {
   cart: IStorageCart;
+  isMounted: boolean;
   setCart: React.Dispatch<SetStateAction<IStorageCart>>;
   handleAddToCart: (item: IProductItem) => void;
   handleRemoveFromCart: (item: IProductItemCart) => void;
@@ -14,6 +15,7 @@ type CartContextType = {
 
 export const cartContext = createContext<CartContextType>({
   cart: initialState,
+  isMounted: false,
   setCart: () => { },
   handleAddToCart: () => { },
   handleRemoveFromCart: () => { },
@@ -52,6 +54,7 @@ export function CartProvider({ children }: ChildrenProps) {
 
   const value = {
     cart,
+    isMounted,
     setCart,
     handleAddToCart,
     handleRemoveFromCart,

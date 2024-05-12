@@ -1,21 +1,39 @@
 "use client"
-import { useContext } from "react"
+import "./CartList.css";
+import { useContext } from "react";
 import { cartContext } from "@/services/providers/CartProvider";
-import Link from "next/link";
+import { CartItem } from "./CartItem/CartItem";
+import { Loader } from "../Loaders/Loader/Loader";
+
 
 export function CartList() {
-  const { cart, handleAddToCart, handleRemoveFromCart, handleDeleteFromCart, handleResetCart } = useContext(cartContext);
+  const { cart, isMounted, handleResetCart } = useContext(cartContext);
+
+  if (!isMounted) return <Loader />;
 
   return (
-    <ul>
-      <button type="button" onClick={handleResetCart}>RESET CART</button>
-      {cart.products.map((item) => <li key={item.id}>
-        <Link href={`/products/${item.id}`}>{item.title}</Link>
-        <button type="button" onClick={() => handleAddToCart(item)}>+</button>
-        <span>{item.quantity}</span>
-        <button type="button" onClick={() => handleRemoveFromCart(item)}>-</button>
-        <button type="button" onClick={() => handleDeleteFromCart(item)}>DELETE</button>
-      </li>)}
-    </ul>
+    <section className="cart_container">
+      <div className="cart_items">
+        {cart.count > 0 && <div>
+          <h1>Shopping Cart</h1>
+          <button type="button" onClick={handleResetCart}>RESET</button>
+        </div>}
+        {cart.count <= 0 && <p>Your cart is empty</p>}
+        <ul>
+          {cart.products.map((item) => <CartItem item={item} key={item.id} />)}
+        </ul>
+      </div>
+      {
+        cart.count > 0 && <div className="cart_info">
+          <p>
+            Items: <span>{cart.count}</span>
+          </p>
+          <p>
+            Total: <span>{cart.price.toFixed(2)}$</span>
+          </p>
+          <button>Checkout</button>
+        </div>
+      }
+    </section>
   )
 }
