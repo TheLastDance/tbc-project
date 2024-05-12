@@ -1,23 +1,62 @@
 "use client"
-import { createContext, SetStateAction } from "react"
+import { createContext, SetStateAction, useEffect, useState, useReducer } from "react"
 import { useLocalStorage } from "../hooks/useLocaleStorage";
+import { initialState, cartReducer } from "../reducers/cartReducer";
 
 type CartContextType = {
-  cart: number;
-  setCart: React.Dispatch<SetStateAction<number>>;
+  cart: IStorageCart;
+  setCart: React.Dispatch<SetStateAction<IStorageCart>>;
+  handleAddToCart: (item: IProductItem) => void;
+  handleRemoveFromCart: (item: IProductItemCart) => void;
+  handleDeleteFromCart: (item: IProductItemCart) => void;
+  handleResetCart: () => void;
 };
 
 export const cartContext = createContext<CartContextType>({
-  cart: 0,
+  cart: initialState,
   setCart: () => { },
+  handleAddToCart: () => { },
+  handleRemoveFromCart: () => { },
+  handleDeleteFromCart: () => { },
+  handleResetCart: () => { },
 });
 
 export function CartProvider({ children }: ChildrenProps) {
-  const [cart, setCart] = useLocalStorage<number>("product", 0);
+  const [isMounted, setIsMounted] = useState(false);
+  const [cart, setCart] = useLocalStorage<IStorageCart>("cart", initialState);
+  const [cartItems, dispatch] = useReducer(cartReducer, initialState);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, [])
+
+  useEffect(() => {
+    if (isMounted) setCart(cartItems)
+  }, [cartItems])
+
+  const handleAddToCart = (item: IProductItem) => {
+    if (isMounted) dispatch({ type: "INCREMENT", payload: { product: item, localState: cart } });
+  }
+
+  const handleRemoveFromCart = (item: IProductItemCart) => {
+    if (isMounted) dispatch({ type: "DECREMENT", payload: { product: item, localState: cart } });
+  }
+
+  const handleDeleteFromCart = (item: IProductItemCart) => {
+    if (isMounted) dispatch({ type: "DELETE", payload: { product: item, localState: cart } });
+  }
+
+  const handleResetCart = () => {
+    if (isMounted) dispatch({ type: "RESET" });
+  }
 
   const value = {
     cart,
-    setCart
+    setCart,
+    handleAddToCart,
+    handleRemoveFromCart,
+    handleDeleteFromCart,
+    handleResetCart
   }
 
   return <cartContext.Provider value={value}>{children}</cartContext.Provider>

@@ -64,6 +64,15 @@ interface IProductItem {
   images: string[];
 }
 
+interface IProductItemCart extends IProductItem {
+  quantity: number;
+}
+
+interface IStorageCart {
+  count: number;
+  products: IProductItemCart[]
+}
+
 interface IPostItem {
   id: number;
   title: string;

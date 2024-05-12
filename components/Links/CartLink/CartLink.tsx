@@ -10,7 +10,7 @@ export function CartLink() {
   const { cart } = useContext(cartContext);
 
   return <Link href="/cart" className="cartLink">
-    {cart > 0 && <span>{cart}</span>}
+    {cart.count > 0 && <span>{cart.count}</span>}
     <Cart />
   </Link>
 }
