@@ -1,3 +1,4 @@
+"use client"
 import "./ProductsList.css";
 import { Product } from "./Product/Product";
 
@@ -6,6 +7,7 @@ interface IProps {
 }
 
 export function ProductsList({ products }: IProps) {
+
   return (
     <ul className="products_list">
       {products.map((item, index) => (

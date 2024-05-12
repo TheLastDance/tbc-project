@@ -3,6 +3,7 @@ import { getAnyData } from "@/services/data-fetch/getAnyData";
 import notFound from "@/app/[locale]/not-found";
 import Image from "next/image";
 import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
+import { FullProductAddToCartButton } from "./FullProductAddToCartButton";
 
 
 export async function FullProduct({ id }: idParam) {
@@ -45,9 +46,7 @@ export async function FullProduct({ id }: idParam) {
           {price}
           <span> $</span>{" "}
         </p>
-        <button type="button">
-          <TranslateTextServer translationKey="button.addToCart" />
-        </button>
+        <FullProductAddToCartButton item={data} />
       </div>
       <div className="fullProduct_imageContainer">
         <Image src={thumbnail} alt={title} width={400} height={650} priority />

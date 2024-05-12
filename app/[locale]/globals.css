@@ -12,7 +12,7 @@
 .dark {
   --primaryColor: #000;
   --secondaryColor: #fff;
-  --grayColor: #555;
+  --grayColor: #c2baba;
   --background: linear-gradient(to bottom right,
       #918f8f,
       #555457,
@@ -88,6 +88,10 @@ button:disabled {
 .resetButtonStyles:hover {
   filter: unset;
   transition: unset;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 section {
