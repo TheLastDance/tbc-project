@@ -8,6 +8,10 @@
   margin: 0.5rem 0;
 }
 
+.cart_container button {
+  text-transform: uppercase;
+}
+
 .cart_items {
   width: 100%;
 }
@@ -41,7 +45,3 @@
     border-top: unset;
   }
 }
-
-/* .cart_items ul {
-  width: 70%;
-} */

@@ -90,6 +90,10 @@ button:disabled {
   transition: unset;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 section {
   margin: 0.75rem 0;
 }
