@@ -13,7 +13,7 @@ export function Input({
 }: IInputProps) {
   return (
     <div className="input_container">
-      <label htmlFor={id}>{label}:</label>
+      {label && <label htmlFor={id}>{label}:</label>}
       {textArea ? (
         <textarea
           id={id}

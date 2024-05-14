@@ -5,8 +5,9 @@ import { useState } from "react";
 import { ThemeModeButton } from "../Buttons/ThemeModeButton/ThemeModeButton";
 import { LogOutButton } from "../Buttons/LogOutButton/LogOutButton";
 import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
-import { NavLink } from "../Links/NavLink";
+import { NavLink } from "../Links/NavLink/NavLink";
 import { TranslateText } from "../TranslateText/TranslateText";
+import { CartLink } from "../Links/CartLink/CartLink";
 
 export function Burger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,7 @@ export function Burger() {
         </button>
         <div className="burger_menuButtons">
           <LanguageSwitcher />
+          <CartLink onClick={toggleBurger} />
           <ThemeModeButton />
           <LogOutButton />
         </div>
