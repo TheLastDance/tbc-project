@@ -2,5 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 2px dashed var(--secondaryColor);
+  max-width: var(--rootContainerSize);
+  width: 100%;
+  margin: 0 auto;
+  border-top: 1px solid var(--secondaryColor);
 }
