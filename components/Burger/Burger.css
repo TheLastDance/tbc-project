@@ -41,3 +41,17 @@
 .burger_container .navLink_active {
   border-bottom: 1px solid var(--secondaryColor);
 }
+
+.authHeader .burger_menuButtons svg,
+.authHeader .burgerOverlay svg {
+  fill: var(--secondaryColor)
+}
+
+.authHeader .burgerOverlay .cartLink span {
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+}
+
+.burger_container .burgerOverlay a {
+  color: var(--secondaryColor);
+}

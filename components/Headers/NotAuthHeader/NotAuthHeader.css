@@ -2,7 +2,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px dashed var(--secondaryColor);
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  border-radius: 0 0 20px 20px;
+}
+
+.notAuthHeader a {
+  color: var(--primaryColor);
+}
+
+.notAuthHeader svg {
+  fill: var(--primaryColor);
 }
 
 .notAuthHeader div {

@@ -1,0 +1,51 @@
+.cartLink:hover {
+  filter: unset;
+}
+
+.cartLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.cartLink svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.cartLink>span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-left: 1px;
+}
+
+/* .cartIcon_path {
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+  stroke: var(--secondaryColor);
+  fill: none;
+}
+
+.cartLink:hover .cartIcon_path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 400;
+  transition: 2.5s;
+}
+
+@keyframes pathAnimation {
+  to {
+    stroke-dashoffset: 0;
+  }
+} */

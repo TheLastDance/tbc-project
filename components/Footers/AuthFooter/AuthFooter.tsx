@@ -6,7 +6,6 @@ import { NewsletterForm } from "../../Forms/NewsletterForm/NewsletterForm";
 export function AuthFooter() {
   return (
     <footer className='authFooter'>
-
       <div className="footer_links">
         <Navigation />
 
