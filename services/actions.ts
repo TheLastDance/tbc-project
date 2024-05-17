@@ -68,14 +68,39 @@ export async function editUser(data: FormData, id: number) {
   revalidatePath("/admin")
 }
 
-export async function incrementCart(item_id: number) {
-  await getAnyData(`${BASE_URL}/api/carts/update-cart`, {
+async function updateCart(apiUrl: string, item_id: number) {
+  await getAnyData(`${BASE_URL}/api/carts/${apiUrl}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       'Cookie': `user_id=${JSON.parse(cookies().get("token")?.value!).id};`,
     },
     body: JSON.stringify({ item_id })
+  });
+}
+
+export async function incrementCart(item_id: number) {
+  await updateCart("update-cart", item_id);
+  revalidateTag("cart")
+}
+
+export async function decrementCart(item_id: number) {
+  await updateCart("decrement-cart", item_id);
+  revalidateTag("cart")
+}
+
+export async function deleteCartItem(item_id: number) {
+  await updateCart("delete-cart-item", item_id);
+  revalidateTag("cart")
+}
+
+export async function resetCart() {
+  await getAnyData(`${BASE_URL}/api/carts/reset-cart`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Cookie': `user_id=${JSON.parse(cookies().get("token")?.value!).id};`,
+    }
   });
 
   revalidateTag("cart")

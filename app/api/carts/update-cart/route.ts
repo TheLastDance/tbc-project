@@ -3,7 +3,6 @@ import { NextResponse, NextRequest } from 'next/server';
 import { createCart } from '@/services/data-fetch/cart/create-cart';
 
 export async function PUT(request: NextRequest) {
-
   try {
     const user_id = request.cookies.get("user_id")?.value;
     const { item_id } = await request.json();
@@ -13,7 +12,7 @@ export async function PUT(request: NextRequest) {
     const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${+user_id};`;
 
     if (cart.rows.length) {
-      let newProduct;
+      let newProduct: ICartTable["products"] = [];
       const products = cart.rows[0].products;
       const isPresent = products.find((item) => item.id === item_id);
 
@@ -27,10 +26,8 @@ export async function PUT(request: NextRequest) {
       await createCart(item_id, user_id); // first addition to cart from user should create a cart for him
     }
 
+    return NextResponse.json({ message: "cart was updated!" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
-
-  const carts = await sql`SELECT * FROM carts;`;
-  return NextResponse.json({ carts }, { status: 200 });
 }

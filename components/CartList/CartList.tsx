@@ -1,16 +1,10 @@
-
 import "./CartList.css";
-// import { useContext } from "react";
-// import { cartContext } from "@/services/providers/CartProvider";
 import { CartItem } from "./CartItem/CartItem";
-// import { Loader } from "../Loaders/Loader/Loader";
 import { TranslateText } from "../TranslateText/TranslateText";
 import { getCart } from "@/services/data-fetch/cart/get-cart";
-
-
+import { CartResetButton } from "./Buttons/CartResetButton";
 
 export async function CartList() {
-  // const { cart, isMounted, handleResetCart } = useContext(cartContext);
   const cart = await getCart();
 
   return (
@@ -22,9 +16,7 @@ export async function CartList() {
             <h1 className="capitalize">
               <TranslateText translationKey="cart.heading" />
             </h1>
-            <button type="button">
-              <TranslateText translationKey="button.reset" />
-            </button>
+            <CartResetButton />
           </div>
         }
 
