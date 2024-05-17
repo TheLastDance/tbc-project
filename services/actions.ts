@@ -1,5 +1,5 @@
 "use server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cookieExpirationOneYear } from "./utils";
@@ -20,7 +20,7 @@ export async function login(data: FormData) {
   if (!response.ok) return user;
 
   const cookieStore = cookies();
-  cookieStore.set("token", user.token, { httpOnly: true, expires: cookieExpirationOneYear }); // will use typescript enums in future, thats why I have no constant for token string
+  cookieStore.set("token", JSON.stringify(user), { httpOnly: true, expires: cookieExpirationOneYear }); // will use typescript enums in future, thats why I have no constant for token string
 
   redirect("/");
 }
@@ -66,4 +66,17 @@ export async function editUser(data: FormData, id: number) {
   });
 
   revalidatePath("/admin")
+}
+
+export async function incrementCart(item_id: number) {
+  await getAnyData(`${BASE_URL}/api/carts/update-cart`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Cookie': `user_id=${JSON.parse(cookies().get("token")?.value!).id};`,
+    },
+    body: JSON.stringify({ item_id })
+  });
+
+  revalidateTag("cart")
 }

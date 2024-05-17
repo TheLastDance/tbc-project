@@ -1,16 +1,17 @@
-"use client"
+
 import "./CartList.css";
-import { useContext } from "react";
-import { cartContext } from "@/services/providers/CartProvider";
+// import { useContext } from "react";
+// import { cartContext } from "@/services/providers/CartProvider";
 import { CartItem } from "./CartItem/CartItem";
-import { Loader } from "../Loaders/Loader/Loader";
+// import { Loader } from "../Loaders/Loader/Loader";
 import { TranslateText } from "../TranslateText/TranslateText";
+import { getCart } from "@/services/data-fetch/cart/get-cart";
 
 
-export function CartList() {
-  const { cart, isMounted, handleResetCart } = useContext(cartContext);
 
-  if (!isMounted) return <Loader />;
+export async function CartList() {
+  // const { cart, isMounted, handleResetCart } = useContext(cartContext);
+  const cart = await getCart();
 
   return (
     <section className="cart_container">
@@ -21,7 +22,7 @@ export function CartList() {
             <h1 className="capitalize">
               <TranslateText translationKey="cart.heading" />
             </h1>
-            <button type="button" onClick={handleResetCart}>
+            <button type="button">
               <TranslateText translationKey="button.reset" />
             </button>
           </div>

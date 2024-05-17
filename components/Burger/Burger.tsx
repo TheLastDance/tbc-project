@@ -7,7 +7,6 @@ import { LogOutButton } from "../Buttons/LogOutButton/LogOutButton";
 import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
 import { NavLink } from "../Links/NavLink/NavLink";
 import { TranslateText } from "../TranslateText/TranslateText";
-import { CartLink } from "../Links/CartLink/CartLink";
 
 export function Burger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +19,7 @@ export function Burger() {
   return (
     <div className="burger_container">
       <button className="burgerButtonOpen resetButtonStyles" type="button" onClick={toggleBurger}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.75rem" height="1.75rem" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
           <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
         </svg>
       </button>
@@ -32,7 +31,6 @@ export function Burger() {
         </button>
         <div className="burger_menuButtons">
           <LanguageSwitcher />
-          <CartLink onClick={toggleBurger} />
           <ThemeModeButton />
           <LogOutButton />
         </div>

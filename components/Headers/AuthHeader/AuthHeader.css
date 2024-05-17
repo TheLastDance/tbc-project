@@ -20,7 +20,7 @@
 }
 
 .authHeader div .logout_button {
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
 }
 
 .authHeader .burger_container {
@@ -28,11 +28,18 @@
 }
 
 @media(max-width:960px) {
+
   .authHeader .burger_container {
     display: block;
   }
 
-  .authHeader .mainNavigation_container {
+  .authHeader .burger_container button {
+    display: flex;
+    margin-left: 0.25rem;
+  }
+
+  .authHeader .mainNavigation_container nav,
+  .mainNavigation_container button {
     display: none;
   }
 }

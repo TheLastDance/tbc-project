@@ -68,6 +68,16 @@ interface IProductItemCart extends IProductItem {
   quantity: number;
 }
 
+interface ICartTable {
+  id: number,
+  user_id: number,
+  products: {
+    id: number,
+    quantity: number,
+  }[],
+  added_on: string,
+}
+
 interface IStorageCart {
   count: number;
   price: number;
