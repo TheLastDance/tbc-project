@@ -10,12 +10,20 @@ export async function PUT(request: NextRequest) {
 
     const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${+user_id};`;
 
-    const products = cart.rows[0].products;
+    if (cart.rows.length) {
+      const products = cart.rows[0].products;
+      const index = products.findIndex((item) => item.id === item_id);
+      const product = products[index];
+      const path = `{${index}}`;
 
-    const newProduct = products.map(item => item.id === item_id ? ({ ...item, quantity: item.quantity - 1 }) : ({ ...item }))
-      .filter(item => item.quantity > 0);
+      if (product.quantity <= 1) {
+        await sql`UPDATE carts SET products = products#-${path},added_on = NOW() WHERE user_id = ${+user_id};`;
+      } else {
+        const newProduct = { ...product, quantity: product.quantity - 1 };
+        await sql`UPDATE carts SET products = jsonb_set(products,${path},${JSON.stringify(newProduct)}),added_on = NOW() WHERE user_id = ${+user_id};`;
+      }
+    }
 
-    await sql`UPDATE carts SET products = ${JSON.stringify(newProduct)} WHERE user_id = ${+user_id};`;
     return NextResponse.json({ message: "cart was updated!" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });

@@ -68,13 +68,15 @@ interface IProductItemCart extends IProductItem {
   quantity: number;
 }
 
+interface ICartProduct {
+  id: number,
+  quantity: number,
+}
+
 interface ICartTable {
   id: number,
   user_id: number,
-  products: {
-    id: number,
-    quantity: number,
-  }[],
+  products: ICartProduct[],
   added_on: string,
 }
 

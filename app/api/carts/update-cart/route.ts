@@ -12,15 +12,21 @@ export async function PUT(request: NextRequest) {
     const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${+user_id};`;
 
     if (cart.rows.length) {
-      let newProduct: ICartTable["products"] = [];
+      let newProduct: ICartProduct;
       const products = cart.rows[0].products;
-      const isPresent = products.find((item) => item.id === item_id);
+      const index = products.findIndex((item) => item.id === item_id);
 
-      if (!isPresent) newProduct = [...products, { id: item_id, quantity: 1 }];
+      if (index === -1) {
+        newProduct = { id: item_id, quantity: 1 };
+        await sql`UPDATE carts SET products = jsonb_insert(products,'{0}',${JSON.stringify(newProduct)}),added_on = NOW() WHERE user_id = ${+user_id};`;
+      }
 
-      if (isPresent) newProduct = products.map((item) => item.id === item_id ? ({ ...item, quantity: item.quantity + 1 }) : ({ ...item }));
-
-      await sql`UPDATE carts SET products = ${JSON.stringify(newProduct)} WHERE user_id = ${+user_id};`;
+      if (index !== -1) {
+        const product = products[index];
+        const path = `{${index}}`;
+        newProduct = { ...product, quantity: product.quantity + 1 };
+        await sql`UPDATE carts SET products = jsonb_set(products,${path},${JSON.stringify(newProduct)}),added_on = NOW() WHERE user_id = ${+user_id};`;
+      }
 
     } else {
       await createCart(item_id, user_id); // first addition to cart from user should create a cart for him

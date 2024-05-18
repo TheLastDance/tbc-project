@@ -10,11 +10,13 @@ export async function PUT(request: NextRequest) {
 
     const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${+user_id};`;
 
-    const products = cart.rows[0].products;
+    if (cart.rows.length) {
+      const products = cart.rows[0].products;
+      const index = products.findIndex((item) => item.id === item_id);
+      const path = `{${index}}`;
 
-    const newProduct = products.filter(item => item.id !== item_id);
-
-    await sql`UPDATE carts SET products = ${JSON.stringify(newProduct)} WHERE user_id = ${+user_id};`;
+      if (index !== -1) await sql`UPDATE carts SET products = products#-${path},added_on = NOW() WHERE user_id = ${+user_id};`;
+    }
 
     return NextResponse.json({ message: "product was deleted!" }, { status: 200 });
   } catch (error) {
