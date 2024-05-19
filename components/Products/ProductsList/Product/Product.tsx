@@ -27,7 +27,7 @@ export function Product({ item, index }: IProps) {
       <div className="productDescription_container">
         <p>{description}</p>
       </div>
-      <CartIncrementButton id={id}>
+      <CartIncrementButton item={item}>
         <TranslateText translationKey="button.addToCart" />
       </CartIncrementButton>
     </Card>

@@ -1,10 +1,29 @@
 "use client"
 import { incrementCart } from "@/services/actions";
+import { useTransition } from "react";
 
-export function CartIncrementButton({ children, id }: { children: React.ReactNode, id: number }) {
+interface IProps {
+  children: React.ReactNode,
+  item: IProductItemCart | IProductItem,
+  optimistic?: IStorageCart,
+  addOptimistic?: (action: IStorageCart) => void,
+}
+
+export function CartIncrementButton({ children, item, optimistic, addOptimistic }: IProps) {
+  const [, startTransition] = useTransition();
 
   const handleIncrement = async () => {
-    await incrementCart(id);
+    if (addOptimistic && optimistic) {
+      startTransition(() => {
+        const newCart = {
+          count: optimistic.count + 1,
+          price: optimistic.price + item.price,
+          products: optimistic.products.map(p => p.id === item.id ? ({ ...p, quantity: p.quantity + 1 }) : ({ ...p })),
+        }
+        return addOptimistic(newCart)
+      })
+    }
+    await incrementCart(item.id);
   }
 
   return (

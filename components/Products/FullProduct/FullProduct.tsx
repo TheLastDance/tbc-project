@@ -46,7 +46,7 @@ export async function FullProduct({ id }: idParam) {
           {price}
           <span> $</span>{" "}
         </p>
-        <CartIncrementButton id={data.id}>
+        <CartIncrementButton item={data}>
           <TranslateTextServer translationKey="button.addToCart" />
         </CartIncrementButton>
       </div>
