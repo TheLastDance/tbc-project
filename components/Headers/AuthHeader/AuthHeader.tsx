@@ -6,10 +6,8 @@ import { ThemeModeButton } from "@/components/Buttons/ThemeModeButton/ThemeModeB
 import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 import { CartLink } from "@/components/Links/CartLink/CartLink";
 import { Burger } from "@/components/Burger/Burger";
-import { getCart } from "@/services/data-fetch/cart/get-cart"
 
 export async function AuthHeader() {
-  const cart = await getCart();
 
   return (
     <header className="authHeader">
@@ -17,11 +15,11 @@ export async function AuthHeader() {
       <div className="mainNavigation_container">
         <Navigation />
         <LanguageSwitcher />
+        <CartLink />
         <ThemeModeButton />
-        <CartLink cart={cart} />
         <LogOutButton />
-        <Burger />
       </div>
+      <Burger />
     </header>
   )
 }

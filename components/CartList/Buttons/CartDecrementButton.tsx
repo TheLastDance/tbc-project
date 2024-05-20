@@ -1,15 +1,11 @@
 "use client"
 import { decrementCart } from "@/services/actions";
 import { useTransition } from "react";
+import { useCartOptimistic } from "@/services/hooks/useCartOptimistic";
 
-interface IProps {
-  item: IProductItemCart,
-  optimistic: IStorageCart,
-  addOptimistic: (action: IStorageCart) => void,
-}
-
-export function CartDecrementButton({ item, optimistic, addOptimistic }: IProps) {
+export function CartDecrementButton({ item }: { item: IProductItemCart }) {
   const [, startTransition] = useTransition();
+  const { optimistic, addOptimistic } = useCartOptimistic();
 
   const handleDecrement = async () => {
     startTransition(() => {

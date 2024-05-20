@@ -5,13 +5,7 @@ import { CartDecrementButton } from "../Buttons/CartDecrementButton";
 import { CartIncrementButton } from "../Buttons/CartIncrementButton";
 import { CartDeleteButton } from "../Buttons/CartDeleteButton";
 
-interface IProps {
-  item: IProductItemCart,
-  optimistic: IStorageCart,
-  addOptimistic: (action: IStorageCart) => void,
-}
-
-export function CartItem({ item, optimistic, addOptimistic }: IProps) {
+export function CartItem({ item }: { item: IProductItemCart }) {
   const { id, title, thumbnail, quantity, brand, price } = item;
 
   return (
@@ -33,13 +27,13 @@ export function CartItem({ item, optimistic, addOptimistic }: IProps) {
         </div>
       </div>
       <div className="cartItems_buttons">
-        <CartIncrementButton item={item} optimistic={optimistic} addOptimistic={addOptimistic}>
+        <CartIncrementButton item={item}>
           +
         </CartIncrementButton>
         <span>{quantity}</span>
-        <CartDecrementButton item={item} optimistic={optimistic} addOptimistic={addOptimistic} />
+        <CartDecrementButton item={item} />
       </div>
-      <CartDeleteButton item={item} optimistic={optimistic} addOptimistic={addOptimistic} />
+      <CartDeleteButton item={item} />
     </li>
   )
 }

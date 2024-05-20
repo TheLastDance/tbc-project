@@ -4,10 +4,10 @@ import "./CartList.css";
 import { CartItem } from "./CartItem/CartItem";
 import { TranslateText } from "../TranslateText/TranslateText";
 import { CartResetButton } from "./Buttons/CartResetButton";
-import { useOptimistic } from "react";
+import { useCartOptimistic } from "@/services/hooks/useCartOptimistic";
 
-export function CartList({ cart }: { cart: IStorageCart }) {
-  const [optimistic, addOptimistic] = useOptimistic<IStorageCart, IStorageCart>(cart, (state, newCart) => ({ ...state, ...newCart }))
+export function CartList() {
+  const { optimistic } = useCartOptimistic();
 
   return (
     <section className="cart_container">
@@ -18,14 +18,14 @@ export function CartList({ cart }: { cart: IStorageCart }) {
             <h1 className="capitalize">
               <TranslateText translationKey="cart.heading" />
             </h1>
-            <CartResetButton addOptimistic={addOptimistic} />
+            <CartResetButton />
           </div>
         }
 
         {optimistic.count <= 0 && <p><TranslateText translationKey="cart.emptyMessage" /></p>}
 
         <ul>
-          {optimistic.products.map((item) => <CartItem item={item} optimistic={optimistic} addOptimistic={addOptimistic} key={item.id} />)}
+          {optimistic.products.map((item) => <CartItem item={item} key={item.id} />)}
         </ul>
 
       </div>

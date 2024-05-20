@@ -2,15 +2,11 @@
 import { deleteCartItem } from "@/services/actions";
 import { Close } from "@/components/Icons/Close";
 import { useTransition } from "react";
+import { useCartOptimistic } from "@/services/hooks/useCartOptimistic";
 
-interface IProps {
-  item: IProductItemCart,
-  optimistic: IStorageCart,
-  addOptimistic: (action: IStorageCart) => void,
-}
-
-export function CartDeleteButton({ item, optimistic, addOptimistic }: IProps) {
+export function CartDeleteButton({ item }: { item: IProductItemCart }) {
   const [, startTransition] = useTransition();
+  const { optimistic, addOptimistic } = useCartOptimistic();
 
   const handleDeleteCartItem = async () => {
     startTransition(() => {

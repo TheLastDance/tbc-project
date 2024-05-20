@@ -1,16 +1,16 @@
 "use client"
 import { incrementCart } from "@/services/actions";
 import { useTransition } from "react";
+import { useCartOptimistic } from "@/services/hooks/useCartOptimistic";
 
 interface IProps {
   children: React.ReactNode,
   item: IProductItemCart | IProductItem,
-  optimistic?: IStorageCart,
-  addOptimistic?: (action: IStorageCart) => void,
 }
 
-export function CartIncrementButton({ children, item, optimistic, addOptimistic }: IProps) {
+export function CartIncrementButton({ children, item }: IProps) {
   const [, startTransition] = useTransition();
+  const { optimistic, addOptimistic } = useCartOptimistic();
 
   const handleIncrement = async () => {
     if (addOptimistic && optimistic) {

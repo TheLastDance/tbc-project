@@ -1,12 +1,10 @@
 import { CartList } from "@/components/CartList/CartList"
-import { getCart } from "@/services/data-fetch/cart/get-cart";
 
-export default async function Cart() {
-  const cart = await getCart();
+export default function Cart() {
 
   return (
     <>
-      <CartList cart={cart} />
+      <CartList />
     </>
   )
 }
