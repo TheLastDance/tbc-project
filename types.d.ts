@@ -68,6 +68,18 @@ interface IProductItemCart extends IProductItem {
   quantity: number;
 }
 
+interface ICartProduct {
+  id: number,
+  quantity: number,
+}
+
+interface ICartTable {
+  id: number,
+  user_id: number,
+  products: ICartProduct[],
+  added_on: string,
+}
+
 interface IStorageCart {
   count: number;
   price: number;
@@ -125,13 +137,13 @@ interface IInputProps {
 
 interface ISearchProps {
   inputID: string;
-  buttonContent: string | React.ReactNode;
   inputValue: string;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleButtonClick: () => void;
 }
 
 interface IErrorPage {
   error?: Error & { digest?: string }
   reset: () => void;
 }
+
+type ButtonMode = "glitch" | "glitchHover" | "none";

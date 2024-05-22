@@ -7,6 +7,7 @@ import { FormEvent, useState } from "react";
 import { Loader } from "@/components/Loaders/Loader/Loader";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { login } from "@/services/actions";
+import { Button } from "@/components/UI/Buttons/Button/Button";
 
 export function LoginForm() {
   const [error, setError] = useState("");
@@ -46,9 +47,7 @@ export function LoginForm() {
           />
           {error && !loading && <div>{error}</div>}
           {loading && <Loader />}
-          <button type="submit" disabled={loading}>
-            <TranslateText translationKey="button.login" />
-          </button>
+          <Button type="submit" disabled={loading} translationKey="button.login" mode="glitch" />
         </form>
       </FormContainer>
     </section>

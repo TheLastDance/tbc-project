@@ -17,7 +17,7 @@
   font-size: 2rem;
 }
 
-.fullProduct_info span {
+.fullProduct_info p span {
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -30,10 +30,6 @@
 .fullProduct_info .fullProduct_info_price span {
   font-size: 1.35rem;
   font-weight: 700;
-}
-
-.fullProduct_info button {
-  padding: 0.25rem 0.75rem;
 }
 
 .fullProduct img {

@@ -1,4 +1,7 @@
 .authHeader {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +23,7 @@
 }
 
 .authHeader div .logout_button {
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
 }
 
 .authHeader .burger_container {
@@ -28,8 +31,14 @@
 }
 
 @media(max-width:960px) {
+
   .authHeader .burger_container {
     display: block;
+  }
+
+  .authHeader .burger_container button {
+    display: flex;
+    margin-left: 0.25rem;
   }
 
   .authHeader .mainNavigation_container {

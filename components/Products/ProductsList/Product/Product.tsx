@@ -1,12 +1,8 @@
-"use client"
-
 import "./Product.css";
 import { Card } from "@/components/Card/Card";
-import { useContext } from "react";
-import { cartContext } from "@/services/providers/CartProvider";
 import Link from "next/link";
 import Image from "next/image";
-import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrementButton";
 
 interface IProps {
   item: IProductItem;
@@ -14,13 +10,7 @@ interface IProps {
 }
 
 export function Product({ item, index }: IProps) {
-  const { handleAddToCart } = useContext(cartContext);
-  const {
-    title,
-    description,
-    id,
-    images: [image],
-  } = item;
+  const { title, description, id, images: [image] } = item;
 
   return (
     <Card>
@@ -36,9 +26,7 @@ export function Product({ item, index }: IProps) {
       <div className="productDescription_container">
         <p>{description}</p>
       </div>
-      <button type="button" onClick={() => handleAddToCart(item)}>
-        <TranslateText translationKey="button.addToCart" />
-      </button>
+      <CartIncrementButton item={item} mode="glitchHover" translationKey="button.addToCart" />
     </Card>
   );
 }
