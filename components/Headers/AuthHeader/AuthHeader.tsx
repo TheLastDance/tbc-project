@@ -7,7 +7,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher
 import { CartLink } from "@/components/Links/CartLink/CartLink";
 import { Burger } from "@/components/Burger/Burger";
 
-export async function AuthHeader() {
+export function AuthHeader() {
 
   return (
     <header className="authHeader">

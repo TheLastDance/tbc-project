@@ -23,5 +23,6 @@
 }
 
 .products_list button {
+  min-width: fit-content;
   width: 50%;
 }

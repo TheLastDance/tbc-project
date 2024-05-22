@@ -2,21 +2,17 @@
   --rootContainerSize: 1250px;
   --primaryColor: #fff;
   --secondaryColor: #000;
-  --grayColor: #555;
-  --background: linear-gradient(to bottom right,
-      #ffffff,
-      #cac7ce,
-      #a19da8 70%);
+  --grayColor: #c2baba;
+  --background: #e0e0e0;
+  --glitchColor1: #e0287d;
+  --glitchColor2: #fff;
+  --glitchColor3: #1bc7fb;
 }
 
 .dark {
   --primaryColor: #000;
   --secondaryColor: #fff;
-  --grayColor: #c2baba;
-  --background: linear-gradient(to bottom right,
-      #918f8f,
-      #555457,
-      #2c2b2e 70%);
+  --background: #1d1a1a;
 }
 
 svg {

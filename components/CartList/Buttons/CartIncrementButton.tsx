@@ -2,13 +2,17 @@
 import { incrementCart } from "@/services/actions";
 import { useTransition } from "react";
 import { useCartOptimistic } from "@/services/hooks/useCartOptimistic";
+import { Button } from "@/components/UI/Buttons/Button/Button";
+import { TranslationKey } from "@/translations/translations";
 
 interface IProps {
-  children: React.ReactNode,
+  children?: React.ReactNode,
   item: IProductItemCart | IProductItem,
+  translationKey?: TranslationKey;
+  mode?: "glitch" | "glitchHover" | "none";
 }
 
-export function CartIncrementButton({ children, item }: IProps) {
+export function CartIncrementButton({ children, item, mode, translationKey }: IProps) {
   const [, startTransition] = useTransition();
   const { optimistic, addOptimistic } = useCartOptimistic();
 
@@ -27,7 +31,14 @@ export function CartIncrementButton({ children, item }: IProps) {
   }
 
   return (
-    <button type="button" onClick={handleIncrement}>{children}</button>
+    <Button
+      type="button"
+      mode={mode}
+      translationKey={translationKey}
+      onClick={handleIncrement}
+    >
+      {children}
+    </Button>
   )
 }
 

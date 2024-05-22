@@ -5,6 +5,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
 import { TranslateText } from "../TranslateText/TranslateText";
+import { Heading } from "../UI/GlitchEffects/Heading/Heading";
 
 interface IProps {
   data: {
@@ -51,9 +52,7 @@ export function Products({ data }: IProps) {
             )
           }
         />
-        <h2>
-          <TranslateText translationKey="products" />
-        </h2>
+        <Heading level={2} translationKey="products" />
         <ProductsList products={sortedData} />
         {!sortedData.length ? <p>No products found!</p> : null}
       </section>

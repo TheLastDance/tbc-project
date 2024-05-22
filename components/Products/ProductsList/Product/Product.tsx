@@ -2,7 +2,6 @@ import "./Product.css";
 import { Card } from "@/components/Card/Card";
 import Link from "next/link";
 import Image from "next/image";
-import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrementButton";
 
 interface IProps {
@@ -27,9 +26,7 @@ export function Product({ item, index }: IProps) {
       <div className="productDescription_container">
         <p>{description}</p>
       </div>
-      <CartIncrementButton item={item}>
-        <TranslateText translationKey="button.addToCart" />
-      </CartIncrementButton>
+      <CartIncrementButton item={item} mode="glitchHover" translationKey="button.addToCart" />
     </Card>
   );
 }

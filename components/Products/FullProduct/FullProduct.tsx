@@ -5,7 +5,6 @@ import Image from "next/image";
 import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
 import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrementButton";
 
-
 export async function FullProduct({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); //for loader check
   const data = await getAnyData<IProductItem>(`https://dummyjson.com/products/${id}`);
@@ -46,9 +45,7 @@ export async function FullProduct({ id }: idParam) {
           {price}
           <span> $</span>{" "}
         </p>
-        <CartIncrementButton item={data}>
-          <TranslateTextServer translationKey="button.addToCart" />
-        </CartIncrementButton>
+        <CartIncrementButton item={data} mode="glitch" translationKey="button.addToCart" />
       </div>
       <div className="fullProduct_imageContainer">
         <Image src={thumbnail} alt={title} width={400} height={650} priority />
