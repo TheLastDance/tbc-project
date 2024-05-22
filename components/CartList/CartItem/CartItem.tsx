@@ -27,7 +27,7 @@ export function CartItem({ item }: { item: IProductItemCart }) {
         </div>
       </div>
       <div className="cartItems_buttons">
-        <CartIncrementButton item={item}>
+        <CartIncrementButton item={item} mode="glitchHover">
           +
         </CartIncrementButton>
         <span>{quantity}</span>

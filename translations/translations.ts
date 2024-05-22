@@ -51,7 +51,7 @@ export const translations = {
     "fullProduct.category": "Category:",
     "fullProduct.description": "Description:",
     "fullProduct.rating": "Rating:",
-    "cart.heading": "shopping cart",
+    "cart.heading": "Shopping Cart",
     "cart.items": "items",
     "cart.total": "total",
     "cart.emptyMessage": "Your cart is empty",

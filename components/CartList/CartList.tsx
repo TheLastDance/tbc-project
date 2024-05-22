@@ -5,6 +5,8 @@ import { CartItem } from "./CartItem/CartItem";
 import { TranslateText } from "../TranslateText/TranslateText";
 import { CartResetButton } from "./Buttons/CartResetButton";
 import { useCartOptimistic } from "@/services/hooks/useCartOptimistic";
+import { Heading } from "../UI/GlitchEffects/Heading/Heading";
+import { Button } from "../UI/Buttons/Button/Button";
 
 export function CartList() {
   const { optimistic } = useCartOptimistic();
@@ -15,9 +17,7 @@ export function CartList() {
 
         {optimistic.count > 0 &&
           <div>
-            <h1 className="capitalize">
-              <TranslateText translationKey="cart.heading" />
-            </h1>
+            <Heading level={1} translationKey="cart.heading" />
             <CartResetButton />
           </div>
         }
@@ -37,9 +37,8 @@ export function CartList() {
           <p>
             <TranslateText translationKey="cart.total" />: <span>{optimistic.price.toFixed(2)}$</span>
           </p>
-          <button type="button">
-            <TranslateText translationKey="button.checkout" />
-          </button>
+
+          <Button type="button" translationKey="button.checkout" mode="glitch" />
         </div>
       }
     </section>

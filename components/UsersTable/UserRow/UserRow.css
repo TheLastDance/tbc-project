@@ -4,9 +4,14 @@
   font-weight: 600;
   border-right: 1px solid var(--secondaryColor);
   border-bottom: 1px solid var(--secondaryColor);
-  min-width: 6rem;
+  min-width: fit-content;
 }
 
 .usersTable_row td button {
+  min-width: 7rem;
+}
+
+.usersTable_row td button span {
   text-transform: capitalize;
+  margin-left: 0.2rem;
 }

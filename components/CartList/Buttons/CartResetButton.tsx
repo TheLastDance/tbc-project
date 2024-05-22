@@ -1,5 +1,5 @@
 "use client"
-import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { Button } from "@/components/UI/Buttons/Button/Button";
 import { resetCart } from "@/services/actions";
 import { useTransition } from "react";
 import { useCartOptimistic } from "@/services/hooks/useCartOptimistic";
@@ -14,8 +14,11 @@ export function CartResetButton() {
   }
 
   return (
-    <button type="button" onClick={handleReset}>
-      <TranslateText translationKey="button.reset" />
-    </button>
+    <Button
+      type="button"
+      onClick={handleReset}
+      mode="glitchHover"
+      translationKey="button.reset"
+    />
   )
 }

@@ -68,7 +68,7 @@ button:hover,
 }
 
 button:disabled {
-  opacity: 0.3;
+  opacity: 0.8;
   background-color: var(--grayColor);
   cursor: auto;
 }

@@ -6,6 +6,7 @@ import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
 import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { Button } from "@/components/UI/Buttons/Button/Button";
 
 export function AskQuestionForm() {
   const [formStates, setFormStates] = useState<IAskQuestionState>({
@@ -82,9 +83,7 @@ export function AskQuestionForm() {
           required
         />
 
-        <button type="submit">
-          <TranslateText translationKey="button.send" />
-        </button>
+        <Button type="submit" translationKey="button.send" mode="glitchHover" />
       </form>
     </FormContainer>
   );

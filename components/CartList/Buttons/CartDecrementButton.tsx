@@ -2,6 +2,7 @@
 import { decrementCart } from "@/services/actions";
 import { useTransition } from "react";
 import { useCartOptimistic } from "@/services/hooks/useCartOptimistic";
+import { Button } from "@/components/UI/Buttons/Button/Button";
 
 export function CartDecrementButton({ item }: { item: IProductItemCart }) {
   const [, startTransition] = useTransition();
@@ -19,6 +20,6 @@ export function CartDecrementButton({ item }: { item: IProductItemCart }) {
   }
 
   return (
-    <button type="button" onClick={handleDecrement}>-</button>
+    <Button type="button" onClick={handleDecrement} mode="glitchHover">-</Button>
   )
 }

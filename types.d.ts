@@ -137,13 +137,13 @@ interface IInputProps {
 
 interface ISearchProps {
   inputID: string;
-  buttonContent: string | React.ReactNode;
   inputValue: string;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleButtonClick: () => void;
 }
 
 interface IErrorPage {
   error?: Error & { digest?: string }
   reset: () => void;
 }
+
+type ButtonMode = "glitch" | "glitchHover" | "none";

@@ -2,15 +2,22 @@
 import "./AddUserButton.css"
 import { useToggle } from "@/services/hooks/useToggle";
 import { AddEditUserModal } from "@/components/Modals/AddEditUserModal/AddEditUserModal";
-import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { Button } from "@/components/UI/Buttons/Button/Button";
 
 export function AddUserButton() {
   const { toggle, setToggleFalse, setToggleTrue } = useToggle();
 
   return <>
-    <button className="AddUserButton" type="button" onClick={setToggleTrue}>
-      ➕ <TranslateText translationKey="addUser" />
-    </button>
+    <Button
+      className="AddUserButton hero-h glitch-h layers-h"
+      type="button"
+      onClick={setToggleTrue}
+      translationKey="addUser"
+      mode="glitchHover"
+    >
+      ➕
+    </Button>
+
     {toggle && <AddEditUserModal setToggleFalse={setToggleFalse} />}
   </>
 }

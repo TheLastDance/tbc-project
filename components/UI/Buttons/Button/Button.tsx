@@ -7,7 +7,7 @@ import { TranslateText } from "@/components/TranslateText/TranslateText";
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   translationKey?: TranslationKey;
-  mode?: "glitch" | "glitchHover" | "none";
+  mode?: ButtonMode;
 }
 
 export function Button({ children, translationKey, mode, ...props }: IProps) {

@@ -4,6 +4,7 @@ import { FormContainer } from "../FormContainer/FormContainer"
 import { Input } from "@/components/Input/Input"
 import { createUser, editUser } from "@/services/actions";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { Button } from "@/components/UI/Buttons/Button/Button";
 
 interface IProps {
   setToggleFalse: () => void;
@@ -54,12 +55,12 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
         required
       />
 
-      <button type="submit" disabled={loading}>
-        {user ?
-          <TranslateText translationKey="edit" /> :
-          <TranslateText translationKey="addUser" />
-        }
-      </button>
+      <Button
+        type="submit"
+        disabled={loading}
+        translationKey={user ? "edit" : "addUser"}
+        mode="glitchHover"
+      />
     </form>
   </FormContainer>
 }

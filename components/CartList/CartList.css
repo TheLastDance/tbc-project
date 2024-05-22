@@ -19,6 +19,7 @@
 .cart_items>div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .cart_info {
@@ -43,5 +44,18 @@
   .cart_info {
     margin-left: 0;
     border-top: unset;
+  }
+}
+
+@media(max-width:600px) {
+  .cart_items>div {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: unset;
+  }
+
+  .cart_items>div button {
+    margin-top: 1rem;
+    width: fit-content;
   }
 }
