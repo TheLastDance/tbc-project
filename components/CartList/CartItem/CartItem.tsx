@@ -1,17 +1,11 @@
-"use client"
 import "./CartItem.css";
-import { useContext } from "react"
-import { cartContext } from "@/services/providers/CartProvider";
 import Link from "next/link";
 import Image from "next/image";
-import { Close } from "@/components/Icons/Close";
+import { CartDecrementButton } from "../Buttons/CartDecrementButton";
+import { CartIncrementButton } from "../Buttons/CartIncrementButton";
+import { CartDeleteButton } from "../Buttons/CartDeleteButton";
 
-interface IProps {
-  item: IProductItemCart
-}
-
-export function CartItem({ item }: IProps) {
-  const { handleAddToCart, handleRemoveFromCart, handleDeleteFromCart } = useContext(cartContext);
+export function CartItem({ item }: { item: IProductItemCart }) {
   const { id, title, thumbnail, quantity, brand, price } = item;
 
   return (
@@ -33,17 +27,13 @@ export function CartItem({ item }: IProps) {
         </div>
       </div>
       <div className="cartItems_buttons">
-        <button type="button" onClick={() => handleAddToCart(item)}>+</button>
+        <CartIncrementButton item={item} mode="glitchHover">
+          +
+        </CartIncrementButton>
         <span>{quantity}</span>
-        <button type="button" onClick={() => handleRemoveFromCart(item)}>-</button>
+        <CartDecrementButton item={item} />
       </div>
-      <button
-        type="button"
-        className="resetButtonStyles cartItem_deleteButton "
-        onClick={() => handleDeleteFromCart(item)}
-      >
-        <Close />
-      </button>
+      <CartDeleteButton item={item} />
     </li>
   )
 }

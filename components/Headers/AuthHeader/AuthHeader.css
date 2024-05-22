@@ -1,8 +1,21 @@
 .authHeader {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px dashed var(--secondaryColor);
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  border-radius: 0 0 20px 20px;
+}
+
+.authHeader a {
+  color: var(--primaryColor);
+}
+
+.authHeader svg {
+  fill: var(--primaryColor);
 }
 
 .authHeader div {
@@ -10,7 +23,7 @@
 }
 
 .authHeader div .logout_button {
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
 }
 
 .authHeader .burger_container {
@@ -18,8 +31,14 @@
 }
 
 @media(max-width:960px) {
+
   .authHeader .burger_container {
     display: block;
+  }
+
+  .authHeader .burger_container button {
+    display: flex;
+    margin-left: 0.25rem;
   }
 
   .authHeader .mainNavigation_container {

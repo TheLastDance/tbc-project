@@ -6,6 +6,7 @@ import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
 import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { Button } from "@/components/UI/Buttons/Button/Button";
 
 export function EditProfileForm() {
   const [formStates, setFormStates] = useState<IEditProfileState>({
@@ -57,9 +58,7 @@ export function EditProfileForm() {
           required
         />
 
-        <button type="submit">
-          <TranslateText translationKey="button.save" />
-        </button>
+        <Button type="submit" translationKey="button.save" mode="glitchHover" />
       </form>
     </FormContainer>
   );

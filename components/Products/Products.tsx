@@ -4,7 +4,8 @@ import "./Products.css";
 import { useState, useEffect, useMemo } from "react";
 import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
-import { TranslateText } from "../TranslateText/TranslateText";
+import { Heading } from "../UI/GlitchEffects/Heading/Heading";
+import { Button } from "../UI/Buttons/Button/Button";
 
 interface IProps {
   data: {
@@ -38,22 +39,20 @@ export function Products({ data }: IProps) {
   return (
     <>
       <section className="products">
-        <Search
-          inputID="mainPage_search_input"
-          inputValue={searchText}
-          handleInputChange={(e) => setSearchText(e.target.value)}
-          handleButtonClick={() => setIsAscending((prev) => !prev)}
-          buttonContent={
-            isAscending ? (
-              <TranslateText translationKey="products.sort-Z-A" />
-            ) : (
-              <TranslateText translationKey="products.sort-A-Z" />
-            )
-          }
-        />
-        <h2>
-          <TranslateText translationKey="products" />
-        </h2>
+        <div className="searchForm">
+          <Search
+            inputID="mainPage_search_input"
+            inputValue={searchText}
+            handleInputChange={(e) => setSearchText(e.target.value)}
+          />
+          <Button
+            type="button"
+            onClick={() => setIsAscending((prev) => !prev)}
+            mode="glitchHover"
+            translationKey={isAscending ? "products.sort-Z-A" : "products.sort-A-Z"}
+          />
+        </div>
+        <Heading level={2} translationKey="products" />
         <ProductsList products={sortedData} />
         {!sortedData.length ? <p>No products found!</p> : null}
       </section>

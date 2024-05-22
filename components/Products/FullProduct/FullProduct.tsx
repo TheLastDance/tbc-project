@@ -3,8 +3,7 @@ import { getAnyData } from "@/services/data-fetch/getAnyData";
 import notFound from "@/app/[locale]/not-found";
 import Image from "next/image";
 import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
-import { FullProductAddToCartButton } from "./FullProductAddToCartButton";
-
+import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrementButton";
 
 export async function FullProduct({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); //for loader check
@@ -46,7 +45,7 @@ export async function FullProduct({ id }: idParam) {
           {price}
           <span> $</span>{" "}
         </p>
-        <FullProductAddToCartButton item={data} />
+        <CartIncrementButton item={data} mode="glitch" translationKey="button.addToCart" />
       </div>
       <div className="fullProduct_imageContainer">
         <Image src={thumbnail} alt={title} width={400} height={650} priority />

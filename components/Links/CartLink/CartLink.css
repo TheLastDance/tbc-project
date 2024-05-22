@@ -21,8 +21,8 @@
   transform: translate(-50%, -52%);
   width: 0.9rem;
   height: 0.9rem;
-  background-color: var(--secondaryColor);
-  color: var(--primaryColor);
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
   display: flex;
   align-items: center;
   justify-content: center;
