@@ -43,9 +43,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+  padding: 0.4rem 0.25rem;
 }
 
 .post_info_like_button svg {
@@ -55,7 +53,7 @@
 }
 
 .post_info_like_button span {
-  font-size: 1.25rem;
+  font-size: 0.85rem;
 }
 
 .post_viewFullButton {
