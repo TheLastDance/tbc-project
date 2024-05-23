@@ -15,7 +15,7 @@ export async function generateMetadata({ params: { id } }: IIdParamProps) {
 }
 
 export async function generateStaticParams() {
-  const data = await getAnyData<{ products: IProductItem[] }>(`https://dummyjson.com/products?limit=0`);
+  const data = await getAnyData<{ products: IProductItem[] }>(`https://dummyjson.com/products`);
   const { products } = data;
 
   return products.map((item) => ({ id: String(item.id) }));

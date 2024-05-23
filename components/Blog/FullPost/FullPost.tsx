@@ -44,7 +44,7 @@ export async function FullPost({ id }: idParam) {
         </p>
         <button type="button" className="fullPost_like_button">
           <LikeIcon />
-          <span>{reactions}</span>
+          <span>{reactions.likes}</span>
         </button>
       </div>
     </article>

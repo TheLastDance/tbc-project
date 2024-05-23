@@ -31,7 +31,7 @@ export function Post({ item }: IProps) {
         </ul>
         <button type="button" className="post_info_like_button">
           <LikeIcon />
-          <span>{reactions}</span>
+          <span>{reactions.likes}</span>
         </button>
       </div>
       <Link href={`/blog/${id}`} className="post_viewFullButton" role="button">

@@ -48,7 +48,7 @@ export async function FullProduct({ id }: idParam) {
         <CartIncrementButton item={data} mode="glitch" translationKey="button.addToCart" />
       </div>
       <div className="fullProduct_imageContainer">
-        <Image src={thumbnail} alt={title} width={400} height={650} priority />
+        <Image src={thumbnail} alt={title} width={650} height={650} priority />
       </div>
     </article>
   );
