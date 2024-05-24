@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { cookieExpirationOneYear } from "./utils";
 import { getAnyData } from "./data-fetch/getAnyData";
 import { BASE_URL } from "./constants";
+import { getSession } from "@auth0/nextjs-auth0";
 
 export async function login(data: FormData) {
   const { username, password } = Object.fromEntries(data);
@@ -69,11 +70,13 @@ export async function editUser(data: FormData, id: number) {
 }
 
 async function updateCart(apiUrl: string, item_id: number) {
+  const user = await getSession();
+
   await getAnyData(`${BASE_URL}/api/carts/${apiUrl}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Cookie': `user_id=${JSON.parse(cookies().get("token")?.value!).id};`,
+      'Cookie': `user_id=${user!.user.sub};`,
     },
     body: JSON.stringify({ item_id })
   });
@@ -95,11 +98,13 @@ export async function deleteCartItem(item_id: number) {
 }
 
 export async function resetCart() {
+  const user = await getSession();
+
   await getAnyData(`${BASE_URL}/api/carts/reset-cart`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Cookie': `user_id=${JSON.parse(cookies().get("token")?.value!).id};`,
+      'Cookie': `user_id=${user!.user.sub};`,
     }
   });
 

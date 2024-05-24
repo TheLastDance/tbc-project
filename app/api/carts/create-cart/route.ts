@@ -10,11 +10,11 @@ export async function POST(request: NextRequest) {
 
     if (!user_id || !item_id) throw new Error('user_id and products fields required');
 
-    await sql`INSERT INTO carts (user_id, products) VALUES (${+user_id}, ${item});`;
+    await sql`INSERT INTO usersCarts (user_id, products) VALUES (${user_id}, ${item});`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
 
-  const users = await sql`SELECT * FROM carts;`;
+  const users = await sql`SELECT * FROM usersCarts;`;
   return NextResponse.json({ users }, { status: 200 });
 }

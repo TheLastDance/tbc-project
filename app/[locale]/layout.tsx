@@ -5,6 +5,7 @@ import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
 import { generateDynamicMetaData } from "@/services/utils";
 import { I18nProviderClient } from "@/locales/client";
 import { getStaticParams } from "@/locales/server";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
@@ -28,14 +29,16 @@ export default function RootLayout({ children, params: { locale } }: IProps) {
   return (
     <html suppressHydrationWarning lang={locale}>
       <body className={inter.className}>
-        <I18nProviderClient locale={locale}>
-          <ThemeProviders>
-            <GlobalLayout>
-              {children}
-            </GlobalLayout>
-            <div id="modal_container"></div>
-          </ThemeProviders>
-        </I18nProviderClient>
+        <UserProvider>
+          <I18nProviderClient locale={locale}>
+            <ThemeProviders>
+              <GlobalLayout>
+                {children}
+              </GlobalLayout>
+              <div id="modal_container"></div>
+            </ThemeProviders>
+          </I18nProviderClient>
+        </UserProvider>
       </body>
     </html>
   );
