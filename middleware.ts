@@ -1,6 +1,7 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { locales } from "./i18n.config";
 import { createI18nMiddleware } from 'next-international/middleware'
+import { getSession } from "@auth0/nextjs-auth0/edge";
 
 const I18nMiddleware = createI18nMiddleware({
   locales,
@@ -8,16 +9,24 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: 'rewrite'
 })
 
-// const loginPathsWithLocales = getPathWithLocales(locales, "/login");
+function isPathProtected(pathName: string) {
+  const protectedRoutes = ["/profile", "/cart", "/contact", "/blog", "/products", "/admin"]
 
-export function middleware(req: NextRequest): Response {
-  // const pathName = req.nextUrl.pathname;
-  // const token = req.cookies.get("token")?.value;
+  for (const route of protectedRoutes) {
+    if (pathName.startsWith(route) || pathName === "/") {
+      return true;
+    }
+  }
+  return false;
+}
 
-  // // will add check for not private routes here if we need it in future
-  // if (!loginPathsWithLocales.includes(pathName) && !token) return NextResponse.redirect(new URL('/login', req.nextUrl));
+export async function middleware(req: NextRequest) {
+  const response = NextResponse.next();
+  const session = await getSession(req, response);
 
-  // if (loginPathsWithLocales.includes(pathName) && token) return NextResponse.redirect(new URL('/', req.nextUrl));
+  const pathName = req.nextUrl.pathname;
+
+  if (!session?.user && isPathProtected(pathName)) return NextResponse.redirect(new URL('/api/auth/login', req.nextUrl));
 
   return I18nMiddleware(req);
 }

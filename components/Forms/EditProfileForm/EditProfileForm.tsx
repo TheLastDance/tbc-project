@@ -7,12 +7,14 @@ import { Input } from "@/components/Input/Input";
 import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { Button } from "@/components/UI/Buttons/Button/Button";
+import { Claims } from "@auth0/nextjs-auth0";
 
-export function EditProfileForm() {
+export function EditProfileForm({ user }: { user: Claims }) {
+  const { given_name, family_name, email } = user;
   const [formStates, setFormStates] = useState<IEditProfileState>({
-    firstName: "Michael",
-    lastName: "Brown",
-    email: "MichaelBrown@gmail.com",
+    firstName: given_name,
+    lastName: family_name,
+    email: email,
   });
 
   const handleOnChange = (

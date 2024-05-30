@@ -4,6 +4,12 @@ import { getSession } from "@auth0/nextjs-auth0";
 export const getCart = async () => {
   const user = await getSession();
 
+  if (!user?.user) return {
+    price: 0,
+    count: 0,
+    products: [],
+  };
+
   const res = await fetch(`${BASE_URL}/api/carts/get-cart`, {
     method: "GET",
     next: { tags: ["cart"] },

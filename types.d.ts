@@ -118,6 +118,14 @@ interface IUserDatabase {
   }
 }
 
+type User = {
+  user: {
+    id: string,
+    picture: string,
+    email: string,
+  }
+}
+
 
 // component props
 type ChildrenProps = { children: React.ReactNode };

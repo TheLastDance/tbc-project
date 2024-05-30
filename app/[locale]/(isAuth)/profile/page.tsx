@@ -1,18 +1,17 @@
 import { ProfileMainInfo } from "@/components/ProfileMainInfo/ProfileMainInfo";
 import { EditProfileForm } from "@/components/Forms/EditProfileForm/EditProfileForm";
-import { ChangePasswordForm } from "@/components/Forms/ChangePasswordForm/ChangePasswordForm";
+import { getSession } from "@auth0/nextjs-auth0";
 
-export default function Profile() {
+export default async function Profile() {
+  const session = await getSession();
+
   return (
     <>
       <section>
-        <ProfileMainInfo />
+        <ProfileMainInfo session={session} />
       </section>
       <section>
-        <EditProfileForm />
-      </section>
-      <section>
-        <ChangePasswordForm />
+        <EditProfileForm user={session!.user} />
       </section>
     </>
   );
