@@ -107,22 +107,18 @@ type UserToken = {
 
 interface IUser {
   id: number;
-  name: string;
+  given_name: string;
+  family_name: string;
   email: string;
-  birthDate: string;
+  birth_date: string;
+  role: string,
+  registration_date: string,
+  picture: string,
 }
 
 interface IUserDatabase {
   users: {
     rows: IUser[]
-  }
-}
-
-type User = {
-  user: {
-    id: string,
-    picture: string,
-    email: string,
   }
 }
 

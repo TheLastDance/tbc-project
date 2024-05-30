@@ -1,15 +1,18 @@
 import "./UserRow.css"
 import { EditUserButton } from "@/components/Buttons/EditUserButton/EditUserButton"
-import { DeleteUserButton } from "@/components/Buttons/DeleteUserButton/DeleteUserButton"
 
 export function UserRow({ item }: { item: IUser }) {
-  const { name, email, birthDate } = item;
+  const { given_name, family_name, email, birth_date, role, registration_date } = item;
+
+  const date = new Date(registration_date).toISOString().split('T')[0];
 
   return <tr className="usersTable_row">
-    <td>{name}</td>
-    <td>{email}</td>
-    <td>{birthDate}</td>
     <td><EditUserButton user={item} /></td>
-    <td><DeleteUserButton id={item.id} /></td>
+    <td>{given_name}</td>
+    <td>{family_name}</td>
+    <td>{email}</td>
+    <td>{birth_date !== '""' ? birth_date : null}</td>
+    <td>{role}</td>
+    <td>{date}</td>
   </tr>
 }

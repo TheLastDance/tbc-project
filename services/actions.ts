@@ -39,31 +39,12 @@ export async function setTranslateCookie(locale: Locale) {
   cookieStore.set("Next-Locale", locale, { expires: cookieExpirationOneYear });
 }
 
-export async function createUser(data: FormData) {
-  const { name, email, birthDate } = Object.fromEntries(data);
-  await getAnyData<IUserDatabase>(`${BASE_URL}/api/create-user`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, birthDate })
-  });
-
-  revalidatePath("/admin")
-}
-
-export async function deleteUser(id: number) {
-  await getAnyData<IUserDatabase>(`${BASE_URL}/api/delete-user/${id}`, {
-    method: 'DELETE',
-  });
-
-  revalidatePath("/admin")
-}
-
 export async function editUser(data: FormData, id: number) {
-  const { name, email, birthDate } = Object.fromEntries(data);
+  const { given_name, family_name, birth_date } = Object.fromEntries(data);
   await getAnyData<IUserDatabase>(`${BASE_URL}/api/edit-user/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, birthDate })
+    body: JSON.stringify({ given_name, family_name, birth_date })
   });
 
   revalidatePath("/admin")

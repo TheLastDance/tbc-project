@@ -9,7 +9,7 @@ export async function PUT(request: NextRequest) {
 
     if (!item_id || !user_id) throw new Error('item_id and user_id are required');
 
-    const cart = await sql<ICartTable>`SELECT * FROM usersCarts WHERE user_id = ${user_id};`;
+    const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${user_id};`;
 
     if (cart.rows.length) {
       let newProduct: ICartProduct;
@@ -18,14 +18,14 @@ export async function PUT(request: NextRequest) {
 
       if (index === -1) {
         newProduct = { id: item_id, quantity: 1 };
-        await sql`UPDATE usersCarts SET products = jsonb_insert(products,'{0}',${JSON.stringify(newProduct)}),added_on = NOW() WHERE user_id = ${user_id};`;
+        await sql`UPDATE carts SET products = jsonb_insert(products,'{0}',${JSON.stringify(newProduct)}),added_on = NOW() WHERE user_id = ${user_id};`;
       }
 
       if (index !== -1) {
         const product = products[index];
         const path = `{${index}}`;
         newProduct = { ...product, quantity: product.quantity + 1 };
-        await sql`UPDATE usersCarts SET products = jsonb_set(products,${path},${JSON.stringify(newProduct)}),added_on = NOW() WHERE user_id = ${user_id};`;
+        await sql`UPDATE carts SET products = jsonb_set(products,${path},${JSON.stringify(newProduct)}),added_on = NOW() WHERE user_id = ${user_id};`;
       }
 
     } else {

@@ -14,11 +14,13 @@ export async function UsersTable() {
         <table>
           <thead>
             <tr>
-              <th><TranslateTextServer translationKey="name" /></th>
+              <th><TranslateTextServer translationKey="edit" /></th>
+              <th><TranslateTextServer translationKey="firstName" /></th>
+              <th><TranslateTextServer translationKey="lastName" /></th>
               <th><TranslateTextServer translationKey="email" /></th>
               <th><TranslateTextServer translationKey="birthDate" /></th>
-              <th><TranslateTextServer translationKey="edit" /></th>
-              <th><TranslateTextServer translationKey="delete" /></th>
+              <th><TranslateTextServer translationKey="role" /></th>
+              <th><TranslateTextServer translationKey="regDate" /></th>
             </tr>
           </thead>
           <tbody>

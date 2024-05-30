@@ -8,12 +8,12 @@ export async function GET(_: NextRequest) {
     const session = await getSession();
 
     if (session?.user) {
-      const { email, sub, picture } = session.user;
+      const { email, sub, picture, given_name, family_name, app_metadata } = session.user;
+      const isAdmin = app_metadata.role && app_metadata.role === "admin";
+      const user = await sql`SELECT * FROM users WHERE id = ${sub}`;
 
-      const user = await sql`SELECT * FROM users2 WHERE id = ${sub}`;
-
-      if (!user.rows.length) await sql`INSERT INTO users2 (id, email, picture) VALUES (${sub}, ${email}, ${picture});`;
-
+      if (!user.rows.length) await sql`INSERT INTO users (id, email, picture, given_name, family_name) VALUES (${sub}, ${email}, ${picture}, ${given_name}, ${family_name});`;
+      if (user.rows.length && user.rows[0].role !== "admin" && isAdmin) await sql`UPDATE users SET role = ${app_metadata.role} WHERE id = ${sub};`;
 
     } else {
       return redirect("/api/auth/logout")

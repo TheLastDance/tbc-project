@@ -17,6 +17,6 @@ export function EditUserButton({ user }: { user: IUser }) {
       📝
     </Button>
 
-    {toggle && <AddEditUserModal edit setToggleFalse={setToggleFalse} user={user} />}
+    {toggle && <AddEditUserModal setToggleFalse={setToggleFalse} user={user} />}
   </>
 }

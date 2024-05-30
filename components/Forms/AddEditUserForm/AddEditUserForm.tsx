@@ -2,13 +2,13 @@
 import { useState, FormEvent } from "react";
 import { FormContainer } from "../FormContainer/FormContainer"
 import { Input } from "@/components/Input/Input"
-import { createUser, editUser } from "@/services/actions";
+import { editUser } from "@/services/actions";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { Button } from "@/components/UI/Buttons/Button/Button";
 
 interface IProps {
   setToggleFalse: () => void;
-  user?: IUser;
+  user: IUser;
 }
 
 export function AddEditUserForm({ setToggleFalse, user }: IProps) {
@@ -19,8 +19,7 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
     setLoading(true);
 
     const data = new FormData(e.currentTarget);
-    if (!user) await createUser(data);
-    if (user) await editUser(data, user.id);
+    await editUser(data, user.id);
 
     setLoading(false);
     setToggleFalse();
@@ -29,29 +28,29 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
   return <FormContainer>
     <form className="AddEditUserForm" onSubmit={(e) => handleCreateUser(e)}>
       <Input
-        label={<TranslateText translationKey="form.label.name" />}
-        name="name"
-        id="admin_form_name"
+        label={<TranslateText translationKey="form.label.firstName" />}
+        name="given_name"
+        id="admin_form_given_name"
         type="text"
-        defaultValue={user ? user.name : ""}
+        defaultValue={user ? user.given_name : ""}
         required
       />
 
       <Input
-        label={<TranslateText translationKey="form.label.email" />}
-        name="email"
-        id="admin_form_email"
-        type="email"
-        defaultValue={user ? user.email : ""}
+        label={<TranslateText translationKey="form.label.lastName" />}
+        name="family_name"
+        id="admin_form_family_name"
+        type="text"
+        defaultValue={user ? user.family_name : ""}
         required
       />
 
       <Input
         label={<TranslateText translationKey="birthDate" />}
-        name="birthDate"
+        name="birth_date"
         id="admin_form_birthDate"
         type="date"
-        defaultValue={user ? user.birthDate : ""}
+        defaultValue={user ? user.birth_date : ""}
         required
       />
 

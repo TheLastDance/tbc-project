@@ -8,14 +8,14 @@ export async function PUT(request: NextRequest) {
 
     if (!item_id || !user_id) throw new Error('item_id and user_id are required');
 
-    const cart = await sql<ICartTable>`SELECT * FROM usersCarts WHERE user_id = ${user_id};`;
+    const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${user_id};`;
 
     if (cart.rows.length) {
       const products = cart.rows[0].products;
       const index = products.findIndex((item) => item.id === item_id);
       const path = `{${index}}`;
 
-      if (index !== -1) await sql`UPDATE usersCarts SET products = products#-${path},added_on = NOW() WHERE user_id = ${user_id};`;
+      if (index !== -1) await sql`UPDATE carts SET products = products#-${path},added_on = NOW() WHERE user_id = ${user_id};`;
     }
 
     return NextResponse.json({ message: "product was deleted!" }, { status: 200 });

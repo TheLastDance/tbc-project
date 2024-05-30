@@ -8,12 +8,13 @@ interface IProps {
 }
 
 export async function PUT(request: Request, { params: { id } }: IProps) {
-  const { name, email, birthDate }: IUser = await request.json();
+  const { given_name, family_name, birth_date }: IUser = await request.json();
 
   try {
-    if (!name || !email || !birthDate || !id) throw new Error('name, email, birthDate and ID names required');
-    await sql`UPDATE users SET name = ${name}, email = ${email}, "birthDate" = ${birthDate} WHERE id = ${+id};`;
+    if (!given_name || !family_name || !id) throw new Error('name, email, birthDate and ID names required');
+    await sql`UPDATE users SET given_name = ${given_name}, family_name = ${family_name}, birth_date = ${birth_date} WHERE id = ${id};`;
   } catch (error) {
+    console.log(error)
     return NextResponse.json({ error }, { status: 500 });
   }
 
