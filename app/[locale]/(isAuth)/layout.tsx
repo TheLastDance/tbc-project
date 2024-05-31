@@ -1,5 +1,5 @@
-import { AuthLayout } from "@/components/Layouts/AuthLayout";
+import { MainLayout } from "@/components/Layouts/MainLayout";
 
 export default function Layout({ children }: ChildrenProps) {
-  return <AuthLayout>{children}</AuthLayout>;
+  return <MainLayout>{children}</MainLayout>;
 }

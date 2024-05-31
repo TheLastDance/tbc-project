@@ -114,6 +114,9 @@ interface IUser {
   role: string,
   registration_date: string,
   picture: string,
+  app_metadata: {
+    role: "admin" | "user",
+  }
 }
 
 interface IUserDatabase {

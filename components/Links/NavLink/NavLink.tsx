@@ -12,6 +12,7 @@ interface IProps {
 export function NavLink({
   href,
   children,
+  onClick,
   ...props
 }: IProps) {
   const pathName = usePathname();
@@ -20,6 +21,7 @@ export function NavLink({
     <Link
       href={href}
       className={pathName === href ? "navLink_active" : "navLink"}
+      onClick={onClick}
       {...props}
     >
       {children}

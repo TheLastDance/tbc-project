@@ -13,3 +13,7 @@
   width: 1.75rem;
   height: 1.75rem;
 }
+
+.logout_button:hover {
+  filter: unset;
+}

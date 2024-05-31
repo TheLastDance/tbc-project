@@ -8,7 +8,10 @@
 }
 
 .usersTable_row td button {
-  min-width: 7rem;
+  display: flex;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .usersTable_row td button span {

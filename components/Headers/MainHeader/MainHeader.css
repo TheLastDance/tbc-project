@@ -14,6 +14,10 @@
   color: var(--primaryColor);
 }
 
+.authHeader .login_button {
+  color: var(--secondaryColor);
+}
+
 .authHeader svg {
   fill: var(--primaryColor);
 }
@@ -38,7 +42,6 @@
 
   .authHeader .burger_container button {
     display: flex;
-    margin-left: 0.25rem;
   }
 
   .authHeader .mainNavigation_container {

@@ -9,11 +9,12 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: 'rewrite'
 })
 
-function isPathProtected(pathName: string) {
-  const protectedRoutes = ["/profile", "/cart", "/contact", "/blog", "/products", "/admin"]
+const isAuthPaths = ["/profile", "/cart"];
+const isAdminPaths = ["/admin"];
 
-  for (const route of protectedRoutes) {
-    if (pathName.startsWith(route) || pathName === "/") {
+function isPathProtected(pathName: string, protectedPaths: string[]) {
+  for (const path of protectedPaths) {
+    if (pathName.startsWith(path)) {
       return true;
     }
   }
@@ -26,7 +27,8 @@ export async function middleware(req: NextRequest) {
 
   const pathName = req.nextUrl.pathname;
 
-  if (!session?.user && isPathProtected(pathName)) return NextResponse.redirect(new URL('/api/auth/login', req.nextUrl));
+  if (!session?.user && isPathProtected(pathName, isAuthPaths)) return NextResponse.redirect(new URL('/api/auth/login', req.nextUrl));
+  if (session?.user.app_metadata.role !== "admin" && isPathProtected(pathName, isAdminPaths)) return NextResponse.redirect(new URL('/', req.nextUrl));
 
   return I18nMiddleware(req);
 }

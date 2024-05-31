@@ -5,11 +5,12 @@ import { useState } from "react";
 import { ThemeModeButton } from "../Buttons/ThemeModeButton/ThemeModeButton";
 import { LogOutButton } from "../Buttons/LogOutButton/LogOutButton";
 import { LanguageSwitcher } from "../LanguageSwitcher/LanguageSwitcher";
-import { NavLink } from "../Links/NavLink/NavLink";
-import { TranslateText } from "../TranslateText/TranslateText";
+import { Navigation } from "../Navigation/Navigation";
 import { CartLink } from "../Links/CartLink/CartLink";
+import { Claims } from "@auth0/nextjs-auth0";
+import { LogInButton } from "../Buttons/LogInButton/LogInButton";
 
-export function Burger() {
+export function Burger({ user }: { user: IUser | Claims | undefined, }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleBurger = () => {
@@ -31,20 +32,13 @@ export function Burger() {
           </svg>
         </button>
         <div className="burger_menuButtons">
-          <LanguageSwitcher />
           <CartLink onClick={toggleBurger} />
           <ThemeModeButton />
-          <LogOutButton />
+          <LanguageSwitcher />
+          {user && <LogOutButton />}
+          {!user && <LogInButton />}
         </div>
-        <NavLink onClick={toggleBurger} href="/profile">
-          <TranslateText translationKey="navigation.profile" />
-        </NavLink>
-        <NavLink onClick={toggleBurger} href="/blog">
-          <TranslateText translationKey="navigation.blog" />
-        </NavLink>
-        <NavLink onClick={toggleBurger} href="/contact">
-          <TranslateText translationKey="navigation.contact" />
-        </NavLink>
+        <Navigation user={user} onClick={toggleBurger} />
       </div>
     </div>
   )

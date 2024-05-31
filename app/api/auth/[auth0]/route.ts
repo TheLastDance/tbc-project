@@ -8,6 +8,6 @@ export const GET = handleAuth({
     },
   }),
   logout: handleLogout({
-    returnTo: "/api/auth/login",
+    returnTo: "/",
   }),
 });

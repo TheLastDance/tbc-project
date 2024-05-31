@@ -1,3 +1,5 @@
+import { MainLayout } from "@/components/Layouts/MainLayout";
+
 export default function notFound() {
-  return <div>404 not-found ☹</div>;
+  return <MainLayout><div>404 not-found ☹</div></MainLayout>;
 }

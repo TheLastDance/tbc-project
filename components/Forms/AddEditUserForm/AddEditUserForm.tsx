@@ -51,7 +51,6 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
         id="admin_form_birthDate"
         type="date"
         defaultValue={user ? user.birth_date : ""}
-        required
       />
 
       <Button
