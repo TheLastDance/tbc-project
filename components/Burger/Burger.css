@@ -26,21 +26,42 @@
   right: 1rem;
 }
 
-.burgerOverlay .languageSwitcher {
-  font-size: 1rem;
-  margin-left: 0;
+.burger_menuButtons {
+  align-items: center;
 }
 
-.burgerOverlay a {
-  font-size: 1.5rem;
+.burgerOverlay .burger_menuButtons>* {
+  font-size: 1.3rem;
+  margin: 0 0.35rem;
+}
+
+.burger_menuButtons a svg {
+  width: 2.35rem;
+  height: 2.35rem;
+}
+
+.burger_menuButtons .themeButton svg {
+  width: 2rem;
+  height: 2rem;
 }
 
 .burgerOverlay_close {
   left: 100%;
 }
 
-.burger_container .navLink_active {
+.burger_container .navLink_active,
+.burger_container .nav_list .navLink_active {
   border-bottom: 1px solid var(--secondaryColor);
+}
+
+.burger_container .nav_list {
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.burger_container .nav_list li {
+  margin: 0.25rem 0;
 }
 
 .authHeader .burger_menuButtons svg,

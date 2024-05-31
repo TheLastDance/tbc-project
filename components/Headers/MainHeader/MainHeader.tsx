@@ -1,25 +1,29 @@
-import "./AuthHeader.css";
+import "./MainHeader.css";
 import { Navigation } from "../../Navigation/Navigation";
 import { Logo } from "../../Logo/Logo";
 import { LogOutButton } from "@/components/Buttons/LogOutButton/LogOutButton";
+import { LogInButton } from "@/components/Buttons/LogInButton/LogInButton";
 import { ThemeModeButton } from "@/components/Buttons/ThemeModeButton/ThemeModeButton";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher";
 import { CartLink } from "@/components/Links/CartLink/CartLink";
 import { Burger } from "@/components/Burger/Burger";
+import { getSession } from "@auth0/nextjs-auth0";
 
-export function AuthHeader() {
+export async function MainHeader() {
+  const session = await getSession();
 
   return (
     <header className="authHeader">
       <Logo />
       <div className="mainNavigation_container">
-        <Navigation />
-        <LanguageSwitcher />
+        <Navigation user={session?.user} />
         <CartLink />
         <ThemeModeButton />
-        <LogOutButton />
+        <LanguageSwitcher />
+        {session?.user && <LogOutButton />}
+        {!session?.user && <LogInButton />}
       </div>
-      <Burger />
+      <Burger user={session?.user} />
     </header>
   )
 }

@@ -16,8 +16,8 @@ export function LanguageSwitcher() {
   return (
     <>
       {locale === "en" ?
-        <button type="button" className="languageSwitcher button" onClick={() => handleClick("ka")}>GE</button> :
-        <button type="button" className="languageSwitcher button" onClick={() => handleClick("en")}>EN</button>
+        <button type="button" className="languageSwitcher" onClick={() => handleClick("ka")}>GE</button> :
+        <button type="button" className="languageSwitcher" onClick={() => handleClick("en")}>EN</button>
       }
     </>
   )
