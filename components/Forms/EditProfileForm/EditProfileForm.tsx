@@ -8,11 +8,12 @@ import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { Button } from "@/components/UI/Buttons/Button/Button";
 
-export function EditProfileForm() {
+export function EditProfileForm({ user }: { user: IUser }) {
+  const { given_name, family_name, email } = user;
   const [formStates, setFormStates] = useState<IEditProfileState>({
-    firstName: "Michael",
-    lastName: "Brown",
-    email: "MichaelBrown@gmail.com",
+    firstName: given_name,
+    lastName: family_name,
+    email: email,
   });
 
   const handleOnChange = (

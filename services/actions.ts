@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { cookieExpirationOneYear } from "./utils";
 import { getAnyData } from "./data-fetch/getAnyData";
 import { BASE_URL } from "./constants";
+import { getSession } from "@auth0/nextjs-auth0";
 
 export async function login(data: FormData) {
   const { username, password } = Object.fromEntries(data);
@@ -38,42 +39,25 @@ export async function setTranslateCookie(locale: Locale) {
   cookieStore.set("Next-Locale", locale, { expires: cookieExpirationOneYear });
 }
 
-export async function createUser(data: FormData) {
-  const { name, email, birthDate } = Object.fromEntries(data);
-  await getAnyData<IUserDatabase>(`${BASE_URL}/api/create-user`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, birthDate })
-  });
-
-  revalidatePath("/admin")
-}
-
-export async function deleteUser(id: number) {
-  await getAnyData<IUserDatabase>(`${BASE_URL}/api/delete-user/${id}`, {
-    method: 'DELETE',
-  });
-
-  revalidatePath("/admin")
-}
-
 export async function editUser(data: FormData, id: number) {
-  const { name, email, birthDate } = Object.fromEntries(data);
+  const { given_name, family_name, birth_date } = Object.fromEntries(data);
   await getAnyData<IUserDatabase>(`${BASE_URL}/api/edit-user/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, birthDate })
+    body: JSON.stringify({ given_name, family_name, birth_date })
   });
 
   revalidatePath("/admin")
 }
 
 async function updateCart(apiUrl: string, item_id: number) {
+  const user = await getSession();
+
   await getAnyData(`${BASE_URL}/api/carts/${apiUrl}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Cookie': `user_id=${JSON.parse(cookies().get("token")?.value!).id};`,
+      'Cookie': `user_id=${user!.user.sub};`,
     },
     body: JSON.stringify({ item_id })
   });
@@ -95,11 +79,13 @@ export async function deleteCartItem(item_id: number) {
 }
 
 export async function resetCart() {
+  const user = await getSession();
+
   await getAnyData(`${BASE_URL}/api/carts/reset-cart`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Cookie': `user_id=${JSON.parse(cookies().get("token")?.value!).id};`,
+      'Cookie': `user_id=${user!.user.sub};`,
     }
   });
 

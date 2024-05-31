@@ -1,18 +1,26 @@
 import { ProfileMainInfo } from "@/components/ProfileMainInfo/ProfileMainInfo";
 import { EditProfileForm } from "@/components/Forms/EditProfileForm/EditProfileForm";
-import { ChangePasswordForm } from "@/components/Forms/ChangePasswordForm/ChangePasswordForm";
+import { getSession } from "@auth0/nextjs-auth0";
+import { getAnyData } from "@/services/data-fetch/getAnyData";
+import { BASE_URL } from "@/services/constants";
 
-export default function Profile() {
+export default async function Profile() {
+  const session = await getSession();
+  const user = await getAnyData<IUser>(`${BASE_URL}/api/user/get-user`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(session)
+  });
+
   return (
     <>
       <section>
-        <ProfileMainInfo />
+        <ProfileMainInfo user={user} />
       </section>
       <section>
-        <EditProfileForm />
-      </section>
-      <section>
-        <ChangePasswordForm />
+        <EditProfileForm user={user} />
       </section>
     </>
   );

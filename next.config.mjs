@@ -8,6 +8,17 @@ const nextConfig = {
         port: '',
         pathname: '/products/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 's.gravatar.com',
+        port: '',
+        pathname: '/avatar/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+      },
     ],
   },
 };

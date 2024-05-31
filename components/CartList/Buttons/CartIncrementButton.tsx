@@ -17,16 +17,18 @@ export function CartIncrementButton({ children, item, mode, translationKey }: IP
   const { optimistic, addOptimistic } = useCartOptimistic();
 
   const handleIncrement = async () => {
-    if (addOptimistic && optimistic) {
-      startTransition(() => {
-        const newCart = {
-          count: optimistic.count + 1,
-          price: optimistic.price + item.price,
-          products: optimistic.products.map(p => p.id === item.id ? ({ ...p, quantity: p.quantity + 1 }) : ({ ...p })),
-        }
-        return addOptimistic(newCart)
-      })
-    }
+    startTransition(() => {
+      const isNew = optimistic.products.find(p => p.id === item.id);
+
+      const newProducts = isNew ? optimistic.products.map(p => p.id === item.id ? ({ ...p, quantity: p.quantity + 1 }) : ({ ...p })) : [{ ...item, quantity: 1 }, ...optimistic.products]
+
+      const newCart = {
+        count: optimistic.count + 1,
+        price: optimistic.price + item.price,
+        products: newProducts,
+      }
+      return addOptimistic(newCart)
+    })
     await incrementCart(item.id);
   }
 

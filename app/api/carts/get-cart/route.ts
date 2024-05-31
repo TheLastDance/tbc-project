@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
 
     if (!user_id) throw new Error('not auth!');
 
-    const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${+user_id};`;
+    const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${user_id};`;
     const { products } = await getAnyData<{ products: IProductItem[] }>(`https://dummyjson.com/products?limit=0`);
 
     if (cart.rows.length) {

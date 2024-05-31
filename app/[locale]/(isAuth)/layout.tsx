@@ -1,5 +1,5 @@
 import { AuthLayout } from "@/components/Layouts/AuthLayout";
 
-export default async function Layout({ children }: ChildrenProps) {
+export default function Layout({ children }: ChildrenProps) {
   return <AuthLayout>{children}</AuthLayout>;
 }

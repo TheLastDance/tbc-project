@@ -55,6 +55,10 @@ export const translations = {
     "cart.items": "items",
     "cart.total": "total",
     "cart.emptyMessage": "Your cart is empty",
+    "firstName": "first name",
+    "lastName": "last name",
+    "role": "role",
+    "regDate": "reg. date",
   },
   ka: {
     "navigation.profile": "პროფილი",
@@ -110,5 +114,9 @@ export const translations = {
     "cart.items": "რაოდენობა",
     "cart.total": "ჯამი",
     "cart.emptyMessage": "კალათში საყიდლები არ მოიძებნება",
+    "firstName": "სახელი",
+    "lastName": "გვარი",
+    "role": "როლი",
+    "regDate": "რეგ. თარიღი",
   },
 };
