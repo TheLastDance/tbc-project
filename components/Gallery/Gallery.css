@@ -1,0 +1,69 @@
+.gallery_container {
+  display: flex;
+  height: fit-content;
+  align-items: center;
+}
+
+.galleryColumn {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.galleryColumn img {
+  border: 1px solid var(--secondaryColor);
+  margin: 0.5rem 0;
+  width: auto;
+  max-width: 100%;
+  height: 8rem;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.thumbnail {
+  position: relative;
+  width: 30rem;
+  height: 35rem;
+}
+
+.thumbnail img {
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.thumbnailModal {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnailModal img {
+  width: auto;
+  max-width: 100%;
+  height: 90%;
+  object-fit: contain;
+}
+
+.thumbnailModal button {
+  position: absolute;
+  display: flex;
+  top: 100px;
+  right: 100px;
+}
+
+.thumbnailModal svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: white;
+}
+
+@media(max-width:1000px) {
+  .thumbnailModal button {
+    top: 100px;
+    right: 25px;
+  }
+}
