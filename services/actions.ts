@@ -5,6 +5,7 @@ import { cookieExpirationOneYear } from "./utils";
 import { getAnyData } from "./data-fetch/getAnyData";
 import { BASE_URL } from "./constants";
 import { getSession } from "@auth0/nextjs-auth0";
+import { sql } from "@vercel/postgres";
 
 export async function setTranslateCookie(locale: Locale) {
   const cookieStore = cookies();
@@ -14,11 +15,13 @@ export async function setTranslateCookie(locale: Locale) {
 
 export async function editUser(data: FormData, id: number) {
   const { given_name, family_name, birth_date } = Object.fromEntries(data);
-  await getAnyData<IUserDatabase>(`${BASE_URL}/api/edit-user/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ given_name, family_name, birth_date })
-  });
+
+  try {
+    if (!given_name || !family_name || !id) throw new Error('name, email names required');
+    await sql`UPDATE users SET given_name = ${`${given_name}`}, family_name = ${`${family_name}`}, birth_date = ${`${birth_date}`} WHERE id = ${id};`;
+  } catch (error) {
+    console.log(error)
+  }
 
   revalidatePath("/admin")
 }

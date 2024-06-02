@@ -1,12 +1,16 @@
 import { BlogList } from "@/components/Blog/BlogList/BlogList"
-import { setStaticParamsLocale } from "next-international/server";
+import { Suspense } from "react";
+import { FullPostLoader } from "@/components/Loaders/FullPostLoader/FullPostLoader";
 
-export default function Blog({ params: { locale } }: ILocaleParam) {
-  setStaticParamsLocale(locale)
+export const revalidate = 0;
+
+export default async function Blog() {
 
   return (
     <>
-      <BlogList />
+      <Suspense fallback={<FullPostLoader />}>
+        <BlogList />
+      </Suspense>
     </>
   )
 }
