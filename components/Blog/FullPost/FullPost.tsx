@@ -2,50 +2,48 @@ import "./FullPost.css";
 import NotFound from "@/app/[locale]/not-found";
 import Link from "next/link";
 import Image from "next/image";
-import { getAnyData } from "@/services/data-fetch/getAnyData";
-import photo from "@/public/img/blog/dogProfile.jpeg";
-import { LikeIcon } from "@/components/Icons/Like";
-import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
+import { getPost } from "@/services/sqlQueries/posts/getPost";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
+// import { BASE_URL } from "@/services/constants";
+// import { getAnyData } from "@/services/data-fetch/getAnyData";
+
+export const revalidate = 0;
 
 export async function FullPost({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
-  const data = await getAnyData<IPostItem>(`https://dummyjson.com/posts/${id}`);
+  // DONT NEED TO USE ROUTE HANDLER, WE CAN DIRECTLY FETCH FROM DB IN SERVER COMPONENTS
+  const post = await getPost(id);
+  //const post = await getAnyData<IPostItem>(`${BASE_URL}/api/posts/get-post/${id}`, { cache: "no-store" })
 
-  if (!data.title) return <NotFound />;
+  if (!post.title) return <NotFound />;
 
-  const { title, body, tags, reactions } = data;
+  const { title, body, user_serial, user_picture, added_on } = post;
+
+  const utcDate = new Date(added_on).toLocaleString();
 
   return (
     <article className="fullPost">
       <div className="fullPost_titleAndPhoto_container">
         <h1>{title}</h1>
-        <Image
-          src={photo}
-          alt="profile avatar"
-          width={350}
-          height={350}
-          priority
-        />
+        <Link href={`/user/${user_serial}`}>
+          <Image
+            src={user_picture}
+            alt="profile avatar"
+            width={350}
+            height={350}
+            priority
+          />
+        </Link>
+
       </div>
       <p className="fullPost_text">{body}</p>
-      <ul>
-        {tags.map((item, index) => (
-          <li className="fullPost_tag" key={index}>
-            <Link href="/">{`#${item}`}</Link>
-          </li>
-        ))}
-      </ul>
       <div className="fullPost_info">
         <p>
           <span>
-            <TranslateTextServer translationKey="fullPost.published" />{" "}
+            <TranslateText translationKey="fullPost.published" />{" "}
           </span>
-          2024-02-11
+          {utcDate}
         </p>
-        <button type="button" className="fullPost_like_button">
-          <LikeIcon />
-          <span>{reactions.likes}</span>
-        </button>
       </div>
     </article>
   );

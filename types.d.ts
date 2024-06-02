@@ -90,11 +90,10 @@ interface IPostItem {
   id: number;
   title: string;
   body: string;
-  tags: string[];
-  reactions: {
-    likes: number,
-    dislikes: number,
-  };
+  user_id: string;
+  added_on: string;
+  user_picture: string;
+  user_serial: number;
 }
 
 type ErrorMessage = {

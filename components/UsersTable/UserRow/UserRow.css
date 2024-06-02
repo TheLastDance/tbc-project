@@ -4,7 +4,7 @@
   font-weight: 600;
   border-right: 1px solid var(--secondaryColor);
   border-bottom: 1px solid var(--secondaryColor);
-  min-width: fit-content;
+  overflow-wrap: break-word;
 }
 
 .usersTable_row td button {
