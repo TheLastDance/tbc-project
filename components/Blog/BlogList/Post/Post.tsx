@@ -2,7 +2,7 @@ import "./Post.css";
 import { Card } from "@/components/Card/Card";
 import Link from "next/link";
 import Image from "next/image";
-import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 interface IProps {
   item: IPostItem
@@ -24,7 +24,7 @@ export function Post({ item }: IProps) {
       <p className="blog_text">{body}</p>
       <p>{utcDate}</p>
       <Link href={`/blog/${id}`} className="post_viewFullButton" role="button">
-        <TranslateTextServer translationKey="button.viewFull" />
+        <TranslateText translationKey="button.viewFull" />
       </Link>
     </Card>
   );

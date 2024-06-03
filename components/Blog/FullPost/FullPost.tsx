@@ -4,25 +4,28 @@ import Link from "next/link";
 import Image from "next/image";
 import { getPost } from "@/services/sqlQueries/posts/getPost";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
-// import { BASE_URL } from "@/services/constants";
-// import { getAnyData } from "@/services/data-fetch/getAnyData";
+import { getSession } from "@auth0/nextjs-auth0";
+import { FullPostButtons } from "./Buttons/FullPostButtons";
+
 
 export const revalidate = 0;
 
 export async function FullPost({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
-  // DONT NEED TO USE ROUTE HANDLER, WE CAN DIRECTLY FETCH FROM DB IN SERVER COMPONENTS
   const post = await getPost(id);
-  //const post = await getAnyData<IPostItem>(`${BASE_URL}/api/posts/get-post/${id}`, { cache: "no-store" })
 
-  if (!post.title) return <NotFound />;
+  if (!post?.title) return <NotFound />;
 
-  const { title, body, user_serial, user_picture, added_on } = post;
+  const { title, body, user_serial, user_picture, added_on, user_id } = post;
+
+  const session = await getSession();
+  const isYourPost = session?.user.sub === user_id;
 
   const utcDate = new Date(added_on).toLocaleString();
 
   return (
     <article className="fullPost">
+      {isYourPost && <FullPostButtons title={title} body={body} id={+id} />}
       <div className="fullPost_titleAndPhoto_container">
         <h1>{title}</h1>
         <Link href={`/user/${user_serial}`}>

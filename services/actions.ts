@@ -67,3 +67,40 @@ export async function resetCart() {
 
   revalidateTag("cart")
 }
+
+export async function editPost(data: FormData, id: number) {
+  const { title, body } = Object.fromEntries(data);
+  const session = await getSession();
+
+  try {
+    if (!title || !body || !id) throw new Error('name, email names required');
+    const { rows } = await sql`SELECT * FROM posts WHERE id = ${id};`;
+    const [user] = rows;
+    if (session?.user.sub === user.user_id) {
+      await sql`UPDATE posts SET title = ${`${title}`}, body = ${`${body}`} WHERE id = ${id};`;
+    }
+    revalidatePath("/blog")
+    return { message: "post was edited" }
+  } catch (error) {
+    console.log(error)
+    return { error }
+  }
+}
+
+export async function deletePost(id: number) {
+  const session = await getSession();
+
+  try {
+    if (!id) throw new Error('id required');
+    const { rows } = await sql`SELECT * FROM posts WHERE id = ${id};`;
+    const [user] = rows;
+    if (session?.user.sub === user.user_id) {
+      await sql`DELETE FROM posts WHERE id = ${id};`;
+    }
+    revalidatePath("/blog")
+    return { message: "post was deleted" }
+  } catch (error) {
+    console.log(error)
+    return { error }
+  }
+}

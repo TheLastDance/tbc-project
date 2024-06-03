@@ -14,12 +14,13 @@ export function PendingButton({
   type,
   mode,
   translationKey,
-  children
+  children,
+  ...props
 }: IProps) {
   const { pending } = useFormStatus();
 
   return (
-    <Button type={type} disabled={pending} mode={mode} translationKey={translationKey}>
+    <Button type={type} disabled={pending} mode={mode} translationKey={translationKey} {...props}>
       {children}
     </Button>
   );

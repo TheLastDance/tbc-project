@@ -2,6 +2,28 @@
   margin: 0.75rem 0;
 }
 
+.fullpost_buttons {
+  display: flex;
+}
+
+.fullpost_buttons button {
+  margin-right: 1rem;
+}
+
+.fullpost_buttons form button:disabled {
+  opacity: 1;
+  background-color: unset;
+}
+
+.fullpost_buttons button:disabled svg {
+  fill: var(--grayColor);
+}
+
+.fullpost_buttons svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .fullPost_titleAndPhoto_container {
   display: flex;
   justify-content: space-between;

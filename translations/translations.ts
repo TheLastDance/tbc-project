@@ -60,6 +60,8 @@ export const translations = {
     "lastName": "last name",
     "role": "role",
     "regDate": "reg. date",
+    "title": "title",
+    "post": "post",
   },
   ka: {
     "navigation.profile": "პროფილი",
@@ -120,5 +122,7 @@ export const translations = {
     "lastName": "გვარი",
     "role": "როლი",
     "regDate": "რეგ. თარიღი",
+    "title": "სათაური",
+    "post": "პოსტი",
   },
 };

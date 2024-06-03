@@ -1,13 +1,12 @@
+"use client"
+
 import "./BlogList.css";
 import { Post } from "./Post/Post";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
-import { getPosts } from "@/services/sqlQueries/posts/getPosts";
-// import { getPosts } from "@/services/data-fetch/post/getPosts";
 
 export const revalidate = 0;
 
-export async function BlogList() {
-  const post = await getPosts();
+export function BlogList({ posts }: { posts: IPostItem[] }) {
 
   return (
     <section id="blog">
@@ -15,7 +14,7 @@ export async function BlogList() {
         <TranslateText translationKey="blog" />
       </h2>
       <ul>
-        {post.map((item: IPostItem) => (
+        {posts.map((item: IPostItem) => (
           <Post key={item.id} item={item} />
         ))}
       </ul>

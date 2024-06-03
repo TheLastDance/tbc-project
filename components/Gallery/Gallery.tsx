@@ -37,14 +37,14 @@ export function Gallery({ images }: IProps) {
         }
       </div>
       <div className="thumbnail">
-        <Image onClick={() => setOpenModal(true)} src={img} sizes="20rem" alt="product" fill priority />
+        <Image onClick={() => setOpenModal(true)} src={img} sizes="20rem" alt="product" fill />
       </div>
       {openModal && <ModalPortal onClose={() => setOpenModal(false)}>
         <div className="thumbnailModal">
           <button type="button" className="resetButtonStyles" title="close" onClick={() => setOpenModal(false)}>
             <Close />
           </button>
-          <Image src={img} alt="product" width={800} height={800} priority />
+          <Image src={img} alt="product" width={800} height={800} />
         </div>
       </ModalPortal>}
     </div>

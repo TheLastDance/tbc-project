@@ -10,9 +10,7 @@ interface IProps {
   }
 }
 
-export const revalidate = 0;
-
-export default async function FullPostPage({ params: { id } }: IProps) {
+export default function FullPostPage({ params: { id } }: IProps) {
 
   return (
     <>
