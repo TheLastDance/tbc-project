@@ -20,7 +20,7 @@ export function NavLink({
   return (
     <Link
       href={href}
-      className={pathName === href ? "navLink_active" : "navLink"}
+      className={pathName.startsWith(href) ? "navLink_active" : "navLink"}
       onClick={onClick}
       {...props}
     >

@@ -9,7 +9,7 @@ export async function generateMetadata({ params: { id } }: IIdParamProps) {
   const { title } = data;
 
   return {
-    title: `Post - ${id}`,
+    title: `Post - ${title}`,
     description: `${title}`,
   };
 }

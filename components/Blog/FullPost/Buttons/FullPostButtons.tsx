@@ -86,7 +86,7 @@ export function FullPostButtons({ title, body, id }: IProps) {
                 defaultValue={body}
                 textArea
                 rows={5}
-                maxLength={500}
+                maxLength={10000}
                 minLength={20}
                 required
               />

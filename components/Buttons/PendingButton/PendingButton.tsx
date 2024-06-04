@@ -5,7 +5,7 @@ import { Button } from "@/components/UI/Buttons/Button/Button";
 import { TranslationKey } from "@/translations/translations";
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   mode?: ButtonMode;
   translationKey?: TranslationKey;
 };

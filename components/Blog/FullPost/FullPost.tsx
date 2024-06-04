@@ -6,6 +6,7 @@ import { getPost } from "@/services/sqlQueries/posts/getPost";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { getSession } from "@auth0/nextjs-auth0";
 import { FullPostButtons } from "./Buttons/FullPostButtons";
+import parse from 'html-react-parser';
 
 
 export const revalidate = 0;
@@ -39,7 +40,9 @@ export async function FullPost({ id }: idParam) {
         </Link>
 
       </div>
-      <p className="fullPost_text">{body}</p>
+      <div className="fullPost_text">
+        {parse(body)}
+      </div>
       <div className="fullPost_info">
         <p>
           <span>

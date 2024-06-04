@@ -104,3 +104,31 @@ export async function deletePost(id: number) {
     return { error }
   }
 }
+
+export async function addPost(data: FormData) {
+  const session = await getSession();
+  const { title, body } = Object.fromEntries(data);
+
+  try {
+    if (!title || !body) throw new Error('title and message fileds are required!');
+    if (
+      `${title}`.length > 50 ||
+      `${body}`.replace(/<(.|\n)*?>/g, '').trim().length > 10000 ||
+      `${body}`.replace(/<(.|\n)*?>/g, '').trim().length <= 0
+    ) throw new Error('title must be less than 50 symbols and message must include from 1 to 10000 symbols!')
+
+    if (session?.user) {
+      await sql`INSERT INTO posts (title, body, user_id)
+      VALUES (
+        ${`${title}`},
+        ${`${body}`},
+        ${session.user.sub}
+      );`;
+    }
+
+    revalidatePath("/blog")
+    return { message: "post was added" }
+  } catch (error) {
+    return { error: (error as Error).message }
+  }
+}

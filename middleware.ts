@@ -9,7 +9,7 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: 'rewrite'
 })
 
-const isAuthPaths = ["/profile", "/cart"];
+const isAuthPaths = ["/profile", "/cart", "/blog/new"];
 const isAdminPaths = ["/admin"];
 
 function isPathProtected(pathName: string, protectedPaths: string[]) {

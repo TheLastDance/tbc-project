@@ -1,0 +1,79 @@
+.addNewPost {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.addNewPost .addNewPost_introParagraph {
+  margin: 1rem 0 3rem 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.textEditor {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.textEditor .quill {
+  max-width: 800px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.textEditor .ql-container {
+  height: 250px;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-family: inherit;
+  background-color: var(--background);
+}
+
+.textEditor .ql-toolbar.ql-snow+.ql-container.ql-snow {
+  border-top: 1px solid;
+  border-color: var(--grayColor);
+}
+
+.textEditor .ql-toolbar.ql-snow {
+  border-color: var(--grayColor);
+  border-radius: 5px;
+}
+
+.textEditor .ql-toolbar svg .ql-stroke {
+  stroke: var(--secondaryColor);
+}
+
+.textEditor .ql-toolbar svg .ql-fill {
+  fill: var(--secondaryColor);
+}
+
+.textEditor .ql-snow .ql-header {
+  color: var(--secondaryColor);
+}
+
+.textEditor .ql-snow .ql-picker-options {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}
+
+.textEditor .placeholder {
+  height: 308px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: -1;
+}
+
+@media(max-width:600px) {
+  .textEditor .placeholder {
+    height: 330px;
+  }
+}
+
+@media(max-width:332px) {
+  .textEditor .placeholder {
+    height: 354px;
+  }
+}
