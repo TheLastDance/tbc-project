@@ -1,0 +1,36 @@
+.ModalUI {
+  margin: 0;
+  padding: 0 1.5rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 400px;
+  width: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url("../../../public/img/backgrounds/modal-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 2rem;
+  color: #fff;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media(max-width:500px) {
+  .ModalUI {
+    max-width: 280px;
+  }
+}

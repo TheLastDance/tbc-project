@@ -67,3 +67,74 @@ export async function resetCart() {
 
   revalidateTag("cart")
 }
+
+export async function editPost(data: FormData, id: number) {
+  const { title, body } = Object.fromEntries(data);
+  const session = await getSession();
+
+  try {
+    if (!title || !body || !id) throw new Error('title and message fileds are required!');
+    if (
+      `${title}`.length > 50 ||
+      `${body}`.replace(/<(.|\n)*?>/g, '').trim().length > 10000 ||
+      `${body}`.replace(/<(.|\n)*?>/g, '').trim().length <= 0
+    ) throw new Error('title must be less than 50 symbols and message must include from 1 to 10000 symbols!')
+
+    const { rows } = await sql`SELECT * FROM posts WHERE id = ${id};`;
+    const [user] = rows;
+    if (session?.user.sub === user.user_id) {
+      await sql`UPDATE posts SET title = ${`${title}`}, body = ${`${body}`} WHERE id = ${id};`;
+    }
+    revalidatePath("/blog")
+    return { message: "post was edited" }
+  } catch (error) {
+    console.log(error)
+    return { error: (error as Error).message }
+  }
+}
+
+export async function deletePost(id: number) {
+  const session = await getSession();
+
+  try {
+    if (!id) throw new Error('id required');
+    const { rows } = await sql`SELECT * FROM posts WHERE id = ${id};`;
+    const [user] = rows;
+    if (session?.user.sub === user.user_id) {
+      await sql`DELETE FROM posts WHERE id = ${id};`;
+    }
+    revalidatePath("/blog")
+    return { message: "post was deleted" }
+  } catch (error) {
+    console.log(error)
+    return { error }
+  }
+}
+
+export async function addPost(data: FormData) {
+  const session = await getSession();
+  const { title, body } = Object.fromEntries(data);
+
+  try {
+    if (!title || !body) throw new Error('title and message fileds are required!');
+    if (
+      `${title}`.length > 50 ||
+      `${body}`.replace(/<(.|\n)*?>/g, '').trim().length > 10000 ||
+      `${body}`.replace(/<(.|\n)*?>/g, '').trim().length <= 0
+    ) throw new Error('title must be less than 50 symbols and message must include from 1 to 10000 symbols!')
+
+    if (session?.user) {
+      await sql`INSERT INTO posts (title, body, user_id)
+      VALUES (
+        ${`${title}`},
+        ${`${body}`},
+        ${session.user.sub}
+      );`;
+    }
+
+    revalidatePath("/blog")
+    return { message: "post was added" }
+  } catch (error) {
+    return { error: (error as Error).message }
+  }
+}

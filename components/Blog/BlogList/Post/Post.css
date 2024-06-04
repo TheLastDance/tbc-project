@@ -6,6 +6,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .titleAndPhoto_container img {

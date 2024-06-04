@@ -1,0 +1,15 @@
+.addPostForm_container .form_container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.addPostForm_container #addPost_title {
+  padding: 8px;
+  font-size: 1.35rem;
+  border-color: var(--grayColor);
+  background-color: unset;
+}
+
+.addPostForm_container button {
+  text-transform: capitalize;
+}

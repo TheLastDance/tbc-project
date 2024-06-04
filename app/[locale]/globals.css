@@ -94,6 +94,10 @@ section {
   margin: 0.75rem 0;
 }
 
+li {
+  list-style-position: inside;
+}
+
 @media(max-width:1024px) {
   html {
     font-size: 14px;
