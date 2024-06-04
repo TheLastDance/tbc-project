@@ -20,17 +20,17 @@ export function Blog({ posts, user }: { posts: IPostItem[], user: Claims | undef
       <h2>
         <TranslateText translationKey="blog" />
       </h2>
-      {user &&
-        <div className="addPost_container">
-          <Search
-            inputID="blog_search"
-            inputValue={searchText}
-            handleInputChange={(e) => setSearchText(e.target.value)}
-          />
+      <div className="addPost_container">
+        <Search
+          inputID="blog_search"
+          inputValue={searchText}
+          handleInputChange={(e) => setSearchText(e.target.value)}
+        />
+        {user &&
           <Link href="/blog/new" className="resetButtonStyles">
             <Edit />
-          </Link>
-        </div>}
+          </Link>}
+      </div>
       <BlogList posts={filteredPosts} />
       {!filteredPosts.length ? <TranslateText translationKey="blog.notFound" /> : null}
     </section>
