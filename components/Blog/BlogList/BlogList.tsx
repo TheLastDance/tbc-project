@@ -1,5 +1,3 @@
-"use client"
-
 import "./BlogList.css";
 import { Post } from "./Post/Post";
 

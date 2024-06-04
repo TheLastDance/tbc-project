@@ -1,11 +1,13 @@
 "use client";
 
 import "./Products.css";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
 import { Heading } from "../UI/GlitchEffects/Heading/Heading";
 import { Button } from "../UI/Buttons/Button/Button";
+import { useDebounce } from "@/services/hooks/useDebounce";
+import { TranslateText } from "../TranslateText/TranslateText";
 
 interface IProps {
   data: {
@@ -16,17 +18,8 @@ interface IProps {
 export function Products({ data }: IProps) {
   const [searchText, setSearchText] = useState("");
   const [isAscending, setIsAscending] = useState(true);
-  const [debouncedValue, setDebouncedValue] = useState("");
+  const debouncedValue = useDebounce(searchText);
   const { products } = data;
-
-  // debouncing
-  useEffect(() => {
-    const debounce = setTimeout(() => {
-      setDebouncedValue(searchText);
-    }, 1000);
-
-    return () => clearTimeout(debounce);
-  }, [searchText]);
 
   const filteredProducts = useMemo(() => products.filter(({ title }) => title.toLowerCase().includes(debouncedValue.toLowerCase())), [debouncedValue, products]);
 
@@ -54,7 +47,7 @@ export function Products({ data }: IProps) {
         </div>
         <Heading level={2} translationKey="products" />
         <ProductsList products={sortedData} />
-        {!sortedData.length ? <p>No products found!</p> : null}
+        {!sortedData.length ? <TranslateText translationKey="products.notFound" /> : null}
       </section>
     </>
   );
