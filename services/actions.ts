@@ -6,6 +6,7 @@ import { getAnyData } from "./data-fetch/getAnyData";
 import { BASE_URL } from "./constants";
 import { getSession } from "@auth0/nextjs-auth0";
 import { sql } from "@vercel/postgres";
+import { ContactPageMessages } from "@/enums";
 
 export async function setTranslateCookie(locale: Locale) {
   const cookieStore = cookies();
@@ -136,5 +137,29 @@ export async function addPost(data: FormData) {
     return { message: "post was added" }
   } catch (error) {
     return { error: (error as Error).message }
+  }
+}
+
+export async function sendMessage(_: ContactFormState, data: FormData) {
+  const { firstName, lastName, tel, email, question } = Object.fromEntries(data);
+
+  try {
+
+    if (!firstName || !lastName || !tel || !email || !question) throw new Error("All fields are required!")
+    if (String(question).length > 250) throw new Error("Question should have less than 250 symbols!")
+
+    await sql`INSERT INTO messages (firstname,lastname,email,tel,body)
+      VALUES (
+        ${`${firstName}`},
+        ${`${lastName}`},
+        ${`${email}`},
+        ${`${tel}`},
+        ${`${question}`}
+      );`;
+
+    return { message: ContactPageMessages.Success }
+
+  } catch (error) {
+    return { error: (error as Error).message, message: ContactPageMessages.Fail }
   }
 }
