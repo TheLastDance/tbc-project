@@ -159,12 +159,6 @@ interface IInputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
-interface ISearchProps {
-  inputID: string;
-  inputValue: string;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
 interface IErrorPage {
   error?: Error & { digest?: string }
   reset: () => void;

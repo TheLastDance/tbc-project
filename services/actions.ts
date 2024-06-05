@@ -157,6 +157,7 @@ export async function sendMessage(_: ContactFormState, data: FormData) {
         ${`${question}`}
       );`;
 
+    revalidatePath("/admin/contact")
     return { message: ContactPageMessages.Success }
 
   } catch (error) {

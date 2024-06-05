@@ -6,22 +6,20 @@ import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
 import { Heading } from "../UI/GlitchEffects/Heading/Heading";
 import { Button } from "../UI/Buttons/Button/Button";
-import { useDebounce } from "@/services/hooks/useDebounce";
 import { TranslateText } from "../TranslateText/TranslateText";
 
 interface IProps {
   data: {
-    products: IProductItem[];
+    products: IProductItem[],
   };
+  searchText: string,
 }
 
-export function Products({ data }: IProps) {
-  const [searchText, setSearchText] = useState("");
+export function Products({ data, searchText }: IProps) {
   const [isAscending, setIsAscending] = useState(true);
-  const debouncedValue = useDebounce(searchText);
   const { products } = data;
 
-  const filteredProducts = useMemo(() => products.filter(({ title }) => title.toLowerCase().includes(debouncedValue.toLowerCase())), [debouncedValue, products]);
+  const filteredProducts = products.filter(({ title }) => title.toLowerCase().includes(searchText.toLowerCase()));
 
   // Products will be sorted by default, and if additional details are provided in the technical requirements, the functionality may be modified accordingly.
   const sortedData = useMemo(() => isAscending
@@ -33,11 +31,7 @@ export function Products({ data }: IProps) {
     <>
       <section className="products">
         <div className="searchForm">
-          <Search
-            inputID="mainPage_search_input"
-            inputValue={searchText}
-            handleInputChange={(e) => setSearchText(e.target.value)}
-          />
+          <Search inputID="mainPage_search_input" />
           <Button
             type="button"
             onClick={() => setIsAscending((prev) => !prev)}
