@@ -50,6 +50,10 @@ interface IEditProfileState {
   email: string;
 }
 
+type ContactFormState = {
+  message: ContactPageMessages,
+  error?: string,
+}
 
 // fetched data items
 interface IProductItem {
@@ -122,6 +126,16 @@ interface IUserDatabase {
   users: {
     rows: IUser[]
   }
+}
+
+interface IMessage {
+  id: number,
+  firstname: string,
+  lastname: string,
+  email: string,
+  tel: string,
+  body: string,
+  added_on: string,
 }
 
 

@@ -1,4 +1,5 @@
+import { AdminLayout } from "@/components/Layouts/AdminLayout/AdminLayout";
 
 export default function layout({ children }: ChildrenProps) {
-  return <>{children}</>;
+  return <AdminLayout>{children}</AdminLayout>;
 }

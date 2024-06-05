@@ -65,6 +65,9 @@ export const translations = {
     "regDate": "reg. date",
     "title": "title",
     "post": "post",
+    "table.answer": "answer",
+    "table.question": "question",
+    "table.date": "date",
   },
   ka: {
     "navigation.profile": "პროფილი",
@@ -130,5 +133,8 @@ export const translations = {
     "regDate": "რეგ. თარიღი",
     "title": "სათაური",
     "post": "პოსტი",
+    "table.answer": "პასუხი",
+    "table.question": "კითხვა",
+    "table.date": "თარიღი",
   },
 };
