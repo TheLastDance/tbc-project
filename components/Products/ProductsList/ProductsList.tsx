@@ -1,4 +1,4 @@
-"use client"
+
 import "./ProductsList.css";
 import { Product } from "./Product/Product";
 

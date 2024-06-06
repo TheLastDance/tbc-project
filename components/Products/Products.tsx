@@ -1,53 +1,43 @@
-"use client";
-
 import "./Products.css";
-import { useState, useMemo } from "react";
 import { Search } from "../Search/Search";
 import { ProductsList } from "./ProductsList/ProductsList";
 import { Heading } from "../UI/GlitchEffects/Heading/Heading";
-import { Button } from "../UI/Buttons/Button/Button";
-import { useDebounce } from "@/services/hooks/useDebounce";
 import { TranslateText } from "../TranslateText/TranslateText";
+import { PaginationUI } from "../Pagination/Pagination";
+import { SortButton } from "./Filters/SortButton";
 
 interface IProps {
   data: {
-    products: IProductItem[];
+    products: IProductItem[],
   };
+  params: IProductParams['searchParams'],
 }
 
-export function Products({ data }: IProps) {
-  const [searchText, setSearchText] = useState("");
-  const [isAscending, setIsAscending] = useState(true);
-  const debouncedValue = useDebounce(searchText);
+export function Products({ data, params }: IProps) {
   const { products } = data;
+  const searchText = params?.searchText || '';
+  const isAsc = params?.isAsc === "true" ? false : true;
+  const page = Number(params?.page) || 1;
 
-  const filteredProducts = useMemo(() => products.filter(({ title }) => title.toLowerCase().includes(debouncedValue.toLowerCase())), [debouncedValue, products]);
+  const filteredProducts = products.filter(({ title }) => title.toLowerCase().includes(searchText.toLowerCase()));
 
-  // Products will be sorted by default, and if additional details are provided in the technical requirements, the functionality may be modified accordingly.
-  const sortedData = useMemo(() => isAscending
+  const sortedData = isAsc
     ? [...filteredProducts].sort((a, b) => (a.title === b.title ? 0 : a.title < b.title ? -1 : 1))
     : [...filteredProducts].sort((a, b) => (a.title === b.title ? 0 : a.title < b.title ? 1 : -1))
-    , [isAscending, filteredProducts])
+
+  const paginatedProducts = sortedData.slice(12 * (page - 1), page * 12);
 
   return (
     <>
       <section className="products">
         <div className="searchForm">
-          <Search
-            inputID="mainPage_search_input"
-            inputValue={searchText}
-            handleInputChange={(e) => setSearchText(e.target.value)}
-          />
-          <Button
-            type="button"
-            onClick={() => setIsAscending((prev) => !prev)}
-            mode="glitchHover"
-            translationKey={isAscending ? "products.sort-Z-A" : "products.sort-A-Z"}
-          />
+          <Search inputID="mainPage_search_input" />
+          <SortButton isAsc={isAsc} />
         </div>
         <Heading level={2} translationKey="products" />
-        <ProductsList products={sortedData} />
-        {!sortedData.length ? <TranslateText translationKey="products.notFound" /> : null}
+        <ProductsList products={paginatedProducts} />
+        {!paginatedProducts.length ? <TranslateText translationKey="products.notFound" /> : null}
+        <PaginationUI totalPages={sortedData.length} size={12} />
       </section>
     </>
   );

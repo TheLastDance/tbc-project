@@ -1,0 +1,29 @@
+.rc-pagination {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  margin-top: 3rem !important;
+}
+
+.rc-pagination-total-text {
+  position: absolute;
+  margin-bottom: 4rem;
+}
+
+.rc-pagination-item {
+  margin: 0 0.3rem;
+  cursor: pointer;
+}
+
+.rc-pagination-item-active {
+  text-decoration: underline;
+}
+
+.rc-pagination-next button,
+.rc-pagination-prev button {
+  padding: 0.3rem 0.8rem;
+  display: flex;
+  align-items: center;
+}

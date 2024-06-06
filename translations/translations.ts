@@ -68,6 +68,8 @@ export const translations = {
     "table.answer": "answer",
     "table.question": "question",
     "table.date": "date",
+    "pagination.of": "of",
+    "pagination.items": "items",
   },
   ka: {
     "navigation.profile": "პროფილი",
@@ -136,5 +138,7 @@ export const translations = {
     "table.answer": "პასუხი",
     "table.question": "კითხვა",
     "table.date": "თარიღი",
+    "pagination.of": " ",
+    "pagination.items": "ნივთიდან",
   },
 };

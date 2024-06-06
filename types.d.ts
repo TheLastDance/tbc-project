@@ -159,15 +159,26 @@ interface IInputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
-interface ISearchProps {
-  inputID: string;
-  inputValue: string;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
 interface IErrorPage {
   error?: Error & { digest?: string }
   reset: () => void;
 }
 
 type ButtonMode = "glitch" | "glitchHover" | "none";
+
+//searchParams
+
+interface IProductParams {
+  searchParams?: {
+    searchText?: string,
+    page?: string,
+    isAsc?: string | boolean,
+  }
+}
+
+interface ITableParams {
+  searchParams?: {
+    searchText?: string,
+    page?: string,
+  }
+}
