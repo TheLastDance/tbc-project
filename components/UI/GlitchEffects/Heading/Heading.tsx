@@ -1,3 +1,5 @@
+"use client"
+
 import "./Heading.css"
 import { TranslationKey } from "@/translations/translations";
 import { TranslateText } from "@/components/TranslateText/TranslateText";

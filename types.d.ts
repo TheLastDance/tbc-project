@@ -165,3 +165,20 @@ interface IErrorPage {
 }
 
 type ButtonMode = "glitch" | "glitchHover" | "none";
+
+//searchParams
+
+interface IProductParams {
+  searchParams?: {
+    searchText?: string,
+    page?: string,
+    isAsc?: string | boolean,
+  }
+}
+
+interface ITableParams {
+  searchParams?: {
+    searchText?: string,
+    page?: string,
+  }
+}

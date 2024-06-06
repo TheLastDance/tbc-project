@@ -1,5 +1,3 @@
-"use client"
-
 import "./Post.css";
 import { Card } from "@/components/Card/Card";
 import Link from "next/link";

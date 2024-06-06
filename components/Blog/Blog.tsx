@@ -6,13 +6,15 @@ import { Edit } from "@/components/Icons/Edit";
 import { Search } from "../Search/Search";
 import { getSession } from "@auth0/nextjs-auth0";
 import { getPosts } from "@/services/sqlQueries/posts/getPosts";
+import { PaginationUI } from "../Pagination/Pagination";
 
-export async function Blog({ searchText }: { searchText: string }) {
+export async function Blog({ searchText, currentPage }: { searchText: string, currentPage: number }) {
   const posts = await getPosts() as IPostItem[];
   const session = await getSession();
   const user = session?.user;
 
   const filteredPosts = posts.filter(({ title }) => title.toLowerCase().includes(searchText.toLowerCase()));
+  const paginatedPosts = filteredPosts.slice(10 * (currentPage - 1), currentPage * 10);
 
   return (
     <section id="blog">
@@ -26,8 +28,9 @@ export async function Blog({ searchText }: { searchText: string }) {
             <Edit />
           </Link>}
       </div>
-      <BlogList posts={filteredPosts} />
-      {!filteredPosts.length ? <TranslateText translationKey="blog.notFound" /> : null}
+      {!paginatedPosts.length ? <TranslateText translationKey="blog.notFound" /> : null}
+      <BlogList posts={paginatedPosts} />
+      <PaginationUI totalPages={filteredPosts.length} size={10} />
     </section>
   )
 }
