@@ -3,10 +3,11 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { cookieExpirationOneYear } from "./utils";
 import { getAnyData } from "./data-fetch/getAnyData";
-import { BASE_URL } from "./constants";
+import { BASE_URL, BLOB_CHECK_URL, IMG_MAX_SIZE } from "./constants";
 import { getSession } from "@auth0/nextjs-auth0";
 import { sql } from "@vercel/postgres";
-import { ContactPageMessages } from "@/enums";
+import { ContactPageMessages, SuccessMessages } from "@/enums";
+import { del, put } from "@vercel/blob";
 
 export async function setTranslateCookie(locale: Locale) {
   const cookieStore = cookies();
@@ -14,17 +15,45 @@ export async function setTranslateCookie(locale: Locale) {
   cookieStore.set("Next-Locale", locale, { expires: cookieExpirationOneYear });
 }
 
-export async function editUser(data: FormData, id: number) {
+export async function editUser(data: FormData, prevPicture: string, userId?: string) {
+  const session = await getSession();
+  const id = userId || session?.user.sub;
+
   const { given_name, family_name, birth_date } = Object.fromEntries(data);
+  const image = data.get('image') as File;
 
   try {
-    if (!given_name || !family_name || !id) throw new Error('name, email names required');
-    await sql`UPDATE users SET given_name = ${`${given_name}`}, family_name = ${`${family_name}`}, birth_date = ${`${birth_date}`} WHERE id = ${id};`;
+    if (!given_name || !family_name || !id) throw new Error('name and last name required');
+    if (image.size > IMG_MAX_SIZE) throw new Error('image size should be less than 1mb');
+
+    if (image.size) {
+      if (prevPicture.includes(BLOB_CHECK_URL)) await del(prevPicture);
+
+      const blob = await put(image.name, image, {
+        access: 'public',
+      });
+
+      if (id && blob.url) {
+        await sql`
+          UPDATE users SET 
+          given_name = ${`${given_name}`}, 
+          family_name = ${`${family_name}`}, 
+          birth_date = ${`${birth_date}`}, 
+          picture = ${`${blob.url}`} 
+          WHERE id = ${id};
+          `;
+      }
+
+    } else {
+      await sql`UPDATE users SET given_name = ${`${given_name}`}, family_name = ${`${family_name}`}, birth_date = ${`${birth_date}`} WHERE id = ${id};`;
+    }
+
+    revalidatePath('/');
+    return { message: SuccessMessages.Profile }
   } catch (error) {
     console.log(error)
+    return { error: (error as Error).message }
   }
-
-  revalidatePath("/admin")
 }
 
 async function updateCart(apiUrl: string, item_id: number) {
