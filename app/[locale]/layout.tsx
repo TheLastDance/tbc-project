@@ -6,6 +6,7 @@ import { generateDynamicMetaData } from "@/services/utils";
 import { I18nProviderClient } from "@/locales/client";
 import { getStaticParams } from "@/locales/server";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { Toaster } from "react-hot-toast";
 
 // font will be replaced in future, so I deleted it from body
 const inter = Inter({ subsets: ["latin"] });
@@ -32,6 +33,7 @@ export default function RootLayout({ children, params: { locale } }: IProps) {
         <UserProvider>
           <I18nProviderClient locale={locale}>
             <ThemeProviders>
+              <Toaster position="bottom-right" />
               <GlobalLayout>
                 {children}
               </GlobalLayout>

@@ -5,6 +5,8 @@ import { Input } from "@/components/Input/Input"
 import { editUser } from "@/services/actions";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { Button } from "@/components/UI/Buttons/Button/Button";
+import { FileUpload } from "@/components/FileUpload/FileUpload";
+import toast from "react-hot-toast";
 
 interface IProps {
   setToggleFalse: () => void;
@@ -13,13 +15,16 @@ interface IProps {
 
 export function AddEditUserForm({ setToggleFalse, user }: IProps) {
   const [loading, setLoading] = useState(false);
+  const { given_name, family_name, birth_date, picture, id } = user;
 
   const handleCreateUser = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
     const data = new FormData(e.currentTarget);
-    await editUser(data, user.id);
+    const res = await editUser(data, picture, id);
+    if (res?.error) toast.error(res.error, { duration: 5000 });
+    if (res?.message) toast.success(res.message, { duration: 5000 });
 
     setLoading(false);
     setToggleFalse();
@@ -28,37 +33,34 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
   return <FormContainer>
     <form className="AddEditUserForm" onSubmit={(e) => handleCreateUser(e)}>
       <Input
-        label={<TranslateText translationKey="form.label.firstName" />}
+        type="text"
+        id="profile_firstName"
         name="given_name"
-        id="admin_form_given_name"
-        type="text"
-        defaultValue={user ? user.given_name : ""}
+        label={<TranslateText translationKey="form.label.firstName" />}
+        defaultValue={given_name}
         required
       />
 
       <Input
-        label={<TranslateText translationKey="form.label.lastName" />}
+        type="text"
+        id="profile_lastName"
         name="family_name"
-        id="admin_form_family_name"
-        type="text"
-        defaultValue={user ? user.family_name : ""}
+        label={<TranslateText translationKey="form.label.lastName" />}
+        defaultValue={family_name}
         required
       />
 
       <Input
-        label={<TranslateText translationKey="birthDate" />}
-        name="birth_date"
-        id="admin_form_birthDate"
         type="date"
-        defaultValue={user ? user.birth_date : ""}
+        id="profile_birthDate"
+        name="birth_date"
+        label={<TranslateText translationKey="birthDate" />}
+        defaultValue={birth_date}
       />
 
-      <Button
-        type="submit"
-        disabled={loading}
-        translationKey={user ? "edit" : "addUser"}
-        mode="glitchHover"
-      />
+      <FileUpload />
+
+      <Button disabled={loading} type="submit" translationKey="button.save" mode="glitchHover" />
     </form>
   </FormContainer>
 }

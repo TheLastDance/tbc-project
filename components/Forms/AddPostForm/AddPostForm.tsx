@@ -8,17 +8,17 @@ import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton"
 import { useRouter } from "next/navigation"
 import { addPost } from "@/services/actions"
 import { FormContainer } from "../FormContainer/FormContainer"
+import toast from "react-hot-toast"
 
 export function AddPostForm() {
   const [content, setContent] = useState('');
-  const [error, setError] = useState('');
   const router = useRouter();
 
   const handleAddPost = async (data: FormData) => {
     const res = await addPost(data);
 
     if (res?.error) {
-      setError(res.error as string)
+      toast.error(res.error, { duration: 5000 });
     } else {
       router.push("/blog");
       router.refresh();
@@ -45,7 +45,6 @@ export function AddPostForm() {
           />
 
           <TextEditor content={content} setContent={setContent} />
-          {error && <p>{error}</p>}
           <PendingButton type="submit" translationKey="post" />
         </form>
       </FormContainer>

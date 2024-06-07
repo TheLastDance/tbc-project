@@ -1,65 +1,58 @@
 "use client";
 
 import "./EditProfileForm.css";
-import { useState } from "react";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Input } from "@/components/Input/Input";
-import { handleChangeInputObj } from "@/services/utils";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
-import { Button } from "@/components/UI/Buttons/Button/Button";
+import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton";
+import { editUser } from "@/services/actions";
+import { FileUpload } from "@/components/FileUpload/FileUpload";
+import toast from "react-hot-toast";
 
 export function EditProfileForm({ user }: { user: IUser }) {
-  const { given_name, family_name, email } = user;
-  const [formStates, setFormStates] = useState<IEditProfileState>({
-    firstName: given_name,
-    lastName: family_name,
-    email: email,
-  });
+  const { given_name, family_name, birth_date, picture } = user;
 
-  const handleOnChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    key: string
-  ) => {
-    handleChangeInputObj(setFormStates, e, key);
-  };
+  const handleEdit = async (data: FormData) => {
+    const res = await editUser(data, picture);
+    if (res?.error) toast.error(res.error, { duration: 5000 });
+    if (res?.message) toast.success(res.message, { duration: 5000 });
+  }
 
   return (
     <FormContainer>
-      <form className="editProfileForm" onSubmit={(e) => e.preventDefault()}>
+      <form className="editProfileForm" action={handleEdit}>
         <h3>
           <TranslateText translationKey="form.editProfile" />
         </h3>
         <Input
           type="text"
           id="profile_firstName"
-          name="firstName"
+          name="given_name"
           label={<TranslateText translationKey="form.label.firstName" />}
-          value={formStates.firstName}
-          onChange={(e) => handleOnChange(e, "firstName")}
+          defaultValue={given_name}
           required
         />
 
         <Input
           type="text"
           id="profile_lastName"
-          name="lastName"
+          name="family_name"
           label={<TranslateText translationKey="form.label.lastName" />}
-          value={formStates.lastName}
-          onChange={(e) => handleOnChange(e, "lastName")}
+          defaultValue={family_name}
           required
         />
 
         <Input
-          type="email"
-          name="email"
-          id="profile_email"
-          label={<TranslateText translationKey="form.label.email" />}
-          value={formStates.email}
-          onChange={(e) => handleOnChange(e, "email")}
-          required
+          type="date"
+          id="profile_birthDate"
+          name="birth_date"
+          label={<TranslateText translationKey="birthDate" />}
+          defaultValue={birth_date}
         />
 
-        <Button type="submit" translationKey="button.save" mode="glitchHover" />
+        <FileUpload />
+
+        <PendingButton type="submit" translationKey="button.save" mode="glitchHover" />
       </form>
     </FormContainer>
   );

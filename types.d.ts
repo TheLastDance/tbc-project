@@ -109,7 +109,7 @@ type UserToken = {
 } & ErrorMessage;
 
 interface IUser {
-  id: number;
+  id: string;
   given_name: string;
   family_name: string;
   email: string;
@@ -156,6 +156,9 @@ interface IInputProps {
   maxLength?: number,
   minLength?: number,
   defaultValue?: string;
+  accept?: string;
+  multiple?: boolean;
+  title?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
