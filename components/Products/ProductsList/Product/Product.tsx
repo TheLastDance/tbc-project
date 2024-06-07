@@ -7,9 +7,10 @@ import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrement
 interface IProps {
   item: IProductItem;
   index: number;
+  admin?: boolean;
 }
 
-export function Product({ item, index }: IProps) {
+export function Product({ item, index, admin }: IProps) {
   const { title, description, id, images: [image] } = item;
 
   return (
@@ -26,7 +27,7 @@ export function Product({ item, index }: IProps) {
       <div className="productDescription_container">
         <p>{description}</p>
       </div>
-      <CartIncrementButton item={item} mode="glitchHover" translationKey="button.addToCart" />
+      {admin ? null : <CartIncrementButton item={item} mode="glitchHover" translationKey="button.addToCart" />}
     </Card>
   );
 }

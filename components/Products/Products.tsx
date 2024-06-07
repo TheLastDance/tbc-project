@@ -5,15 +5,17 @@ import { Heading } from "../UI/GlitchEffects/Heading/Heading";
 import { TranslateText } from "../TranslateText/TranslateText";
 import { PaginationUI } from "../Pagination/Pagination";
 import { SortButton } from "./Filters/SortButton";
+import { getAnyData } from "@/services/data-fetch/getAnyData";
 
 interface IProps {
-  data: {
-    products: IProductItem[],
-  };
   params: IProductParams['searchParams'],
+  admin?: boolean,
 }
 
-export function Products({ data, params }: IProps) {
+export const revalidate = 0;
+
+export async function Products({ params, admin }: IProps) {
+  const data = await getAnyData<{ products: IProductItem[] }>(`https://dummyjson.com/products`);
   const { products } = data;
   const searchText = params?.searchText || '';
   const isAsc = params?.isAsc === "true" ? false : true;
@@ -35,7 +37,7 @@ export function Products({ data, params }: IProps) {
           <SortButton isAsc={isAsc} />
         </div>
         <Heading level={2} translationKey="products" />
-        <ProductsList products={paginatedProducts} />
+        <ProductsList products={paginatedProducts} admin={admin} />
         {!paginatedProducts.length ? <TranslateText translationKey="products.notFound" /> : null}
         <PaginationUI totalPages={sortedData.length} size={12} />
       </section>

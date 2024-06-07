@@ -4,6 +4,7 @@
   width: 100%;
   grid-template-columns: 220px 1fr;
   transition: .4s ease;
+  padding: 0.75rem 0;
 }
 
 .admin_navigation {
@@ -11,7 +12,7 @@
   flex-direction: column;
   background-color: var(--background);
   color: var(--primaryColor);
-  margin: 0.75rem 0.75rem 0.75rem 0;
+  margin: 0 0.75rem 0 0;
   padding: 1.2rem;
   border-radius: 15px;
 }

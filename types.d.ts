@@ -159,6 +159,8 @@ interface IInputProps {
   accept?: string;
   multiple?: boolean;
   title?: string;
+  min?: string;
+  step?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
