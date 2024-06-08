@@ -6,7 +6,7 @@ import { Input } from "@/components/Input/Input";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton";
 import { editUser } from "@/services/actions";
-import { FileUpload } from "@/components/FileUpload/FileUpload";
+import { SingleFileUpload } from "@/components/SingleFileUpload/SingleFileUpload";
 import toast from "react-hot-toast";
 
 export function EditProfileForm({ user }: { user: IUser }) {
@@ -50,7 +50,7 @@ export function EditProfileForm({ user }: { user: IUser }) {
           defaultValue={birth_date}
         />
 
-        <FileUpload />
+        <SingleFileUpload />
 
         <PendingButton type="submit" translationKey="button.save" mode="glitchHover" />
       </form>

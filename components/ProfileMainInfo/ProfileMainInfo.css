@@ -6,6 +6,8 @@
 
 .profileMainInfo_card h1 {
   font-size: 3rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .profileMainInfo_card img {
