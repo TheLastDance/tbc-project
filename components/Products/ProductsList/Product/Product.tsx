@@ -3,6 +3,7 @@ import { Card } from "@/components/Card/Card";
 import Link from "next/link";
 import Image from "next/image";
 import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrementButton";
+import { DeleteProductButton } from "@/components/Buttons/DeleteProductButton/DeleteProductButton";
 
 interface IProps {
   item: IProductItem;
@@ -11,10 +12,12 @@ interface IProps {
 }
 
 export function Product({ item, index, admin }: IProps) {
-  const { title, description, id, images: [image] } = item;
+  const { title, description, id, images } = item;
+  const [image] = images;
 
   return (
     <Card>
+      {admin && <DeleteProductButton id={id} images={images} />}
       <Link href={`/products/${id}`}>{title}</Link>
       <Image
         src={image}

@@ -6,8 +6,9 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function GlitchHoverButton({ children, text, ...props }: IProps) {
+  const isText = typeof children === "string";
   return (
-    <button className="resetButtonStyles hero-h glitch-h layers-h" data-text={text || children} {...props} >
+    <button className="resetButtonStyles hero-h glitch-h layers-h" data-text={text || isText || ""} {...props} >
       {children}
       <span>
         {text}

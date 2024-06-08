@@ -1,6 +1,7 @@
 .products_list a {
   font-size: 1.25rem;
   font-weight: 700;
+  width: fit-content;
 }
 
 .productDescription_container {
