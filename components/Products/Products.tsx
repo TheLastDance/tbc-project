@@ -5,7 +5,7 @@ import { Heading } from "../UI/GlitchEffects/Heading/Heading";
 import { TranslateText } from "../TranslateText/TranslateText";
 import { PaginationUI } from "../Pagination/Pagination";
 import { SortButton } from "./Filters/SortButton";
-import { getAnyData } from "@/services/data-fetch/getAnyData";
+import { getProducts } from "@/services/sqlQueries/products/getProducts";
 
 interface IProps {
   params: IProductParams['searchParams'],
@@ -15,8 +15,7 @@ interface IProps {
 export const revalidate = 0;
 
 export async function Products({ params, admin }: IProps) {
-  const data = await getAnyData<{ products: IProductItem[] }>(`https://dummyjson.com/products`);
-  const { products } = data;
+  const products = await getProducts() as IProductItem[];
   const searchText = params?.searchText || '';
   const isAsc = params?.isAsc === "true" ? false : true;
   const page = Number(params?.page) || 1;

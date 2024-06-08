@@ -16,7 +16,8 @@
   width: auto;
   max-width: 100%;
   height: 8rem;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: top;
   cursor: pointer;
 }
 

@@ -64,7 +64,7 @@ interface IProductItem {
   category: string;
   rating: number;
   price: number;
-  thumbnail: string;
+  gender: string;
   images: string[];
 }
 

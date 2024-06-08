@@ -1,6 +1,6 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse, NextRequest } from 'next/server';
-import { getAnyData } from '@/services/data-fetch/getAnyData';
+import { getProducts } from '@/services/sqlQueries/products/getProducts';
 
 export const revalidate = 0;
 
@@ -17,13 +17,13 @@ export async function GET(req: NextRequest) {
     if (!user_id) throw new Error('not auth!');
 
     const cart = await sql<ICartTable>`SELECT * FROM carts WHERE user_id = ${user_id};`;
-    const { products } = await getAnyData<{ products: IProductItem[] }>(`https://dummyjson.com/products?limit=0`);
+    const products = await getProducts() as IProductItem[];
 
     if (cart.rows.length) {
       const userCart = cart.rows[0].products;
 
       const productMap = products.reduce((acc: { [key: string]: IProductItem }, item) => {
-        acc[item.id] = item;
+        acc[item.id] = { ...item, price: +item.price };
         return acc;
       }, {});
 

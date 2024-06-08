@@ -2,17 +2,20 @@
 import "./AddProductForm.css"
 import { Input } from "@/components/Input/Input"
 import { FormContainer } from "../FormContainer/FormContainer"
-import { TranslateText } from "@/components/TranslateText/TranslateText"
+// import { TranslateText } from "@/components/TranslateText/TranslateText"
 import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton"
 import { addProduct } from "@/services/actions/products/add-product"
 import toast from "react-hot-toast"
+import { useRouter } from "next/navigation"
 
 export function AddProductForm() {
+  const { push } = useRouter();
 
   const handleAddProduct = async (data: FormData) => {
     const res = await addProduct(data);
     if (res?.error) toast.error(res.error, { duration: 5000 });
     if (res?.message) toast.success(res.message, { duration: 5000 });
+    push("/admin/products");
   }
 
   return (
