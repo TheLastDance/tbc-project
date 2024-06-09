@@ -6,7 +6,7 @@ import { Input } from "@/components/Input/Input";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton";
 import { editUser } from "@/services/actions";
-import { SingleFileUpload } from "@/components/SingleFileUpload/SingleFileUpload";
+import { SingleFileUpload } from "@/components/UploadInputs/SingleFileUpload/SingleFileUpload";
 import toast from "react-hot-toast";
 
 export function EditProfileForm({ user }: { user: IUser }) {

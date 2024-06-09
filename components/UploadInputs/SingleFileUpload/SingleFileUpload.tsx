@@ -1,10 +1,9 @@
 "use client"
 import "./SingleFileUpload.css"
-import { Input } from "../Input/Input"
-import { PersonLottie } from "../Lotties/Person/PersonLottie"
+import { Input } from "@/components/Input/Input"
+import { PersonLottie } from "../../Lotties/Person/PersonLottie"
 import { useState } from "react"
 import Image from "next/image"
-
 
 export function SingleFileUpload() {
   const [file, setFile] = useState<string | ArrayBuffer | null>(null);
@@ -21,6 +20,8 @@ export function SingleFileUpload() {
       }
 
       fileReader.readAsDataURL(profilePhoto)
+    } else {
+      setFile(null);
     }
   }
 

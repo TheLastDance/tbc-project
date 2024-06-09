@@ -161,6 +161,7 @@ interface IInputProps {
   title?: string;
   min?: string;
   step?: string;
+  ref?: RefObject<HTMLInputElement>;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 

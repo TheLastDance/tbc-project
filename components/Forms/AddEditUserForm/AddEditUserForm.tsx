@@ -5,7 +5,7 @@ import { Input } from "@/components/Input/Input"
 import { editUser } from "@/services/actions";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { Button } from "@/components/UI/Buttons/Button/Button";
-import { SingleFileUpload } from "@/components/SingleFileUpload/SingleFileUpload";
+import { SingleFileUpload } from "@/components/UploadInputs/SingleFileUpload/SingleFileUpload";
 import toast from "react-hot-toast";
 
 interface IProps {

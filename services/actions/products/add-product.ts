@@ -14,8 +14,8 @@ export async function addProduct(data: FormData) {
 
   try {
     if (!isAdmin) throw new Error("You have no permission for that!");
-    if (!title || !description || !gender || !category || !brand || !price) throw new Error("All fields are required!");
-    if (!images[0].size) throw new Error("Images are required!");
+    if (!title || !description || !gender || !category || !brand || !price || !images.length) throw new Error("All fields are required!");
+    if (images.length > 4) throw new Error("You can upload maximum 4 images!");
     let blobUrls = [];
 
     for (const image of images) {

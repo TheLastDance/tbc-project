@@ -3,24 +3,42 @@ import "./AddProductForm.css"
 import { Input } from "@/components/Input/Input"
 import { FormContainer } from "../FormContainer/FormContainer"
 // import { TranslateText } from "@/components/TranslateText/TranslateText"
-import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton"
+import { Button } from "@/components/UI/Buttons/Button/Button"
 import { addProduct } from "@/services/actions/products/add-product"
 import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { AddProductUpload } from "@/components/UploadInputs/AddProductUpload/AddProductUpload"
 
 export function AddProductForm() {
   const { push } = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [files, setFiles] = useState<File[]>([]);
 
-  const handleAddProduct = async (data: FormData) => {
+  const handleAddProduct = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const data = new FormData(e.currentTarget);
+
+    for (const file of files) {
+      data.append("images", file)
+    }
+
     const res = await addProduct(data);
-    if (res?.error) toast.error(res.error, { duration: 5000 });
-    if (res?.message) toast.success(res.message, { duration: 5000 });
-    push("/admin/products");
+
+    if (res?.error) {
+      toast.error(res.error, { duration: 5000 });
+    } else {
+      toast.success(res.message!, { duration: 5000 });
+      push("/admin/products");
+    }
+    setLoading(false);
   }
 
   return (
     <FormContainer>
-      <form action={handleAddProduct}>
+      <form onSubmit={handleAddProduct}>
 
         <Input
           type="text"
@@ -94,7 +112,7 @@ export function AddProductForm() {
           required
         />
 
-        <Input
+        {/* <Input
           type="file"
           name="images"
           id="profile_images"
@@ -102,10 +120,12 @@ export function AddProductForm() {
           title="file"
           required
           multiple
-        />
+        /> */}
+
+        <AddProductUpload setFiles={setFiles} />
 
 
-        <PendingButton type="submit" mode="glitchHover" translationKey="button.save" />
+        <Button type="submit" mode="glitchHover" translationKey="button.save" disabled={loading} />
 
       </form>
 
