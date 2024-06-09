@@ -7,4 +7,5 @@ export enum SuccessMessages {
   Profile = "Profile was updated successfully",
   AddProduct = "Product was added successfully",
   DeleteProduct = "Product was deleted successfully",
+  EditProduct = "Product was edited successfully",
 }

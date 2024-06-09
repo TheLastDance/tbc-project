@@ -5,8 +5,13 @@ import { useState, useRef } from "react"
 import Image from "next/image"
 import { Upload } from "@/components/Icons/Upload"
 
-export function AddProductUpload({ setFiles }: { setFiles: React.Dispatch<React.SetStateAction<File[]>> }) {
-  const [images, setImages] = useState<(string | ArrayBuffer | null)[]>([]);
+interface IProps {
+  setFiles: React.Dispatch<React.SetStateAction<(File | string)[]>>,
+  settedPhotos?: string[],
+}
+
+export function AddProductUpload({ setFiles, settedPhotos }: IProps) {
+  const [images, setImages] = useState<(string | ArrayBuffer | null)[]>(settedPhotos || []);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +57,7 @@ export function AddProductUpload({ setFiles }: { setFiles: React.Dispatch<React.
         <ul className="createProduct_images">
           {images.map((item, index) => <li key={String(item)}>
             <button type="button" className="resetButtonStyles" onClick={() => handlePhotoDelete(index)}>X</button>
-            <Image src={item as string} alt="product_image" sizes="6rem" fill />
+            <Image src={item as string} alt="product_image" sizes="8rem" fill />
           </li>)}
         </ul> : null}
     </>

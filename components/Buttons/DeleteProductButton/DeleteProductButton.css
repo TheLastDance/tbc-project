@@ -13,11 +13,11 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
-  padding: 0.4rem;
+  padding: 0.2rem;
 }
 
 .products_list .deleteProductButton_container button svg {
   fill: #fff;
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }

@@ -23,7 +23,13 @@
   object-fit: contain;
 }
 
-.products_list button {
+.products_list button,
+.products_list .hero-h-link {
   min-width: fit-content;
   width: 50%;
+}
+
+.products_list .hero-h-link {
+  justify-content: center;
+  font-weight: unset;
 }

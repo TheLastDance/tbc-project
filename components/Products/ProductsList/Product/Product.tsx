@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrementButton";
 import { DeleteProductButton } from "@/components/Buttons/DeleteProductButton/DeleteProductButton";
+import { GlithHoverLink } from "@/components/UI/Links/GlithHoverLink";
 
 interface IProps {
   item: IProductItem;
@@ -30,7 +31,9 @@ export function Product({ item, index, admin }: IProps) {
       <div className="productDescription_container">
         <p>{description}</p>
       </div>
-      {admin ? null : <CartIncrementButton item={item} mode="glitchHover" translationKey="button.addToCart" />}
+      {admin ?
+        <GlithHoverLink href={`/admin/products/edit/${id}`} translationKey="edit" />
+        : <CartIncrementButton item={item} mode="glitchHover" translationKey="button.addToCart" />}
     </Card>
   );
 }

@@ -3,7 +3,6 @@
   flex-grow: 1;
   width: 100%;
   grid-template-columns: 220px 1fr;
-  transition: .4s ease;
   padding: 0.75rem 0;
 }
 
@@ -62,6 +61,7 @@
 @media(max-width:1000px) {
   .admin_pannel_layout {
     grid-template-columns: 80px 1fr;
+    transition: .4s ease;
   }
 
   .admin_navigation a {
@@ -76,6 +76,7 @@
 @media(max-width:600px) {
   .admin_pannel_layout {
     display: block;
+    transition: unset;
   }
 
   .admin_navigation {

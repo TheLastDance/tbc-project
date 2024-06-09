@@ -1,31 +1,32 @@
 "use client"
-import "./AddProductForm.css"
-import { Input } from "@/components/Input/Input"
-import { FormContainer } from "../FormContainer/FormContainer"
-// import { TranslateText } from "@/components/TranslateText/TranslateText"
-import { Button } from "@/components/UI/Buttons/Button/Button"
-import { addProduct } from "@/services/actions/products/add-product"
-import toast from "react-hot-toast"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
-import { AddProductUpload } from "@/components/UploadInputs/AddProductUpload/AddProductUpload"
 
-export function AddProductForm() {
+import "./EditProductForm.css"
+import { FormContainer } from "../FormContainer/FormContainer"
+import { Input } from "@/components/Input/Input"
+import { Button } from "@/components/UI/Buttons/Button/Button"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { AddProductUpload } from "@/components/UploadInputs/AddProductUpload/AddProductUpload"
+import { editProduct } from "@/services/actions/products/edit-product"
+import toast from "react-hot-toast"
+
+export function EditProductForm({ product }: { product: IProductItem }) {
+  const { images, id } = product;
   const { push } = useRouter();
   const [loading, setLoading] = useState(false);
-  const [files, setFiles] = useState<(File | string)[]>([]);
+  const [files, setFiles] = useState<(File | string)[]>(images);
 
-  const handleAddProduct = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleEditProduct = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
     const data = new FormData(e.currentTarget);
 
     for (const file of files) {
-      data.append("images", file)
+      typeof file === "object" ? data.append("images", file) : data.append("blobImg", file);
     }
 
-    const res = await addProduct(data);
+    const res = await editProduct(data, images, id);
 
     if (res?.error) {
       toast.error(res.error, { duration: 5000 });
@@ -38,7 +39,7 @@ export function AddProductForm() {
 
   return (
     <FormContainer>
-      <form onSubmit={handleAddProduct}>
+      <form onSubmit={handleEditProduct}>
 
         <Input
           type="text"
@@ -46,6 +47,7 @@ export function AddProductForm() {
           id="addProductForm_title"
           label={"Title"}
           maxLength={30}
+          defaultValue={product.title}
           required
         />
 
@@ -55,6 +57,7 @@ export function AddProductForm() {
           id="addProductForm_description"
           label={"Description"}
           minLength={100}
+          defaultValue={product.description}
           textArea
           required
         />
@@ -64,6 +67,7 @@ export function AddProductForm() {
           <select
             id="addProductForm_brand"
             name="brand"
+            defaultValue={product.brand}
             required
           >
             <option value="SynTech Industries">SynTech Industries</option>
@@ -78,6 +82,7 @@ export function AddProductForm() {
           <select
             id="addProductForm_category"
             name="category"
+            defaultValue={product.category}
             required
           >
             <option value="Household Assistants">Household Assistants</option>
@@ -94,6 +99,7 @@ export function AddProductForm() {
           <select
             id="addProductForm_gender"
             name="gender"
+            defaultValue={product.gender}
             required
           >
             <option value="male">Male</option>
@@ -108,11 +114,11 @@ export function AddProductForm() {
           label={"Price"}
           step="any"
           min="100"
-          defaultValue="1000.00"
+          defaultValue={`${product.price}`}
           required
         />
 
-        <AddProductUpload setFiles={setFiles} />
+        <AddProductUpload setFiles={setFiles} settedPhotos={images} />
 
         <Button type="submit" mode="glitchHover" translationKey="button.save" disabled={loading} />
 

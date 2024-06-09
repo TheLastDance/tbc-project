@@ -4,6 +4,7 @@ import { del } from "@vercel/blob";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { SuccessMessages } from "@/enums";
+import { deleteFromCart } from "@/services/sqlQueries/carts/deleteFromCart";
 
 export async function deleteProduct(id: number, images: string[]) {
   const session = await getSession();
@@ -16,6 +17,7 @@ export async function deleteProduct(id: number, images: string[]) {
       await del(image);
     }
 
+    await deleteFromCart(id); // deletes this product also from each cart
     await sql`DELETE FROM products WHERE id = ${id};`;
 
     revalidatePath("/")
