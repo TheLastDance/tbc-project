@@ -1,8 +1,11 @@
 export enum ContactPageMessages {
-  Success = "Message was sent succesfully",
+  Success = "Message was sent successfully",
   Fail = "Something went wrong!",
 }
 
 export enum SuccessMessages {
-  Profile = "Profile was updated succesfully",
+  Profile = "Profile was updated successfully",
+  AddProduct = "Product was added successfully",
+  DeleteProduct = "Product was deleted successfully",
+  EditProduct = "Product was edited successfully",
 }

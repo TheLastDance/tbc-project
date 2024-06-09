@@ -29,8 +29,8 @@ export function Gallery({ images }: IProps) {
             key={idx}
             src={item}
             alt="product"
-            width={400}
-            height={400}
+            width={500}
+            height={700}
           // placeholder="blur"
           // blurDataURL={blurDataURL}
           />)
@@ -44,7 +44,7 @@ export function Gallery({ images }: IProps) {
           <button type="button" className="resetButtonStyles" title="close" onClick={() => setOpenModal(false)}>
             <Close />
           </button>
-          <Image src={img} alt="product" width={800} height={800} />
+          <Image src={img} alt="product" width={700} height={1000} />
         </div>
       </ModalPortal>}
     </div>

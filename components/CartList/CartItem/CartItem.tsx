@@ -6,14 +6,14 @@ import { CartIncrementButton } from "../Buttons/CartIncrementButton";
 import { CartDeleteButton } from "../Buttons/CartDeleteButton";
 
 export function CartItem({ item }: { item: IProductItemCart }) {
-  const { id, title, thumbnail, quantity, brand, price } = item;
+  const { id, title, quantity, brand, price, images: [image] } = item;
 
   return (
     <li className="cartItem">
       <div className="cartItem_info_container">
         <Link href={`/products/${id}`}>
           <div className="cartItem_image">
-            <Image src={thumbnail} alt={title} sizes="10rem" fill priority />
+            <Image src={image} alt={title} sizes="10rem" fill priority />
           </div>
         </Link>
         <div className="cartItem_info">
@@ -23,7 +23,7 @@ export function CartItem({ item }: { item: IProductItemCart }) {
             </h3>
           </Link>
           <p>{brand}</p>
-          <p>{price}$</p>
+          <p>{price.toFixed(2)}$</p>
         </div>
       </div>
       <div className="cartItems_buttons">

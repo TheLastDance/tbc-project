@@ -1,17 +1,19 @@
 import "./FullProduct.css";
-import { getAnyData } from "@/services/data-fetch/getAnyData";
 import notFound from "@/app/[locale]/not-found";
 import { TranslateTextServer } from "@/components/TranslateText/TranslateTextServer";
 import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrementButton";
 import { Gallery } from "@/components/Gallery/Gallery";
+import { getProduct } from "@/services/sqlQueries/products/getProduct";
+
+export const revalidate = 0;
 
 export async function FullProduct({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); //for loader check
-  const data = await getAnyData<IProductItem>(`https://dummyjson.com/products/${id}`);
+  const data = await getProduct(id) as IProductItem;
 
-  if (!data.title) return notFound();
+  if (!data?.title) return notFound();
 
-  const { title, description, brand, category, rating, price, images } = data;
+  const { title, description, brand, category, price, gender, images } = data;
 
   return (
     <article className="fullProduct">
@@ -32,6 +34,12 @@ export async function FullProduct({ id }: idParam) {
         </p>
         <p>
           <span>
+            <TranslateTextServer translationKey="fullProduct.gender" />{" "}
+          </span>{" "}
+          {gender}
+        </p>
+        <p>
+          <span>
             <TranslateTextServer translationKey="fullProduct.description" />{" "}
           </span>{" "}
           {description}
@@ -40,7 +48,7 @@ export async function FullProduct({ id }: idParam) {
           <span>
             <TranslateTextServer translationKey="fullProduct.rating" /> ⭐
           </span>{" "}
-          {rating}
+          {5}
         </p>
         <p className="fullProduct_info_price">
           {price}

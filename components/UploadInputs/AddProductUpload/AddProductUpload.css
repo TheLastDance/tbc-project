@@ -1,0 +1,63 @@
+.file_upload_multiple label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  border: 1px solid var(--secondaryColor);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.file_upload_multiple label div {
+  border: 2px dashed var(--secondaryColor);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.file_upload_multiple label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file_upload_multiple label div svg {
+  width: 4rem;
+  height: 4rem;
+}
+
+.createProduct_images {
+  display: flex;
+  flex-wrap: wrap;
+  height: 150px;
+  overflow: auto;
+}
+
+.createProduct_images li {
+  margin: 0.5rem;
+  position: relative;
+  width: 6rem;
+  height: 8rem;
+}
+
+.createProduct_images li img {
+  object-fit: contain;
+}
+
+.createProduct_images li button {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  border: 2px solid var(--primaryColor);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-weight: 700;
+  z-index: 2;
+}

@@ -1,25 +1,16 @@
-"use client"
-
-import "../../../UI/GlitchEffects/Buttons/GlitchHoverButton/GlitchHoverButton.css";
-import Link from "next/link";
-import { useI18n } from "@/locales/client";
+import { GlithHoverLink } from "@/components/UI/Links/GlithHoverLink";
 
 export function MessageRow({ item }: { item: IMessage }) {
   const { firstname, lastname, tel, email, added_on, body } = item;
   const utcDate = new Date(added_on).toLocaleString();
-  const t = useI18n()
-  const text = t("table.answer");
 
   return (
     <tr>
       <td>
-        <Link
+        <GlithHoverLink
           href={`mailto:${email}?subject=Answer on your question`}
-          className="hero-h glitch-h layers-h"
-          data-text={text}
-        >
-          {text}
-        </Link>
+          translationKey="table.answer"
+        />
       </td>
       <td>{firstname}</td>
       <td>{lastname}</td>

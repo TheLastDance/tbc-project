@@ -98,6 +98,10 @@ li {
   list-style-position: inside;
 }
 
+select {
+  background-color: var(--background);
+}
+
 @media(max-width:1024px) {
   html {
     font-size: 14px;

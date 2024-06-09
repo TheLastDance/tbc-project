@@ -30,3 +30,21 @@ export const getPathWithLocales = (locales: LocaleTuple, path: string) => {
 
   return [pathName, ...urls]
 } // will return an array with this path and all possible combinations of this path with locales.
+
+export const readFileAsDataURL = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.onload = () => resolve(fileReader.result as string);
+    fileReader.onerror = reject;
+    fileReader.readAsDataURL(file);
+  });
+};
+
+export const loadImagesSequentially = async (files: File[]): Promise<string[]> => {
+  const results: string[] = [];
+  for (const file of files) {
+    const result = await readFileAsDataURL(file);
+    results.push(result);
+  }
+  return results;
+};

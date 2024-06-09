@@ -5,7 +5,7 @@ import { Input } from "@/components/Input/Input"
 import { editUser } from "@/services/actions";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { Button } from "@/components/UI/Buttons/Button/Button";
-import { FileUpload } from "@/components/FileUpload/FileUpload";
+import { SingleFileUpload } from "@/components/UploadInputs/SingleFileUpload/SingleFileUpload";
 import toast from "react-hot-toast";
 
 interface IProps {
@@ -58,7 +58,7 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
         defaultValue={birth_date}
       />
 
-      <FileUpload />
+      <SingleFileUpload />
 
       <Button disabled={loading} type="submit" translationKey="button.save" mode="glitchHover" />
     </form>

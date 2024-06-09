@@ -1,0 +1,23 @@
+.products_list .deleteProductButton_container {
+  margin: 0;
+}
+
+.deleteProductButton_container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.products_list .deleteProductButton_container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.2rem;
+}
+
+.products_list .deleteProductButton_container button svg {
+  fill: #fff;
+  width: 1.75rem;
+  height: 1.75rem;
+}

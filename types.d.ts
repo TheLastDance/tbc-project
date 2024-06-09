@@ -64,7 +64,7 @@ interface IProductItem {
   category: string;
   rating: number;
   price: number;
-  thumbnail: string;
+  gender: string;
   images: string[];
 }
 
@@ -159,6 +159,9 @@ interface IInputProps {
   accept?: string;
   multiple?: boolean;
   title?: string;
+  min?: string;
+  step?: string;
+  ref?: RefObject<HTMLInputElement>;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
