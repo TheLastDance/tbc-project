@@ -3,6 +3,7 @@ import { NavLink } from "@/components/Links/NavLink/NavLink"
 import { Users } from "@/components/Icons/Users"
 import { Message } from "@/components/Icons/Message"
 import { Box } from "@/components/Icons/Box"
+import { BlogText } from "@/components/Icons/BlogText"
 
 export function AdminLayout({ children }: ChildrenProps) {
   return (
@@ -19,6 +20,10 @@ export function AdminLayout({ children }: ChildrenProps) {
         <NavLink href="/admin/products">
           <Box />
           <span>products</span>
+        </NavLink>
+        <NavLink href="/admin/blog">
+          <BlogText />
+          <span>posts</span>
         </NavLink>
       </nav>
       {children}

@@ -4,18 +4,21 @@ import Link from "next/link";
 import Image from "next/image";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import parse from 'html-react-parser';
+import { FullPostButtons } from "../../FullPost/Buttons/FullPostButtons";
 
 interface IProps {
-  item: IPostItem
+  item: IPostItem,
+  admin?: boolean,
 }
 
-export function Post({ item }: IProps) {
+export function Post({ item, admin }: IProps) {
   const { title, body, id, added_on, user_serial, user_picture } = item;
 
   const utcDate = new Date(added_on).toLocaleString();
 
   return (
     <Card>
+      {admin && <FullPostButtons title={title} body={body} id={id} admin />}
       <div className="titleAndPhoto_container">
         <h3>{title}</h3>
         <Link href={`/user/${user_serial}`}>

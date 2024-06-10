@@ -17,9 +17,9 @@ export function AddPostForm() {
   const handleAddPost = async (data: FormData) => {
     const res = await addPost(data);
 
-    if (res?.error) {
-      toast.error(res.error, { duration: 5000 });
-    } else {
+    if (res?.error) toast.error(res.error, { duration: 5000 });
+    if (res?.message) {
+      toast.success(res.message, { duration: 5000 });
       router.push("/blog");
       router.refresh();
     }

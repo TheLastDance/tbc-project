@@ -8,4 +8,7 @@ export enum SuccessMessages {
   AddProduct = "Product was added successfully",
   DeleteProduct = "Product was deleted successfully",
   EditProduct = "Product was edited successfully",
+  EditPost = "Post was edited successfully",
+  DeletePost = "Post was deleted successfully",
+  AddPost = "Post was added successfully",
 }

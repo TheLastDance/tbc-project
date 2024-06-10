@@ -3,13 +3,13 @@ import { Post } from "./Post/Post";
 
 export const revalidate = 0;
 
-export function BlogList({ posts }: { posts: IPostItem[] }) {
+export function BlogList({ posts, admin }: { posts: IPostItem[], admin?: boolean }) {
 
   return (
     <>
       <ul>
         {posts.map((item: IPostItem) => (
-          <Post key={item.id} item={item} />
+          <Post key={item.id} item={item} admin={admin} />
         ))}
       </ul>
     </>

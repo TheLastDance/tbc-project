@@ -1,4 +1,5 @@
 "use client"
+import "./FullPostButtons.css"
 import { Edit } from "@/components/Icons/Edit";
 import { Trash } from "@/components/Icons/Trash";
 import { ModalUI } from "@/components/Modals/ModalUI/ModalUI";
@@ -7,20 +8,25 @@ import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton"
 import { useRouter } from "next/navigation";
 import { EditPostForm } from "@/components/Forms/EditPostForm/EditPostForm";
 import { useToggle } from "@/services/hooks/useToggle";
+import toast from "react-hot-toast";
 
 interface IProps {
   title: string,
   body: string,
   id: number;
+  admin?: boolean;
 }
 
-export function FullPostButtons({ title, body, id }: IProps) {
+export function FullPostButtons({ title, body, id, admin }: IProps) {
   const { toggle, setToggleFalse, setToggleTrue } = useToggle();
   const router = useRouter();
 
   const handleDeletePost = async () => {
-    await deletePost(id);
-    router.push("/blog");
+    const res = await deletePost(id);
+    if (res?.error) toast.error(res.error, { duration: 5000 });
+    if (res?.message) toast.success(res.message, { duration: 5000 });
+    !admin && router.push("/blog");
+    router.refresh();
   }
 
   return (

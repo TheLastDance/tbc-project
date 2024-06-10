@@ -7,6 +7,7 @@ import { TranslateText } from "@/components/TranslateText/TranslateText"
 import { TextEditor } from "@/components/TextEditor/TextEditor"
 import { Button } from "@/components/UI/Buttons/Button/Button"
 import { editPost } from "@/services/actions"
+import toast from "react-hot-toast"
 
 interface IProps {
   title: string,
@@ -17,7 +18,6 @@ interface IProps {
 
 export function EditPostForm({ title, body, id, setOpenEdit }: IProps) {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const [content, setContent] = useState(body);
 
   const handleEditPost = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,12 +27,13 @@ export function EditPostForm({ title, body, id, setOpenEdit }: IProps) {
     const data = new FormData(e.currentTarget);
     const res = await editPost(data, id);
 
-    if (res?.error) {
-      setError(res.error as string)
-    } else {
+    if (res?.error) toast.error(res.error, { duration: 5000 });
+    if (res?.message) {
       await new Promise((res) => setTimeout(res, 1000))
+      toast.success(res.message, { duration: 5000 })
       setOpenEdit();
     }
+
     setLoading(false);
   }
 
@@ -57,7 +58,6 @@ export function EditPostForm({ title, body, id, setOpenEdit }: IProps) {
 
         <TextEditor content={content} setContent={setContent} />
 
-        {error && <p>{error}</p>}
         <Button
           type="submit"
           disabled={loading}

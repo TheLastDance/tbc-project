@@ -27,5 +27,5 @@ export async function GET(_: NextRequest) {
     return redirect("/api/auth/logout")
   }
 
-  return redirect("/profile")
+  return redirect("/")
 }
