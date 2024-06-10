@@ -8,13 +8,20 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { getPosts } from "@/services/sqlQueries/posts/getPosts";
 import { PaginationUI } from "../Pagination/Pagination";
 
-export async function Blog({ searchText, currentPage }: { searchText: string, currentPage: number }) {
+interface IProps {
+  searchText: string,
+  currentPage: number,
+  postsPerPage?: number,
+  admin?: boolean,
+}
+
+export async function Blog({ searchText, currentPage, admin, postsPerPage = 10 }: IProps) {
   const posts = await getPosts() as IPostItem[];
   const session = await getSession();
   const user = session?.user;
 
   const filteredPosts = posts.filter(({ title }) => title.toLowerCase().includes(searchText.toLowerCase()));
-  const paginatedPosts = filteredPosts.slice(10 * (currentPage - 1), currentPage * 10);
+  const paginatedPosts = filteredPosts.slice(postsPerPage * (currentPage - 1), currentPage * postsPerPage);
 
   return (
     <section id="blog">
@@ -23,14 +30,14 @@ export async function Blog({ searchText, currentPage }: { searchText: string, cu
       </h2>
       <div className="addPost_container">
         <Search inputID="blog_search" />
-        {user &&
+        {user && !admin &&
           <Link href="/blog/new" className="resetButtonStyles">
             <Edit />
           </Link>}
       </div>
       {!paginatedPosts.length ? <TranslateText translationKey="blog.notFound" /> : null}
-      <BlogList posts={paginatedPosts} />
-      <PaginationUI totalPages={filteredPosts.length} size={10} />
+      <BlogList posts={paginatedPosts} admin={admin} />
+      <PaginationUI totalPages={filteredPosts.length} size={postsPerPage} />
     </section>
   )
 }
