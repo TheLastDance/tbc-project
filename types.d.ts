@@ -68,6 +68,14 @@ interface IProductItem {
   images: string[];
 }
 
+interface IProductRating {
+  total_points: string;
+  average_points: string;
+  rating_count: string;
+  user_exists?: 0 | 1;
+  user_point?: number | null;
+}
+
 interface IProductItemCart extends IProductItem {
   quantity: number;
 }
