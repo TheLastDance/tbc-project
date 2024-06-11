@@ -1,4 +1,5 @@
 import { getProduct } from "@/services/sqlQueries/products/getProduct";
+import { BASE_URL } from "@/services/constants";
 
 interface IProps {
   params: {
@@ -23,15 +24,28 @@ export async function generateMetadata({ params: { id, locale } }: IProps) {
       siteName: 'CyberSphere',
       locale: locale,
       type: 'website',
+      url: `${BASE_URL}/blog/${id}`,
       images: [
         {
           url: images[0],
-          width: 1000,
-          height: 1200,
+          width: 550,
+          height: 750,
           alt: title,
         },
       ]
-    }
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@YourTwitterHandle',
+      title: `${title}`,
+      description: `${description}`,
+      images: [
+        {
+          url: images[0],
+          alt: title,
+        },
+      ],
+    },
   };
 }
 

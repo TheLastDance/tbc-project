@@ -8,6 +8,10 @@
   border-top: 1px solid var(--secondaryColor);
 }
 
+.footer_links ul li {
+  margin: 0.25rem 0;
+}
+
 .authFooter .nav_list {
   flex-direction: column;
 }
