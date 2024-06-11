@@ -62,3 +62,7 @@
 .fullPost_like_button span {
   font-size: 0.85rem;
 }
+
+.fullPost .social_icons svg {
+  fill: currentColor;
+}

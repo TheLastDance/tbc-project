@@ -43,7 +43,8 @@
 
 .fullProduct .button_container {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .fullProduct_info button {

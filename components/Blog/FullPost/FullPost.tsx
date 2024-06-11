@@ -7,13 +7,14 @@ import { TranslateText } from "@/components/TranslateText/TranslateText";
 import { getSession } from "@auth0/nextjs-auth0";
 import { FullPostButtons } from "./Buttons/FullPostButtons";
 import parse from 'html-react-parser';
+import { ShareButtons } from "@/components/ShareButtons/ShareButtons";
 
 
 export const revalidate = 0;
 
 export async function FullPost({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); // for loader check
-  const post = await getPost(id);
+  const post = await getPost(id) as IPostItem;
 
   if (!post?.title) return <NotFound />;
 
@@ -51,6 +52,7 @@ export async function FullPost({ id }: idParam) {
           {utcDate}
         </p>
       </div>
+      <ShareButtons title={title} />
     </article>
   );
 }

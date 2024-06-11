@@ -6,6 +6,7 @@ import { Gallery } from "@/components/Gallery/Gallery";
 import { getProduct } from "@/services/sqlQueries/products/getProduct";
 import { StarRate } from "@/components/StarRate/StarRate";
 import { getProductRating } from "@/services/sqlQueries/starRating/getProductRating";
+import { ShareButtons } from "@/components/ShareButtons/ShareButtons";
 
 export const revalidate = 0;
 
@@ -58,6 +59,7 @@ export async function FullProduct({ id }: idParam) {
           <span> $</span>{" "}
         </p>
         <div className="button_container">
+          <ShareButtons title={title} />
           <CartIncrementButton item={data} mode="glitch" translationKey="button.addToCart" />
         </div>
       </div>

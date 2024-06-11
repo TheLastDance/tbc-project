@@ -1,16 +1,39 @@
-import { getAnyData } from "@/services/data-fetch/getAnyData";
 import { BASE_URL } from "@/services/constants";
+import { getPost } from "@/services/sqlQueries/posts/getPost";
 
-export async function generateMetadata({ params: { id } }: IIdParamProps) {
-  const data = await getAnyData<IPostItem>(`${BASE_URL}/api/posts/get-post/${id}`);
+interface IProps {
+  params: {
+    id: number,
+    locale: Locale,
+  }
+}
+
+export async function generateMetadata({ params: { id, locale } }: IProps) {
+  const data = await getPost(id) as IPostItem;
 
   if (!data.title) return { title: "Post not found!" };
 
-  const { title } = data;
+  const { title, user_picture } = data;
 
   return {
     title: `Post - ${title}`,
     description: `${title}`,
+    openGraph: {
+      title: `${title}`,
+      description: `${title}`,
+      siteName: 'CyberSphere',
+      url: BASE_URL,
+      locale: locale,
+      type: 'website',
+      images: [
+        {
+          url: user_picture,
+          width: 600,
+          height: 600,
+          alt: title,
+        },
+      ]
+    }
   };
 }
 
