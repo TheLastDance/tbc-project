@@ -9,6 +9,7 @@ import toast from "react-hot-toast"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { AddProductUpload } from "@/components/UploadInputs/AddProductUpload/AddProductUpload"
+import { productGender, productBrands, productCategories } from "@/services/constants"
 
 export function AddProductForm() {
   const { push } = useRouter();
@@ -66,10 +67,7 @@ export function AddProductForm() {
             name="brand"
             required
           >
-            <option value="SynTech Industries">SynTech Industries</option>
-            <option value="CyberSphere">CyberSphere</option>
-            <option value="EvoTech Robotics">EvoTech Robotics</option>
-            <option value="FutureWave Systems">FutureWave Systems</option>
+            {productBrands.map((item, index) => <option key={index} value={item}>{item}</option>)}
           </select>
         </div>
 
@@ -80,12 +78,7 @@ export function AddProductForm() {
             name="category"
             required
           >
-            <option value="Household Assistants">Household Assistants</option>
-            <option value="Security & Defense">Security & Defense</option>
-            <option value="Childcare & Education">Childcare & Education</option>
-            <option value="Customer Service">Customer Service</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Sport">Sport</option>
+            {productCategories.map((item, index) => <option key={index} value={item}>{item}</option>)}
           </select>
         </div>
 
@@ -96,8 +89,7 @@ export function AddProductForm() {
             name="gender"
             required
           >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            {productGender.map((item, index) => <option key={index} value={item}>{item}</option>)}
           </select>
         </div>
 

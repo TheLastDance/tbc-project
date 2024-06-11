@@ -16,9 +16,11 @@ export function NavLink({
   ...props
 }: IProps) {
   const pathName = usePathname();
+  const sameLink = href === pathName;
 
   return (
     <Link
+      style={sameLink ? { pointerEvents: "none" } : undefined}
       href={href}
       className={pathName.startsWith(href) ? "navLink_active" : "navLink"}
       onClick={onClick}

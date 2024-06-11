@@ -162,6 +162,8 @@ interface IInputProps {
   min?: string;
   step?: string;
   ref?: RefObject<HTMLInputElement>;
+  checked?: boolean;
+  defaultChecked?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
@@ -178,7 +180,11 @@ interface IProductParams {
   searchParams?: {
     searchText?: string,
     page?: string,
-    isAsc?: string | boolean,
+    category?: string,
+    brand?: string,
+    gender?: string,
+    sortBy?: string,
+    price?: string,
   }
 }
 
