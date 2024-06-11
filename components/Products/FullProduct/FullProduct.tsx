@@ -4,12 +4,15 @@ import { TranslateTextServer } from "@/components/TranslateText/TranslateTextSer
 import { CartIncrementButton } from "@/components/CartList/Buttons/CartIncrementButton";
 import { Gallery } from "@/components/Gallery/Gallery";
 import { getProduct } from "@/services/sqlQueries/products/getProduct";
+import { StarRate } from "@/components/StarRate/StarRate";
+import { getProductRating } from "@/services/sqlQueries/starRating/getProductRating";
 
 export const revalidate = 0;
 
 export async function FullProduct({ id }: idParam) {
   //await new Promise((res) => setTimeout(res, 2000)); //for loader check
   const data = await getProduct(id) as IProductItem;
+  const rating = await getProductRating(id) as IProductRating;
 
   if (!data?.title) return notFound();
 
@@ -44,12 +47,12 @@ export async function FullProduct({ id }: idParam) {
           </span>{" "}
           {description}
         </p>
-        <p>
+        <div className="starRating">
           <span>
-            <TranslateTextServer translationKey="fullProduct.rating" /> ⭐
-          </span>{" "}
-          {5}
-        </p>
+            <TranslateTextServer translationKey="fullProduct.rating" />
+          </span>
+          <StarRate product_id={id} rating={rating} />
+        </div>
         <p className="fullProduct_info_price">
           {price}
           <span> $</span>{" "}
