@@ -15,16 +15,16 @@ export function ShareButtons({ title = "" }: { title?: string, description?: str
 
   return (
     <div className="social_icons">
-      <Link target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${url}${pathname}`}>
+      <Link aria-label="Share with facebook" target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${url}${pathname}`}>
         <SocialFacebook />
       </Link>
-      <Link target="_blank" href={`https://twitter.com/intent/tweet?url=${url}${pathname}&text=${title}`}>
+      <Link aria-label="Share with twitter" target="_blank" href={`https://twitter.com/intent/tweet?url=${url}${pathname}&text=${title}`}>
         <SocialTwitter />
       </Link>
-      <Link target="_blank" href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}${pathname}`}>
+      <Link aria-label="Share with linkedin" target="_blank" href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}${pathname}`}>
         <SocialLinkedin />
       </Link>
-      <Link target="_blank" href={`https://www.reddit.com/submit?url=${url}${pathname}&title=${title}`}>
+      <Link aria-label="Share with Reddit" target="_blank" href={`https://www.reddit.com/submit?url=${url}${pathname}&title=${title}`}>
         <SocialReddit />
       </Link>
     </div>

@@ -1,4 +1,5 @@
 import { getPost } from "@/services/sqlQueries/posts/getPost";
+import { BASE_URL } from "@/services/constants";
 
 interface IProps {
   params: {
@@ -12,26 +13,39 @@ export async function generateMetadata({ params: { id, locale } }: IProps) {
 
   if (!data.title) return { title: "Post not found!" };
 
-  const { title, user_picture } = data;
+  const { title, user_picture, body } = data;
 
   return {
     title: `Post - ${title}`,
     description: `${title}`,
     openGraph: {
       title: `${title}`,
-      description: `${title}`,
+      description: `${body}`,
       siteName: 'CyberSphere',
       locale: locale,
       type: 'website',
+      url: `${BASE_URL}/blog/${id}`,
       images: [
         {
           url: user_picture,
-          width: 600,
-          height: 600,
+          width: 400,
+          height: 400,
           alt: title,
         },
       ]
-    }
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@YourTwitterHandle',
+      title: `${title}`,
+      description: `${body}`,
+      images: [
+        {
+          url: user_picture,
+          alt: title,
+        },
+      ],
+    },
   };
 }
 
