@@ -1,3 +1,24 @@
 .products>* {
   margin: 1.5rem 0;
 }
+
+.filtersAndProducts {
+  display: flex;
+}
+
+.filtersAndProducts_filters {
+  min-width: 220px;
+  width: 220px;
+}
+
+@media(max-width:960px) {
+  .filtersAndProducts {
+    display: block;
+  }
+
+  .filtersAndProducts_filters {
+    width: 100%;
+    min-width: unset;
+    margin: 1rem 0;
+  }
+}

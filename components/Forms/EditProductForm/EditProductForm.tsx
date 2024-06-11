@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation"
 import { AddProductUpload } from "@/components/UploadInputs/AddProductUpload/AddProductUpload"
 import { editProduct } from "@/services/actions/products/edit-product"
 import toast from "react-hot-toast"
+import { productGender, productBrands, productCategories } from "@/services/constants"
 
 export function EditProductForm({ product }: { product: IProductItem }) {
   const { images, id } = product;
@@ -70,10 +71,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
             defaultValue={product.brand}
             required
           >
-            <option value="SynTech Industries">SynTech Industries</option>
-            <option value="CyberSphere">CyberSphere</option>
-            <option value="EvoTech Robotics">EvoTech Robotics</option>
-            <option value="FutureWave Systems">FutureWave Systems</option>
+            {productBrands.map((item, index) => <option key={index} value={item}>{item}</option>)}
           </select>
         </div>
 
@@ -85,12 +83,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
             defaultValue={product.category}
             required
           >
-            <option value="Household Assistants">Household Assistants</option>
-            <option value="Security & Defense">Security & Defense</option>
-            <option value="Childcare & Education">Childcare & Education</option>
-            <option value="Customer Service">Customer Service</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Sport">Sport</option>
+            {productCategories.map((item, index) => <option key={index} value={item}>{item}</option>)}
           </select>
         </div>
 
@@ -102,8 +95,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
             defaultValue={product.gender}
             required
           >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            {productGender.map((item, index) => <option key={index} value={item}>{item}</option>)}
           </select>
         </div>
 

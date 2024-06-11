@@ -1,0 +1,30 @@
+.filter_categories_checkboxContainer,
+.filter_brand_checkboxContainer,
+.filter_gender_checkboxContainer {
+  display: flex;
+}
+
+.price_container {
+  display: flex;
+}
+
+.price_container .input_container input {
+  width: 4rem;
+  margin-right: 1rem;
+}
+
+@media(max-width:960px) {
+  .filter_categories {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .filter_categories>* {
+    margin-right: 1rem;
+  }
+
+  .filter_categories:last-child {
+    margin-right: 0;
+  }
+}

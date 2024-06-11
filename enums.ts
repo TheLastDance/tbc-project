@@ -12,3 +12,11 @@ export enum SuccessMessages {
   DeletePost = "Post was deleted successfully",
   AddPost = "Post was added successfully",
 }
+
+export enum SortByTitles {
+  Relevant = "relevant",
+  TitleAsc = "titleAsc",
+  TitleDesc = "titleDesc",
+  PriceAsc = "priceAsc",
+  PriceDesc = "priceDesc",
+}
