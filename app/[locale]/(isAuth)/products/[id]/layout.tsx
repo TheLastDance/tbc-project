@@ -1,5 +1,4 @@
 import { getProduct } from "@/services/sqlQueries/products/getProduct";
-import { BASE_URL } from "@/services/constants";
 
 interface IProps {
   params: {
@@ -22,7 +21,6 @@ export async function generateMetadata({ params: { id, locale } }: IProps) {
       title: `${title}`,
       description: `${description}`,
       siteName: 'CyberSphere',
-      url: BASE_URL,
       locale: locale,
       type: 'website',
       images: [

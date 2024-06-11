@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/services/constants";
 import { getPost } from "@/services/sqlQueries/posts/getPost";
 
 interface IProps {
@@ -22,7 +21,6 @@ export async function generateMetadata({ params: { id, locale } }: IProps) {
       title: `${title}`,
       description: `${title}`,
       siteName: 'CyberSphere',
-      url: BASE_URL,
       locale: locale,
       type: 'website',
       images: [
