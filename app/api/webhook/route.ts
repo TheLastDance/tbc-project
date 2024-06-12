@@ -28,9 +28,10 @@ export async function POST(req: NextRequest) {
       // const { rows } = await sql`SELECT * FROM carts WHERE user_id = ${id}`
 
 
+    } else {
+      return new NextResponse("No user_id", { status: 400 })
     }
 
-    return new NextResponse("No user_id", { status: 400 })
   }
 
   return new NextResponse("OK", { status: 200 })
