@@ -24,21 +24,23 @@ export function Gallery({ images }: IProps) {
     <div className="gallery_container">
       <div className="galleryColumn">
         {images.map((item, idx) =>
-          <Image
-            onClick={() => handleChangePhoto(idx)}
-            key={idx}
-            src={item}
-            alt="product"
-            width={500}
-            height={700}
-          // placeholder="blur"
-          // blurDataURL={blurDataURL}
-          />)
+          <button type="button" key={idx} className="resetButtonStyles" onClick={() => handleChangePhoto(idx)}>
+            <Image
+              src={item}
+              alt="product"
+              width={500}
+              height={700}
+            // placeholder="blur"
+            // blurDataURL={blurDataURL}
+            />
+          </button>)
         }
       </div>
-      <div className="thumbnail">
-        <Image onClick={() => setOpenModal(true)} src={img} sizes="20rem" alt="product" fill />
-      </div>
+      <button type="button" className="resetButtonStyles" onClick={() => setOpenModal(true)}>
+        <div className="thumbnail" >
+          <Image src={img} sizes="20rem" alt="product" fill />
+        </div>
+      </button>
       {openModal && <ModalPortal onClose={() => setOpenModal(false)}>
         <div className="thumbnailModal">
           <button type="button" className="resetButtonStyles" title="close" onClick={() => setOpenModal(false)}>
