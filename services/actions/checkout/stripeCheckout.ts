@@ -1,12 +1,10 @@
 "use server"
 import { getSession } from "@auth0/nextjs-auth0";
 import Stripe from "stripe";
+import { stripe } from "@/services/constants";
 import { BASE_URL } from "@/services/constants";
 import { getCart } from "@/services/data-fetch/cart/get-cart";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  typescript: true
-});
 
 export async function stripeCheckout() {
   const session = await getSession();
@@ -25,7 +23,7 @@ export async function stripeCheckout() {
           description: item.description,
           images: item.images
         },
-        unit_amount: item.price * 100,
+        unit_amount: +item.price * 100,
       },
       quantity: item.quantity,
     }))
