@@ -24,7 +24,7 @@ export async function generateMetadata({ params: { id, locale } }: IProps) {
       siteName: 'CyberSphere',
       locale: locale,
       type: 'website',
-      url: `${BASE_URL}/blog/${id}`,
+      url: `${BASE_URL}/products/${id}`,
       images: [
         {
           url: images[0],
