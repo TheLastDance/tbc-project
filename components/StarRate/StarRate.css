@@ -43,7 +43,8 @@
   content: '★ ';
 }
 
-.rate>input:checked~label {
+.rate>input:checked~label,
+.rate>.checked~label {
   color: #ffc700;
 }
 

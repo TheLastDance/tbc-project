@@ -30,8 +30,8 @@ export function StarRate({ product_id, rating }: { product_id: number, rating: I
           id="star5"
           name="rate"
           value="5"
+          className={isDefaultChecked(5) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
-          defaultChecked={isDefaultChecked(5)}
         />
         <label htmlFor="star5" title="5">5 stars</label>
         <input
@@ -39,8 +39,8 @@ export function StarRate({ product_id, rating }: { product_id: number, rating: I
           id="star4"
           name="rate"
           value="4"
+          className={isDefaultChecked(4) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
-          defaultChecked={isDefaultChecked(4)}
         />
         <label htmlFor="star4" title="4">4 stars</label>
         <input
@@ -48,8 +48,8 @@ export function StarRate({ product_id, rating }: { product_id: number, rating: I
           id="star3"
           name="rate"
           value="3"
+          className={isDefaultChecked(3) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
-          defaultChecked={isDefaultChecked(3)}
         />
         <label htmlFor="star3" title="3">3 stars</label>
         <input
@@ -57,8 +57,8 @@ export function StarRate({ product_id, rating }: { product_id: number, rating: I
           id="star2"
           name="rate"
           value="2"
+          className={isDefaultChecked(2) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
-          defaultChecked={isDefaultChecked(2)}
         />
         <label htmlFor="star2" title="2">2 stars</label>
         <input
@@ -66,8 +66,8 @@ export function StarRate({ product_id, rating }: { product_id: number, rating: I
           id="star1"
           name="rate"
           value="1"
+          className={isDefaultChecked(1) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
-          defaultChecked={isDefaultChecked(1)}
         />
         <label htmlFor="star1" title="1">1 star</label>
       </div>

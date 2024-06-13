@@ -146,6 +146,19 @@ interface IMessage {
   added_on: string,
 }
 
+interface IOrder {
+  id: number,
+  user_id: string,
+  payment_intent: string,
+  products: IStorageCart,
+  refund: 'no' | 'refund requested' | 'successfully refunded',
+  status: boolean,
+  user_picture: string,
+  user_given_name: string,
+  user_family_name: string,
+  user_serial: number,
+}
+
 
 // component props
 type ChildrenProps = { children: React.ReactNode };
