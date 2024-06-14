@@ -27,14 +27,6 @@ export async function POST(req: NextRequest) {
     if (session.metadata?.user_id && session?.payment_intent) {
       const payment_intent = session.payment_intent as string;
 
-      // const res = await stripe.refunds.create({ payment_intent: payment_intent }); // refund
-      // console.log(res)
-
-      // const id = session.metadata.user_id;
-      // await sql`INSERT INTO test (user_id) VALUES (${id})`
-
-      //CHANGE getCart method to fully server action!!!
-
       const id = session.metadata.user_id;
       const { rows } = await sql`SELECT * FROM carts WHERE user_id = ${id}` // retrieve from cart
       const products = await getProducts() as IProductItem[];
@@ -56,18 +48,14 @@ export async function POST(req: NextRequest) {
   }
 
 
-  // if (event.type === "refund.created") {
-  //   const id = session.metadata!.user_id; // pass on refund created
-  //   await sql`UPDATE test SET refund=${"refund requested"} WHERE user_id = ${id}`
-  //   return new NextResponse("refund requested", { status: 200 })
-  // }
+  if (event.type === "charge.refund.updated") {
 
-  // if (event.type === "refund.updated") {
-  //   const payment_intent = session.payment_intent as string; // need to check if we will retrieve this
-  //   await sql`UPDATE test SET refund=${"successfully refunded"} WHERE payment_intent = ${payment_intent}`
-  //   return new NextResponse("successfully refunded", { status: 200 })
-  // }
+    if (session.metadata?.order_id) {
+      const order_id = session.metadata.order_id;
+      await sql`UPDATE orders SET refund=TRUE WHERE id = ${order_id};`
+    }
+    return new NextResponse("Refund completed", { status: 200 })
+  }
 
   return new NextResponse("OK", { status: 200 })
-
 }

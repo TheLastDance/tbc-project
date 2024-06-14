@@ -42,8 +42,6 @@ export async function stripeCheckout() {
 
     const checkoutSession: Stripe.Checkout.Session = await stripe.checkout.sessions.create(params);
 
-    // console.log(checkoutSession)
-
     return { result: `${checkoutSession.id}` };
 
   } catch (error) {

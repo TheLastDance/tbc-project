@@ -11,7 +11,7 @@ export enum SuccessMessages {
   EditPost = "Post was edited successfully",
   DeletePost = "Post was deleted successfully",
   AddPost = "Post was added successfully",
-  UpdateOrderStatus = "Order status was updated"
+  UpdateOrderStatus = "Order status was updated",
 }
 
 export enum SortByTitles {
