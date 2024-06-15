@@ -36,13 +36,11 @@ export async function stripeCheckout() {
       metadata: {
         user_id: user_id,
       },
-      success_url: `${BASE_URL}/success`,
+      success_url: `${BASE_URL}/`,
       cancel_url: `${BASE_URL}/`,
     };
 
     const checkoutSession: Stripe.Checkout.Session = await stripe.checkout.sessions.create(params);
-
-    // console.log(checkoutSession)
 
     return { result: `${checkoutSession.id}` };
 

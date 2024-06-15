@@ -48,3 +48,21 @@ export const loadImagesSequentially = async (files: File[]): Promise<string[]> =
   }
   return results;
 };
+
+export const buildCartInfo = (userCart: ICartProduct[], products: IProductItem[]) => {
+  const productMap = products.reduce((acc: { [key: string]: IProductItem }, item) => {
+    acc[item.id] = { ...item, price: +item.price };
+    return acc;
+  }, {});
+
+  const cartProducts = userCart.map((item) => productMap[item.id] && ({ ...productMap[item.id], quantity: item.quantity }));
+  const calculatedValues = cartProducts.reduce((acc, item) => {
+    acc.price = acc.price + item.price * item.quantity
+    acc.count = acc.count + item.quantity
+    return acc
+  }, { price: 0, count: 0 })
+
+  const info = { ...calculatedValues, products: cartProducts };
+
+  return info;
+}

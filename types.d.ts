@@ -146,6 +146,19 @@ interface IMessage {
   added_on: string,
 }
 
+interface IOrder {
+  id: number,
+  user_id: string,
+  payment_intent: string,
+  products: IStorageCart,
+  refund: boolean,
+  status: boolean,
+  user_picture: string,
+  user_given_name: string,
+  user_family_name: string,
+  user_serial: number,
+}
+
 
 // component props
 type ChildrenProps = { children: React.ReactNode };
@@ -182,6 +195,17 @@ interface IErrorPage {
 
 type ButtonMode = "glitch" | "glitchHover" | "none";
 
+interface IImageWithFallbackProps {
+  src: string,
+  fallbackSrc: string | StaticImageData,
+  alt: string,
+  fill?: boolean
+  priority?: boolean,
+  sizes?: string,
+  width?: number,
+  height?: number,
+}
+
 //searchParams
 
 interface IProductParams {
@@ -199,6 +223,12 @@ interface IProductParams {
 interface ITableParams {
   searchParams?: {
     searchText?: string,
+    page?: string,
+  }
+}
+
+interface IOrderParams {
+  searchParams?: {
     page?: string,
   }
 }
