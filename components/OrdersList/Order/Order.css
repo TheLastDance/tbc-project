@@ -1,0 +1,126 @@
+.dropdown {
+  max-width: 850px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.dropdownHeader_container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+  margin: 1rem 0;
+}
+
+.dark .dropdownHeader_container {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
+}
+
+.dropdownHeader_container button svg {
+  fill: var(--primaryColor);
+  transition: .2s ease;
+}
+
+.dark .dropdownHeader_container button svg {
+  fill: var(--secondaryColor);
+}
+
+.dropdownHeader_container .dropdown_opened svg {
+  transform: rotate(180deg);
+}
+
+.dropdownHeader {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 0.5rem;
+}
+
+.dropdownHeader p {
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.orders_idAndDate .nowrap {
+  white-space: nowrap;
+  margin-bottom: 0;
+}
+
+.order_address span {
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: keep-all;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.dropdown_content {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.dropdown_content>a,
+.dropdown_content>button {
+  margin: 0.5rem 0;
+}
+
+.orderItem {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--secondaryColor);
+  padding: 1rem 0;
+}
+
+.orderItem_info_container {
+  display: flex;
+}
+
+.orderItem_image {
+  position: relative;
+  width: 8rem;
+  height: 10rem;
+}
+
+.orderItem_image img {
+  object-fit: contain;
+}
+
+.orderItem_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 1rem;
+}
+
+@media(max-width:600px) {
+  .dropdownHeader_container {
+    font-size: 0.65rem;
+  }
+
+  .dropdownHeader {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  }
+}
+
+@media(max-width:400px) {
+  .dropdownHeader_container {
+    padding: 0.5rem;
+  }
+
+  .dropdownHeader {
+    grid-template-columns: repeat(4, auto);
+  }
+}

@@ -151,7 +151,7 @@ interface IOrder {
   user_id: string,
   payment_intent: string,
   products: IStorageCart,
-  refund: 'no' | 'refund requested' | 'successfully refunded',
+  refund: boolean,
   status: boolean,
   user_picture: string,
   user_given_name: string,
@@ -195,6 +195,17 @@ interface IErrorPage {
 
 type ButtonMode = "glitch" | "glitchHover" | "none";
 
+interface IImageWithFallbackProps {
+  src: string,
+  fallbackSrc: string | StaticImageData,
+  alt: string,
+  fill?: boolean
+  priority?: boolean,
+  sizes?: string,
+  width?: number,
+  height?: number,
+}
+
 //searchParams
 
 interface IProductParams {
@@ -212,6 +223,12 @@ interface IProductParams {
 interface ITableParams {
   searchParams?: {
     searchText?: string,
+    page?: string,
+  }
+}
+
+interface IOrderParams {
+  searchParams?: {
     page?: string,
   }
 }

@@ -8,7 +8,7 @@ export async function getOrder(id: number): Promise<QueryResultRow> {
   try {
     const order = await sql`SELECT * FROM orders WHERE orders.id = ${id};`;
 
-    return order.rows;
+    return order.rows[0];
   } catch (error) {
     console.log(error)
     return { error }

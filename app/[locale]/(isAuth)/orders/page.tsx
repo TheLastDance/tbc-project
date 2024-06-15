@@ -1,13 +1,17 @@
-// import { sql } from "@vercel/postgres"
+import { OrdersList } from "@/components/OrdersList/OrdersList"
+import { Loader } from "@/components/Loaders/Loader/Loader"
+import { Suspense } from "react"
 
-export const revalidate = 0;
 
-export default async function Orders() {
 
-  // const orders = await sql`SELECT * FROM orders ORDER BY orders.id DESC`;
-  // console.log(orders.rows[0])
+export default function Orders({ searchParams }: IOrderParams) {
+  const page = Number(searchParams?.page) || 1;
 
   return (
-    <div>page</div>
+    <>
+      <Suspense fallback={<Loader />}>
+        <OrdersList page={page} />
+      </Suspense>
+    </>
   )
 }

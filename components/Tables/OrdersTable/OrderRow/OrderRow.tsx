@@ -27,7 +27,7 @@ export function OrderRow({ item }: { item: IOrder }) {
         <input type="checkbox" name="status" id="admin_order_status" onChange={handleStatusUpdate} checked={status} />
       </td>
       <td>
-        <GlithHoverLink href="">
+        <GlithHoverLink href={`/admin/orders/${id}`}>
           Full
         </GlithHoverLink>
       </td>
