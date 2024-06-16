@@ -14,7 +14,7 @@ interface IProps {
 export function Post({ item, admin }: IProps) {
   const { title, body, id, added_on, user_serial, user_picture } = item;
 
-  const utcDate = new Date(added_on).toLocaleString();
+  const utcDate = new Date(added_on).toLocaleDateString();
 
   return (
     <Card>

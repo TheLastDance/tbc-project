@@ -52,6 +52,7 @@
 
 .table_UI tbody tr td a {
   display: inline-flex;
+  text-transform: capitalize;
 }
 
 .table_UI tbody tr td button span {

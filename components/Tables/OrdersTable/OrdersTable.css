@@ -1,0 +1,26 @@
+.table_wrapper .table_UI .ordersTable td button {
+  white-space: nowrap;
+}
+
+.table_wrapper .table_UI .ordersTable td button span {
+  margin: 0;
+}
+
+.ordersTable a img {
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  object-position: top;
+}
+
+.ordersTable tbody .orderTable_user_container {
+  position: relative;
+}
+
+.ordersTable tbody .orderTable_user_container a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

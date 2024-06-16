@@ -5,10 +5,12 @@ import { GlithHoverLink } from "@/components/UI/Links/GlithHoverLink";
 import { updateStatus } from "@/services/actions/checkout/update-status";
 import toast from "react-hot-toast";
 import { requestRefund } from "@/services/actions/checkout/request-refund";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
+import Image from "next/image";
 
 
 export function OrderRow({ item }: { item: IOrder }) {
-  const { id, user_serial, status, refund, products, payment_intent } = item;
+  const { id, user_serial, status, refund, products, payment_intent, address, user_picture } = item;
 
   const handleStatusUpdate = async () => {
     const res = await updateStatus(id);
@@ -24,30 +26,33 @@ export function OrderRow({ item }: { item: IOrder }) {
   return (
     <tr>
       <td>
-        <input type="checkbox" name="status" id="admin_order_status" onChange={handleStatusUpdate} checked={status} />
+        <input type="checkbox" name="status" id={`admin_order_status-${id}`} onChange={handleStatusUpdate} checked={status} />
       </td>
       <td>
-        <GlithHoverLink href={`/admin/orders/${id}`}>
-          Full
-        </GlithHoverLink>
+        <GlithHoverLink href={`/admin/orders/${id}`} translationKey="order.full" />
       </td>
       <td>
         {!refund ?
           <form action={handleRefund}>
-            <PendingButton mode="glitchHover" type="submit" >Refund</PendingButton>
+            <PendingButton mode="glitchHover" type="submit" translationKey="order.refund" />
           </form> :
-          <span>Refunded</span>
+          <span>
+            <TranslateText translationKey="order.refunded" />
+          </span>
         }
       </td>
       <td>{id}</td>
-      <td>
+      <td className="orderTable_user_container">
         <Link href={`/user/${user_serial}`}>
-          user
+          <Image src={user_picture} width={50} height={50} alt="avatar" />
         </Link>
       </td>
       <td>
         {products.price.toFixed(2)}
         $
+      </td>
+      <td>
+        {address}
       </td>
     </tr>
   )
