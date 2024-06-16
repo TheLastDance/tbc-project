@@ -24,3 +24,32 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.ordersTable .checkbox_wrapper .cbx {
+  display: block;
+}
+
+.ordersTable .checkbox_wrapper label {
+  width: fit-content;
+}
+
+.ordersTable .checkbox_wrapper .cbx span:first-child {
+  border: 1px solid var(--secondaryColor);
+}
+
+.ordersTable .checkbox_wrapper .cbx span:first-child:before {
+  background: var(--secondaryColor);
+}
+
+.ordersTable .checkbox_wrapper .cbx:hover span:first-child {
+  border-color: var(--secondaryColor);
+}
+
+.ordersTable .checkbox_wrapper .inp-cbx:checked+.cbx span:first-child {
+  background: var(--secondaryColor);
+  border-color: var(--secondaryColor);
+}
+
+.ordersTable .checkbox_wrapper .cbx span:first-child svg {
+  stroke: var(--primaryColor);
+}

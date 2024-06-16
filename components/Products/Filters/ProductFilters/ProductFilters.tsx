@@ -4,6 +4,7 @@ import "./ProductFilters.css"
 import { useSearchParams, usePathname, useRouter } from "next/navigation"
 import { productBrands, productCategories, productGender } from "@/services/constants";
 import { Input } from "@/components/Input/Input";
+import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { useState, Dispatch, SetStateAction } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { ProductSort } from "./ProductSort";
@@ -99,51 +100,76 @@ export function ProductFilters() {
             <h3>Price</h3>
           </label>
           <div className="price_container">
-            <Input type="number" id="price" placeholder="From..." min="0" value={selectedPrice[0]} onChange={(e) => handlePrice(e.target.value, 0)} />
-            <Input type="number" id="price" placeholder="To..." min="0" value={selectedPrice[1]} onChange={(e) => handlePrice(e.target.value, 1)} />
+            <Input type="number" id="priceFrom" placeholder="From..." min="0" value={selectedPrice[0]} onChange={(e) => handlePrice(e.target.value, 0)} />
+            <Input type="number" id="priceTo" placeholder="To..." min="0" value={selectedPrice[1]} onChange={(e) => handlePrice(e.target.value, 1)} />
           </div>
         </div>
 
         <div>
           <h3>Category</h3>
-          {productCategories.map((item, index) =>
-            <div key={index} className="filter_categories_checkboxContainer">
-              <Input
-                type="checkbox"
-                id={`category_${item}`}
-                checked={selectedCategories.includes(item)}
-                onChange={() => handleCategory(item)}
-              />
-              <label htmlFor={`category_${item}`}>{item}</label>
-            </div>)}
+          <ul>
+            {productCategories.map((item, index) => {
+              const isChecked = selectedCategories.includes(item);
+
+              return (
+                <li
+                  key={index}
+                  className={isChecked ? "filter_categories_checkboxContainer checked" : "filter_categories_checkboxContainer"}
+                >
+                  <Checkbox
+                    id={`category_${item}`}
+                    checked={isChecked}
+                    onChange={() => handleCategory(item)}
+                    label={item}
+                  />
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
         <div>
           <h3>Brand</h3>
-          {productBrands.map((item, index) =>
-            <div key={index} className="filter_brand_checkboxContainer">
-              <Input
-                type="checkbox"
-                id={`brand_${item}`}
-                checked={selectedBrands.includes(item)}
-                onChange={() => handleBrand(item)}
-              />
-              <label htmlFor={`brand_${item}`}>{item}</label>
-            </div>)}
+          <ul>
+            {productBrands.map((item, index) => {
+              const isChecked = selectedBrands.includes(item);
+
+              return (
+                <li
+                  key={index}
+                  className={isChecked ? "filter_brand_checkboxContainer checked" : "filter_brand_checkboxContainer"}
+                >
+                  <Checkbox
+                    id={`brand_${item}`}
+                    checked={isChecked}
+                    onChange={() => handleBrand(item)}
+                    label={item}
+                  />
+                </li>);
+            })}
+          </ul>
         </div>
 
         <div>
           <h3>Gender</h3>
-          {productGender.map((item, index) =>
-            <div key={index} className="filter_gender_checkboxContainer">
-              <Input
-                type="checkbox"
-                id={`gender_${item}`}
-                checked={selectedGender.includes(item)}
-                onChange={() => handleGender(item)}
-              />
-              <label htmlFor={`gender_${item}`}>{item}</label>
-            </div>)}
+          <ul>
+            {productGender.map((item, index) => {
+              const isChecked = selectedGender.includes(item);
+
+              return (
+                <li
+                  key={index}
+                  className={isChecked ? "filter_gender_checkboxContainer checked" : "filter_gender_checkboxContainer"}
+                >
+                  <Checkbox
+                    id={`gender_${item}`}
+                    checked={isChecked}
+                    onChange={() => handleGender(item)}
+                    label={item}
+                  />
+                </li>);
+            })}
+          </ul>
         </div>
 
       </div>
