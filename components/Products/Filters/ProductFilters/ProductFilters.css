@@ -12,14 +12,14 @@
   margin: 0.5rem 0;
 }
 
-.filter_categories .input_container input {
-  --background: #fff;
+.filter_categories div .input_container input {
   width: 100%;
+  background-color: var(--primaryColor);
 }
 
-.dark select {
+.dark .filter_categories div .input_container input {
   --secondaryColor: #000;
-  color: var(--secondaryColor);
+  --primaryColor: #fff;
 }
 
 .price_container {
@@ -34,6 +34,13 @@
 .filter_categories select {
   width: 100%;
   padding: 0.5rem 0.4rem;
+  color: var(--secondaryColor);
+  background-color: var(--primaryColor);
+}
+
+.dark .filter_categories select {
+  --secondaryColor: #000;
+  --primaryColor: #fff;
 }
 
 .filter_categories ul .checked,
