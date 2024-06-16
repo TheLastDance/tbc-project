@@ -1,11 +1,55 @@
-.input_container input,
+.input_container input:not([type="checkbox"]),
 .input_container textarea {
-  padding: 0.25rem 0;
-  border-radius: 5px;
-  border: 1px solid var(--secondaryColor);
+  padding: 0.6rem;
   background-color: var(--background);
+  border: none;
+  border-bottom: 0.05rem solid var(--grayColor);
+  outline: none;
+}
+
+.input_container input:not([type="checkbox"]):focus,
+.input_container textarea:focus {
+  filter: drop-shadow(0 0 0.1rem var(--grayColor));
 }
 
 .input_container label {
   text-transform: capitalize;
+}
+
+.webflow-style-input {
+  position: relative;
+}
+
+.webflow-style-input:focus-within::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 0;
+  height: 2px;
+  background-position: 0% 0%;
+  background: linear-gradient(to right, #e0287d, #1bc7fb, #e0287d, #1bc7fb, #e0287d, #1bc7fb);
+  background-size: 500% auto;
+  animation: gradient 3s linear infinite;
+  width: 100%;
+}
+
+.webflow-style-input input {
+  flex-grow: 1;
+  color: var(--secondaryColor);
+}
+
+.webflow-style-input input::-webkit-input-placeholder {
+  color: var(--secondaryColor);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 0
+  }
+
+  100% {
+    background-position: 100% 0
+  }
 }

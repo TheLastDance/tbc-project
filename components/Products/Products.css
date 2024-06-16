@@ -7,8 +7,16 @@
 }
 
 .filtersAndProducts_filters {
-  min-width: 220px;
-  width: 220px;
+  min-width: 200px;
+  margin: 0 20px 0 0;
+  background: var(--secondaryColor);
+  color: var(--primaryColor);
+  height: fit-content;
+}
+
+.dark .filtersAndProducts_filters {
+  background: var(--primaryColor);
+  color: var(--secondaryColor);
 }
 
 @media(max-width:960px) {

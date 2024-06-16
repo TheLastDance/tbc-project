@@ -12,27 +12,31 @@ export function Input({
   ...props
 }: IInputProps) {
   return (
-    <div className="input_container">
+    <div className={type !== "checkbox" ? "input_container webflow-style-input" : "input_container"}>
       {label && <label htmlFor={id}>{label}:</label>}
       {textArea ? (
-        <textarea
-          id={id}
-          name={name}
-          placeholder={placeholder}
-          required={required}
-          onChange={onChange}
-          {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
-        />
+        <>
+          <textarea
+            id={id}
+            name={name}
+            placeholder={placeholder}
+            required={required}
+            onChange={onChange}
+            {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+          />
+        </>
       ) : (
-        <input
-          type={type}
-          id={id}
-          name={name}
-          placeholder={placeholder}
-          required={required}
-          onChange={onChange}
-          {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
-        />
+        <>
+          <input
+            type={type}
+            id={id}
+            name={name}
+            placeholder={placeholder}
+            required={required}
+            onChange={onChange}
+            {...(props as React.InputHTMLAttributes<HTMLInputElement>)}
+          />
+        </>
       )}
     </div>
   );

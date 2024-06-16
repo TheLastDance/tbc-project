@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { requestRefund } from "@/services/actions/checkout/request-refund";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import Image from "next/image";
+import { Checkbox } from "@/components/Checkbox/Checkbox";
 
 
 export function OrderRow({ item }: { item: IOrder }) {
@@ -26,7 +27,7 @@ export function OrderRow({ item }: { item: IOrder }) {
   return (
     <tr>
       <td>
-        <input type="checkbox" name="status" id={`admin_order_status-${id}`} onChange={handleStatusUpdate} checked={status} />
+        <Checkbox name="status" id={`admin_order_status-${id}`} onChange={handleStatusUpdate} checked={status} />
       </td>
       <td>
         <GlithHoverLink href={`/admin/orders/${id}`} translationKey="order.full" />
