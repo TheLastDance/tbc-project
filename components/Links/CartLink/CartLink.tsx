@@ -10,9 +10,9 @@ interface IProps {
 }
 
 export function CartLink({ onClick }: IProps) {
-  const { optimistic } = useCartOptimistic();
+  const { optimistic, isAdding } = useCartOptimistic();
 
-  return <Link title="cart" href="/cart" className="cartLink" onClick={onClick}>
+  return <Link title="cart" href="/cart" className="cartLink" onClick={onClick} style={isAdding ? { pointerEvents: "none" } : undefined}>
     {optimistic.count > 0 && optimistic.count < 10 ? <span>{optimistic.count}</span> : optimistic.count > 9 ? <span>9+</span> : null}
     <Cart />
   </Link>

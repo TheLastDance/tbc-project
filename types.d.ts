@@ -157,6 +157,8 @@ interface IOrder {
   user_given_name: string,
   user_family_name: string,
   user_serial: number,
+  address: string,
+  added_on: string,
 }
 
 
@@ -185,6 +187,7 @@ interface IInputProps {
   ref?: RefObject<HTMLInputElement>;
   checked?: boolean;
   defaultChecked?: boolean;
+  readOnly?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 

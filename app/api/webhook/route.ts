@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
       const payment_intent = session.payment_intent as string;
 
       const id = session.metadata.user_id;
+      const { region, city, address } = session.metadata;
       const { rows } = await sql`SELECT * FROM carts WHERE user_id = ${id}` // retrieve from cart
       const products = await getProducts() as IProductItem[];
       const cart = rows[0].products;
@@ -35,8 +36,8 @@ export async function POST(req: NextRequest) {
       const info = buildCartInfo(cart, products);
 
       await sql`
-      INSERT INTO orders (user_id,payment_intent,products) 
-      VALUES (${id},${payment_intent},${JSON.stringify(info)})
+      INSERT INTO orders (user_id,payment_intent,products,address) 
+      VALUES (${id},${payment_intent},${JSON.stringify(info)},${`${region}, ${city}, ${address}`})
       ` // status row should be false by default. insert into orders
 
       await sql`UPDATE carts SET products = ${JSON.stringify([])} WHERE user_id = ${id};`; //reset cart

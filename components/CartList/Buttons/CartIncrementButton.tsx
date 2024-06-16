@@ -18,11 +18,12 @@ export function CartIncrementButton({ children, item, mode, translationKey }: IP
   const router = useRouter();
   const { user, isLoading } = useUser();
   const [, startTransition] = useTransition();
-  const { optimistic, addOptimistic } = useCartOptimistic();
+  const { optimistic, addOptimistic, setIsAdding } = useCartOptimistic();
 
 
   const handleIncrement = async () => {
     if (!isLoading && user) {
+      setIsAdding(true);
       startTransition(() => {
         const isNew = optimistic.products.find(p => p.id === item.id);
 
@@ -36,6 +37,7 @@ export function CartIncrementButton({ children, item, mode, translationKey }: IP
         return addOptimistic(newCart)
       })
       await incrementCart(item.id);
+      setIsAdding(false);
     } else {
       router.push("/api/auth/login")
     }

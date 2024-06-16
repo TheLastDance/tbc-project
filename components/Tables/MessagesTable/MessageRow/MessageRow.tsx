@@ -2,7 +2,7 @@ import { GlithHoverLink } from "@/components/UI/Links/GlithHoverLink";
 
 export function MessageRow({ item }: { item: IMessage }) {
   const { firstname, lastname, tel, email, added_on, body } = item;
-  const utcDate = new Date(added_on).toLocaleString();
+  const utcDate = new Date(added_on).toLocaleDateString();
 
   return (
     <tr>

@@ -6,13 +6,15 @@ import { BASE_URL } from "@/services/constants";
 import { getCart } from "@/services/data-fetch/cart/get-cart";
 
 
-export async function stripeCheckout() {
+export async function stripeCheckout(data: FormData) {
   const session = await getSession();
   const user_id = session?.user.sub;
+  const { region, city, address } = Object.fromEntries(data);
 
 
   try {
     if (!user_id) throw new Error("something went wrong!");
+    if (!region || !address || !city) throw new Error("All fields are required!");
 
     const cart = await getCart();
     const data = cart.products.map(item => ({
@@ -35,6 +37,9 @@ export async function stripeCheckout() {
       line_items: data,
       metadata: {
         user_id: user_id,
+        region: `${region}`,
+        city: `${city}`,
+        address: `${address}`,
       },
       success_url: `${BASE_URL}/`,
       cancel_url: `${BASE_URL}/`,

@@ -1,0 +1,9 @@
+.checkout_address_form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.checkout_address_form button {
+  text-transform: uppercase;
+  font-weight: 700;
+}

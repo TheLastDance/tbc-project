@@ -1,0 +1,70 @@
+.checkoutModal {
+  margin: 0;
+  padding: 1rem 1.5rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 700px;
+  width: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--background);
+  border-radius: 2rem;
+  color: var(--secondaryColor);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.checkoutModal>label {
+  text-transform: capitalize;
+  padding: 0.5rem 0;
+}
+
+.checkoutModal svg {
+  fill: #fff;
+  stroke: red;
+  stroke-width: 2px;
+  width: 100%;
+  position: relative;
+}
+
+.checkoutModal svg path {
+  cursor: pointer;
+}
+
+.checkoutModal svg path:focus {
+  outline: none;
+  stroke: red;
+  stroke-width: 4px;
+}
+
+.checkoutModal svg .selectedPath {
+  fill: red;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media(max-width:700px) {
+  .checkoutModal {
+    max-width: 100%;
+  }
+}
+
+@media(max-height:700px) {
+  .checkoutModal {
+    height: 80%;
+    z-index: 2;
+    overflow-y: auto;
+    justify-content: unset;
+  }
+}

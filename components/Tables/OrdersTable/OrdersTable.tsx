@@ -1,8 +1,9 @@
+import "./OrdersTable.css"
 import { TableContainer } from "../TableContainer/TableContainer"
-// import { TranslateText } from "@/components/TranslateText/TranslateText"
 import { PaginationUI } from "@/components/Pagination/Pagination"
 import { getAllOrders } from "@/services/sqlQueries/orders/getAllOrders";
 import { OrderRow } from "./OrderRow/OrderRow";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export const revalidate = 0;
 
@@ -15,15 +16,16 @@ export async function OrdersTable({ params }: { params: ITableParams['searchPara
   return (
     <div className="table_wrapper">
       <TableContainer>
-        <table className="messagesTable">
+        <table className="ordersTable">
           <thead>
             <tr>
-              <th>Status</th>
-              <th>Order</th>
-              <th>Cancel</th>
-              <th>Order #</th>
-              <th>User</th>
-              <th>Total Price</th>
+              <th><TranslateText translationKey="order.status" /></th>
+              <th><TranslateText translationKey="order.order" /></th>
+              <th><TranslateText translationKey="order.cancel" /></th>
+              <th><TranslateText translationKey="order.order" /> #</th>
+              <th><TranslateText translationKey="order.user" /></th>
+              <th><TranslateText translationKey="order.totalPrice" /></th>
+              <th><TranslateText translationKey="form.address" /></th>
             </tr>
           </thead>
           <tbody>
