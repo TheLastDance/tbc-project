@@ -16,7 +16,7 @@ interface IProps {
 const rubik_glitch = Rubik_Glitch({ subsets: ["latin"], weight: "400" });
 
 export function Product({ item, index, admin }: IProps) {
-  const { title, description, id, images, category, average } = item;
+  const { title, description, id, images, category, average, price } = item;
   const [image] = images;
 
   return (
@@ -46,6 +46,7 @@ export function Product({ item, index, admin }: IProps) {
           <div className="productDescription_container">
             <p>{description}</p>
           </div>
+          <p>{price}$</p>
           <div className="product_card_button_container">
             {admin ?
               <GlithHoverLink href={`/admin/products/edit/${id}`} translationKey="edit" />

@@ -1,0 +1,12 @@
+.editProductForm {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.editProductForm textarea {
+  min-height: 150px;
+}
+
+.editProductForm select {
+  padding: 0.5rem 0.4rem;
+}

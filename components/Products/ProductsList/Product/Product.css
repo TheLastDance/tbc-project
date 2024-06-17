@@ -21,11 +21,12 @@
 .product_card .product_card_imgLink_container {
   position: relative;
   width: 12rem;
-  height: 18rem;
+  height: 100%;
 }
 
 .product_card_imgLink_container img {
   object-fit: cover;
+  object-position: top;
   border-radius: 1rem 0 0 1rem;
   border: 2px solid var(--secondaryColor);
   border-right: none;
@@ -117,6 +118,8 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .product_card_button_container {
