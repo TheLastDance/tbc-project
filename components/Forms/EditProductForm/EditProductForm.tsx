@@ -40,7 +40,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
 
   return (
     <FormContainer>
-      <form onSubmit={handleEditProduct}>
+      <form onSubmit={handleEditProduct} className="editProductForm">
 
         <Input
           type="text"
@@ -63,7 +63,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
           required
         />
 
-        <div className="input_container">
+        <div className="input_container select-style-input">
           <label htmlFor="addProductForm_brand">Brand:</label>
           <select
             id="addProductForm_brand"
@@ -75,7 +75,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
           </select>
         </div>
 
-        <div className="input_container">
+        <div className="input_container select-style-input">
           <label htmlFor="addProductForm_category">Category:</label>
           <select
             id="addProductForm_category"
@@ -87,7 +87,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
           </select>
         </div>
 
-        <div className="input_container">
+        <div className="input_container select-style-input">
           <label htmlFor="addProductForm_gender">Gender:</label>
           <select
             id="addProductForm_gender"

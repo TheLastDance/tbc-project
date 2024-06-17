@@ -6,7 +6,7 @@ export async function ProfileMainInfo({ user }: { user: IUser }) {
 
   return (
     <div className="profileMainInfo_card">
-      <Heading level={1}>{user.email}</Heading>
+      <h1><Heading>{user.email}</Heading></h1>
       <Image src={user.picture} alt="profile avatar" width={300} height={380} priority />
     </div>
   );

@@ -96,7 +96,7 @@ export function ProductFilters() {
 
           <ProductSort />
 
-          <label htmlFor="price">
+          <label htmlFor="priceFrom">
             <h3>Price</h3>
           </label>
           <div className="price_container">

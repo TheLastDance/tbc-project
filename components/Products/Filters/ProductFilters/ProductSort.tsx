@@ -35,7 +35,7 @@ export function ProductSort() {
   }
 
   return (
-    <>
+    <div className="select-style-input">
       <label htmlFor="sortBy">
         <h3>Sort By</h3>
       </label>
@@ -51,6 +51,6 @@ export function ProductSort() {
         <option value={PriceAsc}>Price: Low to High</option>
         <option value={PriceDesc}>Price: High to Low</option>
       </select>
-    </>
+    </div>
   )
 }

@@ -1,0 +1,12 @@
+.addProductForm {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.addProductForm textarea {
+  min-height: 150px;
+}
+
+.addProductForm select {
+  padding: 0.5rem 0.4rem;
+}

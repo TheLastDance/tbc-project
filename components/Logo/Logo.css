@@ -1,3 +1,23 @@
+.header_logo h1 span {
+  display: flex;
+  align-items: center;
+}
+
 .header_logo a {
-  font-size: 2rem;
+  filter: brightness(1) drop-shadow(0 0 1px #fff);
+  text-transform: uppercase;
+  transition: .4s ease;
+  background: linear-gradient(to right, #686768 65%, #d8d8d8 75%, #686768 90%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  letter-spacing: 4px;
+}
+
+
+.header_logo a:hover {
+  filter: brightness(1.4);
+}
+
+.header_logo a h1 {
+  font-size: 2.5rem;
 }

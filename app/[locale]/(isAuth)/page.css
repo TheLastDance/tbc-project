@@ -1,19 +1,18 @@
-.mainPage {
+/* .mainPage {
   margin: auto 0;
   max-height: 600px;
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
+} */
 
-.mainPage::-webkit-scrollbar {
+/* .mainPage::-webkit-scrollbar {
   display: none;
-}
-
+} */
+/* 
 @media(max-height:750px) {
   .mainPage {
-    /* without svh support */
     max-height: calc(100vh - 200px);
     max-height: calc(100svh - 200px);
   }
-}
+} */

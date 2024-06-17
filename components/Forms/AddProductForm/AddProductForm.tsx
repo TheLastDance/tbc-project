@@ -39,7 +39,7 @@ export function AddProductForm() {
 
   return (
     <FormContainer>
-      <form onSubmit={handleAddProduct}>
+      <form onSubmit={handleAddProduct} className="addProductForm">
 
         <Input
           type="text"
@@ -60,7 +60,7 @@ export function AddProductForm() {
           required
         />
 
-        <div className="input_container">
+        <div className="input_container select-style-input">
           <label htmlFor="addProductForm_brand">Brand:</label>
           <select
             id="addProductForm_brand"
@@ -71,7 +71,7 @@ export function AddProductForm() {
           </select>
         </div>
 
-        <div className="input_container">
+        <div className="input_container select-style-input">
           <label htmlFor="addProductForm_category">Category:</label>
           <select
             id="addProductForm_category"
@@ -82,7 +82,7 @@ export function AddProductForm() {
           </select>
         </div>
 
-        <div className="input_container">
+        <div className="input_container select-style-input">
           <label htmlFor="addProductForm_gender">Gender:</label>
           <select
             id="addProductForm_gender"

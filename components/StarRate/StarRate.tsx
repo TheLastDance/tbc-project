@@ -40,54 +40,54 @@ export function StarRate({
       <div className="rate" style={card ? { pointerEvents: "none" } : undefined}>
         <input
           type="radio"
-          id="star5"
+          id={`star5-${product_id}`}
           name="rate"
           value="5"
           className={isDefaultChecked(5) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
         />
-        <label htmlFor="star5" title="5">5 stars</label>
+        <label htmlFor={`star5-${product_id}`} title="5">5 stars</label>
         <input
           type="radio"
-          id="star4"
+          id={`star4-${product_id}`}
           name="rate"
           value="4"
           className={isDefaultChecked(4) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
         />
-        <label htmlFor="star4" title="4">4 stars</label>
+        <label htmlFor={`star4-${product_id}`} title="4">4 stars</label>
         <input
           type="radio"
-          id="star3"
+          id={`star3-${product_id}`}
           name="rate"
           value="3"
           className={isDefaultChecked(3) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
         />
-        <label htmlFor="star3" title="3">3 stars</label>
+        <label htmlFor={`star3-${product_id}`} title="3">3 stars</label>
         <input
           type="radio"
-          id="star2"
+          id={`star2-${product_id}`}
           name="rate"
           value="2"
           className={isDefaultChecked(2) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
         />
-        <label htmlFor="star2" title="2">2 stars</label>
+        <label htmlFor={`star2-${product_id}`} title="2">2 stars</label>
         <input
           type="radio"
-          id="star1"
+          id={`star1-${product_id}`}
           name="rate"
           value="1"
           className={isDefaultChecked(1) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
         />
-        <label htmlFor="star1" title="1">1 star</label>
+        <label htmlFor={`star1-${product_id}`} title="1">1 star</label>
       </div>
       <div className="rating_calculations">
         <span>{avg.toFixed(2)}</span>
