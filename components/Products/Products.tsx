@@ -52,7 +52,7 @@ export async function Products({ params, admin }: IProps) {
   return (
     <>
       <section className="products">
-        <Heading level={2} translationKey="products" />
+        <h2><Heading translationKey="products" /></h2>
         <div className="filtersAndProducts">
           <div className="filtersAndProducts_filters">
             <ProductFilters />

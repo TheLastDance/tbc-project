@@ -17,7 +17,7 @@ export function CartList() {
 
         {optimistic.count > 0 &&
           <div>
-            <Heading level={1} translationKey="cart.heading" />
+            <h1><Heading translationKey="cart.heading" /></h1>
             <CartResetButton />
           </div>
         }

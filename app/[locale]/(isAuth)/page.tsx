@@ -1,11 +1,11 @@
 import "./page.css";
-import { Products } from "@/components/Products/Products";
+import { CyberCanvas } from "@/components/CyberSphere3d/CyberCanvas";
 
 
-export default async function Home({ searchParams }: IProductParams) {
+export default async function Home() {
   return (
     <div className="mainPage">
-      <Products params={searchParams} />
+      <CyberCanvas />
     </div>
   );
 }
