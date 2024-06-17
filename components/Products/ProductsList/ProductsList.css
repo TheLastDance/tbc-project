@@ -1,5 +1,11 @@
 .products_list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+}
+
+@media(max-width:500px) {
+  .products_list {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 }
