@@ -65,6 +65,7 @@ interface IProductItem {
   rating: number;
   price: number;
   gender: string;
+  average: number;
   images: string[];
 }
 
