@@ -115,7 +115,7 @@ select {
   z-index: 0;
   height: 2px;
   background-position: 0% 0%;
-  background: linear-gradient(to right, #e0287d, #1bc7fb, #e0287d, #1bc7fb, #e0287d, #1bc7fb);
+  background: linear-gradient(to right, var(--glitchColor1), var(--glitchColor3), var(--glitchColor1), var(--glitchColor3), var(--glitchColor1), var(--glitchColor3));
   background-size: 500% auto;
   animation: gradient 3s linear infinite;
   width: 100%;

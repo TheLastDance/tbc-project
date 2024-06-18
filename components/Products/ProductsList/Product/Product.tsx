@@ -46,7 +46,7 @@ export function Product({ item, index, admin }: IProps) {
           <div className="productDescription_container">
             <p>{description}</p>
           </div>
-          <p>{price}$</p>
+          <p className="product_price">{price}$</p>
           <div className="product_card_button_container">
             {admin ?
               <GlithHoverLink href={`/admin/products/edit/${id}`} translationKey="edit" />

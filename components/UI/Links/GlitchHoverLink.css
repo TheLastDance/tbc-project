@@ -6,6 +6,11 @@
   overflow: hidden;
   filter: drop-shadow(0 1px 3px) !important;
   display: inline-flex;
+  min-width: fit-content;
+  text-transform: capitalize;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .hero-h-link:hover {
@@ -19,21 +24,21 @@
   position: relative;
 }
 
-.layers-h:hover::before,
-.layers-h:hover::after {
+.hero-h-link:hover .layers-h::before,
+.hero-h-link:hover .layers-h::after {
   content: attr(data-text);
   position: absolute;
   width: 110%;
   z-index: -1;
 }
 
-.layers-h:hover::before {
+.hero-h-link:hover .layers-h:hover::before {
   top: 10px;
   left: 15px;
   color: var(--glitchColor1);
 }
 
-.layers-h:hover::after {
+.hero-h-link:hover .layers-h:hover::after {
   top: 5px;
   left: -10px;
   color: var(--glitchColor3);
@@ -373,16 +378,16 @@
   }
 }
 
-.glitch-h:hover span {
+.hero-h-link:hover .glitch-h span {
   animation: paths 5s step-end infinite;
 }
 
-.glitch-h:hover::before {
+.hero-h-link:hover .glitch-h::before {
   animation: paths 5s step-end infinite, opacity 5s step-end infinite,
     font 8s step-end infinite, movement 10s step-end infinite;
 }
 
-.glitch-h:hover::after {
+.hero-h-link:hover .glitch-h::after {
   animation: paths 5s step-end infinite, opacity 5s step-end infinite,
     font 7s step-end infinite, movement 8s step-end infinite;
 }
