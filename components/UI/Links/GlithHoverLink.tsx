@@ -21,11 +21,12 @@ export function GlithHoverLink({
   return (
     <Link
       href={href}
-      data-text={text}
-      className="hero-h-link glitch-h layers-h"
+      className="hero-h-link"
     >
-      {children}
-      {text}
+      <span className="layers-h glitch-h" data-text={text}>
+        {children}
+        {text}
+      </span>
     </Link>
   )
 }

@@ -7,7 +7,7 @@
 }
 
 .filtersAndProducts_filters {
-  min-width: 200px;
+  min-width: 210px;
   margin: 0 20px 0 0;
   background: var(--secondaryColor);
   color: var(--primaryColor);

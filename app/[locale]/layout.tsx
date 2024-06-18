@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Mali } from "next/font/google";
 import { ThemeProviders } from "@/services/providers/ThemeProvider";
 import { GlobalLayout } from "@/components/Layouts/GlobalLayout";
 import { generateDynamicMetaData } from "@/services/utils";
@@ -9,7 +9,7 @@ import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Toaster } from "react-hot-toast";
 
 // font will be replaced in future, so I deleted it from body
-const inter = Inter({ subsets: ["latin"] });
+const mali = Mali({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export async function generateMetadata({ params: { locale } }: ILocaleParam) {
   return generateDynamicMetaData("home", locale);
@@ -29,7 +29,7 @@ interface IProps {
 export default function RootLayout({ children, params: { locale } }: IProps) {
   return (
     <html suppressHydrationWarning lang={locale}>
-      <body className={inter.className}>
+      <body className={mali.className}>
         <UserProvider>
           <I18nProviderClient locale={locale}>
             <ThemeProviders>

@@ -15,12 +15,15 @@
   word-break: break-word;
 }
 
+.fullPost_titleAndPhoto_container a:hover {
+  filter: drop-shadow(0px 0px 5px var(--secondaryColor));
+}
+
 .fullPost_titleAndPhoto_container img {
   width: 8rem;
   height: 8rem;
   object-fit: cover;
   border-radius: 50%;
-  border: 7px solid var(--primaryColor);
 }
 
 .fullPost_text {

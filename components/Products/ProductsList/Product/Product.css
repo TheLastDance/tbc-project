@@ -57,7 +57,7 @@
   height: 100%;
   width: 100%;
   background: rgb(0, 0, 0);
-  background: linear-gradient(135deg, rgb(54, 54, 54) 0%, rgb(0, 0, 0) 70%);
+  background: linear-gradient(135deg, rgb(54, 54, 54) 0%, rgb(0, 0, 0) 50%);
   z-index: -1;
   display: flex;
   align-items: center;
@@ -66,7 +66,7 @@
 
 .dark .product_card_overlay {
   background: #fff;
-  background: linear-gradient(135deg, rgb(202, 201, 201) 0%, rgb(22, 22, 22) 70%);
+  background: linear-gradient(135deg, rgb(202, 202, 202) 0%, rgb(82, 82, 82) 50%);
 }
 
 .product_card_overlay span {
@@ -76,7 +76,7 @@
 }
 
 .dark .product_card_overlay span {
-  color: #5f5f59;
+  color: #6e6e6e;
 }
 
 .product_info>* {
@@ -122,6 +122,10 @@
   word-break: break-word;
 }
 
+.product_card .product_info .product_price {
+  font-weight: 700;
+}
+
 .product_card_button_container {
   display: flex;
   justify-content: right;
@@ -147,7 +151,7 @@
 .products_list .hero-h-link {
   justify-content: center;
   font-weight: unset;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--glitchColor2);
 }
 
