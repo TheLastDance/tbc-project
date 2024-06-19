@@ -52,6 +52,7 @@
   height: 4rem;
   object-fit: cover;
   object-position: top;
+  box-shadow: 0 0 1px var(--secondaryColor);
 }
 
 .blog_text {
@@ -59,6 +60,10 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.blog_text img {
+  display: none;
 }
 
 .post_info {

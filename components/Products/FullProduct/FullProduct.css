@@ -58,12 +58,7 @@
   }
 
   .fullProduct .thumbnail {
-    position: relative;
     width: 100%;
-  }
-
-  .fullProduct .thumbnail img {
-    object-fit: contain;
   }
 
   .fullProduct_info {

@@ -11,7 +11,7 @@ interface IProps {
 export async function generateMetadata({ params: { id, locale } }: IProps) {
   const data = await getPost(id) as IPostItem;
 
-  if (!data.title) return { title: "Post not found!" };
+  if (!data?.title) return { title: "Post not found!" };
 
   const { title, user_picture, body } = data;
 

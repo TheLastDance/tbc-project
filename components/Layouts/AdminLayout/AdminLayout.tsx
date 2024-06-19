@@ -5,11 +5,12 @@ import { Message } from "@/components/Icons/Message"
 import { Box } from "@/components/Icons/Box"
 import { Order } from "@/components/Icons/Order"
 import { BlogText } from "@/components/Icons/BlogText"
+import { SideBarContainer } from "@/components/SideBar/SideBarContainer"
 
 export function AdminLayout({ children }: ChildrenProps) {
   return (
     <div className="admin_pannel_layout">
-      <nav className="admin_navigation">
+      <SideBarContainer>
         <NavLink href="/admin/users">
           <Users />
           <span>users</span>
@@ -30,7 +31,7 @@ export function AdminLayout({ children }: ChildrenProps) {
           <Order />
           <span>orders</span>
         </NavLink>
-      </nav>
+      </SideBarContainer>
       {children}
     </div>
   )

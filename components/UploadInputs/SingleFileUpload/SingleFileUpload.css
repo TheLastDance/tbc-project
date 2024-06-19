@@ -32,6 +32,7 @@
 .file_upload_single label h5 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
+  text-transform: capitalize;
 }
 
 .file_upload_single label .person_lottie {
@@ -45,4 +46,8 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: top;
+}
+
+.file_upload_single .webflow-style-input:focus-within::after {
+  background: unset;
 }

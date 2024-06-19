@@ -42,7 +42,7 @@ export function Order({ item, admin }: { item: IOrder, admin?: boolean }) {
       </div>
     </div>}>
       <div className="dropdown_content">
-        {status && !admin && <GlithHoverLink href="/blog/new">Add Review</GlithHoverLink>}
+        {status && !admin && <GlithHoverLink href="/blog/new" translationKey="order.button.review" />}
         {(!status && !admin && !refund) && <RefundButton id={id} payment_intent={payment_intent} />}
         <ul>
           {products.products.map(({ images, id, title, price, quantity }) =>

@@ -10,7 +10,7 @@
   flex-direction: column;
   max-width: var(--rootContainerSize);
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 47px;
   width: 100%;
 }
 
@@ -39,5 +39,9 @@
   .layout {
     /* using svh for mobile/tablets */
     min-height: 100svh;
+  }
+
+  .layout>main {
+    margin-top: 42px;
   }
 }

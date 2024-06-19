@@ -4,6 +4,7 @@ import { Input } from "@/components/Input/Input"
 import { PersonLottie } from "../../Lotties/Person/PersonLottie"
 import { useState } from "react"
 import Image from "next/image"
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 
 export function SingleFileUpload() {
   const [file, setFile] = useState<string | ArrayBuffer | null>(null);
@@ -28,7 +29,9 @@ export function SingleFileUpload() {
   return (
     <div className="file_upload_single">
       <label htmlFor="profile_image">
-        <h5>Upload Avatar</h5>
+        <h5>
+          <TranslateText translationKey="uploadAvatar" />
+        </h5>
         <div className='person_lottie'>
           {!file ? <PersonLottie /> : <Image src={file as string} alt="avatar" fill />}
         </div>

@@ -12,6 +12,7 @@
   height: 2.5rem;
   object-fit: cover;
   object-position: top;
+  box-shadow: 0 0 1px var(--secondaryColor);
 }
 
 .ordersTable tbody .orderTable_user_container {

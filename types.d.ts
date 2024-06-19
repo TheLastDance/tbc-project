@@ -131,6 +131,10 @@ interface IUser {
   }
 }
 
+interface IUserAndPosts extends IUser {
+  posts: { id: number, title: string }[],
+}
+
 interface IUserDatabase {
   users: {
     rows: IUser[]

@@ -6,60 +6,10 @@
   padding: 0.75rem 0;
 }
 
-.admin_navigation {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--secondaryColor);
-  color: var(--primaryColor);
-  margin: 0 0.75rem 0 0;
-  padding: 1.2rem;
-  border-radius: 15px;
-  /* height: fit-content; */
-}
-
-.admin_navigation a {
-  color: var(--primaryColor);
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 0;
-  margin: 0.2rem 0;
-  font-weight: 600;
-  border-radius: 8px;
-  text-transform: capitalize;
-}
-
-.admin_navigation a:hover,
-.admin_navigation .navLink_active {
-  background-color: var(--primaryColor);
-  color: var(--secondaryColor);
-}
-
-.admin_navigation a:hover {
-  filter: none;
-}
-
-.admin_navigation a svg {
-  fill: var(--primaryColor);
-  margin: 0 0.5rem;
-}
-
-.admin_navigation a:hover svg,
-.admin_navigation .navLink_active svg {
-  fill: var(--secondaryColor);
-}
-
 @media(max-width:1000px) {
   .admin_pannel_layout {
     grid-template-columns: 80px 1fr;
     transition: .4s ease;
-  }
-
-  .admin_navigation a {
-    justify-content: center;
-  }
-
-  .admin_navigation a span {
-    display: none;
   }
 }
 
@@ -67,12 +17,5 @@
   .admin_pannel_layout {
     display: block;
     transition: unset;
-  }
-
-  .admin_navigation {
-    flex-direction: row;
-    justify-content: center;
-    margin: 0.75rem 0;
-    padding: 0.35rem 0;
   }
 }

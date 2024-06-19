@@ -12,9 +12,7 @@ export function RefundButton({ id, payment_intent }: { id: number, payment_inten
 
   return (
     <form action={handleRefund}>
-      <PendingButton type="submit" mode="glitchHover">
-        Cancel Order
-      </PendingButton>
+      <PendingButton type="submit" mode="glitchHover" translationKey="order.button.cancel" />
     </form>
   )
 }

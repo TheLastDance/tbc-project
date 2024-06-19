@@ -66,6 +66,11 @@
   z-index: -1;
 }
 
+.textEditor .ql-editor img {
+  width: auto;
+  height: 15rem;
+}
+
 @media(max-width:600px) {
   .textEditor .placeholder {
     height: 330px;

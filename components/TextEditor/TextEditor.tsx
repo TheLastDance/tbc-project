@@ -25,6 +25,7 @@ export function TextEditor({ content, setContent }: IProps) {
       ['clean'],
     ],
   };
+  // ['link','image']
 
   const quillFormats = [
     'header',

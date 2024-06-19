@@ -8,6 +8,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher/LanguageSwitcher
 import { CartLink } from "@/components/Links/CartLink/CartLink";
 import { Burger } from "@/components/Burger/Burger";
 import { getSession } from "@auth0/nextjs-auth0";
+import { UserLink } from "@/components/Links/UserLink/UserLink";
 
 export async function MainHeader() {
   const session = await getSession();
@@ -17,6 +18,7 @@ export async function MainHeader() {
       <Logo />
       <div className="mainNavigation_container">
         <Navigation user={session?.user} />
+        {session?.user && <UserLink />}
         <CartLink />
         <ThemeModeButton />
         <LanguageSwitcher />

@@ -15,6 +15,8 @@
   word-break: break-word;
 }
 
+
+
 .fullPost_titleAndPhoto_container a:hover {
   filter: drop-shadow(0px 0px 5px var(--secondaryColor));
 }
@@ -24,11 +26,19 @@
   height: 8rem;
   object-fit: cover;
   border-radius: 50%;
+  box-shadow: 0 0 3px var(--secondaryColor);
 }
 
 .fullPost_text {
   margin: 3rem 0;
   font-size: 1.25rem;
+}
+
+.fullPost_text img {
+  max-width: 100%;
+  width: auto;
+  height: 15rem;
+  object-fit: contain;
 }
 
 .fullPost ul {

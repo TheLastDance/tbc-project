@@ -15,6 +15,7 @@
 
 .callUs p,
 .callUs a {
+  font-weight: 700;
   font-size: 1.75rem;
 }
 

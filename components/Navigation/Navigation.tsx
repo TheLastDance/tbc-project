@@ -20,7 +20,7 @@ export function Navigation({ user, onClick }: IProps) {
           </NavLink>
         </li>}
 
-        {user && <li>
+        {user && <li className="profile_link">
           <NavLink href="/profile" onClick={onClick}>
             <TranslateText translationKey="navigation.profile" />
           </NavLink>
