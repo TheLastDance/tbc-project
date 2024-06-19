@@ -1,0 +1,20 @@
+.latestPosts_container h3 {
+  text-transform: capitalize;
+}
+
+.latestPosts_list li {
+  margin: 0.4rem 0;
+}
+
+.latestPosts_list a {
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 1.2rem;
+  width: fit-content;
+}
+
+.latestPosts_container .rc-pagination {
+  width: 100%;
+}

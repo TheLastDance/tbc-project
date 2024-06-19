@@ -19,6 +19,10 @@
   flex-direction: column;
 }
 
+.file_upload_multiple h5 {
+  text-transform: capitalize;
+}
+
 .file_upload_multiple label input {
   position: absolute;
   opacity: 0;
@@ -60,4 +64,8 @@
   height: 25px;
   font-weight: 700;
   z-index: 2;
+}
+
+.file_upload_multiple .webflow-style-input:focus-within::after {
+  background: unset;
 }

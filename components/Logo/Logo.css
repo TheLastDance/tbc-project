@@ -3,33 +3,33 @@
   align-items: center;
 }
 
-.header_logo a {
-  filter: brightness(1) drop-shadow(0 0 1px #fff);
+.authHeader .header_logo a {
   text-transform: uppercase;
-  transition: .4s ease;
-  background: linear-gradient(to right, #686768 65%, #d8d8d8 75%, #686768 90%);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  letter-spacing: 4px;
+  color: var(--secondaryColor);
+}
+
+.dark .header_logo a {
+  color: var(--primaryColor);
 }
 
 
 .header_logo a:hover {
-  filter: brightness(1.4);
+  transition: .4s ease;
+  filter: drop-shadow(0px 0 1px var(--primaryColor));
 }
 
-.header_logo a h1 {
+.header_logo a .heading {
   font-size: 2.5rem;
 }
 
 @media(max-width:600px) {
-  .header_logo a h1 {
+  .header_logo a .heading {
     font-size: 2rem;
   }
 }
 
 @media(max-width:400px) {
-  .header_logo a h1 {
+  .header_logo a .heading {
     letter-spacing: 0;
     font-size: 1.8rem;
   }

@@ -3,15 +3,13 @@
   margin: 0 auto;
 } */
 
-.AddEditUserForm {
-  --secondaryColor: #fff;
-}
 
 .AddEditUserForm .input_container {
   margin: 0.2rem 0;
 }
 
 .AddEditUserForm .file_upload_single label {
+  --secondaryColor: #fff;
   height: 150px;
 }
 

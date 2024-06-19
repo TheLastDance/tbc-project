@@ -4,7 +4,6 @@ import { addRating } from "@/services/actions/starRating/add-rating"
 import { Check } from "../Icons/Check"
 import toast from "react-hot-toast"
 
-
 export function StarRate({
   product_id,
   rating,

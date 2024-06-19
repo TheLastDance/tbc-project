@@ -4,6 +4,7 @@ import { loadImagesSequentially } from "@/services/utils"
 import { useState, useRef } from "react"
 import Image from "next/image"
 import { Upload } from "@/components/Icons/Upload"
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 
 interface IProps {
   setFiles: React.Dispatch<React.SetStateAction<(File | string)[]>>,
@@ -37,7 +38,9 @@ export function AddProductUpload({ setFiles, settedPhotos }: IProps) {
       <div className="file_upload_multiple">
         <label htmlFor="addProduct_images">
           <div>
-            <h5>Upload Images</h5>
+            <h5>
+              <TranslateText translationKey="uploadImages" />
+            </h5>
             <Upload />
             <input
               ref={fileInputRef}

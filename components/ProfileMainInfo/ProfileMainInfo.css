@@ -1,20 +1,41 @@
-.profileMainInfo_card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.profile_container {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  height: fit-content;
+  padding: 1rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 0.1rem var(--grayColor),
+    0 0 1rem var(--grayColor),
+    0 0 1rem var(--grayColor),
+    0 0 0.5rem var(--grayColor),
+    0 0 1.5rem var(--grayColor);
 }
 
-.profileMainInfo_card h1 {
-  font-size: 3rem;
+.profile_container>* {
+  width: 100%;
+}
+
+.profileMainInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profileMainInfo img {
+  width: auto;
+  height: 12rem;
+  object-fit: contain;
+}
+
+.profile_container p {
   overflow-wrap: break-word;
   word-break: break-word;
+  margin: 0.5rem 0;
 }
 
-.profileMainInfo_card img {
-  width: 10rem;
-  height: 10rem;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 50%;
-  border: 5px solid var(--primaryColor);
+.profile_container p span {
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: capitalize;
 }

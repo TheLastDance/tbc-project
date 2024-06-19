@@ -51,6 +51,7 @@ export const translations = {
     "email": "email",
     "name": "name",
     "birthDate": "birth date",
+    "age": "age",
     "edit": "edit",
     "delete": "delete",
     "addUser": "add user",
@@ -100,6 +101,9 @@ export const translations = {
     "landing.button.1": "new arrivals",
     "landing.button.2": "browse reviews",
     "landing.button.3": "contact us",
+    "uploadImages": "upload images",
+    "uploadAvatar": "upload avatar",
+    "latestPosts": "latest posts"
   },
   ka: {
     "navigation.profile": "პროფილი",
@@ -170,6 +174,7 @@ export const translations = {
     "lastName": "გვარი",
     "role": "როლი",
     "regDate": "რეგ. თარიღი",
+    "age": "ასაკი",
     "title": "სათაური",
     "post": "პოსტი",
     "table.answer": "პასუხი",
@@ -200,5 +205,8 @@ export const translations = {
     "landing.button.1": "ახალი პროდუქცია",
     "landing.button.2": "მიმოხილვები",
     "landing.button.3": "დაგვიკავშირდი",
+    "uploadImages": "ატვირთე სურათები",
+    "uploadAvatar": "ატვირთე ავატარი",
+    "latestPosts": "უახლესი პოსტები"
   },
 };

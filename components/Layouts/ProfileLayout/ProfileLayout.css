@@ -1,4 +1,4 @@
-.admin_pannel_layout {
+.profile_pannel_layout {
   display: grid;
   flex-grow: 1;
   width: 100%;
@@ -7,14 +7,14 @@
 }
 
 @media(max-width:1000px) {
-  .admin_pannel_layout {
+  .profile_pannel_layout {
     grid-template-columns: 80px 1fr;
     transition: .4s ease;
   }
 }
 
 @media(max-width:600px) {
-  .admin_pannel_layout {
+  .profile_pannel_layout {
     display: block;
     transition: unset;
   }
