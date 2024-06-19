@@ -57,7 +57,7 @@ export const translations = {
     "addUser": "add user",
     "createNewUser": "create new user",
     "editUser": "edit user",
-    "callUs.callUsDirectly": "Call us Directly:",
+    "callUs.callUsDirectly": "Get in Touch",
     "fullProduct.brand": "Brand:",
     "fullProduct.category": "Category:",
     "fullProduct.description": "Description:",
@@ -92,6 +92,8 @@ export const translations = {
     "order.shipped": "shipped",
     "order.pending": "pending",
     "order.total": "total",
+    "order.button.cancel": "cancel order",
+    "order.button.review": "add review",
     "landing.h5.1": "Embrace Tomorrow Today",
     "landing.h5.2": "Innovation Synthesized",
     "landing.h5.3": "Your Future Awaits",
@@ -103,7 +105,8 @@ export const translations = {
     "landing.button.3": "contact us",
     "uploadImages": "upload images",
     "uploadAvatar": "upload avatar",
-    "latestPosts": "latest posts"
+    "latestPosts": "latest posts",
+    "homePage": "Home Page",
   },
   ka: {
     "navigation.profile": "პროფილი",
@@ -196,6 +199,8 @@ export const translations = {
     "order.shipped": "გამოგზავნილი",
     "order.pending": "მუშავდება",
     "order.total": "ჯამი",
+    "order.button.cancel": "გაუქმება",
+    "order.button.review": "მიმოხილვა",
     "landing.h5.1": "მიიღე მომავალი დღეს",
     "landing.h5.2": "ინოვაცია სინთეზირებულია",
     "landing.h5.3": "თქვენი მომავალი გელოდებათ",
@@ -207,6 +212,7 @@ export const translations = {
     "landing.button.3": "დაგვიკავშირდი",
     "uploadImages": "ატვირთე სურათები",
     "uploadAvatar": "ატვირთე ავატარი",
-    "latestPosts": "უახლესი პოსტები"
+    "latestPosts": "უახლესი პოსტები",
+    "homePage": "მთავარი გვერდი",
   },
 };

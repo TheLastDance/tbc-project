@@ -21,3 +21,7 @@
 .nav_list .navLink_active {
   border-bottom: 1px solid var(--primaryColor);
 }
+
+.profile_link {
+  display: none;
+}

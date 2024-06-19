@@ -11,7 +11,7 @@ export async function OrdersList({ page }: { page: number }) {
   const paginatedOrders = orders.slice(10 * (page - 1), page * 10);
 
   return (
-    <>
+    <div>
       <ul className="order_list">
         {paginatedOrders.map(item => <li key={item.id}>
           <Order item={item} />
@@ -19,6 +19,6 @@ export async function OrdersList({ page }: { page: number }) {
         <PaginationUI totalPages={orders.length} size={10} />
       </ul>
       {!paginatedOrders.length ? <TranslateText translationKey="noOrders" /> : null}
-    </>
+    </div>
   )
 }

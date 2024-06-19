@@ -20,10 +20,16 @@
 .table_UI thead {
   position: sticky;
   top: 0;
-  background: linear-gradient(270deg, rgba(109, 26, 226, 1) 1%, rgba(184, 24, 98, 1) 100%);
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
   height: 50px;
   text-transform: capitalize;
   z-index: 1;
+}
+
+.dark .table_UI thead {
+  background-color: var(--primaryColor);
+  color: var(--secondaryColor);
 }
 
 .table_UI th {

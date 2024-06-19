@@ -1,15 +1,7 @@
-import { AskQuestionForm } from "@/components/Forms/AskQuestionForm/AskQuestionForm";
-import CallUs from "@/components/CallUs/CallUs";
+import { Contact as ContactPage } from "@/components/Contact/Contact";
 
 export default function Contact() {
   return (
-    <>
-      <section>
-        <AskQuestionForm />
-      </section>
-      <section>
-        <CallUs />
-      </section>
-    </>
+    <ContactPage />
   );
 }

@@ -53,8 +53,7 @@ export function AskQuestionForm() {
             name="tel"
             id="askQuestionForm_tel"
             label={<TranslateText translationKey="form.label.phoneNumber" />}
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}|[0-9]{3}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
-            placeholder="xxx-xxx-xxxx(US) xxx-xx-xx-xx(GE)"
+            pattern="[0-9]{10}|[0-9]{9}"
             required
           />
 
