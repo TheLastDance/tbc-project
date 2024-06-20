@@ -17,13 +17,14 @@ export function GlithHoverLink({
 }: IProps) {
   const t = useI18n()
   const text = translationKey ? t(translationKey) : "";
+  const isText = typeof children === "string" ? children : "";
 
   return (
     <Link
       href={href}
       className="hero-h-link"
     >
-      <span className="layers-h glitch-h" data-text={text}>
+      <span className="layers-h glitch-h" data-text={text || isText}>
         {children}
         {text}
       </span>

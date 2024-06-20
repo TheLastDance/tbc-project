@@ -22,7 +22,7 @@ export function Search({
     } else {
       params.delete('searchText');
     }
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, 1000)
 
   return (

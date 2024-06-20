@@ -36,9 +36,9 @@ export function Gallery({ images }: IProps) {
           </button>)
         }
       </div>
-      <button type="button" className="resetButtonStyles" onClick={() => setOpenModal(true)}>
+      <button type="button" className="resetButtonStyles thumbnail_button" onClick={() => setOpenModal(true)}>
         <div className="thumbnail" >
-          <Image src={img} sizes="20rem" alt="product" fill />
+          <Image src={img} sizes="20rem" alt="product" fill quality={100} />
         </div>
       </button>
       {openModal && <ModalPortal onClose={() => setOpenModal(false)}>

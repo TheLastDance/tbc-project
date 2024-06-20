@@ -8,18 +8,8 @@ import { Heading } from "../UI/GlitchEffects/Heading/Heading"
 import { GlithHoverLink } from "../UI/Links/GlithHoverLink"
 import { MotionDiv } from "../MotionDiv/MotionDiv"
 import { TranslateTextServer } from "../TranslateText/TranslateTextServer"
+import { animation } from "@/services/animations";
 
-const CardAnimation = {
-  hidden: {
-    opacity: 0,
-    y: 100,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { ease: "linear", delay: 0.4 },
-  },
-}
 
 export function Landing() {
   return (
@@ -28,7 +18,7 @@ export function Landing() {
         initial="hidden"
         whileInView='visible'
         viewport={{ once: true }}
-        variants={CardAnimation}
+        variants={animation}
         className="landing landing-1"
       >
         <Card>
@@ -49,7 +39,7 @@ export function Landing() {
         initial="hidden"
         whileInView='visible'
         viewport={{ once: true }}
-        variants={CardAnimation}
+        variants={animation}
         className="landing landing-2"
       >
         <div className="landing-info">
@@ -70,7 +60,7 @@ export function Landing() {
         initial="hidden"
         whileInView='visible'
         viewport={{ once: true }}
-        variants={CardAnimation}
+        variants={animation}
         className="landing landing-3"
       >
         <Card>

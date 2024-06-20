@@ -9,6 +9,7 @@ import { useState, Dispatch, SetStateAction } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { ProductSort } from "./ProductSort";
 import { Search } from "@/components/Search/Search";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function ProductFilters() {
   const searchParams = useSearchParams();
@@ -62,7 +63,7 @@ export function ProductFilters() {
       params.delete('price');
     }
 
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, 1000)
 
   const handleCategory = (item: string) => {
@@ -97,7 +98,7 @@ export function ProductFilters() {
           <ProductSort />
 
           <label htmlFor="priceFrom">
-            <h3>Price</h3>
+            <h3><TranslateText translationKey="products.price" /></h3>
           </label>
           <div className="price_container">
             <Input type="number" id="priceFrom" placeholder="From..." min="0" value={selectedPrice[0]} onChange={(e) => handlePrice(e.target.value, 0)} />
@@ -106,7 +107,7 @@ export function ProductFilters() {
         </div>
 
         <div>
-          <h3>Category</h3>
+          <h3><TranslateText translationKey="fullProduct.category" /></h3>
           <ul>
             {productCategories.map((item, index) => {
               const isChecked = selectedCategories.includes(item);
@@ -129,7 +130,7 @@ export function ProductFilters() {
         </div>
 
         <div>
-          <h3>Brand</h3>
+          <h3><TranslateText translationKey="fullProduct.brand" /></h3>
           <ul>
             {productBrands.map((item, index) => {
               const isChecked = selectedBrands.includes(item);
@@ -151,7 +152,7 @@ export function ProductFilters() {
         </div>
 
         <div>
-          <h3>Gender</h3>
+          <h3><TranslateText translationKey="fullProduct.gender" /></h3>
           <ul>
             {productGender.map((item, index) => {
               const isChecked = selectedGender.includes(item);
