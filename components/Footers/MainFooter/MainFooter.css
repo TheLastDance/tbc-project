@@ -1,11 +1,27 @@
 .authFooter {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: var(--rootContainerSize);
   width: 100%;
   margin: 0 auto;
-  border-top: 1px solid var(--secondaryColor);
+}
+
+.authFooter::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  filter: drop-shadow(0 0 8px var(--glitchColor3));
+  box-shadow: 0 0 0.2rem var(--glitchColor3),
+    0 0 0.6rem var(--glitchColor3),
+    0 0 1rem var(--glitchColor3),
+    0 0 0.7rem var(--glitchColor3),
+    0 0 0.5rem var(--glitchColor3),
+    inset 0 0 0.8rem var(--glitchColor2);
 }
 
 .footer_links ul li {

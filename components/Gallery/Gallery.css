@@ -12,17 +12,30 @@
 
 .gallery_container button {
   width: 100%;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
 }
 
 .galleryColumn img {
-  border: 1px solid var(--secondaryColor);
-  margin: 0.5rem 0;
   width: auto;
   max-width: 100%;
   height: 8rem;
   object-fit: cover;
   object-position: top;
-  cursor: pointer;
+  border: 1px solid var(--glitchColor2);
+  filter: drop-shadow(0 0 4px var(--glitchColor3));
+  box-shadow: 0 0 0.2rem var(--glitchColor3),
+    0 0 0.4rem var(--glitchColor3),
+    inset 0 0 0.2rem var(--glitchColor2);
+}
+
+.gallery_container button:hover {
+  transform: scale(1.02);
+}
+
+.gallery_container .thumbnail_button {
+  margin: 0 1rem;
 }
 
 .thumbnail {
@@ -33,7 +46,6 @@
 
 .thumbnail img {
   object-fit: contain;
-  cursor: pointer;
 }
 
 .thumbnailModal {
@@ -70,5 +82,31 @@
   .thumbnailModal button {
     top: 100px;
     right: 25px;
+  }
+}
+
+@media(max-width:450px) {
+  .gallery_container {
+    flex-direction: column;
+  }
+
+  .galleryColumn {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .galleryColumn button {
+    justify-content: center;
+  }
+
+  .galleryColumn img {
+    height: 6rem;
+  }
+
+  .thumbnail img {
+    object-fit: cover;
+    object-position: top;
   }
 }

@@ -1,6 +1,5 @@
 import "./Products.css";
 import { ProductsList } from "./ProductsList/ProductsList";
-import { Heading } from "../UI/GlitchEffects/Heading/Heading";
 import { TranslateText } from "../TranslateText/TranslateText";
 import { PaginationUI } from "../Pagination/Pagination";
 import { getProducts } from "@/services/sqlQueries/products/getProducts";
@@ -52,7 +51,6 @@ export async function Products({ params, admin }: IProps) {
   return (
     <>
       <section className="products">
-        <h2><Heading translationKey="products" /></h2>
         <div className="filtersAndProducts">
           <div className="filtersAndProducts_filters">
             <ProductFilters />

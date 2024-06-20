@@ -26,25 +26,25 @@ export async function FullProduct({ id }: idParam) {
         <h1>{title}</h1>
         <p>
           <span>
-            <TranslateTextServer translationKey="fullProduct.brand" />{" "}
-          </span>
+            <TranslateTextServer translationKey="fullProduct.brand" />:
+          </span>{" "}
           {brand}
         </p>
         <p>
           <span>
-            <TranslateTextServer translationKey="fullProduct.category" />{" "}
+            <TranslateTextServer translationKey="fullProduct.category" />:
           </span>{" "}
           {category}
         </p>
         <p>
           <span>
-            <TranslateTextServer translationKey="fullProduct.gender" />{" "}
+            <TranslateTextServer translationKey="fullProduct.gender" />:
           </span>{" "}
           {gender}
         </p>
         <p>
           <span>
-            <TranslateTextServer translationKey="fullProduct.description" />{" "}
+            <TranslateTextServer translationKey="fullProduct.description" />:
           </span>{" "}
           {description}
         </p>

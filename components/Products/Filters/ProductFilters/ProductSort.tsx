@@ -3,6 +3,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation"
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { SortByTitles } from "@/enums";
+import { TranslateText } from "@/components/TranslateText/TranslateText";
 
 export function ProductSort() {
   const searchParams = useSearchParams();
@@ -25,7 +26,7 @@ export function ProductSort() {
       params.delete("sortBy");
     }
 
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
   }, 1000)
 
 
@@ -37,7 +38,7 @@ export function ProductSort() {
   return (
     <div className="select-style-input">
       <label htmlFor="sortBy">
-        <h3>Sort By</h3>
+        <h3><TranslateText translationKey="products.sort.sortBy" /></h3>
       </label>
 
       <select
@@ -45,11 +46,21 @@ export function ProductSort() {
         onChange={(e) => handleSortBy(e.target.value)}
         defaultValue={sortBy}
       >
-        <option value={Relevant}>Most relevant</option>
-        <option value={TitleAsc}>Name: A to Z</option>
-        <option value={TitleDesc}>Name: Z to A</option>
-        <option value={PriceAsc}>Price: Low to High</option>
-        <option value={PriceDesc}>Price: High to Low</option>
+        <option value={Relevant}>
+          <TranslateText translationKey="products.sort.relevant" />
+        </option>
+        <option value={TitleAsc}>
+          <TranslateText translationKey="products.sort.name-A-Z" />
+        </option>
+        <option value={TitleDesc}>
+          <TranslateText translationKey="products.sort.name-Z-A" />
+        </option>
+        <option value={PriceAsc}>
+          <TranslateText translationKey="products.sort.price-L-H" />
+        </option>
+        <option value={PriceDesc}>
+          <TranslateText translationKey="products.sort.price-H-L" />
+        </option>
       </select>
     </div>
   )

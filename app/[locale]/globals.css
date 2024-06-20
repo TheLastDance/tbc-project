@@ -125,6 +125,8 @@ select {
   border: none;
   border-bottom: 0.05rem solid var(--grayColor);
   outline: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .select-style-input select:focus {

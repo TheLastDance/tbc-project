@@ -11,7 +11,7 @@ export async function UserLink() {
         src={picture}
         alt="avatar"
         fill
-        sizes="2rem"
+        sizes="10rem"
       />
     </Link>
   )

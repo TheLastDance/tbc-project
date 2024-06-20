@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid var(--secondaryColor);
+  border-bottom: 1px solid var(--glitchColor3);
   padding: 1rem 0;
 }
 
