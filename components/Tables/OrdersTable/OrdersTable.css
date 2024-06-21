@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.table_wrapper .table_UI .ordersTable td button .pending_loader {
+  margin-right: 1px;
+}
+
 .ordersTable a img {
   border-radius: 50%;
   width: 2.5rem;

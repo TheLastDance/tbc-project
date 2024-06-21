@@ -59,6 +59,7 @@ export function EditPostForm({ title, body, id, setOpenEdit }: IProps) {
         <TextEditor content={content} setContent={setContent} />
 
         <Button
+          loading={loading}
           type="submit"
           disabled={loading}
           translationKey="edit"

@@ -58,23 +58,9 @@
   word-break: keep-all;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.dropdown_content {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.dropdown_content>a,
-.dropdown_content>button {
-  margin: 0.5rem 0;
+.dropdown_content button {
+  font-weight: 600;
+  text-transform: capitalize;
 }
 
 .orderItem {

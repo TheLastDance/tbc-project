@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { EditPostForm } from "@/components/Forms/EditPostForm/EditPostForm";
 import { useToggle } from "@/services/hooks/useToggle";
 import toast from "react-hot-toast";
+import { AnimatePresence } from "framer-motion";
 
 interface IProps {
   title: string,
@@ -46,16 +47,18 @@ export function FullPostButtons({ title, body, id, admin }: IProps) {
         </PendingButton>
       </form>
 
-      {toggle &&
-        <ModalUI setToggleFalse={setToggleFalse}>
-          <EditPostForm
-            setOpenEdit={setToggleFalse}
-            id={id}
-            title={title}
-            body={body}
-          />
-        </ModalUI>
-      }
+      <AnimatePresence>
+        {toggle &&
+          <ModalUI setToggleFalse={setToggleFalse}>
+            <EditPostForm
+              setOpenEdit={setToggleFalse}
+              id={id}
+              title={title}
+              body={body}
+            />
+          </ModalUI>
+        }
+      </AnimatePresence>
     </div>
   )
 }

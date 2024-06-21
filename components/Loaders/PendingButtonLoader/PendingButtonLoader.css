@@ -1,0 +1,30 @@
+.pendingLoader_container {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+}
+
+.pending_loader {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: transparent var(--primaryColor) var(--primaryColor) var(--primaryColor);
+  animation: rotationPending 1s linear infinite;
+  margin-right: 1px;
+}
+
+.dark .pending_loader {
+  border-color: transparent var(--secondaryColor) var(--secondaryColor) var(--secondaryColor);
+}
+
+@keyframes rotationPending {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

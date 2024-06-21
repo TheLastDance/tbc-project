@@ -67,7 +67,7 @@ export function AskQuestionForm() {
             required
           />
 
-          <PendingButton type="submit" translationKey="button.send" mode="glitchHover" />
+          <PendingButton loader type="submit" translationKey="button.send" mode="glitchHover" />
         </form> :
         <CheckLottie />
       }

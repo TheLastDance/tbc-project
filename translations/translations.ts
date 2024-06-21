@@ -127,6 +127,8 @@ export const translations = {
     "slider.body.5": "Entertaining androids bringing fun and excitement to any event, making every moment unforgettable.",
     "slider.body.6": "Sport androids enhancing your fitness routine, helping you reach your peak performance.",
     "slider.browseCategories": "Browse Categories",
+    "verifyMessage": "Please verify your email!",
+    "successOrderMessage": "Thank you for placing an order at CyberSphere!",
   },
   ka: {
     "navigation.profile": "პროფილი",
@@ -254,5 +256,7 @@ export const translations = {
     "slider.body.5": "გასართობი ანდროიდები, რომლებიც მხიარულებას და აღფრთოვანებას მოუტანენ ნებისმიერ ღონისძიებას, რაც ყოველ მომენტს დაუვიწყარს ხდის.",
     "slider.body.6": "სპორტის ანდროიდები თქვენი ფიტნეს რუტინის გაუმჯობესებისთვის, რომლებიც გეხმარებიან მიაღწიოთ მაქსიმალურ პოტენციალს.",
     "slider.browseCategories": "დაათვალიერე კატეგორიები",
+    "verifyMessage": "გთხოვთ დაადასტუროთ თქვენი ელ.ფოსტა!",
+    "successOrderMessage": "მადლობას გიხდით შეკვეთის განთავსებისთვის CyberSphere-ში!",
   },
 };

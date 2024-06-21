@@ -50,7 +50,7 @@ export function CheckoutRegionForm({ selectedRegion }: { selectedRegion: string 
           required
         />
 
-        <PendingButton type="submit" translationKey="button.next" mode="glitch" />
+        <PendingButton loader type="submit" translationKey="button.next" mode="glitch" />
 
       </form>
     </FormContainer>

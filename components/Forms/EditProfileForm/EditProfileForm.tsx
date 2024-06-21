@@ -52,7 +52,7 @@ export function EditProfileForm({ user }: { user: IUser }) {
 
         <SingleFileUpload />
 
-        <PendingButton type="submit" translationKey="button.save" mode="glitchHover" />
+        <PendingButton loader type="submit" translationKey="button.save" mode="glitchHover" />
       </form>
     </FormContainer>
   );

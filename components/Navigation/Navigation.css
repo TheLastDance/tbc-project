@@ -14,14 +14,59 @@
   font-size: 1.5rem;
 }
 
-.nav_list .navLink {
-  border-bottom: 1px solid transparent;
-}
-
-.nav_list .navLink_active {
-  border-bottom: 1px solid var(--primaryColor);
-}
-
 .profile_link {
   display: none;
+}
+
+
+.nav_list .card_content {
+  padding: 0;
+}
+
+.nav_list .card_content>* {
+  margin: 0;
+}
+
+.nav_list .navLink .card .card_border_1::before,
+.nav_list .navLink .card .card_border_2::before,
+.nav_list .navLink .card .card_border_1::after,
+.nav_list .navLink .card .card_border_2::after {
+  height: 0;
+  width: 0;
+}
+
+.nav_list .card .card_border_1::before {
+  top: 0;
+  left: -5px;
+  width: 10px;
+  height: 2px;
+}
+
+.nav_list .card .card_border_1::after {
+  top: 0;
+  left: -5px;
+  width: 2px;
+  height: 10px;
+}
+
+.nav_list .card .card_border_2::after {
+  bottom: 0;
+  right: -5px;
+  width: 2px;
+  height: 10px;
+}
+
+.nav_list .card .card_border_2::before {
+  bottom: 0;
+  right: -5px;
+  width: 10px;
+  height: 2px;
+}
+
+.nav_list .card .card_border_2::before,
+.nav_list .card .card_border_2::after,
+.nav_list .card .card_border_1::before,
+.nav_list .card .card_border_1::after {
+  filter: none;
+  transition: .2s ease;
 }

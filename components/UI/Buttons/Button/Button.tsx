@@ -8,14 +8,15 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   translationKey?: TranslationKey;
   mode?: ButtonMode;
+  loading?: boolean;
 }
 
-export function Button({ children, translationKey, mode, ...props }: IProps) {
+export function Button({ children, translationKey, mode, loading, ...props }: IProps) {
   const text = translationKey ? TranslateText({ translationKey }) : "";
 
-  if (mode === "glitch") return <GlitchButton text={text} {...props}>{children}</GlitchButton>;
+  if (mode === "glitch") return <GlitchButton text={text} loading={loading} {...props}>{children}</GlitchButton>;
 
-  if (mode === "glitchHover") return <GlitchHoverButton text={text} {...props}>{children}</GlitchHoverButton>
+  if (mode === "glitchHover") return <GlitchHoverButton text={text} loading={loading} {...props}>{children}</GlitchHoverButton>
 
   return (
     <>
