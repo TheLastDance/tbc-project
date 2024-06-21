@@ -22,7 +22,7 @@ export function Landing() {
         className="landing landing-1"
       >
         <Card>
-          <Image src={android_1} width={900} height={1200} alt="landing android" priority />
+          <Image src={android_1} width={900} height={1200} alt="landing android" priority placeholder="blur" />
         </Card>
         <div className="landing-info">
           <h3>
@@ -53,7 +53,7 @@ export function Landing() {
           <GlithHoverLink href="/blog" translationKey="landing.button.2" />
         </div>
         <Card>
-          <Image src={android_2} width={900} height={1200} alt="landing android" priority />
+          <Image src={android_2} width={900} height={1200} alt="landing android" priority placeholder="blur" />
         </Card>
       </MotionDiv>
       <MotionDiv
@@ -64,7 +64,7 @@ export function Landing() {
         className="landing landing-3"
       >
         <Card>
-          <Image src={android_3} width={900} height={1200} alt="landing android" priority />
+          <Image src={android_3} width={900} height={1200} alt="landing android" priority placeholder="blur" />
         </Card>
         <div className="landing-info">
           <h3>

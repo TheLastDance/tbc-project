@@ -14,7 +14,9 @@ export function Contact() {
           sizes="100vw"
           fill
           priority
-          quality={100} />
+          quality={100}
+          placeholder="blur"
+        />
         <CallUs />
       </div>
       <div className="contactForm_container">

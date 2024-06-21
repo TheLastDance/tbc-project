@@ -14,7 +14,7 @@ export default function SliderProducts() {
   return (
     <SliderContainer>
       <SwiperSlide>
-        <Image src={photo1} alt="slider" priority sizes="100vw" quality={100} />
+        <Image src={photo1} alt="slider" priority sizes="100vw" quality={100} placeholder="blur" />
         <div className="slider_content">
           <h3>
             <TranslateText translationKey="slider.heading.1" />
@@ -25,7 +25,7 @@ export default function SliderProducts() {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={photo2} alt="slider" priority sizes="100vw" quality={100} />
+        <Image src={photo2} alt="slider" priority sizes="100vw" quality={100} placeholder="blur" />
         <div className="slider_content">
           <h3>
             <TranslateText translationKey="slider.heading.2" />
@@ -36,7 +36,7 @@ export default function SliderProducts() {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={photo3} alt="slider" priority sizes="100vw" quality={100} />
+        <Image src={photo3} alt="slider" priority sizes="100vw" quality={100} placeholder="blur" />
         <div className="slider_content">
           <h3>
             <TranslateText translationKey="slider.heading.3" />
@@ -47,7 +47,7 @@ export default function SliderProducts() {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={photo4} alt="slider" priority sizes="100vw" quality={100} />
+        <Image src={photo4} alt="slider" priority sizes="100vw" quality={100} placeholder="blur" />
         <div className="slider_content">
           <h3>
             <TranslateText translationKey="slider.heading.4" />
@@ -58,7 +58,7 @@ export default function SliderProducts() {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={photo5} alt="slider" priority sizes="100vw" quality={100} />
+        <Image src={photo5} alt="slider" priority sizes="100vw" quality={100} placeholder="blur" />
         <div className="slider_content">
           <h3>
             <TranslateText translationKey="slider.heading.5" />
@@ -69,7 +69,7 @@ export default function SliderProducts() {
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={photo6} alt="slider" priority sizes="100vw" quality={100} />
+        <Image src={photo6} alt="slider" priority sizes="100vw" quality={100} placeholder="blur" />
         <div className="slider_content">
           <h3>
             <TranslateText translationKey="slider.heading.6" />

@@ -3,21 +3,24 @@
   flex-direction: column;
   background-color: var(--secondaryColor);
   color: var(--primaryColor);
-  margin: 0 0.75rem 0 0;
-  padding: 1.2rem;
+  margin: 0 12px 0 0;
+  padding: 15px;
   border-radius: 15px;
   /* height: fit-content; */
 }
 
 .sideBar_navigation a {
   color: var(--primaryColor);
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 0;
-  margin: 0.2rem 0;
+  padding: 8px;
+  margin: 3px 0;
   font-weight: 600;
   border-radius: 8px;
   text-transform: capitalize;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  min-height: 38px;
+  white-space: nowrap;
 }
 
 .sideBar_navigation a:hover,
@@ -32,7 +35,7 @@
 
 .sideBar_navigation a svg {
   fill: var(--primaryColor);
-  margin: 0 0.5rem;
+  margin-right: 8px;
 }
 
 .sideBar_navigation a:hover svg,
@@ -40,21 +43,78 @@
   fill: var(--secondaryColor);
 }
 
-@media(max-width:1000px) {
+.sideBar_button_container {
+  display: flex;
+  justify-content: right;
+}
+
+.sideBar_button_container button {
+  width: fit-content;
+}
+
+.sideBar_button_container button svg {
+  fill: var(--primaryColor);
+  stroke: var(--primaryColor);
+  stroke-width: 1px;
+}
+
+.toggled .sideBar_button_container button svg {
+  transform: rotate(180deg);
+}
+
+.toggled .sideBar_navigation a svg {
+  margin: 0;
+}
+
+.toggled .sideBar_navigation a {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  justify-content: center;
+}
+
+.toggled .sideBar_navigation a span {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+@media(max-width:1024px) {
+  .sideBar_navigation button {
+    display: none;
+  }
+
+  .sideBar_navigation a svg {
+    margin: 0;
+  }
+
   .sideBar_navigation a {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
     justify-content: center;
   }
 
   .sideBar_navigation a span {
-    display: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
   }
 }
 
 @media(max-width:600px) {
+  .sideBar_navigation a {
+    padding: 8px 10px;
+  }
+
   .sideBar_navigation {
     flex-direction: row;
     justify-content: center;
-    margin: 0.75rem 0;
-    padding: 0.35rem 0;
+    margin: 12px 0;
+    padding: 5px 0;
+  }
+
+  .sideBar_navigation a {
+    margin: 3px;
   }
 }
