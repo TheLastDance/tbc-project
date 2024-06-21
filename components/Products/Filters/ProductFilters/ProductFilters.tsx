@@ -10,11 +10,14 @@ import { useDebouncedCallback } from "use-debounce";
 import { ProductSort } from "./ProductSort";
 import { Search } from "@/components/Search/Search";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
+import { useToggle } from "@/services/hooks/useToggle";
+import { Filters } from "@/components/Icons/Filters";
 
 export function ProductFilters() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+  const { toggle, handleToggle } = useToggle();
   const price = searchParams.get('price') ? searchParams.get('price')!.split(",") : ['0', '100000'];
   const category = searchParams.get('category') ? searchParams.get('category')!.split(",") : [];
   const brand = searchParams.get('brand') ? searchParams.get('brand')!.split(",") : [];
@@ -90,7 +93,10 @@ export function ProductFilters() {
 
   return (
     <>
-      <div className="filter_categories">
+      <button type="button" title="toggle filters" className="resetButtonStyles filterButton" onClick={handleToggle}>
+        <Filters />
+      </button>
+      <div className={toggle ? "filter_categories filter_categories_toggled" : "filter_categories"}>
 
         <div>
           <Search inputID="mainPage_search_input" />

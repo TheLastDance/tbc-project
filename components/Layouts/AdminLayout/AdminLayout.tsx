@@ -1,3 +1,4 @@
+"use client"
 import "./AdminLayout.css"
 import { NavLink } from "@/components/Links/NavLink/NavLink"
 import { Users } from "@/components/Icons/Users"
@@ -6,11 +7,14 @@ import { Box } from "@/components/Icons/Box"
 import { Order } from "@/components/Icons/Order"
 import { BlogText } from "@/components/Icons/BlogText"
 import { SideBarContainer } from "@/components/SideBar/SideBarContainer"
+import { useToggle } from "@/services/hooks/useToggle"
 
 export function AdminLayout({ children }: ChildrenProps) {
+  const { toggle, handleToggle } = useToggle();
+
   return (
-    <div className="admin_pannel_layout">
-      <SideBarContainer>
+    <div className={toggle ? "admin_pannel_layout toggled" : "admin_pannel_layout"}>
+      <SideBarContainer setToggle={handleToggle}>
         <NavLink href="/admin/users">
           <Users />
           <span>users</span>

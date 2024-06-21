@@ -6,6 +6,22 @@
 
 .filter_categories {
   padding: 1rem 0.3rem;
+  background: var(--secondaryColor);
+}
+
+.dark .filter_categories {
+  background: var(--primaryColor);
+
+}
+
+.filterButton {
+  display: none;
+  margin: 0.5rem 0;
+}
+
+.filterButton svg {
+  width: 3rem;
+  height: 3rem;
 }
 
 .filter_categories h3 {
@@ -81,14 +97,22 @@ li:hover .checkbox_wrapper .cbx span:first-child {
 
 @media(max-width:960px) {
   .filter_categories {
+    display: none;
     width: 100%;
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
   }
 
+  .filter_categories_toggled {
+    display: grid;
+  }
+
   .filter_categories:last-child {
     margin-right: 0;
+  }
+
+  .filterButton {
+    display: block;
   }
 }
 

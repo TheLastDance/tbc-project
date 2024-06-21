@@ -8,12 +8,25 @@ import { requestRefund } from "@/services/actions/checkout/request-refund";
 import { TranslateText } from "@/components/TranslateText/TranslateText";
 import Image from "next/image";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
+import { useOptimistic, useTransition } from "react";
 
 
 export function OrderRow({ item }: { item: IOrder }) {
-  const { id, user_serial, status, refund, products, payment_intent, address, user_picture } = item;
+  const { id, user_serial, refund, products, payment_intent, address, user_picture } = item;
+  const [, startTransition] = useTransition();
+  const [optimistic, addOptimistic] = useOptimistic<IOrder, IOrder>(
+    item,
+    (_, newState) => {
+      return { ...newState };
+    }
+  );
 
   const handleStatusUpdate = async () => {
+    startTransition(() => {
+      const newStatus = { ...optimistic, status: !optimistic.status }
+      return addOptimistic(newStatus);
+    })
+
     const res = await updateStatus(id);
     if (res?.message) toast.success(res.message, { duration: 5000 });
     if (res?.error) toast.error(res.error, { duration: 5000 });
@@ -27,7 +40,7 @@ export function OrderRow({ item }: { item: IOrder }) {
   return (
     <tr>
       <td>
-        <Checkbox name="status" id={`admin_order_status-${id}`} onChange={handleStatusUpdate} checked={status} />
+        <Checkbox name="status" id={`admin_order_status-${id}`} onChange={handleStatusUpdate} checked={optimistic.status} />
       </td>
       <td>
         <GlithHoverLink href={`/admin/orders/${id}`} translationKey="order.full" />

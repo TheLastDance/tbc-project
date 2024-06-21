@@ -15,32 +15,32 @@ export function SliderMainPage() {
     <SliderContainer>
       <SwiperSlide>
         <Link href="/products?category=Household%20Assistants">
-          <Image src={photo1} alt="slider" priority sizes="100vw" quality={100} />
+          <Image src={photo1} alt="slider" priority sizes="100vw" quality={100} placeholder="blur" />
         </Link>
       </SwiperSlide>
       <SwiperSlide>
         <Link href="/products?category=Security+%26+Defense">
-          <Image src={photo2} alt="slider" sizes="100vw" quality={100} />
+          <Image src={photo2} alt="slider" sizes="100vw" quality={100} placeholder="blur" />
         </Link>
       </SwiperSlide>
       <SwiperSlide>
         <Link href="/products?category=Childcare+%26+Education">
-          <Image src={photo3} alt="slider" sizes="100vw" quality={100} />
+          <Image src={photo3} alt="slider" sizes="100vw" quality={100} placeholder="blur" />
         </Link>
       </SwiperSlide>
       <SwiperSlide>
         <Link href="/products?category=Customer+Service">
-          <Image src={photo4} alt="slider" sizes="100vw" quality={100} />
+          <Image src={photo4} alt="slider" sizes="100vw" quality={100} placeholder="blur" />
         </Link>
       </SwiperSlide>
       <SwiperSlide>
         <Link href="/products?category=Entertainment">
-          <Image src={photo5} alt="slider" sizes="100vw" quality={100} />
+          <Image src={photo5} alt="slider" sizes="100vw" quality={100} placeholder="blur" />
         </Link>
       </SwiperSlide>
       <SwiperSlide>
         <Link href="/products?category=Sport">
-          <Image src={photo6} alt="slider" sizes="100vw" quality={100} />
+          <Image src={photo6} alt="slider" sizes="100vw" quality={100} placeholder="blur" />
         </Link>
       </SwiperSlide>
     </SliderContainer>
