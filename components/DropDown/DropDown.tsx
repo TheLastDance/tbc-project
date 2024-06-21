@@ -1,6 +1,7 @@
 "use client"
 import { useToggle } from "@/services/hooks/useToggle"
 import { Arrow } from "../Icons/Arrow";
+import { AnimatePresence } from "framer-motion";
 
 interface IProps {
   header: React.ReactNode,
@@ -25,7 +26,9 @@ export function DropDown({ header, children, defaultToggle }: IProps) {
         </button>
       </div>
       <div className="dropdownContent_container">
-        {toggle ? children : null}
+        <AnimatePresence>
+          {toggle ? children : null}
+        </AnimatePresence>
       </div>
     </div>
   )

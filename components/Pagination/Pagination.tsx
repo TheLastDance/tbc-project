@@ -5,17 +5,18 @@ import Pagination from "rc-pagination/lib/Pagination"
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useI18n } from "@/locales/client";
 
-export function PaginationUI({ totalPages, size }: { totalPages: number, size: number }) {
+export function PaginationUI({ totalPages, size, divId }: { totalPages: number, size: number, divId?: string }) {
   const t = useI18n()
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const currentPage = Number(searchParams.get('page')) || 1;
+  const id = divId ? `#${divId}` : "";
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}${id}`);
   };
 
   return (

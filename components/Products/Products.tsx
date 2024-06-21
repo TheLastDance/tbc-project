@@ -46,11 +46,11 @@ export async function Products({ params, admin }: IProps) {
     return 0;
   });
 
-  const paginatedProducts = sortedData.slice(12 * (page - 1), page * 12);
+  const paginatedProducts = sortedData.slice(10 * (page - 1), page * 10);
 
   return (
     <>
-      <section className="products">
+      <section id="products" className="products">
         <div className="filtersAndProducts">
           <div className="filtersAndProducts_filters">
             <ProductFilters />
@@ -58,7 +58,7 @@ export async function Products({ params, admin }: IProps) {
           <div className="filtersAndProducts_products">
             <ProductsList products={paginatedProducts} admin={admin} />
             {!paginatedProducts.length ? <TranslateText translationKey="products.notFound" /> : null}
-            <PaginationUI totalPages={sortedData.length} size={12} />
+            <PaginationUI totalPages={sortedData.length} size={10} divId="products" />
           </div>
         </div>
       </section>

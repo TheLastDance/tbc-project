@@ -112,7 +112,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
 
         <AddProductUpload setFiles={setFiles} settedPhotos={images} />
 
-        <Button type="submit" mode="glitchHover" translationKey="button.save" disabled={loading} />
+        <Button loading={loading} type="submit" mode="glitchHover" translationKey="button.save" disabled={loading} />
 
       </form>
 

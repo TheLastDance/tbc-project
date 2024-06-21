@@ -45,7 +45,7 @@ export function AddPostForm() {
           />
 
           <TextEditor content={content} setContent={setContent} />
-          <PendingButton type="submit" mode="glitchHover" translationKey="post" />
+          <PendingButton loader type="submit" mode="glitchHover" translationKey="post" />
         </form>
       </FormContainer>
     </div>

@@ -106,7 +106,7 @@ export function AddProductForm() {
 
         <AddProductUpload setFiles={setFiles} />
 
-        <Button type="submit" mode="glitchHover" translationKey="button.save" disabled={loading} />
+        <Button loading={loading} type="submit" mode="glitchHover" translationKey="button.save" disabled={loading} />
 
       </form>
 

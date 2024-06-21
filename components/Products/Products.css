@@ -1,5 +1,5 @@
 .products>* {
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .filtersAndProducts {
@@ -15,6 +15,11 @@
 
 .dark .filtersAndProducts_filters {
   color: var(--secondaryColor);
+}
+
+#products {
+  padding-top: 3rem;
+  margin: 0;
 }
 
 @media(max-width:960px) {

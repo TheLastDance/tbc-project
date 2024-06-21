@@ -2,6 +2,7 @@
 import { Button } from "@/components/UI/Buttons/Button/Button"
 import { useToggle } from "@/services/hooks/useToggle";
 import { CheckoutModal } from "@/components/Modals/CheckoutModal/CheckoutModal";
+import { AnimatePresence } from "framer-motion";
 
 
 export function CheckoutButton() {
@@ -10,7 +11,9 @@ export function CheckoutButton() {
   return (
     <>
       <Button type="button" translationKey="button.checkout" mode="glitch" onClick={setToggleTrue} />
-      {toggle && <CheckoutModal setToggleFalse={setToggleFalse} />}
+      <AnimatePresence>
+        {toggle && <CheckoutModal setToggleFalse={setToggleFalse} />}
+      </AnimatePresence>
     </>
   )
 }

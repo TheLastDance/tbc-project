@@ -1,7 +1,11 @@
-
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 
 export default function page() {
   return (
-    <div>Please verify your email!</div>
+    <div>
+      <h1 style={{ textAlign: "center" }}>
+        <TranslateText translationKey="verifyMessage" />
+      </h1>
+    </div>
   )
 }

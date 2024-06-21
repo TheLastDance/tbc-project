@@ -41,7 +41,7 @@ export async function stripeCheckout(data: FormData) {
         city: `${city}`,
         address: `${address}`,
       },
-      success_url: `${BASE_URL}/`,
+      success_url: `${BASE_URL}/success/order`,
       cancel_url: `${BASE_URL}/`,
     };
 

@@ -16,7 +16,7 @@ export function StarRate({
   average?: number
 }) {
 
-  const avg = Number(rating?.average_points) || Number(average);
+  const avg = Number(rating?.average_points) || Number(average) || 0;
 
   const handleRating = async (value: number) => {
     if (!card) {

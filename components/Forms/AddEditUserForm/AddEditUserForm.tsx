@@ -60,7 +60,7 @@ export function AddEditUserForm({ setToggleFalse, user }: IProps) {
 
       <SingleFileUpload />
 
-      <Button disabled={loading} type="submit" translationKey="button.save" mode="glitchHover" />
+      <Button loading={loading} disabled={loading} type="submit" translationKey="button.save" mode="glitchHover" />
     </form>
   </FormContainer>
 }
