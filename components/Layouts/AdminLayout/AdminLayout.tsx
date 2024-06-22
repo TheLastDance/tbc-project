@@ -8,6 +8,7 @@ import { Order } from "@/components/Icons/Order"
 import { BlogText } from "@/components/Icons/BlogText"
 import { SideBarContainer } from "@/components/SideBar/SideBarContainer"
 import { useToggle } from "@/services/hooks/useToggle"
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 
 export function AdminLayout({ children }: ChildrenProps) {
   const { toggle, handleToggle } = useToggle();
@@ -17,23 +18,33 @@ export function AdminLayout({ children }: ChildrenProps) {
       <SideBarContainer setToggle={handleToggle}>
         <NavLink href="/admin/users">
           <Users />
-          <span>users</span>
+          <span>
+            <TranslateText translationKey="adminPannel.users" />
+          </span>
         </NavLink>
         <NavLink href="/admin/contact">
           <Message />
-          <span>messages</span>
+          <span>
+            <TranslateText translationKey="adminPannel.messages" />
+          </span>
         </NavLink>
         <NavLink href="/admin/products">
           <Box />
-          <span>products</span>
+          <span>
+            <TranslateText translationKey="adminPannel.products" />
+          </span>
         </NavLink>
         <NavLink href="/admin/blog">
           <BlogText />
-          <span>posts</span>
+          <span>
+            <TranslateText translationKey="adminPannel.posts" />
+          </span>
         </NavLink>
         <NavLink href="/admin/orders">
           <Order />
-          <span>orders</span>
+          <span>
+            <TranslateText translationKey="adminPannel.orders" />
+          </span>
         </NavLink>
       </SideBarContainer>
       {children}
