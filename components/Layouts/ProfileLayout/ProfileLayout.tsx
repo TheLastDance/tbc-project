@@ -6,6 +6,7 @@ import { Profile } from "@/components/Icons/Profile"
 import { Order } from "@/components/Icons/Order"
 import { BlogText } from "@/components/Icons/BlogText"
 import { useToggle } from "@/services/hooks/useToggle"
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 
 export function ProfileLayout({ children }: ChildrenProps) {
   const { toggle, handleToggle } = useToggle();
@@ -15,15 +16,21 @@ export function ProfileLayout({ children }: ChildrenProps) {
       <SideBarContainer setToggle={handleToggle} >
         <NavLink href="/profile" noStartsWith>
           <Profile />
-          <span>Profile</span>
+          <span>
+            <TranslateText translationKey="profilePannel.profile" />
+          </span>
         </NavLink>
         <NavLink href="/profile/orders">
           <Order />
-          <span>Orders</span>
+          <span>
+            <TranslateText translationKey="profilePannel.orders" />
+          </span>
         </NavLink>
         <NavLink href="/profile/posts">
           <BlogText />
-          <span>My Posts</span>
+          <span>
+            <TranslateText translationKey="profilePannel.posts" />
+          </span>
         </NavLink>
       </SideBarContainer>
       {children}

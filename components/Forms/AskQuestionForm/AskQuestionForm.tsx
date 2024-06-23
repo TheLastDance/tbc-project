@@ -9,13 +9,19 @@ import { PendingButton } from "@/components/Buttons/PendingButton/PendingButton"
 import { CheckLottie } from "@/components/Lotties/Check/CheckLottie";
 import { sendMessage } from '@/services/actions';
 import { ContactPageMessages } from '@/enums';
+import toast from 'react-hot-toast';
+import { useEffect } from 'react';
 
 const initialState = {
   message: '',
 }
 
 export function AskQuestionForm() {
-  const [state, formAction] = useFormState<ContactFormState, FormData>(sendMessage, initialState)
+  const [state, formAction] = useFormState<ContactFormState, FormData>(sendMessage, initialState);
+
+  useEffect(() => {
+    if (state?.error) toast.error(state.error, { duration: 5000 });
+  }, [state])
 
   return (
     <FormContainer>

@@ -45,6 +45,7 @@ export function StarRate({
           className={isDefaultChecked(5) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
+          tabIndex={-1}
         />
         <label htmlFor={`star5-${product_id}`} title="5">5 stars</label>
         <input
@@ -55,6 +56,7 @@ export function StarRate({
           className={isDefaultChecked(4) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
+          tabIndex={-1}
         />
         <label htmlFor={`star4-${product_id}`} title="4">4 stars</label>
         <input
@@ -65,6 +67,7 @@ export function StarRate({
           className={isDefaultChecked(3) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
+          tabIndex={-1}
         />
         <label htmlFor={`star3-${product_id}`} title="3">3 stars</label>
         <input
@@ -75,6 +78,7 @@ export function StarRate({
           className={isDefaultChecked(2) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
+          tabIndex={-1}
         />
         <label htmlFor={`star2-${product_id}`} title="2">2 stars</label>
         <input
@@ -85,6 +89,7 @@ export function StarRate({
           className={isDefaultChecked(1) ? "checked" : ""}
           onChange={(e) => handleRating(+e.target.value)}
           readOnly={card}
+          tabIndex={-1}
         />
         <label htmlFor={`star1-${product_id}`} title="1">1 star</label>
       </div>

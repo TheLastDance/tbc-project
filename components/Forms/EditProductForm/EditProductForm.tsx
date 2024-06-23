@@ -10,6 +10,7 @@ import { AddProductUpload } from "@/components/UploadInputs/AddProductUpload/Add
 import { editProduct } from "@/services/actions/products/edit-product"
 import toast from "react-hot-toast"
 import { productGender, productBrands, productCategories } from "@/services/constants"
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 
 export function EditProductForm({ product }: { product: IProductItem }) {
   const { images, id } = product;
@@ -46,7 +47,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
           type="text"
           name="title"
           id="addProductForm_title"
-          label={"Title"}
+          label={<TranslateText translationKey="form.label.firstName" />}
           maxLength={30}
           defaultValue={product.title}
           required
@@ -56,7 +57,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
           type="text"
           name="description"
           id="addProductForm_description"
-          label={"Description"}
+          label={<TranslateText translationKey="fullProduct.description" />}
           minLength={100}
           defaultValue={product.description}
           textArea
@@ -64,7 +65,9 @@ export function EditProductForm({ product }: { product: IProductItem }) {
         />
 
         <div className="input_container select-style-input">
-          <label htmlFor="addProductForm_brand">Brand:</label>
+          <label htmlFor="addProductForm_brand">
+            <TranslateText translationKey="fullProduct.brand" />:
+          </label>
           <select
             id="addProductForm_brand"
             name="brand"
@@ -76,7 +79,9 @@ export function EditProductForm({ product }: { product: IProductItem }) {
         </div>
 
         <div className="input_container select-style-input">
-          <label htmlFor="addProductForm_category">Category:</label>
+          <label htmlFor="addProductForm_category">
+            <TranslateText translationKey="fullProduct.category" />:
+          </label>
           <select
             id="addProductForm_category"
             name="category"
@@ -88,7 +93,9 @@ export function EditProductForm({ product }: { product: IProductItem }) {
         </div>
 
         <div className="input_container select-style-input">
-          <label htmlFor="addProductForm_gender">Gender:</label>
+          <label htmlFor="addProductForm_gender">
+            <TranslateText translationKey="fullProduct.gender" />:
+          </label>
           <select
             id="addProductForm_gender"
             name="gender"
@@ -103,7 +110,7 @@ export function EditProductForm({ product }: { product: IProductItem }) {
           type="number"
           name="price"
           id="addProductForm_price"
-          label={"Price"}
+          label={<TranslateText translationKey="products.price" />}
           step="any"
           min="100"
           defaultValue={`${product.price}`}

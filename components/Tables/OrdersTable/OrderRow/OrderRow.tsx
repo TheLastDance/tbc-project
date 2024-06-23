@@ -9,10 +9,15 @@ import { TranslateText } from "@/components/TranslateText/TranslateText";
 import Image from "next/image";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { useOptimistic, useTransition } from "react";
+import { useToggle } from "@/services/hooks/useToggle"
+import { Button } from "@/components/UI/Buttons/Button/Button"
+import { AnimatePresence } from "framer-motion";
+import { AreYouSureModal } from "@/components/Modals/AreYouSureModal/AreYouSureModal";
 
 
 export function OrderRow({ item }: { item: IOrder }) {
   const { id, user_serial, refund, products, payment_intent, address, user_picture } = item;
+  const { toggle, setToggleFalse, setToggleTrue } = useToggle();
   const [, startTransition] = useTransition();
   const [optimistic, addOptimistic] = useOptimistic<IOrder, IOrder>(
     item,
@@ -35,6 +40,7 @@ export function OrderRow({ item }: { item: IOrder }) {
   const handleRefund = async () => {
     const res = await requestRefund(id, payment_intent, true);
     if (res?.error) toast.error(res.error, { duration: 5000 });
+    setToggleFalse();
   }
 
   return (
@@ -46,13 +52,24 @@ export function OrderRow({ item }: { item: IOrder }) {
         <GlithHoverLink href={`/admin/orders/${id}`} translationKey="order.full" />
       </td>
       <td>
-        {!refund ?
-          <form action={handleRefund}>
-            <PendingButton mode="glitchHover" type="submit" translationKey="order.refund" />
-          </form> :
-          <span>
-            <TranslateText translationKey="order.refunded" />
-          </span>
+        {!refund ? (
+          <>
+            <Button mode="glitchHover" type="button" onClick={setToggleTrue} translationKey="order.refund" />
+
+            <AnimatePresence>
+              {toggle && <AreYouSureModal setToggleFalse={setToggleFalse} >
+                <form action={handleRefund}>
+                  <PendingButton loader mode="glitchHover" type="submit" translationKey="yes" />
+                </form>
+              </AreYouSureModal>}
+            </AnimatePresence>
+          </>
+        ) :
+          (
+            <span>
+              <TranslateText translationKey="order.refunded" />
+            </span>
+          )
         }
       </td>
       <td>{id}</td>

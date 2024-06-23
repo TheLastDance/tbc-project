@@ -11,8 +11,7 @@ export const handleChangeInputObj = <T>(
 }
 
 export const generateDynamicMetaData = (key: metaDataTranslationKey, locale: Locale): MetadataType => {
-  const { ...metadata } = metaDataTranslations[locale][key];
-  return { ...metadata }
+  return metaDataTranslations[locale][key];
 }
 
 export const getCookieExpirationDate = (hoursToExpire: number) => {

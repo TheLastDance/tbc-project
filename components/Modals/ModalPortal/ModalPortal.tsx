@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import { MotionDiv } from "@/components/MotionDiv/MotionDiv";
 import { modalAnimation } from "@/services/animations";
+import FocusLock from 'react-focus-lock';
 
 interface IProps {
   children: React.ReactNode,
@@ -23,11 +24,14 @@ export function ModalPortal({ children, onClose }: IProps) {
         animate="animate"
         exit="exit"
         variants={modalAnimation}
+        onKeyDown={(e) => e.key === "Escape" && onClose()}
       >
         <div className="modal_overlay"></div>
-        <OutsideClickHandler onOutsideClick={onClose}>
-          <>{children}</>
-        </OutsideClickHandler>
+        <FocusLock returnFocus>
+          <OutsideClickHandler onOutsideClick={onClose} >
+            {children}
+          </OutsideClickHandler>
+        </FocusLock>
       </MotionDiv>
     </>, document.querySelector("#modal_container")!) : null
 }

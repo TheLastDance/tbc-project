@@ -1,0 +1,25 @@
+.gallerySlider_container {
+  position: relative;
+  top: 5%;
+  width: auto;
+  max-width: 100%;
+  height: 90%;
+}
+
+.gallerySlider_container .swiper {
+  height: 100%;
+}
+
+.gallerySlider_container .swiper-wrapper img {
+  object-fit: contain;
+}
+
+.gallerySlider_container .swiper-button-prev,
+.gallerySlider_container .swiper-button-next {
+  color: var(--primaryColor);
+}
+
+.dark .gallerySlider_container .swiper-button-prev,
+.dark .gallerySlider_container .swiper-button-next {
+  color: var(--secondaryColor);
+}

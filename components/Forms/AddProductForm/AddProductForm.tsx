@@ -2,7 +2,7 @@
 import "./AddProductForm.css"
 import { Input } from "@/components/Input/Input"
 import { FormContainer } from "../FormContainer/FormContainer"
-// import { TranslateText } from "@/components/TranslateText/TranslateText"
+import { TranslateText } from "@/components/TranslateText/TranslateText"
 import { Button } from "@/components/UI/Buttons/Button/Button"
 import { addProduct } from "@/services/actions/products/add-product"
 import toast from "react-hot-toast"
@@ -45,7 +45,7 @@ export function AddProductForm() {
           type="text"
           name="title"
           id="addProductForm_title"
-          label={"Title"}
+          label={<TranslateText translationKey="form.label.firstName" />}
           maxLength={30}
           required
         />
@@ -54,14 +54,16 @@ export function AddProductForm() {
           type="text"
           name="description"
           id="addProductForm_description"
-          label={"Description"}
+          label={<TranslateText translationKey="fullProduct.description" />}
           minLength={100}
           textArea
           required
         />
 
         <div className="input_container select-style-input">
-          <label htmlFor="addProductForm_brand">Brand:</label>
+          <label htmlFor="addProductForm_brand">
+            <TranslateText translationKey="fullProduct.brand" />:
+          </label>
           <select
             id="addProductForm_brand"
             name="brand"
@@ -72,7 +74,9 @@ export function AddProductForm() {
         </div>
 
         <div className="input_container select-style-input">
-          <label htmlFor="addProductForm_category">Category:</label>
+          <label htmlFor="addProductForm_category">
+            <TranslateText translationKey="fullProduct.category" />:
+          </label>
           <select
             id="addProductForm_category"
             name="category"
@@ -83,7 +87,9 @@ export function AddProductForm() {
         </div>
 
         <div className="input_container select-style-input">
-          <label htmlFor="addProductForm_gender">Gender:</label>
+          <label htmlFor="addProductForm_gender">
+            <TranslateText translationKey="fullProduct.gender" />:
+          </label>
           <select
             id="addProductForm_gender"
             name="gender"
@@ -97,7 +103,7 @@ export function AddProductForm() {
           type="number"
           name="price"
           id="addProductForm_price"
-          label={"Price"}
+          label={<TranslateText translationKey="products.price" />}
           step="any"
           min="100"
           defaultValue="1000.00"

@@ -10,6 +10,7 @@ import { EditPostForm } from "@/components/Forms/EditPostForm/EditPostForm";
 import { useToggle } from "@/services/hooks/useToggle";
 import toast from "react-hot-toast";
 import { AnimatePresence } from "framer-motion";
+import { AreYouSureModal } from "@/components/Modals/AreYouSureModal/AreYouSureModal";
 
 interface IProps {
   title: string,
@@ -21,11 +22,17 @@ interface IProps {
 export function FullPostButtons({ title, body, id, admin }: IProps) {
   const { toggle, setToggleFalse, setToggleTrue } = useToggle();
   const router = useRouter();
+  const {
+    toggle: toggleDelete,
+    setToggleFalse: setToggleFalseDelete,
+    setToggleTrue: setToggleTrueDelete,
+  } = useToggle();
 
   const handleDeletePost = async () => {
     const res = await deletePost(id);
     if (res?.error) toast.error(res.error, { duration: 5000 });
     if (res?.message) toast.success(res.message, { duration: 5000 });
+    setToggleFalseDelete();
     !admin && router.push("/blog");
     router.refresh();
   }
@@ -41,11 +48,17 @@ export function FullPostButtons({ title, body, id, admin }: IProps) {
         <Edit />
       </button>
 
-      <form action={handleDeletePost}>
-        <PendingButton type="submit" title="remove" className="resetButtonStyles">
-          <Trash />
-        </PendingButton>
-      </form>
+      <button title="remove" type="button" onClick={setToggleTrueDelete} className="resetButtonStyles">
+        <Trash />
+      </button>
+
+      <AnimatePresence>
+        {toggleDelete && <AreYouSureModal setToggleFalse={setToggleFalseDelete} >
+          <form action={handleDeletePost}>
+            <PendingButton loader mode="glitchHover" type="submit" translationKey="yes" />
+          </form>
+        </AreYouSureModal>}
+      </AnimatePresence>
 
       <AnimatePresence>
         {toggle &&
