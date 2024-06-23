@@ -24,6 +24,7 @@
     "react": "^18",
     "react-content-loader": "^7.0.0",
     "react-dom": "^18",
+    "react-focus-lock": "^2.12.1",
     "react-hot-toast": "^2.4.1",
     "react-lottie": "^1.2.4",
     "react-outside-click-handler": "^1.3.0",

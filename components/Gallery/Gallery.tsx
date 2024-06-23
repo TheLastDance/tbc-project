@@ -5,20 +5,21 @@ import { useState } from "react";
 import Image from "next/image";
 import { ModalPortal } from "../Modals/ModalPortal/ModalPortal";
 import { Close } from "../Icons/Close";
+import { AnimatePresence } from "framer-motion";
+import { GallerySlider } from "../Sliders/GallerySlider/GallerySlider";
+import { useToggle } from "@/services/hooks/useToggle";
 
 interface IProps {
   images: string[],
 }
 
 export function Gallery({ images }: IProps) {
-  const [img, setImg] = useState(images[0]);
-  const [openModal, setOpenModal] = useState(false);
+  const [imgIndex, setImgIndex] = useState(0);
+  const { toggle, setToggleFalse, setToggleTrue } = useToggle();
 
   const handleChangePhoto = (index: number) => {
-    setImg(images[index]);
+    setImgIndex(index);
   }
-
-  //const blurDataURL = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxy53My5vcmcvMjAwMC9zdmciFuQmx1ciBzdGREZXZp3Ij48L2ZlR2F1c3NpYW5CbHVyPjwvZmlsdGVyPjxpbWFnZSBmaWx0ZXI9InVybCgjYikiIHhsaW5rOmhyZWY9Ii8+PC9zdmc+";
 
   return (
     <div className="gallery_container">
@@ -30,25 +31,26 @@ export function Gallery({ images }: IProps) {
               alt="product"
               width={500}
               height={700}
-            // placeholder="blur"
-            // blurDataURL={blurDataURL}
             />
           </button>)
         }
       </div>
-      <button type="button" className="resetButtonStyles thumbnail_button" onClick={() => setOpenModal(true)}>
+      <button type="button" className="resetButtonStyles thumbnail_button" onClick={setToggleTrue}>
         <div className="thumbnail" >
-          <Image src={img} sizes="20rem" alt="product" fill quality={100} />
+          <Image src={images[imgIndex]} sizes="20rem" alt="product" fill quality={100} />
         </div>
       </button>
-      {openModal && <ModalPortal onClose={() => setOpenModal(false)}>
-        <div className="thumbnailModal">
-          <button type="button" className="resetButtonStyles" title="close" onClick={() => setOpenModal(false)}>
-            <Close />
-          </button>
-          <Image src={img} alt="product" width={700} height={1000} />
-        </div>
-      </ModalPortal>}
+      <AnimatePresence>
+        {toggle && <ModalPortal onClose={setToggleFalse}>
+          <div className="thumbnailModal">
+            <button type="button" className="resetButtonStyles" title="close" onClick={setToggleFalse}>
+              <Close />
+            </button>
+            <GallerySlider images={images} initialSlide={imgIndex} />
+            {/* <Image src={images[img]} alt="product" width={700} height={1000} /> */}
+          </div>
+        </ModalPortal>}
+      </AnimatePresence>
     </div>
   )
 }

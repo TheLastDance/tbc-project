@@ -137,6 +137,9 @@ export const translations = {
     "profilePannel.profile": "profile",
     "profilePannel.orders": "orders",
     "profilePannel.posts": "my posts",
+    "yes": "yes",
+    "no": "no",
+    "areYouSure": "Are you sure?",
   },
   ka: {
     "navigation.profile": "პროფილი",
@@ -274,5 +277,8 @@ export const translations = {
     "profilePannel.profile": "პროფილი",
     "profilePannel.orders": "შეკვეთები",
     "profilePannel.posts": "ჩემი პოსტები",
+    "yes": "კი",
+    "no": "არა",
+    "areYouSure": "დარწმუნებული ხარ?",
   },
 };
