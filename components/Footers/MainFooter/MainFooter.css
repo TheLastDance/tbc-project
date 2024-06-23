@@ -39,3 +39,23 @@
 .authFooter .nav_list .navLink_active {
   border-bottom: 1px solid var(--secondaryColor);
 }
+
+.footer_social {
+  display: flex;
+}
+
+.footer_social a svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.footer_social a:last-child svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.footer_social>a {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+}

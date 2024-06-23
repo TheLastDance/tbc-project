@@ -1,0 +1,65 @@
+.skeleton_title {
+  width: 35%;
+  height: 1.5rem;
+}
+
+.skeleton_text {
+  width: 75%;
+  height: 1rem;
+}
+
+.skeleton_text_body {
+  width: 100%;
+  height: 5rem;
+}
+
+.skeleton_button_container {
+  display: flex;
+  justify-content: right;
+}
+
+.skeleton_button {
+  min-width: fit-content;
+  width: 25%;
+  padding: 0.4rem;
+  height: 2rem;
+}
+
+.skeleton_price {
+  width: 25%;
+  height: 1rem;
+}
+
+.skeleton_social {
+  width: 30%;
+  height: 2.5rem;
+}
+
+.skeleton_button,
+.skeleton_photo_big,
+.skeleton_photo_round,
+.skeleton_photo,
+.skeleton_text,
+.skeleton_text_body,
+.skeleton_title,
+.skeleton_price,
+.skeleton_social {
+  background-color: var(--grayColor);
+  background: linear-gradient(to right, #636161, #a3a2a2, #636161, #a3a2a2, #636161, #a3a2a2);
+  background-size: 500% auto;
+  animation: gradient-skeleton 1s linear infinite;
+}
+
+@keyframes gradient-skeleton {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    opacity: .5;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}

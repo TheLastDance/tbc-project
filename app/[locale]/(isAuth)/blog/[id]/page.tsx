@@ -12,10 +12,8 @@ interface IProps {
 export default function FullPostPage({ params: { id } }: IProps) {
 
   return (
-    <>
-      <Suspense fallback={<FullPostLoader />}>
-        <FullPost id={id} />
-      </Suspense>
-    </>
+    <Suspense fallback={<FullPostLoader />}>
+      <FullPost id={id} />
+    </Suspense>
   );
 }

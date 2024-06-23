@@ -1,0 +1,19 @@
+/* .productsListSkeleton_container {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+} */
+
+.productsListSkeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+  gap: 1rem;
+  justify-content: end;
+  margin: 2rem 0;
+}
+
+@media(max-width:500px) {
+  .productsListSkeleton {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
