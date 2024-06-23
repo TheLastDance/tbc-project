@@ -1,19 +1,17 @@
 import "./FullPostLoader.css"
-import List from "react-content-loader"
+import "../Skeleton.css"
+
 
 export function FullPostLoader() {
   return (
     <div className="fullPostLoader">
-      <List
-        speed={1}
-        backgroundColor="black"
-        foregroundColor="white"
-        backgroundOpacity={0.1}
-        gradientRatio={1.5}
-        rtl={true}
-        width="100%"
-        viewBox="0 0 420 100"
-      />
+      <div className="info">
+        <div className="skeleton_title"></div>
+        <div className="skeleton_photo_round"></div>
+      </div>
+      <div className="skeleton_text_body"></div>
+      <div className="skeleton_text"></div>
+      <div className="skeleton_social"></div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Products } from "@/components/Products/Products";
-import { Loader } from "@/components/Loaders/Loader/Loader";
+import { ProductsListSkeleton } from "@/components/Loaders/ProductsListSkeleton/ProductsListSkeleton";
 import { GlithHoverLink } from "@/components/UI/Links/GlithHoverLink";
 
 
@@ -8,12 +8,12 @@ export default function AdminProducts({ searchParams }: IProductParams) {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <div>
-          <GlithHoverLink href="/admin/products/new" translationKey="products.addNew" />
+      <div>
+        <GlithHoverLink href="/admin/products/new" translationKey="products.addNew" />
+        <Suspense fallback={<ProductsListSkeleton />}>
           <Products params={searchParams} admin />
-        </div>
-      </Suspense>
+        </Suspense>
+      </div>
     </>
   )
 }

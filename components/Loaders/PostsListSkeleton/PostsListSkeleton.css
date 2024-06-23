@@ -1,0 +1,23 @@
+.postsListSkeleton {
+  border: 0.25rem solid var(--grayColor);
+  padding: 1rem;
+  margin: 2rem 0;
+}
+
+.postsListSkeleton .fullPostLoader .skeleton_title {
+  height: 2rem;
+}
+
+.postsListSkeleton .fullPostLoader .skeleton_text_body {
+  height: 4rem;
+  margin: 2rem 0;
+}
+
+.postsListSkeleton .fullPostLoader .skeleton_photo_round {
+  height: 4rem;
+  width: 4rem;
+}
+
+.postsListSkeleton .fullPostLoader .skeleton_social {
+  width: 100%;
+}

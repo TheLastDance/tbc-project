@@ -1,0 +1,25 @@
+.ProductCardLoader {
+  display: flex;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.skeleton_photo {
+  width: 12rem;
+  border-radius: 1rem 0 0 1rem;
+  border: 2px solid var(--secondaryColor);
+  border-right: none;
+}
+
+.ProductCardLoader .info {
+  border: 2px solid var(--secondaryColor);
+  border-left: none;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem;
+}
+
+.ProductCardLoader .info>* {
+  margin-bottom: 0.5rem;
+}

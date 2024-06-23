@@ -8,7 +8,7 @@ export function CyberSphere3d() {
   const groupRef = useRef<Group | null>(null)
   const particlesRef = useRef<BufferGeometry | null>(null)
   const linesGeometryRef = useRef<BufferGeometry | null>(null)
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   const maxParticleCount = 1000
   const particleCount = 500
@@ -137,10 +137,10 @@ export function CyberSphere3d() {
           <bufferAttribute attach="attributes-position" count={particleCount} array={particlePositions} itemSize={3} />
         </bufferGeometry>
         <pointsMaterial
-          color={theme === "dark" ? 'white' : 'black'}
+          color={resolvedTheme === "dark" ? 'white' : 'black'}
           size={3}
           blending={AdditiveBlending}
-          transparent={theme === "dark" ? false : true}
+          transparent={resolvedTheme === "dark" ? false : true}
           sizeAttenuation={false}
         />
       </points>
@@ -150,10 +150,10 @@ export function CyberSphere3d() {
           <bufferAttribute attach="attributes-color" count={colors.length / 3} array={colors} itemSize={3} />
         </bufferGeometry>
         <lineBasicMaterial
-          color={theme === "dark" ? "white" : "black"}
+          color={resolvedTheme === "dark" ? "white" : "black"}
           vertexColors={true}
           blending={AdditiveBlending}
-          transparent={theme === "dark" ? false : true}
+          transparent={resolvedTheme === "dark" ? false : true}
         />
       </lineSegments>
     </group>

@@ -1,4 +1,38 @@
 .fullPostLoader {
   width: 100%;
   margin: 0.75rem 0;
+  /* border: 4px solid var(--grayColor); */
+}
+
+.fullPostLoader>div {
+  margin: 0.75rem 0;
+}
+
+.fullPostLoader .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fullPostLoader .skeleton_title {
+  height: 4rem;
+}
+
+.fullPostLoader .skeleton_photo_round {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+
+.fullPostLoader .skeleton_text_body {
+  margin: 3rem 0;
+  height: 10rem;
+}
+
+.fullPostLoader .skeleton_text {
+  width: 35%;
+}
+
+.fullPostLoader .skeleton_social {
+  width: 25%;
 }

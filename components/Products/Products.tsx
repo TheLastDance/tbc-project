@@ -14,6 +14,7 @@ interface IProps {
 export const revalidate = 0;
 
 export async function Products({ params, admin }: IProps) {
+  // await new Promise((res) => setTimeout(res, 2000)); //for loader check
   const products = await getProducts() as IProductItem[];
   const searchText = params?.searchText || '';
   const page = Number(params?.page) || 1;
