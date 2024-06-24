@@ -5,6 +5,7 @@ import Image from "next/image";
 import parse from 'html-react-parser';
 import { FullPostButtons } from "../../FullPost/Buttons/FullPostButtons";
 import { GlithHoverLink } from "@/components/UI/Links/GlithHoverLink";
+import { Heart } from "@/components/Icons/Heart";
 
 interface IProps {
   item: IPostItem,
@@ -12,7 +13,7 @@ interface IProps {
 }
 
 export function Post({ item, admin }: IProps) {
-  const { title, body, id, added_on, user_serial, user_picture } = item;
+  const { title, body, id, added_on, user_serial, user_picture, likes_count } = item;
 
   const utcDate = new Date(added_on).toLocaleDateString();
 
@@ -27,7 +28,13 @@ export function Post({ item, admin }: IProps) {
           </Link>
         </div>
         <div className="blog_text">{parse(body)}</div>
-        <p>{utcDate}</p>
+        <div className="post_timeLike">
+          <p>{utcDate}</p>
+          <div className="post_like">
+            <Heart />
+            {likes_count}
+          </div>
+        </div>
         <GlithHoverLink href={`/blog/${id}`} translationKey="button.viewFull" />
       </Card>
     </li>

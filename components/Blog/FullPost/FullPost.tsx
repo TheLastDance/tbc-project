@@ -8,6 +8,8 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { FullPostButtons } from "./Buttons/FullPostButtons";
 import parse from 'html-react-parser';
 import { ShareButtons } from "@/components/ShareButtons/ShareButtons";
+import { LikeButton } from "./Buttons/LikeButton";
+import { getPostsLikes } from "@/services/sqlQueries/postsLike/getPostLikes";
 
 
 export const revalidate = 0;
@@ -17,6 +19,8 @@ export async function FullPost({ id }: idParam) {
   const post = await getPost(id) as IPostItem;
 
   if (!post?.title) return <NotFound />;
+
+  const { like_count, user_liked } = await getPostsLikes(id) as IPostLike;
 
   const { title, body, user_serial, user_picture, added_on, user_id } = post;
 
@@ -52,7 +56,13 @@ export async function FullPost({ id }: idParam) {
           {utcDate}
         </p>
       </div>
-      <ShareButtons title={title} />
+      <div className="share_like">
+        <ShareButtons title={title} />
+        <div className={user_liked ? "user_liked like_container" : "like_container"}>
+          <LikeButton id={id} />
+          {like_count}
+        </div>
+      </div>
     </article>
   );
 }
