@@ -9,13 +9,12 @@ import { StarRate } from "@/components/StarRate/StarRate";
 
 interface IProps {
   item: IProductItem;
-  index: number;
   admin?: boolean;
 }
 
 const rubik_glitch = Rubik_Glitch({ subsets: ["latin"], weight: "400" });
 
-export function Product({ item, index, admin }: IProps) {
+export function Product({ item, admin }: IProps) {
   const { title, description, id, images, category, average, price } = item;
   const [image] = images;
 
@@ -29,7 +28,6 @@ export function Product({ item, index, admin }: IProps) {
             alt={title}
             fill
             sizes="18rem"
-            priority={index < 6}
           />
         </div>
       </Link>

@@ -106,7 +106,7 @@ export async function editPost(data: FormData, id: number) {
     if (!title || !body || !id) throw new Error('title and message fileds are required!');
     if (
       `${title}`.length > 50 ||
-      `${body}`.replace(/<(.|\n)*?>/g, '').trim().length > 10000 ||
+      // `${body}`.replace(/<(.|\n)*?>/g, '').trim().length > 10000 ||
       `${body}`.replace(/<(.|\n)*?>/g, '').trim().length <= 0
     ) throw new Error('title must be less than 50 symbols and message must include from 1 to 10000 symbols!')
 
@@ -154,7 +154,7 @@ export async function addPost(data: FormData) {
     if (!title || !body) throw new Error('title and message fileds are required!');
     if (
       `${title}`.length > 50 ||
-      `${body}`.replace(/<(.|\n)*?>/g, '').trim().length > 10000 ||
+      // `${body}`.replace(/<(.|\n)*?>/g, '').trim().length > 10000 ||
       `${body}`.replace(/<(.|\n)*?>/g, '').trim().length <= 0
     ) throw new Error('title must be less than 50 symbols and message must include from 1 to 10000 symbols!')
     if (!session?.user) throw new Error('You have no permission!');
