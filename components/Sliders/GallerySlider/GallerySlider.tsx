@@ -23,7 +23,7 @@ export function GallerySlider({ images, initialSlide }: { images: string[], init
         modules={[Keyboard, Navigation, A11y]}
       >
         {images.map((item, index) => <SwiperSlide key={index}>
-          <Image src={item} alt="product" sizes="1000px" fill priority />
+          <Image src={item} alt="product" sizes="1000px" fill />
         </SwiperSlide>)}
       </Swiper>
     </div>

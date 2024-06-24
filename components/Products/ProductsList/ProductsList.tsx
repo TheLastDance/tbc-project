@@ -11,8 +11,8 @@ export function ProductsList({ products, admin }: IProps) {
 
   return (
     <ul className="products_list">
-      {products.map((item, index) => (
-        <Product key={item.id} item={item} index={index} admin={admin} />
+      {products.map((item) => (
+        <Product key={item.id} item={item} admin={admin} />
       ))}
     </ul>
   );
