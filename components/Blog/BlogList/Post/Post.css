@@ -111,3 +111,26 @@
 .post_viewFullButton:hover {
   filter: invert(1);
 }
+
+.post_timeLike {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post_like {
+  display: flex;
+  align-items: center;
+  min-width: 3rem;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.post_like svg {
+  margin-right: 0.25rem;
+  filter: drop-shadow(0 0 5px var(--glitchColor3));
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: var(--glitchColor1);
+}

@@ -1,5 +1,5 @@
 .fullPost>* {
-  margin: 0.75rem 0;
+  margin: 1.5rem 0;
 }
 
 .fullPost_titleAndPhoto_container {
@@ -78,4 +78,50 @@
 
 .fullPost .social_icons svg {
   fill: currentColor;
+}
+
+.fullPost .share_like {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.share_like div {
+  display: flex;
+  align-items: center;
+  min-width: 3rem;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.like_container button {
+  display: flex;
+  align-items: center;
+  margin-right: 0.25rem;
+}
+
+.like_container svg {
+  fill: var(--background);
+  stroke: var(--secondaryColor);
+  filter: drop-shadow(0 0 5px var(--glitchColor3));
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.user_liked svg {
+  fill: var(--glitchColor1);
+}
+
+.like_container button:active {
+  filter: drop-shadow(0 0 15px var(--glitchColor3));
+  transform: scale(0.9);
+}
+
+.like_container button:active svg {
+  fill: var(--glitchColor1);
+}
+
+.like_container button:hover svg {
+  transform: scale(1.1);
 }

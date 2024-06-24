@@ -107,6 +107,7 @@ interface IPostItem {
   added_on: string;
   user_picture: string;
   user_serial: number;
+  likes_count: number;
 }
 
 type ErrorMessage = {
@@ -133,6 +134,11 @@ interface IUser {
 
 interface IUserAndPosts extends IUser {
   posts: { id: number, title: string }[],
+}
+
+interface IPostLike {
+  like_count: number,
+  user_liked: boolean,
 }
 
 interface IUserDatabase {
