@@ -60,6 +60,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  max-height: 3.6rem;
 }
 
 .blog_text img {

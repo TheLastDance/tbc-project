@@ -8,6 +8,8 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { sql } from "@vercel/postgres";
 import { ContactPageMessages, SuccessMessages } from "@/enums";
 import { del, put } from "@vercel/blob";
+import { JSDOM } from 'jsdom';
+import createDOMPurify from 'dompurify';
 
 export async function setTranslateCookie(locale: Locale) {
   const cookieStore = cookies();
@@ -115,7 +117,11 @@ export async function editPost(data: FormData, id: number) {
     const havePermission = session?.user.sub === user.user_id || session?.user.app_metadata.role === "admin";
     if (!havePermission) throw new Error('You have no permission!');
 
-    await sql`UPDATE posts SET title = ${`${title}`}, body = ${`${body}`} WHERE id = ${id};`;
+    const window = new JSDOM('').window;
+    const DOMPurify = createDOMPurify(window);
+    const sBody = DOMPurify.sanitize(body as string);
+
+    await sql`UPDATE posts SET title = ${`${title}`}, body = ${`${sBody}`} WHERE id = ${id};`;
 
     revalidatePath("/");
     return { message: SuccessMessages.EditPost }
@@ -159,10 +165,14 @@ export async function addPost(data: FormData) {
     ) throw new Error('title must be less than 50 symbols and message must include from 1 to 10000 symbols!')
     if (!session?.user) throw new Error('You have no permission!');
 
+    const window = new JSDOM('').window;
+    const DOMPurify = createDOMPurify(window);
+    const sBody = DOMPurify.sanitize(body as string);
+
     await sql`INSERT INTO posts (title, body, user_id)
       VALUES (
         ${`${title}`},
-        ${`${body}`},
+        ${`${sBody}`},
         ${session.user.sub}
       );`;
 

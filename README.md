@@ -54,6 +54,7 @@ This full stack project is an e-commerce website developed as part of the TBC Bo
 - BlogPost/Review addition functionality for all uthorized users
 - Post delete/edit functionality for user who posted it or for admin
 - Text editor for post creation content
+- Post like functionality
 - Specific user pages with non-private information
 - Admin pannel
 - User edit functionality for admin role
@@ -70,5 +71,8 @@ This full stack project is an e-commerce website developed as part of the TBC Bo
 - Burger menu for tablets/smartphones
 
 ## Run project
+
+You will not be able to run the app locally without env variables of Auth0, Stripe, Vercel Postgresql and Vercel blob. Instead of that you can use [Production link](https://tbc-project-tau.vercel.app) or add your own env variables, and then use codebase to write same database/auth/payment system structure.
+
 1. Install dependencies - `npm install`
 2. Start the project - `npm run dev`
