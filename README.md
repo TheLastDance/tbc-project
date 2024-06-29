@@ -2,6 +2,11 @@
 
 This full stack project is an e-commerce website developed as part of the TBC Bootcamp, offering a futuristic shopping experience where users can browse and purchase human like androids (robots). It features secure user authentication and registration, a detailed catalog of androids with images and descriptions, payment system, and an admin panel for managing products, users, and orders. The site also includes protected routes for secure access to sensitive areas, and allows users to write posts and leave product reviews. This project demonstrates modern web development techniques and provides a unique, engaging shopping platform.
 
+If you need an administrator account to test the project, you can contact me via email - davit.khachaturov.1@iliauni.edu.ge , [Linkedin](https://www.linkedin.com/in/david-khachaturov-60b059189/)
+or you can watch the Admin panel video demo below ↓
+
+[![Admin Pannel Demo](public/img/video-thumbnail.jpg)](https://www.youtube.com/watch?v=cLA8vXcSMSA)
+
 ## Tech Stack
 
 - NextJS
